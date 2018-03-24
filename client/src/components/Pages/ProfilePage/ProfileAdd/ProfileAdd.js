@@ -15,14 +15,16 @@ class ProfileAdd extends React.Component {
       return (
         <Col xs={12} className="profile-add">
           <p>Profile Add</p>
-          <Row>
-          <Input xs={6} placeholder="Add Company"/>
-          <Input xs={6} placeholder="Add Rewards Number" />
-          </Row>
-          <Row>
-          <Input xs={6} placeholder="Add Company URL" />
-          <Input xs={6} placeholder="Add Company Phone" />
-          </Row>
+          <select className="form-control" placeholder="Choose a Company Type">
+            <option profiletype="Airline">Airline</option>
+            <option profiletype="Hotel">Hotel</option>
+            <option profiletype="RentalCar">Rental Car</option>
+          </select>
+          <Input placeholder="Add Company Name"/>
+          <Input placeholder="Add Rewards Number" />
+          <Input placeholder="Add Company URL" />
+          <Input placeholder="Add Company Phone" />
+       
         </Col>
       );
     }

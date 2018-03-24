@@ -12,10 +12,14 @@ class VacationContainer extends Component {
    state = {
       modal: false,
       category: "",
-      protype: "", 
-      proconame: "", 
-      procomemberno: "", 
-      procomemberphone: "",
+      destination: "", 
+      start: "", 
+      end: "",
+      proType: "", 
+      proCoName: "", 
+      proCoMemberNo: "", 
+      proCoMemberPhone: "",
+      
   };
 
 handleToggleModal = (modal) => {
@@ -33,6 +37,22 @@ handleDisplayPage = (category) => {
   console.log("you have entered the DisplayPage function", category);
 }
 
+// && this.state.start === "" && this.state.end === ""
+
+handleTripFormSubmit = (event, elem) => {
+  event.preventDefault();
+    console.log("incoming state", elem);
+    if (this.state.destination === "") {
+      alert("Please make sure all fields are complete");
+    } else {
+    this.setState({
+    destination: "",
+    start: "",
+    end: ""
+  });
+};
+};
+
 handleProfileInputChange = event => {
   const {name, value} = event.target;
   this.setState({
@@ -42,7 +62,7 @@ handleProfileInputChange = event => {
 
 handleProfileFormSubmit = event => {
   event.preventDefault();
-    if (this.state.firstName === "" && this.state.lastName === "") {
+  if (this.state.proType === "" && this.state.proCoName === "" && this.state.proCoMemberNo === "") {
       alert("Please enter a first and last name");
     } else if (this.state.passWord.length < 6) {
       alert("Please create a stronger password");
@@ -69,7 +89,7 @@ handleProfileFormSubmit = event => {
                 <HeaderPanel handleToggleModal={this.handleToggleModal}/>
               </Row>
               <Row>
-                <TripPanel />
+                <TripPanel handleTripFormSumbit={this.handleTripFormSubmit}/>
                 <DisplayPanel dpCategory={this.state.category} handleDisplayPage={this.handleDisplayPage}/>
                 <BusinessPanel handleSelectCategory={this.handleSelectCategory}/>
               </Row>
