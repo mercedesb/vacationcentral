@@ -1,9 +1,11 @@
-.flights-page{
+.hotel-page{
     width: 80%;
     font-size: 15px;
     margin: 0 auto;
-    height: 700px;
+    height: 400px;
+    overflow: scroll;
     margin-top: 10px;
-    background: salmon;
+    background: green;
     border-left: 1px solid #ddd;
+
 }

@@ -14,7 +14,7 @@ class FlightAdd extends React.Component {
       console.log('these are my flightadd props!!', this.props)
       return (
         <Col xs={12} className="flight-add">
-          <h1>FlightAdd</h1>
+          <p>FlightAdd</p>
           <Input placeholder="Add Airline"/>
           <Input placeholder="Add Confirmation Number" />
           <Input placeholder="Add FlightNumber" />

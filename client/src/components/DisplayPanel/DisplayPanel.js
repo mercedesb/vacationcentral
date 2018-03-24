@@ -3,6 +3,9 @@ import "./DisplayPanel.css";
 import { Grid, Row, Col } from 'react-bootstrap';
 import FlightsPage from "../Pages/FlightsPage";
 import HomePage from "../Pages/HomePage";
+import ProfilePage from "../Pages/ProfilePage";
+import HotelPage from "../Pages/HotelPage";
+
 
 // 'Profile', 
 // 'Flights', 
@@ -23,11 +26,20 @@ class DisplayPanel extends React.Component {
     renderSwitch(page) {
       switch(page) {
         case ("Home"):
-        (<HomePage />)
+          return (<HomePage />)
           break;
         case ("Flights"):
           return <FlightsPage />;
           break;
+        case ("Profile"):
+          return <ProfilePage />;
+          break;
+        case ("Hotel"):
+          return <HotelPage />;
+          break;
+      
+          
+          
         default:
           (<HomePage />)
 
