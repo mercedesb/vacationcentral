@@ -1,0 +1,8 @@
+.flights-page{
+    width: 80%;
+    margin: 0 auto;
+    height: 730px;
+    margin-top: 10px;
+    background: salmon;
+    border-left: 1px solid #ddd;
+}

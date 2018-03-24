@@ -1,2 +1,1 @@
-export * from "./List";
-export * from "./ListItem";
+export {default} from "./List";
