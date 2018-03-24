@@ -1,5 +1,6 @@
 .trip-panel{
     height: 750px;
+    font-size: 15px;
     background: red;
     border-left: 1px solid #ddd;
 }

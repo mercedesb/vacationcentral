@@ -1,22 +1,22 @@
 import React from "react";
-import "./HotelAdd.css";
+import "./BusinessAdd.css";
 import { Grid, Row, Col } from 'react-bootstrap';
 import {FormBtn, Input, TextArea} from "../../../Form";
 
-class HotelAdd extends React.Component {
+class BusinessAdd extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        type: "Hotel"
+        type: ""
       }
     }
     
     render() {
       console.log('these are my hotel add props!!', this.props)
       return (
-        <Col xs={12} className="hotel-add">
-          <p>Hotel Add</p>
-          <Input xs={6} placeholder="Add Hotel Name"/>
+        <Col xs={12} className="business-add">
+          <p>Business Add</p>
+          <Input xs={6} placeholder="Add Company Name"/>
           <Input xs={6} placeholder="Add Confirmation" /> 
           <Input xs={6} placeholder="Add Company Address" />
           <Input xs={6} placeholder="Add Company Phone" />
@@ -26,4 +26,4 @@ class HotelAdd extends React.Component {
     }
   }
   
-  export default HotelAdd;
+  export default BusinessAdd;
