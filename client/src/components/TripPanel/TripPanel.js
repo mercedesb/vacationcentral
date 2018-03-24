@@ -1,6 +1,8 @@
 import React from "react";
 import "./TripPanel.css";
 import { Grid, Row, Col } from 'react-bootstrap';
+import TripAdd from "./TripAdd";
+import TripDisplay from "./TripDisplay";
 
 class TripPanel extends React.Component {
     constructor(props) {
@@ -14,6 +16,8 @@ class TripPanel extends React.Component {
       return (
         <Col xs={2} className="trip-panel">
             <p>TripPanel</p>
+            <TripAdd />
+            <TripDisplay />
         </Col>
       );
     }
