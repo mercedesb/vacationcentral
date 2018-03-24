@@ -13,7 +13,7 @@ class TripPanel extends React.Component {
       console.log('these are my props!!', this.props)
       return (
         <Col xs={2} className="trip-panel">
-            <h1>TripPanel</h1>
+            <p>TripPanel</p>
         </Col>
       );
     }

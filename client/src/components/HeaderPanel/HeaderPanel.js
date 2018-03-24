@@ -12,9 +12,9 @@ class HeaderPanel extends React.Component {
       console.log('these are my headerpanel props!!', this.props)
       return (
         <Row xs={12} className="header-panel">
-            <h1>HeaderPanel
+            <p>HeaderPanel
             <Button onClick={() => this.props.handleToggleModal(this.props.modal)}>Login/Sign Up</Button>
-            </h1>
+            </p>
         </Row>
       );
     }

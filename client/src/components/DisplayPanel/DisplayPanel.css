@@ -1,5 +1,6 @@
 .display-panel{
     height: 750px;
+    font-size: 15px;
     background: salmon;
     border-left: 1px solid #ddd;
 }

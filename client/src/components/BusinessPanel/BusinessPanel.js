@@ -5,6 +5,7 @@ import List from "../List";
 import CategoryButton from "../CategoryButton";
 
 const businessNameArray = [
+  'Home',
   'Profile', 
   'Flights', 
   'Hotel', 
@@ -29,7 +30,7 @@ class BusinessPanel extends React.Component {
       console.log('these are my bizpanel props!!', this.props)
       return (
         <Col xs={2} className="business-panel">
-            <h1>BusinessPanel</h1>
+            <p>BusinessPanel</p>
             {businessNameArray.map(elem => <CategoryButton
               onClick={() => this.props.handleSelectCategory({elem})}
               >{elem}</CategoryButton>)}

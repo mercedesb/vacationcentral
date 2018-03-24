@@ -1,9 +1,13 @@
 import React from "react";
 import "./DisplayPanel.css";
-import { Grid, Row, Col } from 'react-bootstrap';
-import FlightsPage from "../Pages/FlightsPage";
-import HomePage from "../Pages/HomePage";
 
+import { Grid, Row, Col } from 'react-bootstrap';
+import HomePage from "../Pages/HomePage";
+import ProfilePage from "../Pages/ProfilePage";
+import FlightsPage from "../Pages/FlightsPage";
+import BusinessPage from "../Pages/BusinessPage";
+
+// 'Home'
 // 'Profile', 
 // 'Flights', 
 // 'Hotel', 
@@ -23,11 +27,23 @@ class DisplayPanel extends React.Component {
     renderSwitch(page) {
       switch(page) {
         case ("Home"):
-        (<HomePage />)
+          return (<HomePage />)
+          break;
+        case ("Profile"):
+          return <ProfilePage />;
           break;
         case ("Flights"):
           return <FlightsPage />;
           break;
+        case ("Hotel"):
+          return <BusinessPage businessType="hotel" />;
+          break; 
+        case ("Dining"):
+          return <BusinessPage businessType="dining" />;
+          break;   
+        case ("Attractions"):
+          return <BusinessPage businessType="attractions" />;
+          break;             
         default:
           (<HomePage />)
 
@@ -41,7 +57,7 @@ class DisplayPanel extends React.Component {
       console.log('these are my display page props!!', this.props)
       return (
         <Col xs={8} className="display-panel">
-          <h1>DisplayPanel</h1>
+          <p>DisplayPanel</p>
           <div>
             {this.renderSwitch(this.props.dpCategory)}
           </div>
