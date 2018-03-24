@@ -8,10 +8,10 @@ const tripRoutes = require("./trip");
 
 // Book routes
 router.use("/users", userRoutes);
-router.use("/business", businessRoutes);
-router.use("/comment", commentRoutes);
-router.use("/flight", flightRoutes);
-router.use("/profile", profileRoutes);
-router.use("/trip", tripRoutes);
+router.use("/businesses", businessRoutes);
+router.use("/comments", commentRoutes);
+router.use("/flights", flightRoutes);
+router.use("/profiles", profileRoutes);
+router.use("/trips", tripRoutes);
 
 module.exports = router;
