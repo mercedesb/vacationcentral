@@ -11,7 +11,7 @@ import BusinessPanel from './components/BusinessPanel';
 class VacationContainer extends Component {
    state = {
       modal: false,
-      category: "",
+      category: "Home",
   };
 
 handleToggleModal = (modal) => {
@@ -19,12 +19,19 @@ handleToggleModal = (modal) => {
       this.setState({modal: !this.state.modal})
     };
 
-handleSelectCategory = (category) => {
-    console.log("the category selected was", category);
+
+handleSelectCategory = (bpCategory) => {
+    console.log("the category selected was", bpCategory );
+    this.setState({category: bpCategory.elem});
+    console.log("category state in hSC", this.state.category);
+}
+
+handleDisplayPage = (category) => {
+  console.log("you have entered the DisplayPage function", category);
 }
 
     render() {
-      console.log("state", this.state);
+      console.log("state in VCrender", this.state);
       return (
         <Grid fluid>
               <Row>
@@ -32,7 +39,7 @@ handleSelectCategory = (category) => {
               </Row>
               <Row>
                 <TripPanel />
-                <DisplayPanel />
+                <DisplayPanel dpCategory={this.state.category} handleDisplayPage={this.handleDisplayPage}/>
                 <BusinessPanel handleSelectCategory={this.handleSelectCategory}/>
               </Row>
         </Grid>

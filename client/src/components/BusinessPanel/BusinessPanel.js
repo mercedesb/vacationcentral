@@ -15,8 +15,6 @@ const businessNameArray = [
 ]
 
 
-
-
 class BusinessPanel extends React.Component {
     constructor(props) {
       super(props);
