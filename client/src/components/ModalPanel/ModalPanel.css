@@ -1,0 +1,14 @@
+.header-panel {
+    height: 100%;
+    width: 100%;
+    background-color: grey;
+    opacity: .4;
+}
+
+.login-panel {
+    width: 50%;
+    height: 70%;
+    margin: 0 auto;
+    background-color: turquoise;
+    
+}

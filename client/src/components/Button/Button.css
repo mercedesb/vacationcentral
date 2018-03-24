@@ -1,4 +1,8 @@
-.delete-btn {
+.main-btn {
   float: right;
-  color: whitesmoke;
+  margin-right: 5%;
+  background-color: transparent;
+  color: grey;
+  border: 2px solid black;
 }
+

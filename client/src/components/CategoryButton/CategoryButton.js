@@ -1,11 +1,11 @@
 import React from "react";
-import "./Button.css";
+import "./CategoryButton.css";
 
 // The ...props means, spread all of the passed props onto this element
 // That way we don't have to define them all individually
-const Button = props => (
-  <span className="btn btn-primary btn-lg main-btn  " {...props}>
+const CategoryButton = props => (
+  <span className="btn btn-primary btn-lg category-btn  " {...props}>
   </span>
 );
 
-export default Button;
+export default CategoryButton;
