@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Comment = sequelize.define("Comment", {
-    text: DataTypes.TEXT
+    text: {type: DataTypes.TEXT, allowNull: false}
   });
 
   Comment.associate = function(models) {

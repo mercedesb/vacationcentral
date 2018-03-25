@@ -50,10 +50,7 @@ class DisplayPanel extends React.Component {
       }
     };
 
-
-
     render() {
-
       console.log('these are my display page props!!', this.props)
       return (
         <Col xs={8} className="display-panel">

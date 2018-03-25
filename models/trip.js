@@ -1,8 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
   var Trip = sequelize.define("Trip", {
-    destination: DataTypes.STRING,
-    start: DataTypes.DATEONLY,
-    end: DataTypes.DATEONLY
+    destination: {type: DataTypes.STRING, allowNull: false},
+    start: {type: DataTypes.DATEONLY, allowNull: false},
+    end: {type: DataTypes.DATEONLY, allowNull: false}
   });
 
   Trip.associate = function(models) {
