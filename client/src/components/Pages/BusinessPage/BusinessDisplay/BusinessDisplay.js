@@ -10,7 +10,7 @@ class BusinessDisplay extends React.Component {
       }
     }
     render() {
-      console.log('these are my Business display props!!', this.props)
+      // console.log('these are my Business display props!!', this.props)
       return (
         <Col xs={12} className="business-display">
           <p>Hotel Display</p>
