@@ -26,7 +26,8 @@ class BusinessPage extends React.Component {
     // console.log("submitting ", this.state.businessData)
     event.preventDefault();
     API.saveBusiness(this.state.businessData)
-      .then(response => this.setState({results: response.data}));
+      .then(response => this.setState({results: [response.data]}))
+      .then(() => console.log(this.state));
   }
 
   renderDateInputs() {
