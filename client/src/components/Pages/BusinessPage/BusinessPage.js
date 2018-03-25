@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import "./BusinessPage.css";
 import { Grid, Row, Col } from 'react-bootstrap';
 import { FormBtn, Input, TextArea } from "../../Form";
