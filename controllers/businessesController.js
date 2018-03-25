@@ -24,7 +24,7 @@ module.exports = {
   },
   update: function(req, res) {
     console.log(req.body);
-    db.Book
+    db.Business
       .update(
         req.body,
         {returning: true, where: {id: req.params.businessId} }
