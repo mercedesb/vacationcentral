@@ -14,9 +14,10 @@ app.use(express.static("client/build"));
 app.use(routes);
 
 // Start the API server
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
   });
 });
 
+// {force: true} => if we want to drop tables and recreate, drop that into the params for .sync()

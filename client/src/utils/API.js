@@ -15,9 +15,9 @@ export default {
   // },
   // Saves a book to the database
   saveBusiness: function(businessData) {
-    return axios.post("/api/businesses", businessData);
+    return axios.post("/api/businesses/", businessData);
   },
-  updateBusiness: function(businessData) {
+  updateBusiness: function(businessData, id) {
     return axios.put("api/businesses/" + id, businessData);
   }
 };
