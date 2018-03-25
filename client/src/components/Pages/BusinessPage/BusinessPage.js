@@ -3,6 +3,7 @@ import "./BusinessPage.css";
 import { Grid, Row, Col } from 'react-bootstrap';
 import { FormBtn, Input, TextArea } from "../../Form";
 import BusinessDisplay from "./BusinessDisplay";
+import API from "../../../utils/API"
 
 class BusinessPage extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class BusinessPage extends React.Component {
       results: [],
       businessData: {
         type: props.businessType,
+        TripId: props.tripId
       },
     };
   }
@@ -18,6 +20,13 @@ class BusinessPage extends React.Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState(prevState => ({businessData: { ...prevState.businessData, [name]: value }}));
+  };
+
+  handleSubmit = event => {
+    console.log("submitting ", this.state.businessData)
+    event.preventDefault();
+    API.saveBusiness(this.state.businessData)
+      .then(response => console.log(response));
   }
 
   renderDateInputs() {
