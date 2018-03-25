@@ -1,7 +1,7 @@
 import React from "react";
 import "./FlightsPage.css";
 import { Grid, Row, Col, Div } from 'react-bootstrap';
-import {Input} from "../../Form";
+import {FormBtn, Input} from "../../Form";
 import { List, ListItem } from "../../List";
 import { Link } from "react-router-dom";
 import API from "../../../utils/API";
@@ -12,112 +12,111 @@ class FlightsPage extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        confirmationNumber: "",
-        airline: "",
-        flightNumber: "",
-        departLocation: "",
-        arriveLocation: "",
-        departTime: "",
-        arriveTime: "",
-        id: "",
-        tripId: "",
-        flightsArray: []
-        
-      }
+          res: [], 
+          flightData: {}  
+      };
     }
 
-    tripId=(this.props.tripId);
 
-    loadFlights = (tripId) => {
-      API.getFlights(tripId)
-        .then(res =>
-          this.setState({flights: res.data, 
-          confirmationNumber: "",
-          airline: "",
-          flightNumber: "",
-          departLocation: "",
-          arriveLocation: "",
-          departTime: "",
-          arriveTime: ""  })
-        )
-        .catch(err => console.log(err));
-    };
+    // loadFlights = (tripId) => {
+    //   API.getFlights(tripId)
+    //     .then(res =>
+    //       this.setState({flights: results: [results.data]
+    //     )
+    //     .catch(err => console.log(err));
+    // };
 
     handleTripInputChange = event => {
       const {name, value} = event.target;
-      this.setState({
-        [name]: value
-      });
-      console.log("trip info", this.state.airline, this.state.flightNumber, this.state.confirmationNumber);
-      console.log("state", this.state);
+      this.setState(prevState => (
+        { flightData: {
+          ...prevState.flightData,
+          TripId: this.props.tripId,
+          [name]: value
+      }
+    }), () =>
+      console.log("trip info", this.state.flightData));
     };
 
     handleFlightFormSubmit = (event) => {
+      console.log("incoming flight state", this.state.flightData);
       event.preventDefault();
-        console.log("incoming state", this.props.userId, this.state);
         if (this.state.airline && this.state.flightNumber && this.state.confirmationNumber) {
-          API.saveFlights({ 
-            tripId: this.props.tripId,
-            confirmationNumber: this.state.confirmationNumber,
-            airline: this.state.airline,
-            flightNumber: this.state.flightNumber,
-            departLocation: this.state.departLocation,
-            arriveLocation: this.state.arriveLocation,
-            departTime: this.state.departTime,
-            arriveTime: this.state.arriveTime
-          })
-            // .then(res => loadFlights(user))
-            .catch(err => console.log(err));
-        } else { alert("Missing fields")};
+          API.saveFlights(this.state.flightData)
+            .then(res => this.setState({results: [res.data], flightData: {}}))
+            .then(() => console.log(this.state))
+            .catch(err => console.log("flights error", err));
+        } 
     };
-
 
     render() {
       console.log('these are my FlightsPage props!!', this.props)
       return (
         <Col xs={12} className="flights-page">
-          <p>FlightsPage</p>
+
           <p>Add a Flight</p>
-          <Input 
+          <form>
+         
+          <label>Flight Confirmation Number:</label>  
+          <Input xs={4}
               value={this.state.confirmationNumber}
               name="confirmationNumber"
               onChange={this.handleTripInputChange}
               type="text"
-              placeholder="Add Flight Confirmation Number"/>
-          <Input 
+              placeholder="Flight Confirmation Number"/>
+         
+          <label>Airline:</label>
+          <Input xs={4}
               value={this.state.airline}
               name="airline"
               onChange={this.handleTripInputChange}
               type="text"
-              placeholder="Add the Airline"/>
-          <Input 
+              placeholder="Airline"/>
+          
+          <label>Flight Number:</label>
+          <Input xs={4}
               value={this.state.flightNumber}
               name="flightNumber"
               onChange={this.handleTripInputChange}
               type="text"
-              placeholder="Add a Flight Number" />
-          <Input 
+              placeholder="Flight Number" />
+           
+          <label>Departure Airport:</label>   
+          <Input  xs={6}
+              value={this.state.departLocaiton}
+              name="departTime"
+              onChange={this.handleTripInputChange}
+              type="text"
+              placeholder="Departure Airport"/>
+          
+          <label>Departure Time:</label>
+          <Input  xs={6}
               value={this.state.departTime}
               name="departTime"
               onChange={this.handleTripInputChange}
               type="text"
-              placeholder="Add the Departure Time"/>
-          <Input 
+              placeholder="Departure Time"/>
+          
+          <label>Arrival Airport:</label> 
+          <Input  xs={6}
               value={this.state.arriveLocation}
               name="arriveLocation"
               onChange={this.handleTripInputChange}
               type="text"
-              placeholder="Add the Arrival Airport"/>
-          <Input 
+              placeholder="Arrival Airport"/>
+          
+          <label>Arrival Time:</label> 
+          <Input  xs={6}
               value={this.state.arriveTime}
               name="arriveTime"
               onChange={this.handleTripInputChange}
               type="text"
-              placeholder="Add the Arrival Time"/>
+              placeholder="Arrival Time"/>
 
-        
-        <ButtonSubmitForm onClick={() => this.handleFlightFormSubmit()} /> 
-
+          <FormBtn onClick={this.handleFlightFormSubmit} >Submit</FormBtn>
+         
+          </form>
+              
               <p>Trip Display</p>
 
               <p>This is where our flights will display</p>

@@ -27,6 +27,7 @@ export default {
     return axios.get("api/trips?" + `UserId=${user}`)
   },
   saveTrips: function(tripData){
+    console.log("inside saveTrips API", tripData)
     return axios.post("api/trips", tripData);
   },
   // updateTrips: function(tripData) {

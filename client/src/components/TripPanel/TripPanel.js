@@ -1,7 +1,7 @@
 import React from "react";
 import "./TripPanel.css";
 import { Grid, Row, Col, Div } from 'react-bootstrap';
-import {Input} from "../Form";
+import {FormBtn, Input, TextArea} from "../Form";
 import { List, ListItem } from "../List";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
@@ -12,76 +12,76 @@ class TripPanel extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        user: "",
-        id: "",
-        destination: "", 
-        start: "", 
-        end: "", 
-        tripsArray: [] 
-      }
+        res: [],
+        tripData: {}
+      };
     }
     
-    loadTrips = user => {
-      API.getTrips(user)
-        .then(res =>
-          this.setState({trips: res.data, destination: "", start: "", end: "", id: "" })
-        )
-        .catch(err => console.log(err));
-    };
+    // loadTrips = (user) => {
+    //   API.getTrips(this.props.UserId)
+    //     .then(res =>
+    //       this.setState({trip: res.data, destination: "", start: "", end: "", id: "" })
+    //     )
+    //     .catch(err => console.log(err));
+    // };
 
     handleTripInputChange = event => {
       const {name, value} = event.target;
-      this.setState({
+      this.setState(prevState => (
+      {  tripData: {
+        ...prevState.tripData,
+        UserId: this.props.userId,
         [name]: value
-      });
-      console.log("trip info", this.state.destination, this.state.start, this.state.end);
-      console.log("state", this.state);
+        }
+      }), () =>
+        console.log("trip info", this.state.tripData));
     };
 
-    handleTripFormSubmit = (event) => {
+    handleTripFormSubmit = event => {
+      console.log("incoming trip state", this.state);
       event.preventDefault();
-        console.log("incoming state", this.props.userId, this.state);
         if (this.state.destination && this.state.start && this.state.end) {
-          API.saveTrips({
-            UserId: this.props.user,
-            destination: this.state.destination,
-            start: this.state.start,
-            end: this.state.end
-          })
-            // .then(res => loadTrips(user))
-            .catch(err => console.log(err));
-        } else { alert("Missing fields")};
+          API.saveTrips(this.state.tripData)
+            .then(res => this.setState({results: [res.data], tripData: {}}))
+            .then(() => console.log(this.state))
+            .catch(err => console.log("error Trip Form Submit", err));
+        } 
     };
     
     render() {
       console.log('these are my props!!', this.props)
       return (
-        <Col xs={2} className="trip-panel">
-            <p>TripPanel</p>
+        <Col xs={2} className="trip-panel" >
 
-            <p>Trip Add</p>
-
-          <Input 
-              value={this.state.destination}
+            <p>Add A Trip</p>
+         <form> 
+          <label>Destination:</label>
+          <Input xs={12}
+              value={this.state.tripData.destination}
               name="destination"
               onChange={this.handleTripInputChange}
               type="text"
-              placeholder="Add Trip Name"/>
-          <Input 
-              value={this.state.start}
+              placeholder="Add Trip Name" />
+
+          <label>Begin Date:</label>
+          <Input xs={12}
+              value={this.state.tripData.start}
               name="start"
               onChange={this.handleTripInputChange}
-              type="text"
-              placeholder="Add Departure MM-DD-YYYY" /> 
-          <Input              
-              value={this.state.end}
+              type="date"
+              placeholder=" MM-DD-YYYY" /> 
+
+          <label>End Date:</label>
+          <Input xs={12}             
+              value={this.state.tripData.end}
               name="end"
               onChange={this.handleTripInputChange}
-              type="text"
-              placeholder="Add Return MM-DD-YYYY" />
+              type="date"
+              placeholder="MM-DD-YYYY" />
 
-          <ButtonSubmitForm onClick={() => this.handleTripFormSubmit()} />
-
+          <FormBtn onClick={this.handleTripFormSubmit}>Submit</FormBtn>
+          </form>
+          
               <p>Trip Display</p>
 
               <p>This is where our trips will display</p>
