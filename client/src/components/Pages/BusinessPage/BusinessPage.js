@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import "./BusinessPage.css";
 import { Grid, Row, Col } from 'react-bootstrap';
 import { FormBtn, Input, TextArea } from "../../Form";
@@ -10,23 +10,27 @@ class BusinessPage extends React.Component {
     super(props);
     this.state = {
       results: [],
-      businessData: {
-        type: props.businessType,
-        TripId: props.tripId
-      },
+      businessData: {},
     };
   }
 
   handleInputChange = event => {
     const { name, value } = event.target;
-    this.setState(prevState => ({businessData: { ...prevState.businessData, [name]: value }}));
+    this.setState(prevState => (
+      { businessData: {
+          ...prevState.businessData,
+          type: this.props.businessType,
+          TripId: this.props.tripId,
+          [name]: value
+        }
+      }), () => console.log(this.state.businessData));
   };
 
   handleSubmit = event => {
     // console.log("submitting ", this.state.businessData)
     event.preventDefault();
     API.saveBusiness(this.state.businessData)
-      .then(response => this.setState({results: [response.data]}))
+      .then(response => this.setState({ results: [response.data], businessData: {} }))
       .then(() => console.log(this.state));
   }
 
@@ -35,9 +39,9 @@ class BusinessPage extends React.Component {
       return (
         <div>
           <label>Check-in:</label>
-          <Input xs={6} type="date" onChange={this.handleInputChange} value={this.state.startDate} name="startDate" placeholder="Check-in Date" />
+          <Input xs={6} type="date" onChange={this.handleInputChange} value={this.state.businessData.startDate || ""} name="startDate" placeholder="Check-in Date" />
           <label>Check-out:</label>
-          <Input xs={6} type="date" onChange={this.handleInputChange} value={this.state.endDate} name="endDate" placeholder="Check-out Date" />
+          <Input xs={6} type="date" onChange={this.handleInputChange} value={this.state.businessData.endDate || ""} name="endDate" placeholder="Check-out Date" />
         </div>);
     }
   }
@@ -48,13 +52,13 @@ class BusinessPage extends React.Component {
         <h1>{this.props.businessType}</h1>
         <form>
           <label>Business Name:</label>
-          <Input xs={6} onChange={this.handleInputChange} name="name" value={this.state.name} placeholder="Business Name" />
+          <Input xs={6} onChange={this.handleInputChange} name="name" value={this.state.businessData.name || ""} placeholder="Business Name" />
           <label>Confirmation Number:</label>
-          <Input xs={6} onChange={this.handleInputChange} name="confirmationNumber" value={this.state.confirmationNumber} placeholder="Confirmation Number" />
+          <Input xs={6} onChange={this.handleInputChange} name="confirmationNumber" value={this.state.businessData.confirmationNumber || ""} placeholder="Confirmation Number" />
           <label>Address:</label>
-          <Input xs={6} onChange={this.handleInputChange} name="address" value={this.state.address} placeholder="Address" />
+          <Input xs={6} onChange={this.handleInputChange} name="address" value={this.state.businessData.address || ""} placeholder="Address" />
           <label>Phone Number:</label>
-          <Input xs={6} onChange={this.handleInputChange} name="phone" value={this.state.phone} placeholder="Phone Number" />
+          <Input xs={6} onChange={this.handleInputChange} name="phone" value={this.state.businessData.phone || ""} placeholder="Phone Number" />
           {this.renderDateInputs()}
           {/* <label>Comment:</label>
           <TextArea xs={12} placeholder="Add Comments" /> */}
