@@ -1,6 +1,12 @@
 import React from "react";
 import "./FlightsPage.css";
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Div } from 'react-bootstrap';
+import {Input} from "../../Form";
+import { List, ListItem } from "../../List";
+import { Link } from "react-router-dom";
+import API from "../../../utils/API";
+import ButtonSubmitForm from "../../ButtonSubmitForm";
+import DeleteBtn from "../../DeleteBtn";
 
 class FlightsPage extends React.Component {
     constructor(props) {
@@ -13,13 +19,17 @@ class FlightsPage extends React.Component {
         arriveLocation: "",
         departTime: "",
         arriveTime: "",
+        id: "",
+        tripId: "",
         flightsArray: []
         
       }
     }
 
-    loadFlights = user => {
-      API.getFlights(user)
+    tripId=(this.props.tripId);
+
+    loadFlights = (tripId) => {
+      API.getFlights(tripId)
         .then(res =>
           this.setState({flights: res.data, 
           confirmationNumber: "",
@@ -47,7 +57,7 @@ class FlightsPage extends React.Component {
         console.log("incoming state", this.props.userId, this.state);
         if (this.state.airline && this.state.flightNumber && this.state.confirmationNumber) {
           API.saveFlights({ 
-            TripId: this.props.tripid,
+            tripId: this.props.tripId,
             confirmationNumber: this.state.confirmationNumber,
             airline: this.state.airline,
             flightNumber: this.state.flightNumber,
@@ -113,14 +123,14 @@ class FlightsPage extends React.Component {
               <p>This is where our flights will display</p>
 
 
-          {this.flightsArray.map(flight => 
-            <Div className="flightDisplay">
+          {/* {this.flightsArray.map(flight => 
+            <Grid className="flightDisplay">
               <p>Airline: {flight.airline}  FlightNo: {flight.flightNumber} ConfirmNo: {flight.confirmationNumber}</p>
               <p>Departure Airport: {flight.departLocation} Departure Time: {flight.departTime} </p> 
               <p>Arrival Airport: {flight.arriveLocation} Arrival Time: {flight.arriveTime} </p> 
               <DeleteBtn onClick={() => this.deleteFlights(flight.id)} /> 
-            </Div>
-  )}
+            </Grid>
+  )} */}
 
 
         </Col>

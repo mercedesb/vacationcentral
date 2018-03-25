@@ -1,6 +1,6 @@
 import React from "react";
 import "./ProfilePage.css";
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Div } from 'react-bootstrap';
 import {Input} from "../../Form";
 import { List, ListItem } from "../../List";
 import { Link } from "react-router-dom";
@@ -62,19 +62,21 @@ class ProfilePage extends React.Component {
           <p>Profile Page</p>
 
           <p>Profile Add</p>
-        <Input>
-          <select value={this.state.type}
+ 
+          {/* <select value={this.state.type}
                   name="type"
                   OnChange={this.handleProfileInputChange}
                   type="text"
-                  placeholder="Select a Category Type">
+                  placeholder="Select a Category Type"> */}
+            <select>
+
             <option> </option>
             <option type="Airline">Airline</option>
             <option type="Hotel">Hotel</option>
             <option type="RentalCar">Rental Car</option>
 
-          </select>
-          </Input>      
+            </select>
+           
           
           <Input
               value={this.state.company}
@@ -98,16 +100,17 @@ class ProfilePage extends React.Component {
           <ButtonSubmitForm onClick={() => this.handleProfileFormSubmit()} />
 
           <p> Profile Display </p>
+
           <p> This is where user profiles will display </p>
           
-          {this.profileArray.map(profile => 
-                  <Div className="profileDisplay">
+          {/* {this.profileArray.map(profile => 
+                  <Grid className="profileDisplay">
                       <p>Company: {profile.company}</p> 
                       <p>Reward Number: {profile.memberNumber}</p>
                       <p>Phone Number: {profile.phoneNumber}</p>
                       <DeleteBtn onClick={() => this.deleteProfile(profile.id)} /> 
-                  </Div>
-                )}
+                  </Grid>
+                )} */}
         
         </Col>
       );

@@ -45,7 +45,7 @@ export default {
   //   return axios.put("api/profile" + id,  profileData);
   // }
 
-  getFlights: function(user) {
+  getFlights: function (tripId) {
     return axios.get("api/flights?" + `TripId=${tripId}`)
   },
   saveFlights: function(flightData){

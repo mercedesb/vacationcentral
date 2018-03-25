@@ -1,6 +1,6 @@
 import React from "react";
 import "./TripPanel.css";
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Div } from 'react-bootstrap';
 import {Input} from "../Form";
 import { List, ListItem } from "../List";
 import { Link } from "react-router-dom";
@@ -87,14 +87,14 @@ class TripPanel extends React.Component {
               <p>This is where our trips will display</p>
 
 
-                {this.tripsArray.map(trip => 
-                  <Div className="tripDisplay">
-                      <input className="tag" type="checkbox" id={this.trip.id} onChange = {props.handler}/>
+                {/* {this.tripsArray.map(trip => 
+                  <Grid className="tripDisplay">
+                      <input className="tag" type="checkbox" id={this.trip.id} onChange/>
                       <p>Destination: {trip.destination}</p> 
                       <p>To: {trip.start} From: {trip.end}</p>
                       <DeleteBtn onClick={() => this.deleteTrips(trip.id)} /> 
-                  </Div>
-                )}
+                  </Grid>
+                )} */}
 
         </Col>
       );

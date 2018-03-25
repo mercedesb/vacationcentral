@@ -20,20 +20,20 @@ class DisplayPanel extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        page: <HomePage />
+        page: <HomePage />,
       }
     }
 
     renderSwitch(page) {
       switch(page) {
         case ("Home"):
-          return (<HomePage />)
+          return <HomePage />;
           break;
         case ("Profile"):
-          return <ProfilePage />;
+          return <ProfilePage  />;
           break;
         case ("Flights"):
-          return <FlightsPage />;
+          return <FlightsPage   />;
           break;
         case ("Hotel"):
           return <BusinessPage businessType="hotel" />;
