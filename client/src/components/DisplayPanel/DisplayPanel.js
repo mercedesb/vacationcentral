@@ -36,7 +36,7 @@ class DisplayPanel extends React.Component {
           return <FlightsPage />;
           break;
         case ("Hotel"):
-          return <BusinessPage businessType="hotel" />;
+          return <BusinessPage businessType="hotels" />;
           break; 
         case ("Dining"):
           return <BusinessPage businessType="dining" />;
