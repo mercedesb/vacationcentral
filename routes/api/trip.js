@@ -3,14 +3,14 @@ const tripsController = require("../../controllers/tripsController");
 
 //Matches "api/trips"
 router.route("/")
-  .get(flightsController.findAll)
-  .post(flightsController.create);
+  .get(tripsController.findAll)
+  .post(tripsController.create);
 
 // Matches with "/api/trips/:id"
 router
   .route("/:id")
 //   .get(businessController.findById)
-  .put(flightsController.update);
+  .put(tripsController.update);
 //   .delete(businessController.remove);
 
 
