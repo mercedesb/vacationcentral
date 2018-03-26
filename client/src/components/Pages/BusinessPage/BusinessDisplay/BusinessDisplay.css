@@ -1,6 +1,6 @@
 .business-display{
-    height: 400px;
+    /* height: auto; */
     font-size: 15px;
     background: orange;
-    overflow: scroll
+    padding-left: 0;
 }

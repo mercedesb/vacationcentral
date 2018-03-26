@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getBusinesses: function(businessType, trip) {
-    return axios.get("/api/businesses?" + `type=${businessType}&TripId=${trip}`);
+  getBusinesses: function(trip) {
+    return axios.get("/api/businesses?" + `TripId=${trip}`);
   },
 
   // Gets the book with the given id
