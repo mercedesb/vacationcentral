@@ -20,7 +20,8 @@ const BusinessPanel = props => {
   return (
     <Col xs={2} className="business-panel">
       <p>BusinessPanel</p>
-      {businessNameArray.map(elem => <CategoryButton
+      {businessNameArray.map((elem, index) => <CategoryButton
+        key={index}
         onClick={() => props.handleSelectCategory({ elem })}
       >{elem}</CategoryButton>)}
     </Col>

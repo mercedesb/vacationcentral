@@ -9,7 +9,7 @@ const BusinessDisplay = props => (
       {props.results.length !== 0 ? 
         props.results
           .filter(business => business.type === props.businessType)
-          .map(business => <BusinessListItem key={business.id} name={business.name} />) :
+          .map(business => <BusinessListItem key={business.id} result={business} />) :
         <h3>Add a business to start</h3>}
     </ul>
   </Col>
