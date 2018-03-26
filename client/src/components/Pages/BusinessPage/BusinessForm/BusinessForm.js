@@ -12,6 +12,12 @@ class BusinessForm extends Component {
     };
   }
 
+  componentDidMount() {
+    if(this.props.businessData) {
+      this.setState({businessData: this.props.businessData});
+    }
+  }
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState(prevState => (

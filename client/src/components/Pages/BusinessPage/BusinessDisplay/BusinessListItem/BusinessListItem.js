@@ -8,6 +8,7 @@ const renderResult = props => (
   <div>
     <Row>
       <Col xs={6}>
+        <h3>{props.result.name}</h3>
         {props.result.confirmationNumber ? <div><p>Confirmation: {props.result.confirmationNumber}</p></div> : undefined}
       </Col>
       <Col xs={6}>
@@ -22,12 +23,16 @@ const renderResult = props => (
 );
 
 const renderForm = props => (
-  <BusinessForm businessData={props.result} />
+  <Row>
+    <BusinessForm 
+      editing={props.editing} 
+      businessData={props.result} 
+    />
+  </Row>
 );
 
 const BusinessListItem = props => (
   <li className="business-list-item">
-    <h3>{props.result.name}</h3>
     {props.editing === props.id ? renderForm(props) : renderResult(props)}
   </li>
 );
