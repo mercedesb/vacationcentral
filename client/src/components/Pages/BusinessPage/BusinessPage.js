@@ -10,13 +10,19 @@ class BusinessPage extends Component {
     super(props);
     this.state = {
       results: [],
+      editing: false
     };
     this.getAllBusinesses = this.getAllBusinesses.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
   }
 
   componentWillMount() {
     this.getAllBusinesses();
   }
+
+  toggleEdit = event => {
+    this.setState({editing: !this.state.editing});
+  };
 
   getAllBusinesses = () => (
     API.getBusinesses(this.props.tripId)
@@ -29,8 +35,20 @@ class BusinessPage extends Component {
     return (
       <Col xs={12} className="business-page">
         <h1>{this.props.businessType}</h1>
-        <BusinessForm getAllBusinesses={this.getAllBusinesses} businessType={this.props.businessType} tripId={this.props.tripId} />
-        <BusinessDisplay results={this.state.results} businessType={this.props.businessType} />
+        {!this.state.editing ?
+          <BusinessForm 
+            getAllBusinesses={this.getAllBusinesses} 
+            businessType={this.props.businessType} 
+            tripId={this.props.tripId} 
+          /> :
+          undefined
+        } 
+        <BusinessDisplay 
+          toggleEdit={this.toggleEdit} 
+          results={this.state.results} 
+          businessType={this.props.businessType} 
+          editing={this.state.editing}
+        />
       </Col>
     );
   }

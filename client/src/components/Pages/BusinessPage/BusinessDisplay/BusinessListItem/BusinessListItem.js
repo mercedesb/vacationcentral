@@ -1,13 +1,17 @@
 import React from "react";
 import "./BusinessListItem.css";
 import { Grid, Row, Col } from 'react-bootstrap';
+import { FormBtn } from "../../../../Form"
 
 const BusinessListItem = props => (
   <li className="business-list-item">
     <Row>
-      <Col xs={12}>
+      <Col xs={6}>
         <h3>{props.result.name}</h3>
         {props.result.confirmationNumber ? <div><p>Confirmation: {props.result.confirmationNumber}</p></div> : undefined}
+      </Col>
+      <Col xs={6}>
+        <FormBtn onClick={props.toggleEdit}>Edit</FormBtn>
       </Col>
     </Row>
     {props.result.address ? <div><p>Address:<br />{props.result.address}</p></div> : undefined}

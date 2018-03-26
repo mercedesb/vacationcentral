@@ -25,7 +25,7 @@ class BusinessForm extends Component {
       }), () => console.log(this.state.businessData));
   };
 
-  handleSubmit = event => {
+  handleCreateNew = event => {
     event.preventDefault();
     API.saveBusiness(this.state.businessData)
       .then(response => {
@@ -40,9 +40,21 @@ class BusinessForm extends Component {
       return (
         <div>
           <label>Check-in:</label>
-          <Input xs={6} type="date" onChange={this.handleInputChange} value={this.state.businessData.startDate || ""} name="startDate" placeholder="Check-in Date" />
+          <Input xs={6} 
+            type="date" 
+            onChange={this.handleInputChange} 
+            value={this.state.businessData.startDate || ""} 
+            name="startDate" placeholder="Check-in Date" 
+          />
           <label>Check-out:</label>
-          <Input xs={6} type="date" onChange={this.handleInputChange} value={this.state.businessData.endDate || ""} name="endDate" placeholder="Check-out Date" />
+          <Input 
+            xs={6} 
+            type="date" 
+            onChange={this.handleInputChange} 
+            value={this.state.businessData.endDate || ""} 
+            name="endDate" 
+            placeholder="Check-out Date" 
+          />
         </div>);
     }
   }
@@ -52,17 +64,40 @@ class BusinessForm extends Component {
       <Col xs={12} className="business-form">
         <form>
           <label>Business Name:</label>
-          <Input xs={6} onChange={this.handleInputChange} name="name" value={this.state.businessData.name || ""} placeholder="Business Name" />
+          <Input 
+            xs={6} 
+            onChange={this.handleInputChange} 
+            name="name" value={this.state.businessData.name || ""} 
+            placeholder="Business Name" 
+          />
           <label>Confirmation Number:</label>
-          <Input xs={6} onChange={this.handleInputChange} name="confirmationNumber" value={this.state.businessData.confirmationNumber || ""} placeholder="Confirmation Number" />
+          <Input 
+            xs={6} 
+            onChange={this.handleInputChange} 
+            name="confirmationNumber" 
+            value={this.state.businessData.confirmationNumber || ""} 
+            placeholder="Confirmation Number" 
+          />
           <label>Address:</label>
-          <Input xs={6} onChange={this.handleInputChange} name="address" value={this.state.businessData.address || ""} placeholder="Address" />
+          <Input 
+            xs={6} 
+            onChange={this.handleInputChange} 
+            name="address" 
+            value={this.state.businessData.address || ""} 
+            placeholder="Address" 
+          />
           <label>Phone Number:</label>
-          <Input xs={6} onChange={this.handleInputChange} name="phone" value={this.state.businessData.phone || ""} placeholder="Phone Number" />
+          <Input 
+            xs={6} 
+            onChange={this.handleInputChange} 
+            name="phone" 
+            value={this.state.businessData.phone || ""} 
+            placeholder="Phone Number" 
+          />
           {this.renderDateInputs()}
           <label>Comment:</label>
           <TextArea xs={12} placeholder="Add Comments" />
-          <FormBtn onClick={this.handleSubmit}>Submit</FormBtn>
+          <FormBtn onClick={this.handleCreateNew}>Submit</FormBtn>
         </form>
       </Col>
     )
