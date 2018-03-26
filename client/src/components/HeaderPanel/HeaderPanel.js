@@ -2,10 +2,12 @@ import React from "react";
 import "./HeaderPanel.css";
 import { Grid, Row, Col } from 'react-bootstrap';
 import Button from "../Button";
+import ModalPanel from "../ModalPanel";
 
 class HeaderPanel extends React.Component {
     constructor(props) {
       super(props);
+
     }
 
     render() {
@@ -13,8 +15,9 @@ class HeaderPanel extends React.Component {
       return (
         <Row xs={12} className="header-panel">
             <p>HeaderPanel
-            <Button onClick={() => this.props.handleToggleModal(this.props.modal)}>Login/Sign Up</Button>
+            <Button onClick={() => this.props.handleToggleModal(this.props.modalOpen)}>Login/Sign Up</Button>
             </p>
+            {/* <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal}/> */}
         </Row>
       );
     }

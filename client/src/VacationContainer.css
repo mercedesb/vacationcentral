@@ -1,0 +1,10 @@
+.vacation-container {
+  background-image: linear-gradient(rgba(255,255,255, 0.7), rgba(255,255,255, 0.7)), url("./antiquemap.jpg");
+  background-position: center center fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  font: black;
+}
+

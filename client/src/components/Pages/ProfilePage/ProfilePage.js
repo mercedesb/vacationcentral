@@ -1,7 +1,7 @@
 import React from "react";
 import "./ProfilePage.css";
 import { Grid, Row, Col, Div } from 'react-bootstrap';
-import {Input} from "../../Form";
+import {FormBtn, Input} from "../../Form";
 import { List, ListItem } from "../../List";
 import { Link } from "react-router-dom";
 import API from "../../../utils/API";
@@ -13,17 +13,13 @@ class ProfilePage extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        user:  "",
-        type: "",
-        company: "", 
-        memberNumber: "",
-        phone: "", 
-        profileArray: []
-      }
+          res: [],
+          profileData: {}
+      };
     }
 
     loadProfile = user => {
-      API.getProfile(user)
+      API.getProfile(this.props.UserId)
         .then(res =>
           this.setState({profile: res.data, type: "", company: "", memberNumber: "" , phone: ""})
         )
@@ -32,26 +28,25 @@ class ProfilePage extends React.Component {
 
     handleProfileInputChange = event => {
       const {name, value} = event.target;
-      this.setState({
+      this.setState(prevState => (
+       { profileData: {
+         ...prevState.profileData,
+         UserId: this.props.userId,
         [name]: value
-      });
-      console.log("profile info", this.state.type, this.state.company, this.state.memberNumber, this.state.phone);
-      console.log("state", this.state);
+      }
+       }), () =>
+      console.log("profile info", this.state.profileData));
     };
 
     handleProfileFormSubmit = (event) => {
+      console.log("incoming  profile state", this.props.user, this.state);
       event.preventDefault();
-        console.log("incoming state", this.props.user, this.state);
         if (this.state.type && this.state.company && this.memberNumber) {
-          API.saveProfile({
-            UserId: this.props.user,
-            company: this.state.company,
-            memberNumber: this.state.memberNumber,
-            phone: this.state.phone
-          })
-            // .then(res => loadTrips(user))
-            .catch(err => console.log(err));
-        } else { alert("Missing fields")};
+          API.saveProfile(this.state.profileData)
+              .then(res => this.setState({res: [res.data], profileData: {}}))
+              .then(() => console.log(this.state))
+              .catch(err => console.log("error profile", err));
+        } 
     };
     
 
@@ -59,45 +54,46 @@ class ProfilePage extends React.Component {
       console.log('these are my ProfilePage props!!', this.props)
       return (
         <Col xs={12} className="profile-page">
-          <p>Profile Page</p>
 
-          <p>Profile Add</p>
- 
-          {/* <select value={this.state.type}
-                  name="type"
-                  OnChange={this.handleProfileInputChange}
-                  type="text"
-                  placeholder="Select a Category Type"> */}
-            <select>
-
-            <option> </option>
-            <option type="Airline">Airline</option>
-            <option type="Hotel">Hotel</option>
-            <option type="RentalCar">Rental Car</option>
-
-            </select>
+          <p>Add a Company to your Profile</p>
+          <form>
            
+            <form>
+            <label>Select the Profile Type: </label>
+            <select xs={12} value={this.state.type} name="type" onChange={this.handleProfileInputChange}>
+            <option value="Airline">Airline</option>
+            <option value="Hotel">Hotel</option>
+            <option value="RentalCar">Rental Car</option>
+            </select>
+            </form>
           
-          <Input
+          <label>Company Name:</label> 
+          <Input xs={4}
               value={this.state.company}
               name="company"
               onChange={this.handleProfileInputChange}
               type="text"
               placeholder="Add Company Name"/>
-          <Input
+          
+          <label>Reward Number:</label> 
+          <Input xs={4}
               value={this.state.memberNumber}
               name="memberNumber"
               onChange={this.handleProfileInputChange}
               type="text"
               placeholder="Add Rewards Number" />
-          <Input 
+
+          <label>Company Phone Number:</label> 
+          <Input xs={4}
               value={this.state.phone}
               name="phone"
               onChange={this.handleProfileInputChange}
               type="text"
               placeholder="Add Company Phone" />
 
-          <ButtonSubmitForm onClick={() => this.handleProfileFormSubmit()} />
+          <FormBtn onClick={this.handleProfileFormSubmit} >Submit</FormBtn>
+          
+          </form>
 
           <p> Profile Display </p>
 
