@@ -14,6 +14,17 @@ class BusinessPage extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.getAllBusinesses();
+  }
+
+  getAllBusinesses = () => (
+    API.getBusinesses(this.props.tripId)
+      .then(response => {
+        this.setState({results: response.data}, () => console.log(this.state))
+      })
+  );
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState(prevState => (
@@ -31,7 +42,7 @@ class BusinessPage extends React.Component {
     event.preventDefault();
     API.saveBusiness(this.state.businessData)
       .then(response => this.setState({ results: [response.data], businessData: {} }))
-      .then(() => console.log(this.state));
+      .catch(err => console.log(err));
   }
 
   renderDateInputs() {
@@ -64,7 +75,7 @@ class BusinessPage extends React.Component {
           <TextArea xs={12} placeholder="Add Comments" /> */}
           <FormBtn onClick={this.handleSubmit}>Submit</FormBtn>
         </form>
-        <BusinessDisplay />
+        <BusinessDisplay results={this.state.results} businessType={this.props.businessType} />
       </Col>
     );
   }
