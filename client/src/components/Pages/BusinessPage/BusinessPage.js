@@ -10,7 +10,7 @@ class BusinessPage extends Component {
     super(props);
     this.state = {
       results: [],
-      editing: false
+      editing: 0,
     };
     this.getAllBusinesses = this.getAllBusinesses.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
@@ -21,7 +21,10 @@ class BusinessPage extends Component {
   }
 
   toggleEdit = event => {
-    this.setState({editing: !this.state.editing});
+    // console.dir(event.target.id);
+    this.setState({
+      editing: event.target.id
+    }, () => console.log(this.state));
   };
 
   getAllBusinesses = () => (

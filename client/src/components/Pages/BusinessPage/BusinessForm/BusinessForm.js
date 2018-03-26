@@ -95,8 +95,8 @@ class BusinessForm extends Component {
             placeholder="Phone Number" 
           />
           {this.renderDateInputs()}
-          <label>Comment:</label>
-          <TextArea xs={12} placeholder="Add Comments" />
+          {/* <label>Comment:</label>
+          <TextArea xs={12} placeholder="Add Comments" /> */}
           <FormBtn onClick={this.handleCreateNew}>Submit</FormBtn>
         </form>
       </Col>
