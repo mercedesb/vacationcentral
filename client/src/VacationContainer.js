@@ -1,21 +1,25 @@
 import React, {Component} from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
+import "./VacationContainer.css"
 import API from "./utils/API";
 import HeaderPanel from './components/HeaderPanel';
 import TripPanel from './components/TripPanel';
 import DisplayPanel from './components/DisplayPanel';
 import BusinessPanel from './components/BusinessPanel';
+import ModalPanel from './components/ModalPanel';
 
 
 
 class VacationContainer extends Component {
    state = {
-      modal: false,
+      modalOpen: false,
       user: "",
       category: "",
       id: "",
     
   };
+
+
 
   componentDidMount() {
     this.loadTrips();
@@ -29,9 +33,9 @@ class VacationContainer extends Component {
       .catch(err => console.log(err));
   };
 
-  handleToggleModal = (modal) => {
+  handleToggleModal = () => {
       console.log("you have clicked the login/signup button");
-      this.setState({modal: !this.state.modal})
+      this.setState({modalOpen: !this.state.modalOpen})
     };
 
 
@@ -49,9 +53,10 @@ class VacationContainer extends Component {
     render() {
       console.log("state in VCrender", this.state);
       return (
-        <Grid fluid>
+        <Grid fluid className="vacation-container">
               <Row>
                 <HeaderPanel handleToggleModal={this.handleToggleModal}/>
+                <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal}/>
               </Row>
               <Row>
                 <TripPanel userId={this.state.user} handleTripFormSubmit={this.handleTripFormSubmit}/>

@@ -5,7 +5,6 @@ import {FormBtn, Input, TextArea} from "../Form";
 import { List, ListItem } from "../List";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
-import ButtonSubmitForm from "../ButtonSubmitForm";
 import DeleteBtn from "../DeleteBtn";
 
 class TripPanel extends React.Component {
@@ -43,7 +42,7 @@ class TripPanel extends React.Component {
         if (this.state.destination && this.state.start && this.state.end) {
           API.saveTrips(this.state.tripData)
             .then(res => this.setState({results: [res.data], tripData: {}}))
-            .then(() => console.log(this.state))
+            .then(() => console.log("trip state back", this.state))
             .catch(err => console.log("error Trip Form Submit", err));
         } 
     };
