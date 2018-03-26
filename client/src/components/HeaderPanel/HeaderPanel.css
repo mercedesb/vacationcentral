@@ -1,6 +1,6 @@
 .header-panel{
     height: 100px;
     font-size: 15px;
-    background: blue;
-    border-left: 1px solid #ddd;
+    background: transparent;
+    border-bottom: 1px solid black;
 }

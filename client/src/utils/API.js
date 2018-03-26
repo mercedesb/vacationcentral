@@ -26,7 +26,9 @@ export default {
   getTrips: function(user) {
     return axios.get("api/trips?" + `UserId=${user}`)
   },
+
   saveTrips: function(tripData){
+    console.log("inside saveTrips API", tripData);
     return axios.post("api/trips", tripData);
   },
   // updateTrips: function(tripData) {
@@ -38,7 +40,9 @@ export default {
   getProfile: function(user) {
     return axios.get("api/profile?" + `UserId=${user}`)
   },
+
   saveProfile: function(profileData){
+    console.log("in profile API", profileData);
     return axios.post("api/profile", profileData);
   },
   // updateProfile: function(tripData) {
@@ -48,12 +52,23 @@ export default {
   getFlights: function (tripId) {
     return axios.get("api/flights?" + `TripId=${tripId}`)
   },
+
   saveFlights: function(flightData){
+    console.log("in flight API", flightData);
     return axios.post("api/flights", flightData);
   },
   // updateFlights: function(flightData) {
   //   return axios.put("api/flights" + id, flightsData);
   // },
+  getLogin: function (loginData) {
+    return axios.get("api/login", loginData)
+  },
+
+
+  saveSignUp: function(signUpData){
+    console.log("in signUyp API", signUpData);
+    return axios.post("api/signUp", signUpData);
+  },
 
 
 
