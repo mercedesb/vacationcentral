@@ -23,13 +23,13 @@ export default {
   // }, 
 
 
-  getTrips: function(user) {
-    return axios.get("api/trips?" + `UserId=${user}`)
-  },
+  // getTrips: function(user) {
+  //   return axios.get("api/trips?" + `UserId=${user}`)
+  // },
 
   saveTrips: function(tripData){
-    console.log("inside saveTrips API", tripData);
-    return axios.post("api/trips", tripData);
+    console.log("in save trips");
+    return axios.post("/api/trips", tripData);
   },
   // updateTrips: function(tripData) {
   //   return axios.put("api/trips" + id, tripData);
@@ -43,7 +43,7 @@ export default {
 
   saveProfile: function(profileData){
     console.log("in profile API", profileData);
-    return axios.post("api/profile", profileData);
+    return axios.post("api/profiles", profileData);
   },
   // updateProfile: function(tripData) {
   //   return axios.put("api/profile" + id,  profileData);

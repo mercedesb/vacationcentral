@@ -39,15 +39,14 @@ class FlightsPage extends React.Component {
     };
 
     handleFlightFormSubmit = (event) => {
-      console.log("incoming flight state", this.state.flightData);
+      console.log("incoming flights state", this.state.flightData);
       event.preventDefault();
-        if (this.state.airline && this.state.flightNumber && this.state.confirmationNumber) {
           API.saveFlights(this.state.flightData)
             .then(res => this.setState({results: [res.data], flightData: {}}))
             .then(() => console.log(this.state))
             .catch(err => console.log("flights error", err));
         } 
-    };
+
 
     render() {
       console.log('these are my FlightsPage props!!', this.props)
@@ -83,8 +82,8 @@ class FlightsPage extends React.Component {
            
           <label>Departure Airport:</label>   
           <Input  xs={6}
-              value={this.state.departLocaiton}
-              name="departTime"
+              value={this.state.departLocation}
+              name="departLocation"
               onChange={this.handleTripInputChange}
               type="text"
               placeholder="Departure Airport"/>
