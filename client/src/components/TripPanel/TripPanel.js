@@ -14,15 +14,12 @@ class TripPanel extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        tripAddVisible: true,
+
         tripDisplayVisible: false
       };
     }
 
-    handleToggleTripAdd = () => {
-      console.log("tripAdd is visible")
-      this.setState({tripAddVisible: !this.state.tripAddVisible})
-    };
+
 
     handleToggleTripDisplay = () => {
       console.log("tripDisplay is visible")
@@ -38,7 +35,7 @@ class TripPanel extends React.Component {
          
 
           <Row>
-              <TripAdd show={this.state.tripAddVisible} UserId={this.props.userId} />
+              <TripAdd UserId={this.props.userId} />
           </Row>
           
           <Row>

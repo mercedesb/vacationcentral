@@ -15,27 +15,18 @@ class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      profileAddVisible: true,
       profileDisplayVisible: false
 
     };
   }
 
 
-  handleToggleProfileAdd = () => {
-    console.log("profileAdd is visible")
-    this.setState({ profileAddVisible: !this.state.profileAddVisible })
-  };
+
 
   handleToggleProfileDisplay = () => {
     console.log("profileDisplay is visible")
     this.setState({ profileDisplayVisible: !this.state.profileDisplayVisible })
   };
-
-
-
-
-
 
 
   render() {
@@ -44,11 +35,11 @@ class ProfilePage extends React.Component {
       <Col xs={12} className="profile-page">
 
         <Row>
-          <ProfileAdd show={this.state.profileAddVisible} UserId={this.props.UserId} />
+          <ProfileAdd UserId={this.props.UserId} />
         </Row>
 
         <Row>
-          <FormBtn className='profile-btn' onClick={this.handleToggleProfileDisplay}>View Your Profiless</FormBtn>
+          <FormBtn className='profile-btn' onClick={this.handleToggleProfileDisplay}>View Your Profiles</FormBtn>
         </Row>
 
         <Row>

@@ -26,7 +26,6 @@ class ProfileAdd extends React.Component {
     };
 
 
-
     handleProfileFormSubmit = event => {
       console.log("incoming profile state", this.state.profileData);
       event.preventDefault();
@@ -39,7 +38,6 @@ class ProfileAdd extends React.Component {
     render() {
         console.log('these are my profile add props!!', this.props)
         
-        if(!this.props.show){ return null; }
 
        return (
         <div>

@@ -33,7 +33,7 @@ class DisplayPanel extends React.Component {
           return <ProfilePage  UserId={this.props.userId} />;
           break;
         case ("Flights"):
-          return <FlightsPage tripId={this.props.tripId}  />;
+          return <FlightsPage TripId={this.props.tripId}  />;
           break;
         case ("Hotel"):
           return <BusinessPage businessType="hotels" tripId={1} />;
