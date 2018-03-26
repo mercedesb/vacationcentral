@@ -8,7 +8,7 @@ const BusinessListItem = props => (
       <Col xs={12}>
         <h3>{props.result.name}</h3>
         {props.result.confirmationNumber ? <div><p>Confirmation: {props.result.confirmationNumber}</p></div> : undefined}
-        </Col>
+      </Col>
     </Row>
     {props.result.address ? <div><p>Address:<br />{props.result.address}</p></div> : undefined}
     {props.result.phone ? <div><p>Phone:<br />{props.result.phone}</p></div> : undefined}
