@@ -24,16 +24,19 @@ const renderResult = props => (
 
 const renderForm = props => (
   <Row>
-    <BusinessForm 
-      editing={props.editing} 
-      businessData={props.result} 
+    <BusinessForm
+      toggleEdit={props.toggleEdit}
+      editing={props.editing}
+      id={props.id}
+      businessData={props.result}
+      getAllBusinesses={props.getAllBusinesses}
     />
   </Row>
 );
 
 const BusinessListItem = props => (
   <li className="business-list-item">
-    {props.editing === props.id ? renderForm(props) : renderResult(props)}
+    {props.editId == props.id ? renderForm(props) : renderResult(props)}
   </li>
 );
 

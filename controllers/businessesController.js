@@ -27,7 +27,7 @@ module.exports = {
     db.Business
       .update(
         req.body,
-        {returning: true, where: {id: req.params.businessId} }
+        {returning: true, where: {id: req.params.id} }
       )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

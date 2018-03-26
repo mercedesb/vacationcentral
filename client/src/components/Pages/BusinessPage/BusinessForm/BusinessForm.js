@@ -9,6 +9,7 @@ class BusinessForm extends Component {
     super(props);
     this.state = {
       businessData: {},
+      editData: {}
     };
   }
 
@@ -27,6 +28,10 @@ class BusinessForm extends Component {
           type: this.props.businessType,
           TripId: this.props.tripId,
           [name]: value
+        },
+        editData: {
+          ...prevState.editData,
+          [name]: value
         }
       }), () => console.log(this.state.businessData));
   };
@@ -36,6 +41,18 @@ class BusinessForm extends Component {
     API.saveBusiness(this.state.businessData)
       .then(response => {
         this.setState({businessData: {}});
+        this.props.getAllBusinesses(this.props.tripId);
+      })
+      .catch(err => console.log(err));
+  }
+
+  handleEdit = event => {
+    event.preventDefault();
+    this.props.toggleEdit(event);
+    API.updateBusiness(this.state.editData, this.props.id)
+      .then(response => {
+        console.log(response.data);
+        this.setState({businessData: {}, editData: {}});
         this.props.getAllBusinesses(this.props.tripId);
       })
       .catch(err => console.log(err));
@@ -103,7 +120,7 @@ class BusinessForm extends Component {
           {this.renderDateInputs()}
           {/* <label>Comment:</label>
           <TextArea xs={12} placeholder="Add Comments" /> */}
-          <FormBtn onClick={this.handleCreateNew}>Submit</FormBtn>
+          <FormBtn onClick={this.props.editing ? this.handleEdit : this.handleCreateNew}>Submit</FormBtn>
         </form>
       </Col>
     )

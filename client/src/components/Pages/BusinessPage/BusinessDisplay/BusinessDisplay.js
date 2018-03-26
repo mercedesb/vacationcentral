@@ -10,7 +10,9 @@ const BusinessDisplay = props => (
         props.results
           .filter(business => business.type === props.businessType)
           .map(business => <BusinessListItem 
-            editing={Math.floor(props.editing)}
+            editing={props.editing}
+            editId={props.editId}
+            getAllBusinesses={props.getAllBusinesses}
             id={business.id}
             key={business.id} 
             result={business} 
