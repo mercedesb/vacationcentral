@@ -38,12 +38,12 @@ export default {
 
 
 
-  getProfile: function(UserId) {
+  getProfiles: function(UserId) {
     console.log("in profile API", UserId);
     return axios.get("/api/profiles?" + `UserId=${UserId}`)
   },
 
-  saveProfile: function(profileData){
+  saveProfiles: function(profileData){
     console.log("in profile API", profileData);
     return axios.post("/api/profiles", profileData);
   },

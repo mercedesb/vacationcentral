@@ -12,8 +12,11 @@ class TripDisplay extends React.Component {
       super(props);
       this.state = {
         results: [],
-        tripData: {}
+        tripData: {}, 
+        editing: false, 
+        editId: 0
       };
+      // this.toggleEdit = this.toggleEdit.bind(this);
     }
     
 componentDidMount() {
@@ -22,10 +25,9 @@ componentDidMount() {
 
 
 loadTrips = (UserId) => {
-    console.log("props")
       API.getTrips(UserId)
-        .then(res =>
-          this.setState({trip: res.data, destination: "", start: "", end: "", id: "" })
+        .then(response  =>
+          this.setState({ results: response.data }, () => console.log(this.state))
         )
         .catch(err => console.log(err));
     };

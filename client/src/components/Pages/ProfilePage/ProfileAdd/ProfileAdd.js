@@ -45,7 +45,6 @@ class ProfileAdd extends React.Component {
         <div>
 
            <p>Add a Company to your Profile</p>
-           <form>
 
              <form>
                <label>Select the Profile Type: </label>
@@ -81,8 +80,6 @@ class ProfileAdd extends React.Component {
                placeholder="Add Company Phone" />
 
              <FormBtn onClick={this.handleProfileFormSubmit} >Submit</FormBtn>
-
-           </form>
           
 
         </div>

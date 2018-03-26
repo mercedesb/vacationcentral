@@ -44,7 +44,7 @@ class ProfilePage extends React.Component {
       <Col xs={12} className="profile-page">
 
         <Row>
-          <ProfileAdd show={this.state.profileAddVisible} UserId={this.props.userId} />
+          <ProfileAdd show={this.state.profileAddVisible} UserId={this.props.UserId} />
         </Row>
 
         <Row>
@@ -52,7 +52,7 @@ class ProfilePage extends React.Component {
         </Row>
 
         <Row>
-          {this.state.profileDisplayVisible ? <ProfileDisplay show={this.state.profileDisplayVisible} UserId={this.props.userId} /> : null}
+          {this.state.profileDisplayVisible ? <ProfileDisplay show={this.state.profileDisplayVisible} UserId={this.props.UserId} /> : null}
         </Row>
 
 

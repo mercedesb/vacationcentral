@@ -21,10 +21,9 @@ componentDidMount() {
 
 
 loadProfiles = (UserId) => {
-    console.log(" profile load props", UserId)
       API.getProfiles(UserId)
-        .then(res =>
-          this.setState({profiles: res.data, type: "", company: "", memberNumber: "", phone: "" })
+        .then(response =>
+          this.setState({ results: response.data }, () => console.log(this.state))
         )
         .catch(err => console.log(err));
     };
