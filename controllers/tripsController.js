@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
-    console.log("trip find all", req.query);
+    console.log("trip find all controller", req.query);
     db.Trip
       .findAll({where: req.query})
       .then(dbModel => res.json(dbModel))

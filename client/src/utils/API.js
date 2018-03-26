@@ -23,12 +23,13 @@ export default {
   // }, 
 
 
-  getTrips: function(user) {
-    return axios.get("api/trips?" + `UserId=${UserId}`)
+  getTrips: function(UserId) {
+    console.log("in getTrips API", UserId);
+    return axios.get("/api/trips?" + `UserId=${UserId}`)
   },
 
   saveTrips: function(tripData){
-    console.log("in save trips");
+    console.log("in save trips", tripData);
     return axios.post("/api/trips", tripData);
   },
   // updateTrips: function(tripData) {
@@ -37,13 +38,14 @@ export default {
 
 
 
-  getProfile: function(user) {
-    return axios.get("api/profile?" + `UserId=${user}`)
+  getProfile: function(UserId) {
+    console.log("in profile API", UserId);
+    return axios.get("/api/profiles?" + `UserId=${UserId}`)
   },
 
   saveProfile: function(profileData){
     console.log("in profile API", profileData);
-    return axios.post("api/profiles", profileData);
+    return axios.post("/api/profiles", profileData);
   },
   // updateProfile: function(tripData) {
   //   return axios.put("api/profile" + id,  profileData);

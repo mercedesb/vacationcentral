@@ -1,31 +1,30 @@
 import React from "react";
-import "./TripDisplay.css";
+import "./ProfileDisplay.css";
 import { Grid, Row, Col, Div } from 'react-bootstrap';
-import {FormBtn, Input, TextArea} from "../../Form";
-import { List, ListItem } from "../../List";
+import {FormBtn, Input, TextArea} from "../../../Form";
 import { Link } from "react-router-dom";
-import API from "../../../utils/API";
-import DeleteBtn from "../../DeleteBtn";
+import API from "../../../../utils/API";
 
-class TripDisplay extends React.Component {
+
+class ProfileDisplay extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
         results: [],
-        tripData: {}
+        profileData: {}
       };
     }
     
 componentDidMount() {
-     this.loadTrips(this.props.UserId);
+     this.loadProfiles(this.props.UserId);
     }
 
 
-loadTrips = (UserId) => {
-    console.log("props")
-      API.getTrips(UserId)
+loadProfiles = (UserId) => {
+    console.log(" profile load props", UserId)
+      API.getProfiles(UserId)
         .then(res =>
-          this.setState({trip: res.data, destination: "", start: "", end: "", id: "" })
+          this.setState({profiles: res.data, type: "", company: "", memberNumber: "", phone: "" })
         )
         .catch(err => console.log(err));
     };
@@ -35,12 +34,12 @@ loadTrips = (UserId) => {
 
         if(!this.props.show){ return null; }
       
-        console.log('these are my trip display props!!', this.props)
+        console.log('these are my profile display props!!', this.props)
       
         return (
      
-            <form>
-              <p>Your Trips</p>
+            <form className="profile-display">
+              <p>Your Profiles</p>
 
 
 
@@ -58,4 +57,4 @@ loadTrips = (UserId) => {
     }
   }
 
-  export default TripDisplay;
+  export default ProfileDisplay;
