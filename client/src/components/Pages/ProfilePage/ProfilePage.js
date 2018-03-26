@@ -31,7 +31,7 @@ class ProfilePage extends React.Component {
       this.setState(prevState => (
        { profileData: {
          ...prevState.profileData,
-         UserId: this.props.userId,
+         UserId: this.props.UserId,
         [name]: value
       }
        }), () =>
@@ -39,15 +39,13 @@ class ProfilePage extends React.Component {
     };
 
     handleProfileFormSubmit = (event) => {
-      console.log("incoming  profile state", this.props.user, this.state);
+      console.log("incoming  profile state", this.state.profileData);
       event.preventDefault();
-        if (this.state.type && this.state.company && this.memberNumber) {
           API.saveProfile(this.state.profileData)
               .then(res => this.setState({res: [res.data], profileData: {}}))
               .then(() => console.log(this.state))
               .catch(err => console.log("error profile", err));
         } 
-    };
     
 
     render() {

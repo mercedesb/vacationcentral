@@ -11,7 +11,7 @@ class TripPanel extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        res: [],
+        results: [],
         tripData: {}
       };
     }
@@ -37,14 +37,12 @@ class TripPanel extends React.Component {
     };
 
     handleTripFormSubmit = event => {
-      console.log("incoming trip state", this.state);
+      console.log("incoming trip state", this.state.tripData);
       event.preventDefault();
-        if (this.state.destination && this.state.start && this.state.end) {
           API.saveTrips(this.state.tripData)
-            .then(res => this.setState({results: [res.data], tripData: {}}))
+            .then(response => this.setState({ results: [response.data], tripData: {}}))
             .then(() => console.log("trip state back", this.state))
             .catch(err => console.log("error Trip Form Submit", err));
-        } 
     };
     
     render() {

@@ -13,25 +13,24 @@ import ModalPanel from './components/ModalPanel';
 class VacationContainer extends Component {
    state = {
       modalOpen: false,
-      user: "",
+      user: 1,
       category: "",
-      id: "",
+      id: 4,
     
   };
 
 
+  // componentDidMount() {
+  //   this.loadTrips();
+  // };
 
-  componentDidMount() {
-    this.loadTrips();
-  };
-
-  loadTrips = user => {
-    API.getTrips(user)
-      .then(res =>
-        this.setState({trips: res.data, destination: "", start: "", end: "", id: "" })
-      )
-      .catch(err => console.log(err));
-  };
+  // loadTrips = user => {
+  //   API.getTrips(user)
+  //     .then(res =>
+  //       this.setState({trips: res.data, destination: "", start: "", end: "", id: "" })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   handleToggleModal = () => {
       console.log("you have clicked the login/signup button");
