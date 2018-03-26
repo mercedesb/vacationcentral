@@ -23,9 +23,9 @@ export default {
   // }, 
 
 
-  // getTrips: function(user) {
-  //   return axios.get("api/trips?" + `UserId=${user}`)
-  // },
+  getTrips: function(user) {
+    return axios.get("api/trips?" + `UserId=${UserId}`)
+  },
 
   saveTrips: function(tripData){
     console.log("in save trips");
