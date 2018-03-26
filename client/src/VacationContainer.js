@@ -25,7 +25,7 @@ class VacationContainer extends Component {
   // };
 
   // loadTrips = user => {
-  //   API.getTrips(user)
+  //   API.getTrips(UserId)
   //     .then(res =>
   //       this.setState({trips: res.data, destination: "", start: "", end: "", id: "" })
   //     )

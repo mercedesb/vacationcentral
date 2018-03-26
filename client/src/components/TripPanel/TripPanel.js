@@ -42,6 +42,7 @@ class TripPanel extends React.Component {
           API.saveTrips(this.state.tripData)
             .then(response => this.setState({ results: [response.data], tripData: {}}))
             .then(() => console.log("trip state back", this.state))
+            .then(() => this.state.tripData.destination.value="")
             .catch(err => console.log("error Trip Form Submit", err));
     };
     
