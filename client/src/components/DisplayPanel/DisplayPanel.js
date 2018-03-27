@@ -1,11 +1,7 @@
 import React from "react";
 import "./DisplayPanel.css";
-
 import { Grid, Row, Col } from 'react-bootstrap';
-import HomePage from "../Pages/HomePage";
-import ProfilePage from "../Pages/ProfilePage";
-import FlightsPage from "../Pages/FlightsPage";
-import BusinessPage from "../Pages/BusinessPage";
+
 
 // 'Home'
 // 'Profile', 
@@ -16,51 +12,12 @@ import BusinessPage from "../Pages/BusinessPage";
 // 'Packing', 
 // 'Memories'
 
-class DisplayPanel extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        page: <HomePage />,
-      }
-    }
+const DisplayPanel = props => (
+  <Col xs={8} className="display-panel">
+    <div>
+      {props.children}
+    </div>
+  </Col>
+);
 
-    renderSwitch(page) {
-      switch(page) {
-        case ("Home"):
-          return <HomePage />;
-          break;
-        case ("Profile"):
-          return <ProfilePage  UserId={this.props.userId} />;
-          break;
-        case ("Flights"):
-          return <FlightsPage TripId={this.props.tripId}  />;
-          break;
-        case ("Hotel"):
-          return <BusinessPage businessType="hotels" tripId={1} />;
-          break; 
-        case ("Dining"):
-          return <BusinessPage businessType="dining" tripId={1} />;
-          break;   
-        case ("Attractions"):
-          return <BusinessPage businessType="attractions" tripId={1} />;
-          break;             
-        default:
-          (<HomePage />)
-
-      }
-    };
-
-    render() {
-      console.log('these are my display page props!!', this.props)
-      return (
-        <Col xs={8} className="display-panel">
-          <p>DisplayPanel</p>
-          <div>
-            {this.renderSwitch(this.props.dpCategory)}
-          </div>
-        </Col>
-      );
-    }
-  }
-  
-  export default DisplayPanel;
+export default DisplayPanel;
