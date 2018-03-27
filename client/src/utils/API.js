@@ -47,9 +47,11 @@ export default {
     console.log("in profile post API", profileData);
     return axios.post("/api/profiles", profileData);
   },
-  // updateProfile: function(tripData) {
-  //   return axios.put("api/profile" + id,  profileData);
-  // }
+
+  updateProfiles: function(profileData, id) {
+    console.log("in profile post API", profileData); 
+    return axios.put("/api/profiles/" + id,  profileData);
+  },
 
   getFlights: function (TripId) {
     console.log("in flight get API", TripId);

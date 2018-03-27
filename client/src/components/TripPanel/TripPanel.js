@@ -30,6 +30,8 @@ class TripPanel extends React.Component {
 
     render() {
       console.log('these are my trip panel props!!', this.props)
+
+
       return (
         <Col xs={2} className="trip-panel" >
          
@@ -39,7 +41,8 @@ class TripPanel extends React.Component {
           </Row>
           
           <Row>
-            <FormBtn className='trip-btn' onClick={this.handleToggleTripDisplay}>View Your Trips</FormBtn>
+            {/* <FormBtn style={{ color: "orange", height: "50px" }} onClick={this.handleToggleTripDisplay}>View Your Trips</FormBtn> */}
+            <button className="tripDisplay-btn" onClick={this.handleToggleTripDisplay}>View Your Trips</button> 
           </Row>
 
           <Row>

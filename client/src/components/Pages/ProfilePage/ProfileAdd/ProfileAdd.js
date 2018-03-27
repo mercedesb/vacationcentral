@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./ProfileAdd.css";
 import { Grid, Row, Col, Div } from 'react-bootstrap';
 import {FormBtn, Input, TextArea} from "../../../Form";
@@ -8,9 +8,15 @@ class ProfileAdd extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        results: [],
-        profileData: {}
+        profileData: {},
+        editData: {}
       };
+    }
+
+    componentDidMount() {
+      if(this.props.profileData) {
+        this.setState({profileData: this.props.profileData});
+      }
     }
 
     handleProfileInputChange = event => {
@@ -20,7 +26,12 @@ class ProfileAdd extends React.Component {
          ...prevState.profileData,
          UserId: this.props.UserId,
         [name]: value
-      }
+      }, 
+        editData: {
+          ...prevState.editData,
+          id: this.state.profileData.id,
+          [name]: value
+        }
        }), () =>
       console.log("profile info", this.state.profileData));
     };
@@ -30,23 +41,38 @@ class ProfileAdd extends React.Component {
       console.log("incoming profile state", this.state.profileData);
       event.preventDefault();
           API.saveProfiles(this.state.profileData)
-            .then(response => this.setState({ results: [response.data], profileData: {}}))
-            .then(() => console.log("profile state back", this.state))
-            .catch(err => console.log("error Profile  Form Submit", err));
-    };
+            .then(response => {
+              this.setState({profileData: {}});
+              this.props.getProfiles(this.props.UserId);
+            })
+            .catch(err => console.log(err));
+    }
+
+    handleProfileEdit = event => {
+      console.log("handle edit", this.state.editData)
+      event.preventDefault();
+      this.props.toggleEdit(event);
+      API.updateProfiles(this.state.editData, this.state.profileData.id)
+        .then(response =>{
+          console.log(response.data);
+          this.setState({profileData: {}, editData: {}});
+          this.props.getProfiles(this.props.UserId);
+        })
+          .catch(err => console.log(err));
+    }
     
     render() {
         console.log('these are my profile add props!!', this.props)
         
 
        return (
-        <div>
+        <div className="profile-add">
 
            <p>Add a Company to your Profile</p>
 
              <form>
                <label>Select the Profile Type: </label>
-               <select xs={12} value={this.state.type} name="type" onChange={this.handleProfileInputChange}>
+               <select xs={12} value={this.state.profileData.type} name="type" onChange={this.handleProfileInputChange}>
                  <option value="Airline">Airline</option>
                  <option value="Hotel">Hotel</option>
                  <option value="RentalCar">Rental Car</option>
@@ -54,30 +80,30 @@ class ProfileAdd extends React.Component {
              </form>
 
              <label>Company Name:</label>
-             <Input xs={4}
-               value={this.state.company}
+             <Input
+               value={this.state.profileData.company}
                name="company"
                onChange={this.handleProfileInputChange}
                type="text"
                placeholder="Add Company Name" />
 
              <label>Reward Number:</label>
-             <Input xs={4}
-               value={this.state.memberNumber}
+             <Input
+               value={this.state.profileData.memberNumber}
                name="memberNumber"
                onChange={this.handleProfileInputChange}
                type="text"
                placeholder="Add Rewards Number" />
 
              <label>Company Phone Number:</label>
-             <Input xs={4}
-               value={this.state.phone}
+             <Input 
+               value={this.state.profileData.phone}
                name="phone"
                onChange={this.handleProfileInputChange}
                type="text"
                placeholder="Add Company Phone" />
 
-             <FormBtn onClick={this.handleProfileFormSubmit} >Submit</FormBtn>
+             <FormBtn onClick={this.props.editing ? this.handleProfileEdit : this.handleProfileFormSubmit} >Submit</FormBtn>
           
 
         </div>

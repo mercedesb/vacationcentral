@@ -5,7 +5,10 @@
     border-left: 1px solid #ddd;
 }
 
-.trip-btn {
+.tripDisplay-btn {
+    background-color: steelblue;
+    height: 50px;
     margin: 0 auto;
-    background-color: #84A1BC;
+    width: 70%;
+    color: orange;
 }

@@ -15,18 +15,38 @@ class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      profileDisplayVisible: false
-
+      profileDisplayVisible: false, 
+      results: [],
+      editing: false,
+      editId: 0
     };
+    this.getProfiles = this.getProfiles.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
   }
 
-
-
+  componentWillMount(){
+    this.getProfiles();
+  }
 
   handleToggleProfileDisplay = () => {
     console.log("profileDisplay is visible")
     this.setState({ profileDisplayVisible: !this.state.profileDisplayVisible })
   };
+
+  toggleEdit = event => {
+    // console.dir(event.target.id);
+    this.setState({
+      editing: !this.state.editing,
+      editId: event.target.id
+    }, () => console.log(this.state));
+  };
+
+  getProfiles = () => (
+    API.getProfiles(this.props.UserId)
+    .then(response => {
+      this.setState({results: response.data}, () => console.log("getProfiles working", this.state))
+    })
+  );
 
 
   render() {
@@ -35,7 +55,9 @@ class ProfilePage extends React.Component {
       <Col xs={12} className="profile-page">
 
         <Row>
-          <ProfileAdd UserId={this.props.UserId} />
+          <ProfileAdd 
+              getProfiles={this.getProfiles}
+              UserId={this.props.UserId} />
         </Row>
 
         <Row>
@@ -43,7 +65,15 @@ class ProfilePage extends React.Component {
         </Row>
 
         <Row>
-          {this.state.profileDisplayVisible ? <ProfileDisplay show={this.state.profileDisplayVisible} UserId={this.props.UserId} /> : null}
+          {this.state.profileDisplayVisible ? <ProfileDisplay 
+          show={this.state.profileDisplayVisible} 
+          UserId={this.props.UserId} 
+          results={this.state.results}
+          toggleEdit={this.toggleEdit}
+          editing={this.state.editing}
+          editId={this.state.editId}
+          getProfiles={this.getProfiles}
+           /> : null}
         </Row>
 
 
