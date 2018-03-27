@@ -23,7 +23,7 @@ const HomePage = props => (
             <div>
               <div className="form-group">
                 <label>First Name</label>
-                <input type="text" onChange={props.handleInputChange} className="form-control" id="firstName-input" placeholder="First Name" />
+                <input type="text" name="firstName" onChange={props.handleInputChange} className="form-control" id="firstName-input" placeholder="First Name" />
               </div>
               <div className="form-group">
                 <label>Last Name</label>
@@ -36,7 +36,7 @@ const HomePage = props => (
             </div>}
           <div style={{ display: "none" }} id="alert" className="alert alert-danger" role="alert">
             <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span className="sr-only">Error:</span> <span class="msg"></span>
+            <span className="sr-only">Error:</span> <span className="msg"></span>
           </div>
           <button type="submit" onClick={props.purpose === "Log In" ? props.handleLogIn : props.handleSignUp} className="btn btn-default">{props.purpose}</button>
         </form>

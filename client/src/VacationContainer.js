@@ -26,17 +26,31 @@ class VacationContainer extends Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState(prevState => (
-      {
-        userData: {
+      {userData: {
           ...prevState.userData,
           [name]: value
-        },
-        // editData: {
-        //   ...prevState.editData,
-        //   [name]: value
-        // }
+        }
       }), () => console.log(this.state.userData));
   };
+
+  signUpUser = userData => {
+    API.saveUser(userData)
+      .then(function(data) {
+      // window.location.replace(data);
+        console.log(data);
+      })
+      .catch(err => console.log(err));
+  }
+
+  handleSignUp = event => {
+    event.preventDefault();
+    if (!this.state.userData.email || !this.state.userData.password) {
+      return;
+    }
+    // If we have an email and password, run the signUpUser function
+    this.signUpUser(this.state.userData);
+    this.setState({userData: {}});
+  }
 
   handleToggleModal = () => {
     // console.log("you have clicked the login/signup button");
