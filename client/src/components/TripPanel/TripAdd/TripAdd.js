@@ -70,33 +70,34 @@ componentDidMount() {
        return (
         <div>
 
-            <p>Add A Trip</p>
+            <p className="second-text">Add A Trip</p>
+
          <form> 
-          <label>Destination:</label>
-          <Input xs={12}
+          <label className="label-text">Destination:</label>
+          <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
               value={this.state.tripData.destination}
               name="destination"
               onChange={this.handleTripInputChange}
               type="text"
-              placeholder="Add Trip Name" />
+              placeholder="Destination" />
 
-          <label>Begin Date:</label>
-          <Input xs={12}
+          <label className="label-text">Start Date:</label>
+          <Input style={{ width: "70%", margin: "0 auto" , textAlign: "center"}}
               value={this.state.tripData.start}
               name="start"
               onChange={this.handleTripInputChange}
               type="date"
               placeholder=" MM-DD-YYYY" /> 
 
-          <label>End Date:</label>
-          <Input xs={12}             
+          <label className="label-text">End Date:</label>
+          <Input style={{ width: "70%", margin: "0 auto", textAlign: "center"}}
               value={this.state.tripData.end}
               name="end"
               onChange={this.handleTripInputChange}
               type="date"
               placeholder="MM-DD-YYYY" />
 
-          <FormBtn onClick={this.props.editing ? this.handleTripEdit : this.handleTripFormSubmit}>Submit</FormBtn>
+          <button className="btn btn-lrg submit-btn" onClick={this.props.editing ? this.handleTripEdit : this.handleTripFormSubmit}>Submit</button>
           </form>
           
 

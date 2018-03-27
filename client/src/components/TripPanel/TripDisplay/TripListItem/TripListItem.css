@@ -3,7 +3,7 @@
     list-style-type: none;
     width: 100%;
     font-size: 15px;
-    background: white;
+    background: #757073;
     /* overflow: scroll */
 }
 
@@ -11,4 +11,10 @@
     height: 20px;
     width: 20px;
     padding-right: 5px;
+}
+
+p  {
+    font-size: 16px;
+    color: #230C0F;
+    text-align: center;
 }

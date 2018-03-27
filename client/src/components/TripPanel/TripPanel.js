@@ -55,7 +55,9 @@ class TripPanel extends React.Component {
       return (
         <Col xs={2} className="trip-panel" >
          
-
+          <Row>
+              <p className="header">Your Trips</p>
+          </Row>
           <Row>
               <TripAdd 
               getTrips={this.getTrips}

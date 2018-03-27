@@ -27,8 +27,8 @@ class TripDisplay extends React.Component {
         return (
      
       <Col xs={12} className="trip-display">
-          <h1>Your Trips</h1>
-       <ul>
+ 
+       <ul style={{ width: "100%", margin: "0 auto" }}>
        
         {this.props.results.length !== 0 ?
 

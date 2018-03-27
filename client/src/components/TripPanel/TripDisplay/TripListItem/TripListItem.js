@@ -14,15 +14,21 @@ const renderResult = props => (
         console.dir(event.target);
         props.handleSetTripId(props.result.id)}} /> 
       </Col>
-      <Col xs={6}>
-        <h3>{props.result.destination}</h3>
-      </Col>
-      <Col xs={5}>
-        <FormBtn id={props.result.id} onClick={props.toggleEdit}>Edit</FormBtn>
-      </Col>
     </Row>
+    
+    <Row>
+        <p style={{ fontSize: "20px" }}>{props.result.destination}</p>
+    </Row>
+    
+    <Row style={{ textAlign: "center"}}>
     {props.result.start ? <div><p>Start Date:<br />{props.result.start}</p></div> : undefined}
     {props.result.end ? <div><p>End Date:<br />{props.result.end}</p></div> : undefined}
+    </Row>
+    
+    <Row>
+      <FormBtn style={{float: "left" }}id={props.result.id} onClick={props.toggleEdit}>Edit</FormBtn>
+    </Row>
+        <br/>
   </div>
 );
 

@@ -4,3 +4,11 @@
     background: transparent;
     border-bottom: 1px solid black;
 }
+
+.hp-text {
+    font-size: 60px;
+    color: #230C0F;
+    margin-left: 10%;
+    vertical-align: auto;
+
+}
