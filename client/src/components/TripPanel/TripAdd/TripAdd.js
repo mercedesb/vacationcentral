@@ -38,14 +38,17 @@ componentDidMount() {
 
     handleTripFormSubmit = event => {
       console.log("incoming trip state", this.state.tripData);
+      console.log("date compare", this.state.tripData.start > this.state.tripData.end);
       event.preventDefault();
+        if(this.state.tripData.start < this.state.tripData.end) {
           API.saveTrips(this.state.tripData)
             .then(response => {
               this.setState({ tripData: {}});
               this.props.getTrips(this.props.UserId);
             })
             .catch(err => console.log("error Trip Form Submit", err));
-    }
+    } else { {alert("Your return date must be after your departure date")}}
+  } 
 
     handleTripEdit = event => {
       console.log("handle trip edit", this.state.tripData)

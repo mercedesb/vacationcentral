@@ -18,14 +18,20 @@ class TripDisplay extends React.Component {
 
         if(!this.props.show){ return null; }
         console.log('these are my trip display props!!', this.props)
-      
+        console.log("this results array pre-sort", this.props.results);
+            
+        let sortedDate = this.props.results.sort(( a, b) =>  new Date(b.start) - new Date(a.start));
+        console.log("sorted array", this.props.results)
+        
+        
         return (
      
       <Col xs={12} className="trip-display">
           <h1>Your Trips</h1>
        <ul>
-
+       
         {this.props.results.length !== 0 ?
+
             this.props.results.map(trip => 
             <TripListItem
               editing={this.props.editing}

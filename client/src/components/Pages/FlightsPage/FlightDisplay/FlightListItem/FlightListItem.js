@@ -3,6 +3,7 @@ import "./FlightListItem.css";
 import { Grid, Row, Col } from 'react-bootstrap';
 import { FormBtn } from "../../../../Form";
 import FlightAdd from "../../FlightAdd";
+import { Link } from "react-router-dom";
 
 const renderResult = props => (
 
@@ -21,6 +22,7 @@ const renderResult = props => (
     {props.result.departTime ? <div><p>Departure Time:<br />{props.result.departTime}</p></div> : undefined}
     {props.result.arriveLocation ? <div><p>Arrival Airport:<br />{props.result.arriveLocation}</p></div> : undefined}
     {props.result.arriveTime? <div><p>Arrival Time:<br />{props.result.arriveTime}</p></div> : undefined}
+    <Link to={"https://www.world-airport-codes.com/"} target="_blank">Search Airport Codes</Link>
 
 
 
