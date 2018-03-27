@@ -1,29 +1,45 @@
 import React from "react";
 import "./BusinessPanel.css";
 import { Grid, Row, Col } from 'react-bootstrap';
-import List from "../List";
 import CategoryButton from "../CategoryButton";
 
-const businessNameArray = [
-  'Home',
-  'Profile',
-  'Flights',
-  'Hotel',
-  'Dining',
-  'Attractions',
-  'Packing',
-  'Memories'
-]
+const categoryArray = [{
+  name: 'Home',
+  link: "/"
+}, {
+  name: 'Profile',
+  link: "/profile"
+}, {
+  name: 'Flights',
+  link: "/flights"
+}, {
+  name: 'Hotel',
+  link: "/hotels"
+}, {
+  name: 'Dining',
+  link: "/dining"
+}, {
+  name: 'Attractions',
+  link: "/attractions"
+}, {
+  name: 'Packing',
+  link: "/packing"
+}, {
+  name: 'Memories',
+  link: "/memories"
+}]
 
 const BusinessPanel = props => {
   console.log('these are my bizpanel props!!', this.props)
   return (
     <Col xs={2} className="business-panel">
-      <p>BusinessPanel</p>
-      {businessNameArray.map((elem, index) => <CategoryButton
-        key={index}
-        onClick={() => props.handleSelectCategory({ elem })}
-      >{elem}</CategoryButton>)}
+      {categoryArray.map((elem, index) => (
+        <CategoryButton
+          key={index}
+          link={elem.link}
+          name={elem.name}
+        />)
+      )}
     </Col>
   );
 }
