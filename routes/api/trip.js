@@ -9,6 +9,7 @@ router.route("/")
 // Matches with "/api/trips/:id"
 router
   .route("/:id")
+
 //   .get(businessController.findById)
   .put(tripsController.update);
 //   .delete(businessController.remove);

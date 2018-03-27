@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
-    console.log("flight find all", req.query)
+    console.log("flight find all controller", req.query)
     db.Flight
       .findAll({where: req.query})
       .then(dbModel => res.json(dbModel))
@@ -27,7 +27,8 @@ module.exports = {
     db.Flight
       .update(
         req.body,
-        {returning: true, where: {id: req.params.id}})
+        {returning: true, where: {id: req.params.id} }
+      )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

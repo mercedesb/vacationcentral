@@ -1,6 +1,14 @@
 .trip-panel{
     height: 750px;
     font-size: 15px;
-    background: red;
+    background: transparent;
     border-left: 1px solid #ddd;
+}
+
+.tripDisplay-btn {
+    background-color: steelblue;
+    height: 50px;
+    margin: 0 auto;
+    width: 70%;
+    color: orange;
 }
