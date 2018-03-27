@@ -1,8 +1,8 @@
 .home-page{
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     height: 400px;
     margin-top: 10px;
-    background: whitesmoke;
+    background-color: transparent;
     border-left: 1px solid #ddd;
 }

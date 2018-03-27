@@ -20,14 +20,15 @@ const categoryArray = [{
   link: "/dining"
 }, {
   name: 'Attractions',
-  link: "/attractions"
-}, {
-  name: 'Packing',
-  link: "/packing"
-}, {
-  name: 'Memories',
-  link: "/memories"
-}]
+  link: "/attractions"}
+// }, {
+//   name: 'Packing',
+//   link: "/packing"
+// }, {
+//   name: 'Memories',
+//   link: "/memories"
+// }
+]
 
 const BusinessPanel = props => {
   console.log('these are my bizpanel props!!', this.props)

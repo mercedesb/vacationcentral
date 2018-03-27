@@ -12,6 +12,7 @@ import HomePage from "./components/Pages/HomePage";
 import ProfilePage from "./components/Pages/ProfilePage";
 import FlightsPage from "./components/Pages/FlightsPage";
 import BusinessPage from "./components/Pages/BusinessPage";
+import MemberPage from "./components/Pages/MemberPage";
 
 
 
@@ -20,8 +21,7 @@ class VacationContainer extends Component {
     modalOpen: false,
     user: 1,
     category: "",
-    id: 4,
-
+    tripId: 4,
   };
 
 
@@ -70,7 +70,18 @@ class VacationContainer extends Component {
               dpCategory={this.state.category}
               handleDisplayPage={this.handleDisplayPage}>
               <Switch>
-                <Route exact path="/" component={HomePage} />
+                <Route exact path="/" render={() => <HomePage 
+                  purpose="Log In" 
+                  handleInputChange={this.handleInputChange} 
+                  handleLogIn={this.handleLogIn} 
+                  tripId={this.state.tripId} 
+                />} />
+                <Route exact path="/signup" render={() => <HomePage 
+                  purpose="Sign Up" 
+                  handleSignUp={this.handleSignUp} 
+                  tripId={this.state.tripId} 
+                />} />
+                <Route exact path="/member" render={() => <MemberPage />} />
                 <Route exact path="/hotels" render={() => <BusinessPage businessType="hotels" tripId={1} />} />
                 <Route exact path="/dining" render={() => <BusinessPage businessType="dining" tripId={1} />} />
                 <Route exact path="/flights" render={() => <FlightsPage TripId={this.state.id}  />} />
