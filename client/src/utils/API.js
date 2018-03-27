@@ -21,52 +21,65 @@ export default {
   // updateBusiness: function(businessData) {
   //   return axios.put("api/businesses/" + id, businessData);
   // }, 
+  
 
 
-  // getTrips: function(user) {
-  //   return axios.get("api/trips?" + `UserId=${user}`)
-  // },
+  getTrips: function(UserId) {
+    console.log("in Trips get API", UserId);
+    return axios.get("/api/trips?" + `UserId=${UserId}`)
+  },
 
   saveTrips: function(tripData){
-    console.log("in save trips");
+    console.log("in trips post API", tripData);
     return axios.post("/api/trips", tripData);
   },
-  // updateTrips: function(tripData) {
-  //   return axios.put("api/trips" + id, tripData);
-  // },
 
-
-
-  getProfile: function(user) {
-    return axios.get("api/profile?" + `UserId=${user}`)
+  updateTrips: function(tripData, id) {
+    console.log("in trip put API", tripData); 
+    return axios.put("api/trips/" + id, tripData);
   },
 
-  saveProfile: function(profileData){
-    console.log("in profile API", profileData);
-    return axios.post("api/profiles", profileData);
-  },
-  // updateProfile: function(tripData) {
-  //   return axios.put("api/profile" + id,  profileData);
-  // }
 
-  getFlights: function (tripId) {
-    return axios.get("api/flights?" + `TripId=${tripId}`)
+
+  getProfiles: function(UserId) {
+    console.log("in profile get API", UserId);
+    return axios.get("/api/profiles?" + `UserId=${UserId}`)
+  },
+
+  saveProfiles: function(profileData){
+    console.log("in profile post API", profileData);
+    return axios.post("/api/profiles", profileData);
+  },
+
+  updateProfiles: function(profileData, id) {
+    console.log("in profile put API", profileData); 
+    return axios.put("/api/profiles/" + id,  profileData);
+  },
+
+
+  getFlights: function (TripId) {
+    console.log("in flight get API", TripId);
+    return axios.get("api/flights?" + `TripId=${TripId}`)
   },
 
   saveFlights: function(flightData){
-    console.log("in flight API", flightData);
+    console.log("in flight postAPI", flightData);
     return axios.post("api/flights", flightData);
   },
-  // updateFlights: function(flightData) {
-  //   return axios.put("api/flights" + id, flightsData);
-  // },
+
+  updateFlights: function(flightData, id) {
+    console.log("in flight put API", flightData); 
+    return axios.put("api/flights/" + id, flightData);
+  },
+
+
   getLogin: function (loginData) {
     return axios.get("api/login", loginData)
   },
 
 
   saveSignUp: function(signUpData){
-    console.log("in signUyp API", signUpData);
+    console.log("in signUp API", signUpData);
     return axios.post("api/signUp", signUpData);
   },
 

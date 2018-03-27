@@ -1,5 +1,7 @@
 import React from "react";
 import "./FlightsPage.css";
+import FlightAdd from "./FlightAdd";
+import FlightDisplay from "./FlightDisplay";
 import { Grid, Row, Col, Div } from 'react-bootstrap';
 import {FormBtn, Input} from "../../Form";
 import { List, ListItem } from "../../List";
@@ -12,126 +14,70 @@ class FlightsPage extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-          res: [], 
-          flightData: {}  
+        flightDisplayVisible: false, 
+        results: [],
+        editing: false,
+        editId: 0
       };
+      this.getFlights = this.getFlights.bind(this);
+      this.toggleEdit = this.toggleEdit.bind(this);
     }
 
-
-    // loadFlights = (tripId) => {
-    //   API.getFlights(tripId)
-    //     .then(res =>
-    //       this.setState({flights: results: [results.data]
-    //     )
-    //     .catch(err => console.log(err));
-    // };
-
-    handleTripInputChange = event => {
-      const {name, value} = event.target;
-      this.setState(prevState => (
-        { flightData: {
-          ...prevState.flightData,
-          TripId: this.props.tripId,
-          [name]: value
+    componentWillMount(){
+        this.getFlights();
       }
-    }), () =>
-      console.log("trip info", this.state.flightData));
-    };
 
-    handleFlightFormSubmit = (event) => {
-      console.log("incoming flights state", this.state.flightData);
-      event.preventDefault();
-          API.saveFlights(this.state.flightData)
-            .then(res => this.setState({results: [res.data], flightData: {}}))
-            .then(() => console.log(this.state))
-            .catch(err => console.log("flights error", err));
-        } 
+
+    handleToggleFlightDisplay = () => {
+        console.log("flightDisplay is visible")
+        this.setState({ flightDisplayVisible: !this.state.flightDisplayVisible })
+      };
+
+    toggleEdit = event => {
+        // console.dir(event.target.id);
+        this.setState({
+          editing: !this.state.editing,
+          editId: event.target.id
+        }, () => console.log("toggle edit", this.state));
+      };
+    
+    getFlights = () => (
+        API.getFlights(this.props.TripId)
+        .then(response => {
+          this.setState({results: response.data}, () => console.log("get Flights working", this.state))
+        })
+      );
 
 
     render() {
       console.log('these are my FlightsPage props!!', this.props)
-      return (
-        <Col xs={12} className="flights-page">
+     return ( 
+         <Col xs={12} className="flights-page">
 
-          <p>Add a Flight</p>
-          <form>
-         
-          <label>Flight Confirmation Number:</label>  
-          <Input xs={4}
-              value={this.state.confirmationNumber}
-              name="confirmationNumber"
-              onChange={this.handleTripInputChange}
-              type="text"
-              placeholder="Flight Confirmation Number"/>
-         
-          <label>Airline:</label>
-          <Input xs={4}
-              value={this.state.airline}
-              name="airline"
-              onChange={this.handleTripInputChange}
-              type="text"
-              placeholder="Airline"/>
-          
-          <label>Flight Number:</label>
-          <Input xs={4}
-              value={this.state.flightNumber}
-              name="flightNumber"
-              onChange={this.handleTripInputChange}
-              type="text"
-              placeholder="Flight Number" />
-           
-          <label>Departure Airport:</label>   
-          <Input  xs={6}
-              value={this.state.departLocation}
-              name="departLocation"
-              onChange={this.handleTripInputChange}
-              type="text"
-              placeholder="Departure Airport"/>
-          
-          <label>Departure Time:</label>
-          <Input  xs={6}
-              value={this.state.departTime}
-              name="departTime"
-              onChange={this.handleTripInputChange}
-              type="text"
-              placeholder="Departure Time"/>
-          
-          <label>Arrival Airport:</label> 
-          <Input  xs={6}
-              value={this.state.arriveLocation}
-              name="arriveLocation"
-              onChange={this.handleTripInputChange}
-              type="text"
-              placeholder="Arrival Airport"/>
-          
-          <label>Arrival Time:</label> 
-          <Input  xs={6}
-              value={this.state.arriveTime}
-              name="arriveTime"
-              onChange={this.handleTripInputChange}
-              type="text"
-              placeholder="Arrival Time"/>
+             <Row>
+                 <FlightAdd 
+                 getFlights={this.getFlights}
+                 TripId={this.props.TripId} />
+             </Row>
 
-          <FormBtn onClick={this.handleFlightFormSubmit} >Submit</FormBtn>
-         
-          </form>
-              
-              <p>Trip Display</p>
+             <Row>
+                 <FormBtn className='flight-btn' onClick={this.handleToggleFlightDisplay}>View Your Flights</FormBtn>
+             </Row>
 
-              <p>This is where our flights will display</p>
+             <Row>
+                 {this.state.flightDisplayVisible ? <FlightDisplay 
+                 show={this.state.flightDisplayVisible} 
+                 TripId={this.props.TripId}
+                 results={this.state.results}
+                 toggleEdit={this.toggleEdit}
+                 editing={this.state.editing}
+                 editId={this.state.editId}
+                 getFlights={this.getFlights} 
+                 /> : null}
+             </Row>
 
+         </Col>     
 
-          {/* {this.flightsArray.map(flight => 
-            <Grid className="flightDisplay">
-              <p>Airline: {flight.airline}  FlightNo: {flight.flightNumber} ConfirmNo: {flight.confirmationNumber}</p>
-              <p>Departure Airport: {flight.departLocation} Departure Time: {flight.departTime} </p> 
-              <p>Arrival Airport: {flight.arriveLocation} Arrival Time: {flight.arriveTime} </p> 
-              <DeleteBtn onClick={() => this.deleteFlights(flight.id)} /> 
-            </Grid>
-  )} */}
-
-
-        </Col>
       );
     }
   }

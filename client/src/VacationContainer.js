@@ -2,21 +2,26 @@ import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import "./VacationContainer.css"
 import API from "./utils/API";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HeaderPanel from './components/HeaderPanel';
 import TripPanel from './components/TripPanel';
 import DisplayPanel from './components/DisplayPanel';
 import BusinessPanel from './components/BusinessPanel';
 import ModalPanel from './components/ModalPanel';
+import HomePage from "./components/Pages/HomePage";
+import ProfilePage from "./components/Pages/ProfilePage";
+import FlightsPage from "./components/Pages/FlightsPage";
+import BusinessPage from "./components/Pages/BusinessPage";
 
 
 
 class VacationContainer extends Component {
-   state = {
-      modalOpen: false,
-      user: 1,
-      category: "",
-      id: 4,
-    
+  state = {
+    modalOpen: false,
+    user: 1,
+    category: "",
+    id: 4,
+
   };
 
 
@@ -25,7 +30,7 @@ class VacationContainer extends Component {
   // };
 
   // loadTrips = user => {
-  //   API.getTrips(user)
+  //   API.getTrips(UserId)
   //     .then(res =>
   //       this.setState({trips: res.data, destination: "", start: "", end: "", id: "" })
   //     )
@@ -51,17 +56,32 @@ class VacationContainer extends Component {
   render() {
     console.log("state in VCrender", this.state);
     return (
-      <Grid fluid className="vacation-container">
-        <Row>
-          <HeaderPanel handleToggleModal={this.handleToggleModal} />
-          <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} />
-        </Row>
-        <Row>
-          <TripPanel userId={this.state.user} handleTripFormSubmit={this.handleTripFormSubmit} />
-          <DisplayPanel userId={this.state.user} tripId={this.state.id} dpCategory={this.state.category} handleDisplayPage={this.handleDisplayPage} />
-          <BusinessPanel userId={this.state.user} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
-        </Row>
-      </Grid>
+      <Router>
+        <Grid fluid className="vacation-container">
+          <Row>
+            <HeaderPanel handleToggleModal={this.handleToggleModal} />
+            <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} />
+          </Row>
+          <Row>
+            <TripPanel UserId={this.state.user} handleTripFormSubmit={this.handleTripFormSubmit} />
+            <DisplayPanel
+              userId={this.state.user}
+              tripId={this.state.id}
+              dpCategory={this.state.category}
+              handleDisplayPage={this.handleDisplayPage}>
+              <Switch>
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/hotels" render={() => <BusinessPage businessType="hotels" tripId={1} />} />
+                <Route exact path="/dining" render={() => <BusinessPage businessType="dining" tripId={1} />} />
+                <Route exact path="/flights" render={() => <FlightsPage TripId={this.state.id}  />} />
+                <Route exact path="/attractions" render={() => <BusinessPage businessType="attractions" tripId={1} />} />
+                <Route exact path="/profile" render={() => <ProfilePage  UserId={this.state.user} />} />
+              </Switch>
+            </DisplayPanel>
+            <BusinessPanel userId={this.state.user} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
+          </Row>
+        </Grid>
+      </Router >
     );
   }
 }
