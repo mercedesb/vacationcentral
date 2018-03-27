@@ -63,7 +63,7 @@ class VacationContainer extends Component {
             <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} />
           </Row>
           <Row>
-            <TripPanel userId={this.state.user} handleTripFormSubmit={this.handleTripFormSubmit} />
+            <TripPanel UserId={this.state.user} handleTripFormSubmit={this.handleTripFormSubmit} />
             <DisplayPanel
               userId={this.state.user}
               tripId={this.state.id}

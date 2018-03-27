@@ -21,6 +21,7 @@ export default {
   // updateBusiness: function(businessData) {
   //   return axios.put("api/businesses/" + id, businessData);
   // }, 
+  
 
 
   getTrips: function(UserId) {
@@ -32,9 +33,11 @@ export default {
     console.log("in trips post API", tripData);
     return axios.post("/api/trips", tripData);
   },
-  // updateTrips: function(tripData) {
-  //   return axios.put("api/trips" + id, tripData);
-  // },
+
+  updateTrips: function(tripData, id) {
+    console.log("in trip put API", tripData); 
+    return axios.put("api/trips/" + id, tripData);
+  },
 
 
 
@@ -53,6 +56,7 @@ export default {
     return axios.put("/api/profiles/" + id,  profileData);
   },
 
+
   getFlights: function (TripId) {
     console.log("in flight get API", TripId);
     return axios.get("api/flights?" + `TripId=${TripId}`)
@@ -68,13 +72,14 @@ export default {
     return axios.put("api/flights/" + id, flightData);
   },
 
+
   getLogin: function (loginData) {
     return axios.get("api/login", loginData)
   },
 
 
   saveSignUp: function(signUpData){
-    console.log("in signUyp API", signUpData);
+    console.log("in signUp API", signUpData);
     return axios.post("api/signUp", signUpData);
   },
 

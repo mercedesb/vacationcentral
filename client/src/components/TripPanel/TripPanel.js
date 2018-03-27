@@ -14,17 +14,39 @@ class TripPanel extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-
-        tripDisplayVisible: false
+        tripDisplayVisible: false, 
+        results: [], 
+        editing: false,
+        editId: 0
       };
+      this.getTrips = this.getTrips.bind(this);
+      this.toggleEdit = this.toggleEdit.bind(this);
     }
 
+    componentWillMount(){
+      this.getTrips();
+    }
 
 
     handleToggleTripDisplay = () => {
       console.log("tripDisplay is visible")
       this.setState({tripDisplayVisible: !this.state.tripDisplayVisible})
     };
+
+    toggleEdit = event => {
+      // console.dir(event.target.id);
+      this.setState({
+        editing: !this.state.editing,
+        editId: event.target.id
+      }, () => console.log(this.state));
+    };
+  
+    getTrips = () => (
+      API.getTrips(this.props.UserId)
+      .then(response => {
+        this.setState({results: response.data}, () => console.log("getTrips working", this.state))
+      })
+    );
 
 
 
@@ -37,7 +59,9 @@ class TripPanel extends React.Component {
          
 
           <Row>
-              <TripAdd UserId={this.props.userId} />
+              <TripAdd 
+              getTrips={this.getTrips}
+              UserId={this.props.userId} />
           </Row>
           
           <Row>
@@ -46,7 +70,15 @@ class TripPanel extends React.Component {
           </Row>
 
           <Row>
-          {this.state.tripDisplayVisible ? <TripDisplay show={this.state.tripDisplayVisible} UserId={this.props.userId} /> : null}
+          {this.state.tripDisplayVisible ? <TripDisplay 
+          show={this.state.tripDisplayVisible} 
+          UserId={this.props.userId}
+          results={this.state.results}
+          toggleEdit={this.toggleEdit}
+          editing={this.state.editing}
+          editId={this.state.editId}
+          getTrips={this.getTrips}
+           /> : null}
           </Row>
 
       </Col>

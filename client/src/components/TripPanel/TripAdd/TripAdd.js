@@ -1,18 +1,22 @@
-import React from "react";
+import React, {Component} from "react";
 import "./TripAdd.css";
 import { Grid, Row, Col, Div } from 'react-bootstrap';
 import {FormBtn, Input, TextArea} from "../../Form";
-import { List, ListItem } from "../../List";
-import { Link } from "react-router-dom";
 import API from "../../../utils/API";
 
 class TripAdd extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        results: [],
-        tripData: {}
+        tripData: {}, 
+        editData: {}
       };
+    }
+
+componentDidMount() {
+      if(this.props.tripData) {
+        this.setState({tripData: this.props.tripData});
+      }
     }
 
     handleTripInputChange = event => {
@@ -22,6 +26,11 @@ class TripAdd extends React.Component {
         ...prevState.tripData,
         UserId: this.props.UserId,
         [name]: value
+        }, 
+        editData: {
+          ...prevState.editData, 
+          id: this.state.tripData.id, 
+          [name]: value
         }
       }), () =>
         console.log("trip info", this.state.tripData));
@@ -31,10 +40,25 @@ class TripAdd extends React.Component {
       console.log("incoming trip state", this.state.tripData);
       event.preventDefault();
           API.saveTrips(this.state.tripData)
-            .then(response => this.setState({ results: [response.data], tripData: {}}))
-            .then(() => console.log("trip state back", this.state))
+            .then(response => {
+              this.setState({ tripData: {}});
+              this.props.getTrips(this.props.UserId);
+            })
             .catch(err => console.log("error Trip Form Submit", err));
-    };
+    }
+
+    handleTripEdit = event => {
+      console.log("handle trip edit", this.state.tripData)
+      event.preventDefault();
+      this.props.toggleEdit(event);
+      API.updateTrips(this.state.editData, this.state.tripData.id)
+        .then(response =>{
+          console.log(response.data);
+          this.setState({tripData: {}, editData: {}});
+          this.props.getTrips(this.props.UserId);
+        })
+          .catch(err => console.log("trip update error", err));
+    }
     
     render() {
         console.log('these are my trip add props!!', this.props)
@@ -69,7 +93,7 @@ class TripAdd extends React.Component {
               type="date"
               placeholder="MM-DD-YYYY" />
 
-          <FormBtn onClick={this.handleTripFormSubmit}>Submit</FormBtn>
+          <FormBtn onClick={this.props.editing ? this.handleTripEdit : this.handleTripFormSubmit}>Submit</FormBtn>
           </form>
           
 
