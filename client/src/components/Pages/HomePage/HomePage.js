@@ -12,22 +12,26 @@ const HomePage = props => (
         <h3>{props.purpose}</h3>
         <form className="signup">
           <div className="form-group">
-            <label forHTML="exampleInputEmail1">Email address</label>
-            <input type="email" className="form-control" id="email-input" placeholder="Email" />
+            <label>Email address</label>
+            <input onChange={props.handleInputChange} type="email" name="email" className="form-control" id="email-input" placeholder="Email" />
           </div>
           <div className="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" className="form-control" id="password-input" placeholder="Password" />
+            <label>Password</label>
+            <input type="password" onChange={props.handleInputChange} name="password" className="form-control" id="password-input" placeholder="Password" />
           </div>
           {props.purpose === "Log In" ? undefined :
             <div>
               <div className="form-group">
-                <label forHTML="exampleInputEmail1">Email address</label>
-                <input type="email" className="form-control" id="email-input" placeholder="Email" />
+                <label>First Name</label>
+                <input type="text" onChange={props.handleInputChange} className="form-control" id="firstName-input" placeholder="First Name" />
               </div>
               <div className="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" className="form-control" id="password-input" placeholder="Password" />
+                <label>Last Name</label>
+                <input type="text" onChange={props.handleInputChange} name="lastName" className="form-control" id="lastName-input" placeholder="Last Name" />
+              </div>
+              <div className="form-group">
+                <label>User Name</label>
+                <input type="text" onChange={props.handleInputChange} name="userName" className="form-control" id="userName-input" placeholder="User Name" />
               </div>
             </div>}
           <div style={{ display: "none" }} id="alert" className="alert alert-danger" role="alert">

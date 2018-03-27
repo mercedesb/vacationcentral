@@ -14,47 +14,48 @@ import FlightsPage from "./components/Pages/FlightsPage";
 import BusinessPage from "./components/Pages/BusinessPage";
 import MemberPage from "./components/Pages/MemberPage";
 
-
-
 class VacationContainer extends Component {
   state = {
     modalOpen: false,
     user: 1,
     category: "",
     tripId: 4,
+    userData: {},
   };
 
-
-  // componentDidMount() {
-  //   this.loadTrips();
-  // };
-
-  // loadTrips = user => {
-  //   API.getTrips(UserId)
-  //     .then(res =>
-  //       this.setState({trips: res.data, destination: "", start: "", end: "", id: "" })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState(prevState => (
+      {
+        userData: {
+          ...prevState.userData,
+          [name]: value
+        },
+        // editData: {
+        //   ...prevState.editData,
+        //   [name]: value
+        // }
+      }), () => console.log(this.state.userData));
+  };
 
   handleToggleModal = () => {
-    console.log("you have clicked the login/signup button");
+    // console.log("you have clicked the login/signup button");
     this.setState({ modalOpen: !this.state.modalOpen })
   };
 
 
   handleSelectCategory = (bpCategory) => {
-    console.log("the category selected was", bpCategory);
+    // console.log("the category selected was", bpCategory);
     this.setState({ category: bpCategory.elem });
-    console.log("category state in hSC", this.state.category);
+    // console.log("category state in hSC", this.state.category);
   }
 
   handleDisplayPage = (category) => {
-    console.log("you have entered the DisplayPage function", category);
+    // console.log("you have entered the DisplayPage function", category);
   }
 
   render() {
-    console.log("state in VCrender", this.state);
+    // console.log("state in VCrender", this.state);
     return (
       <Router>
         <Grid fluid className="vacation-container">
@@ -78,6 +79,7 @@ class VacationContainer extends Component {
                 />} />
                 <Route exact path="/signup" render={() => <HomePage 
                   purpose="Sign Up" 
+                  handleInputChange={this.handleInputChange} 
                   handleSignUp={this.handleSignUp} 
                   tripId={this.state.tripId} 
                 />} />
