@@ -9,10 +9,15 @@ const renderResult = props => (
 
   <div>
     <Row>
+      <Col xs={1}>
+      <input className="trip-check" type="checkbox" onClick={(event) => {
+        console.dir(event.target);
+        props.handleSetTripId(props.result.id)}} /> 
+      </Col>
       <Col xs={6}>
         <h3>{props.result.destination}</h3>
       </Col>
-      <Col xs={6}>
+      <Col xs={5}>
         <FormBtn id={props.result.id} onClick={props.toggleEdit}>Edit</FormBtn>
       </Col>
     </Row>

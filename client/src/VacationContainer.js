@@ -16,12 +16,12 @@ import BusinessPage from "./components/Pages/BusinessPage";
 
 
 class VacationContainer extends Component {
-  state = {
+
+    state = {
     modalOpen: false,
     user: 1,
     category: "",
-    id: 4,
-
+    tripId: "",
   };
 
 
@@ -49,6 +49,12 @@ class VacationContainer extends Component {
     console.log("category state in hSC", this.state.category);
   }
 
+  handleSetTripId = (id) => {
+    console.log("the trip id selected was", id)
+    this.setState( {tripId: id});
+  }
+
+
   handleDisplayPage = (category) => {
     console.log("you have entered the DisplayPage function", category);
   }
@@ -63,22 +69,24 @@ class VacationContainer extends Component {
             <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} />
           </Row>
           <Row>
-            <TripPanel UserId={this.state.user} handleTripFormSubmit={this.handleTripFormSubmit} />
+            <TripPanel UserId={this.state.user} 
+            handleTripFormSubmit={this.handleTripFormSubmit} 
+            handleSetTripId={this.handleSetTripId} />
             <DisplayPanel
-              userId={this.state.user}
-              tripId={this.state.id}
+              UserId={this.state.user}
+              TripId={this.state.tripId}
               dpCategory={this.state.category}
               handleDisplayPage={this.handleDisplayPage}>
               <Switch>
                 <Route exact path="/" component={HomePage} />
-                <Route exact path="/hotels" render={() => <BusinessPage businessType="hotels" tripId={1} />} />
-                <Route exact path="/dining" render={() => <BusinessPage businessType="dining" tripId={1} />} />
-                <Route exact path="/flights" render={() => <FlightsPage TripId={this.state.id}  />} />
-                <Route exact path="/attractions" render={() => <BusinessPage businessType="attractions" tripId={1} />} />
+                <Route exact path="/hotels" render={() => <BusinessPage businessType="hotels" TripId={this.state.tripId} />} />
+                <Route exact path="/dining" render={() => <BusinessPage businessType="dining" TripId={this.state.tripId} />} />
+                <Route exact path="/flights" render={() => <FlightsPage TripId={this.state.tripId}  />} />
+                <Route exact path="/attractions" render={() => <BusinessPage businessType="attractions" TripId={this.state.tripId} />} />
                 <Route exact path="/profile" render={() => <ProfilePage  UserId={this.state.user} />} />
               </Switch>
             </DisplayPanel>
-            <BusinessPanel userId={this.state.user} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
+            <BusinessPanel UserId={this.state.user} TripId={this.state.tripId} handleSelectCategory={this.handleSelectCategory} />
           </Row>
         </Grid>
       </Router >

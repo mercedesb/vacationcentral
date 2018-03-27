@@ -34,7 +34,6 @@ class TripPanel extends React.Component {
     };
 
     toggleEdit = event => {
-      // console.dir(event.target.id);
       this.setState({
         editing: !this.state.editing,
         editId: event.target.id
@@ -49,7 +48,6 @@ class TripPanel extends React.Component {
     );
 
 
-
     render() {
       console.log('these are my trip panel props!!', this.props)
 
@@ -61,7 +59,7 @@ class TripPanel extends React.Component {
           <Row>
               <TripAdd 
               getTrips={this.getTrips}
-              UserId={this.props.userId} />
+              UserId={this.props.UserId} />
           </Row>
           
           <Row>
@@ -72,12 +70,13 @@ class TripPanel extends React.Component {
           <Row>
           {this.state.tripDisplayVisible ? <TripDisplay 
           show={this.state.tripDisplayVisible} 
-          UserId={this.props.userId}
+          UserId={this.props.UserId}
           results={this.state.results}
           toggleEdit={this.toggleEdit}
           editing={this.state.editing}
           editId={this.state.editId}
           getTrips={this.getTrips}
+          handleSetTripId={this.props.handleSetTripId}
            /> : null}
           </Row>
 
