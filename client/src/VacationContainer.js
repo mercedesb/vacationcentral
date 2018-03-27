@@ -73,7 +73,7 @@ class VacationContainer extends Component {
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/hotels" render={() => <BusinessPage businessType="hotels" tripId={1} />} />
                 <Route exact path="/dining" render={() => <BusinessPage businessType="dining" tripId={1} />} />
-                <Route exact path="/flights" render={() => <FlightsPage tripId={this.state.id}  />} />
+                <Route exact path="/flights" render={() => <FlightsPage TripId={this.state.id}  />} />
                 <Route exact path="/attractions" render={() => <BusinessPage businessType="attractions" tripId={1} />} />
                 <Route exact path="/profile" render={() => <ProfilePage  UserId={this.state.user} />} />
               </Switch>

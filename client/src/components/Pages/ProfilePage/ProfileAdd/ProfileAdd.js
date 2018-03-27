@@ -45,11 +45,11 @@ class ProfileAdd extends React.Component {
               this.setState({profileData: {}});
               this.props.getProfiles(this.props.UserId);
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log("error profile form submit", err));
     }
 
     handleProfileEdit = event => {
-      console.log("handle edit", this.state.editData)
+      console.log("handle profile edit", this.state.editData)
       event.preventDefault();
       this.props.toggleEdit(event);
       API.updateProfiles(this.state.editData, this.state.profileData.id)
@@ -58,7 +58,7 @@ class ProfileAdd extends React.Component {
           this.setState({profileData: {}, editData: {}});
           this.props.getProfiles(this.props.UserId);
         })
-          .catch(err => console.log(err));
+          .catch(err => console.log("profile update error", err));
     }
     
     render() {

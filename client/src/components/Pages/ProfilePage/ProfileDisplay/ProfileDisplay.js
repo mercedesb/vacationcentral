@@ -29,7 +29,7 @@ class ProfileDisplay extends React.Component {
                 <ProfileListItem
                   editing={this.props.editing}
                   editId={this.props.editId}
-                  getAllProfiles={this.props.getProfiles}
+                  getProfiles={this.props.getProfiles}
                   id={profile.id}
                   key={profile.id}
                   result={profile}

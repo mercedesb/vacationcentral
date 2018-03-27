@@ -14,9 +14,18 @@ class FlightsPage extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        flightDisplayVisible: false
+        flightDisplayVisible: false, 
+        results: [],
+        editing: false,
+        editId: 0
       };
+      this.getFlights = this.getFlights.bind(this);
+      this.toggleEdit = this.toggleEdit.bind(this);
     }
+
+    componentWillMount(){
+        this.getFlights();
+      }
 
 
     handleToggleFlightDisplay = () => {
@@ -24,14 +33,31 @@ class FlightsPage extends React.Component {
         this.setState({ flightDisplayVisible: !this.state.flightDisplayVisible })
       };
 
+    toggleEdit = event => {
+        // console.dir(event.target.id);
+        this.setState({
+          editing: !this.state.editing,
+          editId: event.target.id
+        }, () => console.log("toggle edit", this.state));
+      };
+    
+    getFlights = () => (
+        API.getFlights(this.props.TripId)
+        .then(response => {
+          this.setState({results: response.data}, () => console.log("get Flights working", this.state))
+        })
+      );
+
 
     render() {
       console.log('these are my FlightsPage props!!', this.props)
      return ( 
-         <Col xs={12} className="flight-page">
+         <Col xs={12} className="flights-page">
 
              <Row>
-                 <FlightAdd TripId={this.props.TripId} />
+                 <FlightAdd 
+                 getFlights={this.getFlights}
+                 TripId={this.props.TripId} />
              </Row>
 
              <Row>
@@ -39,7 +65,15 @@ class FlightsPage extends React.Component {
              </Row>
 
              <Row>
-                 {this.state.flightDisplayVisible ? <FlightDisplay show={this.state.flightDisplayVisible} TripId={this.props.TripId} /> : null}
+                 {this.state.flightDisplayVisible ? <FlightDisplay 
+                 show={this.state.flightDisplayVisible} 
+                 TripId={this.props.TripId}
+                 results={this.state.results}
+                 toggleEdit={this.toggleEdit}
+                 editing={this.state.editing}
+                 editId={this.state.editId}
+                 getFlights={this.getFlights} 
+                 /> : null}
              </Row>
 
          </Col>     

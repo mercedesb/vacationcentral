@@ -49,7 +49,7 @@ export default {
   },
 
   updateProfiles: function(profileData, id) {
-    console.log("in profile post API", profileData); 
+    console.log("in profile put API", profileData); 
     return axios.put("/api/profiles/" + id,  profileData);
   },
 
@@ -62,9 +62,12 @@ export default {
     console.log("in flight postAPI", flightData);
     return axios.post("api/flights", flightData);
   },
-  // updateFlights: function(flightData) {
-  //   return axios.put("api/flights" + id, flightsData);
-  // },
+
+  updateFlights: function(flightData, id) {
+    console.log("in flight put API", flightData); 
+    return axios.put("api/flights/" + id, flightData);
+  },
+
   getLogin: function (loginData) {
     return axios.get("api/login", loginData)
   },
