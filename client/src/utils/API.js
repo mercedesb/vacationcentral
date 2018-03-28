@@ -5,7 +5,6 @@ export default {
   getBusinesses: function(trip) {
     return axios.get("/api/businesses?" + `TripId=${trip}`);
   },
-
   // Gets the book with the given id
   // getBusiness: function(id) {
   //   return axios.get("/api/businesses/" + id);
@@ -16,11 +15,21 @@ export default {
   // },
   // Saves a book to the database
   saveBusiness: function(businessData) {
-    return axios.post("/api/businesses/", businessData);
+    return axios.post("/api/businesses", businessData);
   },
-  // updateBusiness: function(businessData) {
-  //   return axios.put("api/businesses/" + id, businessData);
-  // }, 
+  updateBusiness: function(businessData, id) {
+    return axios.put("/api/businesses/" + id, businessData);
+  }, 
+
+  // Users routing
+  saveUser: function(userData) {
+    console.log("api post");
+    return axios.post("/api/users", userData);
+  },
+  loginUser: function(userData) {
+    console.log("api login");
+    return axios.post("/api/users/login", userData);
+  },
   
 
 
@@ -85,7 +94,5 @@ export default {
 
 
 
-  updateBusiness: function(businessData, id) {
-    return axios.put("api/businesses/" + id, businessData);
-  }
+  
 };

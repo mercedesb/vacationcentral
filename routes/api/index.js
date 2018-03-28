@@ -6,7 +6,7 @@ const flightRoutes = require("./flight");
 const profileRoutes = require("./profile");
 const tripRoutes = require("./trip");
 
-// Book routes
+// Model routes
 router.use("/users", userRoutes);
 router.use("/businesses", businessRoutes);
 router.use("/comments", commentRoutes);
