@@ -13,6 +13,7 @@ class ProfileAdd extends React.Component {
       };
     }
 
+
     componentDidMount() {
       if(this.props.profileData) {
         this.setState({profileData: this.props.profileData});
@@ -62,16 +63,16 @@ class ProfileAdd extends React.Component {
     }
     
     render() {
-        console.log('these are my profile add props!!', this.props)
         
+        console.log('these are my profile add props!!', this.props)
 
        return (
         <div className="profile-add">
 
-           <p>Add a Company to your Profile</p>
+           <p className="second-text">Add a company to your rewards profile</p>
 
              <form>
-               <label>Select the Profile Type: </label>
+               <label className="label-text" style={{margin: "0 auto"}} >Select the Profile Type: </label>
                <select xs={12} value={this.state.profileData.type} name="type" onChange={this.handleProfileInputChange}>
                  <option value="Airline">Airline</option>
                  <option value="Hotel">Hotel</option>
@@ -79,31 +80,31 @@ class ProfileAdd extends React.Component {
                </select>
              </form>
 
-             <label>Company Name:</label>
-             <Input
+             <label className="label-text">Company Name:</label>
+             <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
                value={this.state.profileData.company}
                name="company"
                onChange={this.handleProfileInputChange}
                type="text"
                placeholder="Add Company Name" />
 
-             <label>Reward Number:</label>
-             <Input
+             <label className="label-text">Reward Number:</label>
+             <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
                value={this.state.profileData.memberNumber}
                name="memberNumber"
                onChange={this.handleProfileInputChange}
                type="text"
                placeholder="Add Rewards Number" />
 
-             <label>Company Phone Number:</label>
-             <Input 
+             <label className="label-text">Company Phone Number:</label>
+             <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
                value={this.state.profileData.phone}
                name="phone"
                onChange={this.handleProfileInputChange}
                type="text"
                placeholder="Add Company Phone" />
 
-             <FormBtn onClick={this.props.editing ? this.handleProfileEdit : this.handleProfileFormSubmit} >Submit</FormBtn>
+             <button className="btn btn-lrg submit-btn"  onClick={this.props.editing ? this.handleProfileEdit : this.handleProfileFormSubmit} >Submit</button>
           
 
         </div>

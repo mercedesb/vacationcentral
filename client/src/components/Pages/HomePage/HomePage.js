@@ -13,8 +13,9 @@ class HomePage extends React.Component {
       console.log('these are my HomePage props!!', this.props)
       return (
         <Col xs={12} className="home-page">
-          <p>Home Page</p>
-          <p>Welcome to Vacation Central</p>
+
+          <p className="header">Welcome to Vacation Central</p>
+
         </Col>
       );
     }

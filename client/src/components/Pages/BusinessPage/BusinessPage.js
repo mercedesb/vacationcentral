@@ -30,7 +30,7 @@ class BusinessPage extends Component {
   };
 
   getAllBusinesses = () => (
-    API.getBusinesses(this.props.tripId)
+    API.getBusinesses(this.props.TripId)
       .then(response => {
         this.setState({ results: response.data }, () => console.log(this.state))
       })
@@ -44,7 +44,7 @@ class BusinessPage extends Component {
           <BusinessForm 
             getAllBusinesses={this.getAllBusinesses} 
             businessType={this.props.businessType} 
-            tripId={this.props.tripId} 
+            tripId={this.props.TripId} 
           /> :
           undefined
         } 

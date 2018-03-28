@@ -1,8 +1,14 @@
-.home-page{
+
+.home-page {
     width: 80%;
-    margin: 0 auto;
-    height: 400px;
+    font-size: 15px;
+    margin-left: 10%;
+    height: auto;
     margin-top: 10px;
-    background: whitesmoke;
-    border-left: 1px solid #ddd;
+    margin-bottom: 10px;
+    background:#B85D57;
+    line-height: 1.5;
+    border-radius: 6px;
+    box-shadow: 5px 10px 6px rgb(65, 64, 64);
+
 }
