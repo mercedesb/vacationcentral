@@ -86,7 +86,7 @@ class BusinessForm extends Component {
     return (
 
       <div className="business-add">
-            ß<p className="second-text">Add a {this.props.businessType}</p>
+            ß<p className="second-text">Add {this.props.businessType}</p>
         
           <label className="label-text" >Business Name:</label>
           <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}

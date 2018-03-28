@@ -17,7 +17,7 @@ import MemberPage from "./components/Pages/MemberPage";
 
 class VacationContainer extends Component {
   state = {
-    modalOpen: false,
+    // modalOpen: false,
     user: {},
     category: "",
     tripId: "",
@@ -64,10 +64,10 @@ class VacationContainer extends Component {
     this.loginUser(this.state.userData);
   }
 
-  handleToggleModal = () => {
-    // console.log("you have clicked the login/signup button");
-    this.setState({ modalOpen: !this.state.modalOpen })
-  };
+  // handleToggleModal = () => {
+  //   // console.log("you have clicked the login/signup button");
+  //   this.setState({ modalOpen: !this.state.modalOpen })
+  // };
 
 
   handleSelectCategory = (bpCategory) => {
@@ -92,7 +92,7 @@ class VacationContainer extends Component {
       <Router>
         <Grid fluid className="vacation-container">
           <Row>
-            <HeaderPanel handleToggleModal={this.handleToggleModal} />
+            <HeaderPanel/>
             <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} />
           </Row>
           <Row>

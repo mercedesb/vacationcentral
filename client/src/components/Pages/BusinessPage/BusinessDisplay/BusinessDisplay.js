@@ -18,7 +18,7 @@ class BusinessDisplay extends React.Component {
 
 
     return(
-  <Col xs={12} className="business-display">
+  <Col xs={12} >
     <ul style={{ listStyleType: "none", paddingLeft: "0px" }}>
 
       {this.props.results.length !== 0 ? 

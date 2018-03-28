@@ -4,7 +4,11 @@ import { Grid, Row, Col } from 'react-bootstrap';
 
 const MemberPage = props => (
   <Col xs={12} className="member-display">
-    <h2>Welcome!</h2>
+    <p className="header">Welcome to Vacation Central</p>
+
+    <p className="second-text">One stop for all your vacation details</p>
+
+    <p> Start by setting up a trip. All you will need is your destination and the dates of your adventure.</p>
   </Col>
 );
 

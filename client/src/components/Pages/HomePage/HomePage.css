@@ -11,3 +11,16 @@
     box-shadow: 5px 10px 6px rgb(65, 64, 64);
 
 }
+
+.signup-btn {        
+    
+    font-size: 20px;
+    height: 40px;
+    margin-left: 15%;
+    margin-bottom: 15px;
+    width: 70%;
+    padding: 0;
+    color: #230C0F;
+    background-color:  #6E9CB6;
+
+}
