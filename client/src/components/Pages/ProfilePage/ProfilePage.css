@@ -6,7 +6,8 @@
     margin-top: 10px;
     background: rgb(238, 225, 209);
     border-top: 1px solid #230C0F;
-
+    border-radius: 6px;
+    box-shadow: 5px 10px 6px rgb(65, 64, 64);
 }
 
 .profile-btn {

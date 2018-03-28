@@ -1,10 +1,11 @@
 .trip-list-item{
-    /* height: 400px; */
     list-style-type: none;
     width: 100%;
     font-size: 15px;
     background: #757073;
-    /* overflow: scroll */
+    margin-bottom: 2px;
+    border-radius: 6px;
+
 }
 
 
