@@ -16,7 +16,7 @@ module.exports = {
   //     .catch(err => res.status(422).json(err));
   // },
   login: function(req, res) {
-    res.json("/members");
+    res.json("/member");
   },
 
   create: function(req, res) {
@@ -24,7 +24,7 @@ module.exports = {
     console.log(req.body);
     db.User
       .create(req.body)
-      .then(() => res.redirect(307, res.json("/member")))
+      .then(data => res.redirect(307, res.json({user: data, path: "/"})))
       .catch(err => res.status(422).json(err));
   },
   // update: function(req, res) {

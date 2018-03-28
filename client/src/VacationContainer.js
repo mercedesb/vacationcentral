@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
+import { Redirect } from 'react-router'
 import "./VacationContainer.css"
 import API from "./utils/API";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -16,17 +17,19 @@ import MemberPage from "./components/Pages/MemberPage";
 
 class VacationContainer extends Component {
   state = {
-    modalOpen: false,
-    user: {},
-    category: "",
-    tripId: 4,
-    userData: {},
-  };
+      modalOpen: false,
+      user: {},
+      category: "",
+      tripId: 4,
+      userData: {},
+      loggedin: false,
+    };
 
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState(prevState => (
-      {userData: {
+      {
+        userData: {
           ...prevState.userData,
           [name]: value
         }
@@ -36,30 +39,32 @@ class VacationContainer extends Component {
   signUpUser = userData => {
     API.saveUser(userData)
       .then(data => {
-        window.location.replace(data);
+        console.log(data);
+        window.location.replace(data.data);
       })
       .catch(err => console.log(err));
   }
 
   handleSignUp = event => {
     event.preventDefault();
-    if (!this.state.userData.email || !this.state.userData.password) {return}
+    if (!this.state.userData.email || !this.state.userData.password) { return }
     this.signUpUser(this.state.userData);
   }
 
   loginUser = userData => {
     API.loginUser(userData)
-    .then(data => {
-      window.location.replace(data);
-      this.setState({user: {...userData}});
-      console.log(this.state.user);
-    })
-    .catch(err => console.log(err));
+      .then(data => {
+        console.log("data", data);
+        this.setState({ loggedin: true });
+        console.log(this.state.user);
+        window.location.replace(data.data);
+      })
+      .catch(err => console.log(err));
   }
 
   handleLogIn = event => {
     event.preventDefault();
-    if (!this.state.userData.email || !this.state.userData.password) {return}
+    if (!this.state.userData.email || !this.state.userData.password) { return }
     this.loginUser(this.state.userData);
   }
 
@@ -92,24 +97,24 @@ class VacationContainer extends Component {
               dpCategory={this.state.category}
               handleDisplayPage={this.handleDisplayPage}>
               <Switch>
-                <Route exact path="/" render={() => <HomePage 
-                  purpose="Log In" 
-                  handleInputChange={this.handleInputChange} 
-                  handleLogIn={this.handleLogIn} 
-                  user={this.state.userData} 
+                <Route exact path="/" render={() => <HomePage
+                  purpose="Log In"
+                  handleInputChange={this.handleInputChange}
+                  handleLogIn={this.handleLogIn}
+                  user={this.state.userData}
                 />} />
-                <Route exact path="/signup" render={() => <HomePage 
-                  purpose="Sign Up" 
-                  handleInputChange={this.handleInputChange} 
-                  handleSignUp={this.handleSignUp} 
-                  user={this.state.userData} 
+                <Route exact path="/signup" render={() => <HomePage
+                  purpose="Sign Up"
+                  handleInputChange={this.handleInputChange}
+                  handleSignUp={this.handleSignUp}
+                  user={this.state.userData}
                 />} />
                 <Route exact path="/member" render={() => <MemberPage />} />
                 <Route exact path="/hotels" render={() => <BusinessPage businessType="hotels" tripId={1} />} />
                 <Route exact path="/dining" render={() => <BusinessPage businessType="dining" tripId={1} />} />
-                <Route exact path="/flights" render={() => <FlightsPage TripId={this.state.id}  />} />
+                <Route exact path="/flights" render={() => <FlightsPage TripId={this.state.id} />} />
                 <Route exact path="/attractions" render={() => <BusinessPage businessType="attractions" tripId={1} />} />
-                <Route exact path="/profile" render={() => <ProfilePage  UserId={this.state.user.id} />} />
+                <Route exact path="/profile" render={() => <ProfilePage UserId={this.state.user.id} />} />
               </Switch>
             </DisplayPanel>
             <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
