@@ -15,12 +15,25 @@ module.exports = {
   //     .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
   // },
-  // create: function(req, res) {
-  //   db.Book
-  //     .create(req.body)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
+  login: function(req, res) {
+    db.User
+      .findOne({where: {
+        email: req.body.email
+      }})
+      .then(data => {
+        console.log(data.dataValues);
+        res.json({user: data.dataValues, path: "/member"});
+      })
+  },
+
+  create: function(req, res) {
+    console.log("in controller");
+    console.log(req.body);
+    db.User
+      .create(req.body)
+      .then(data => res.redirect(307, res.json({user: data, path: "/"})))
+      .catch(err => res.status(422).json(err));
+  },
   // update: function(req, res) {
   //   db.Book
   //     .findOneAndUpdate({ _id: req.params.id }, req.body)
