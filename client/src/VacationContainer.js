@@ -89,13 +89,13 @@ class VacationContainer extends Component {
                   purpose="Log In" 
                   handleInputChange={this.handleInputChange} 
                   handleLogIn={this.handleLogIn} 
-                  tripId={this.state.tripId} 
+                  user={this.state.userData} 
                 />} />
                 <Route exact path="/signup" render={() => <HomePage 
                   purpose="Sign Up" 
                   handleInputChange={this.handleInputChange} 
                   handleSignUp={this.handleSignUp} 
-                  tripId={this.state.tripId} 
+                  user={this.state.userData} 
                 />} />
                 <Route exact path="/member" render={() => <MemberPage />} />
                 <Route exact path="/hotels" render={() => <BusinessPage businessType="hotels" tripId={1} />} />

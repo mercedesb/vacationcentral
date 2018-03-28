@@ -13,25 +13,56 @@ const HomePage = props => (
         <form className="signup">
           <div className="form-group">
             <label>Email address</label>
-            <input onChange={props.handleInputChange} type="email" name="email" className="form-control" id="email-input" placeholder="Email" />
+            <input 
+              onChange={props.handleInputChange} 
+              type="email" 
+              name="email" 
+              className="form-control" 
+              placeholder="Email" 
+              value={props.user.email || ""} />
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input type="password" onChange={props.handleInputChange} name="password" className="form-control" id="password-input" placeholder="Password" />
+            <input 
+              type="password" 
+              onChange={props.handleInputChange} 
+              name="password" 
+              className="form-control" 
+              placeholder="Password" 
+              defaultValue="" 
+              />
           </div>
           {props.purpose === "Log In" ? undefined :
             <div>
               <div className="form-group">
                 <label>First Name</label>
-                <input type="text" name="firstName" onChange={props.handleInputChange} className="form-control" id="firstName-input" placeholder="First Name" />
+                <input 
+                  type="text" 
+                  name="firstName" 
+                  onChange={props.handleInputChange} 
+                  className="form-control" 
+                  placeholder="First Name"
+                  value={props.user.firstName || ""} />
               </div>
               <div className="form-group">
                 <label>Last Name</label>
-                <input type="text" onChange={props.handleInputChange} name="lastName" className="form-control" id="lastName-input" placeholder="Last Name" />
+                <input 
+                  type="text" 
+                  onChange={props.handleInputChange} 
+                  name="lastName" 
+                  className="form-control" 
+                  placeholder="Last Name" 
+                  value={props.user.lastName || ""} />
               </div>
               <div className="form-group">
                 <label>User Name</label>
-                <input type="text" onChange={props.handleInputChange} name="userName" className="form-control" id="userName-input" placeholder="User Name" />
+                <input 
+                  type="text" 
+                  onChange={props.handleInputChange} 
+                  name="userName" 
+                  className="form-control" 
+                  placeholder="User Name" 
+                  value={props.user.userName || ""} />
               </div>
             </div>}
           <div style={{ display: "none" }} id="alert" className="alert alert-danger" role="alert">
