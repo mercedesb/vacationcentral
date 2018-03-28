@@ -75,7 +75,7 @@ componentDidMount() {
          <form> 
           <label className="label-text">Destination:</label>
           <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
-              value={this.state.tripData.destination}
+              value={this.state.tripData.destination  || ""}
               name="destination"
               onChange={this.handleTripInputChange}
               type="text"
@@ -83,7 +83,7 @@ componentDidMount() {
 
           <label className="label-text">Start Date:</label>
           <Input style={{ width: "70%", margin: "0 auto" , textAlign: "center"}}
-              value={this.state.tripData.start}
+              value={this.state.tripData.start  || ""}
               name="start"
               onChange={this.handleTripInputChange}
               type="date"
@@ -93,7 +93,7 @@ componentDidMount() {
           <Input style={{ width: "70%", margin: "0 auto", textAlign: "center"}}
               value={this.state.tripData.end}
               name="end"
-              onChange={this.handleTripInputChange}
+              onChange={this.handleTripInputChange  || ""}
               type="date"
               placeholder="MM-DD-YYYY" />
 

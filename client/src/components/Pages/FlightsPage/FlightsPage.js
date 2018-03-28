@@ -17,10 +17,14 @@ class FlightsPage extends React.Component {
         flightDisplayVisible: false, 
         results: [],
         editing: false,
-        editId: 0
+        editId: 0,
+        flightAware: {}
+
       };
+
       this.getFlights = this.getFlights.bind(this);
       this.toggleEdit = this.toggleEdit.bind(this);
+      this.callFlightAware = this.callFlightAware.bind(this);
     }
 
     componentWillMount(){
@@ -34,7 +38,7 @@ class FlightsPage extends React.Component {
       };
 
     toggleEdit = event => {
-        // console.dir(event.target.id);
+        console.dir(event.target.id);
         this.setState({
           editing: !this.state.editing,
           editId: event.target.id
@@ -47,6 +51,16 @@ class FlightsPage extends React.Component {
           this.setState({results: response.data}, () => console.log("get Flights working", this.state))
         })
       );
+
+    callFlightAware = event => {
+        event.preventDefault();
+        console.log(event.target.id, this.state.results);
+          // this.setState({
+          //   flightAwareId: event.target.id
+          // });
+
+    };
+  
 
 
     render() {
@@ -61,19 +75,20 @@ class FlightsPage extends React.Component {
              </Row>
 
             <Row>
-                 <button className='flight-btn' onClick={this.handleToggleFlightAdd}>Add a Flight</button>
+                 <button className='flight-btn'>Add a Flight</button>
              </Row>
 
 
              <Row>
                  {this.state.flightDisplayVisible ? <FlightDisplay 
-                 show={this.state.flightDisplayVisible} 
+                 show={this.state.flightDisplayVisible}
                  TripId={this.props.TripId}
                  results={this.state.results}
                  toggleEdit={this.toggleEdit}
                  editing={this.state.editing}
                  editId={this.state.editId}
-                 getFlights={this.getFlights} 
+                 getFlights={this.getFlights}
+                 callFlightAware={this.callFlightAware} 
                  /> : null}
              </Row>
 
