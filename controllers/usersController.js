@@ -16,7 +16,14 @@ module.exports = {
   //     .catch(err => res.status(422).json(err));
   // },
   login: function(req, res) {
-    res.json("/member");
+    db.User
+      .findOne({where: {
+        email: req.body.email
+      }})
+      .then(data => {
+        console.log(data.dataValues);
+        res.json({user: data.dataValues, path: "/member"});
+      })
   },
 
   create: function(req, res) {
