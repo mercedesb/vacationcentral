@@ -54,10 +54,9 @@ class VacationContainer extends Component {
   loginUser = userData => {
     API.loginUser(userData)
       .then(data => {
-        console.log("data", data);
-        this.setState({ loggedin: true });
-        console.log(this.state.user);
-        window.location.replace(data.data);
+        this.setState({ user: data.data.user, loggedin: true });
+        console.log(this.state.user.id);
+        window.location.replace(data.data.path);
       })
       .catch(err => console.log(err));
   }
