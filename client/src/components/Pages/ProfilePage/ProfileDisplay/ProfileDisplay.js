@@ -35,7 +35,7 @@ class ProfileDisplay extends React.Component {
                   result={profile}
                   toggleEdit={this.props.toggleEdit}
                 />) :
-            <h3> Add a profile to start</h3>}          
+            <p className="second-text"> Add a profile to start</p>}          
 
             </ul>
           </Col>

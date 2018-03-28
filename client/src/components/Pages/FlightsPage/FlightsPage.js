@@ -54,15 +54,16 @@ class FlightsPage extends React.Component {
      return ( 
          <Col xs={12} className="flights-page">
 
-             <Row>
-                 <FlightAdd 
-                 getFlights={this.getFlights}
-                 TripId={this.props.TripId} />
+              <Row> <p className="header">Flight Information</p> </Row>
+              
+              <Row>
+                 <button className='flight-btn' onClick={this.handleToggleFlightDisplay}>View Your Flights</button>
              </Row>
 
-             <Row>
-                 <FormBtn className='flight-btn' onClick={this.handleToggleFlightDisplay}>View Your Flights</FormBtn>
+            <Row>
+                 <button className='flight-btn' onClick={this.handleToggleFlightAdd}>Add a Flight</button>
              </Row>
+
 
              <Row>
                  {this.state.flightDisplayVisible ? <FlightDisplay 
@@ -74,6 +75,12 @@ class FlightsPage extends React.Component {
                  editId={this.state.editId}
                  getFlights={this.getFlights} 
                  /> : null}
+             </Row>
+
+              <Row>
+                 <FlightAdd 
+                 getFlights={this.getFlights}
+                 TripId={this.props.TripId} />
              </Row>
 
          </Col>     

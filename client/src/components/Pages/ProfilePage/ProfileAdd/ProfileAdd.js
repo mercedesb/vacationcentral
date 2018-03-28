@@ -13,6 +13,7 @@ class ProfileAdd extends React.Component {
       };
     }
 
+
     componentDidMount() {
       if(this.props.profileData) {
         this.setState({profileData: this.props.profileData});
@@ -62,8 +63,8 @@ class ProfileAdd extends React.Component {
     }
     
     render() {
-        console.log('these are my profile add props!!', this.props)
         
+        console.log('these are my profile add props!!', this.props)
 
        return (
         <div className="profile-add">

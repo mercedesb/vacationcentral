@@ -33,6 +33,7 @@ class ProfilePage extends React.Component {
     this.setState({ profileDisplayVisible: !this.state.profileDisplayVisible })
   };
 
+
   toggleEdit = event => {
     // console.dir(event.target.id);
     this.setState({
@@ -57,25 +58,31 @@ class ProfilePage extends React.Component {
         <Row> <p className="header">Reward Programs</p> </Row>
 
         <Row>
-          <ProfileAdd 
-              getProfiles={this.getProfiles}
-              UserId={this.props.UserId} />
-        </Row>
-
-        <Row>
           <button className='profile-btn' onClick={this.handleToggleProfileDisplay}>View Your Profiles</button>
         </Row>
 
         <Row>
-          {this.state.profileDisplayVisible ? <ProfileDisplay 
-          show={this.state.profileDisplayVisible} 
-          UserId={this.props.UserId} 
-          results={this.state.results}
-          toggleEdit={this.toggleEdit}
-          editing={this.state.editing}
-          editId={this.state.editId}
-          getProfiles={this.getProfiles}
-           /> : null}
+          <button className='profile-btn' onClick={this.handleToggleProfileAdd}>Add a Rewards Profile</button>
+        </Row>
+
+
+
+        <Row>
+          {this.state.profileDisplayVisible ? <ProfileDisplay
+            show={this.state.profileDisplayVisible}
+            UserId={this.props.UserId}
+            results={this.state.results}
+            toggleEdit={this.toggleEdit}
+            editing={this.state.editing}
+            editId={this.state.editId}
+            getProfiles={this.getProfiles}
+          /> : null}
+        </Row>
+
+        <Row>
+          <ProfileAdd
+            getProfiles={this.getProfiles}
+            UserId={this.props.UserId} />
         </Row>
 
 

@@ -1,10 +1,10 @@
 .category-btn {
-    height: 60px;
+    height: 15%;
     background-color: transparent;
     color:#230C0F;
     border: 2px solid #230C0F;
     width: 80%;
-    margin-top: 20px;
+    margin-top:10%;
   }
 
   a {

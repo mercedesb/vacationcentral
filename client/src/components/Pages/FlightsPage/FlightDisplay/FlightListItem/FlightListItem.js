@@ -7,26 +7,29 @@ import { Link } from "react-router-dom";
 
 const renderResult = props => (
 
-  <div>
+
+  <form className="flight-listItem">
     <Row>
-      <Col xs={6}>
-        <h3>{props.result.airline}</h3>
-        <h2>{props.result.confirmationNumber}</h2>
-      </Col>
-      <Col xs={6}>
-        <FormBtn id={props.result.id} onClick={props.toggleEdit}>Edit</FormBtn>
-      </Col>
+      <div><p className="second-text">Confirm Number:  <strong>{props.result.confirmationNumber}</strong></p></div>
+
+      {props.result.flightNumber ? <div><p>Airline:  {props.result.airline} </p> </div> : undefined}
+ 
+      {props.result.departLocation ? <div><p>Departure Airport:  {props.result.departLocation} </p></div> : undefined}
+      {props.result.departTime ? <div><p>Departure Time:  <strong>{props.result.departTime}</strong></p></div> : undefined}
+
+      {props.result.arriveLocation ? <div><p>Airport:  {props.result.arriveLocation}</p></div> : undefined}
+      {props.result.arriveTime ? <div><p>Arrival Time:  <strong>{props.result.arriveTime}</strong></p></div> : undefined}
     </Row>
-    {props.result.flightNumber ? <div><p>Flight Number:<br />{props.result.flightNumber}</p></div> : undefined}
-    {props.result.departLocation ? <div><p>Departure Airport:<br />{props.result.departLocation}</p></div> : undefined}
-    {props.result.departTime ? <div><p>Departure Time:<br />{props.result.departTime}</p></div> : undefined}
-    {props.result.arriveLocation ? <div><p>Arrival Airport:<br />{props.result.arriveLocation}</p></div> : undefined}
-    {props.result.arriveTime? <div><p>Arrival Time:<br />{props.result.arriveTime}</p></div> : undefined}
-    <Link to={"https://www.world-airport-codes.com/"} target="_blank">Search Airport Codes</Link>
+    <Row>
+      <button className="flight-edit-btn"><Link to={"https://www.world-airport-codes.com/"} target="_blank">Search Airport Codes</Link></button>
 
+      <button className="flight-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
 
+      <button className="flight-edit-btn">FlightAware</button>
 
-  </div>
+    </Row>
+  </form>
+
 );
 
 const renderForm = props => (
