@@ -66,7 +66,14 @@ class TripPanel extends React.Component {
           
           <Row>
             {/* <FormBtn style={{ color: "orange", height: "50px" }} onClick={this.handleToggleTripDisplay}>View Your Trips</FormBtn> */}
-            <button className="tripDisplay-btn" onClick={this.handleToggleTripDisplay}>View Your Trips</button> 
+            <button 
+              className="tripDisplay-btn" 
+              onClick={() => {
+                this.getTrips(this.props.UserId);
+                this.handleToggleTripDisplay();
+              }}>
+              View Your Trips
+            </button> 
           </Row>
 
           <Row>

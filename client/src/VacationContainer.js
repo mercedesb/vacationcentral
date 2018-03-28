@@ -17,13 +17,13 @@ import MemberPage from "./components/Pages/MemberPage";
 
 class VacationContainer extends Component {
   state = {
-      modalOpen: false,
-      user: {},
-      category: "",
-      tripId: 4,
-      userData: {},
-      loggedin: false,
-    };
+    modalOpen: false,
+    user: {},
+    category: "",
+    tripId: 4,
+    userData: {},
+    loggedin: false,
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -33,13 +33,12 @@ class VacationContainer extends Component {
           ...prevState.userData,
           [name]: value
         }
-      }), () => console.log(this.state.userData));
+      }));
   };
 
   signUpUser = userData => {
     API.saveUser(userData)
       .then(data => {
-        console.log(data);
         window.location.replace(data.data);
       })
       .catch(err => console.log(err));
@@ -54,9 +53,7 @@ class VacationContainer extends Component {
   loginUser = userData => {
     API.loginUser(userData)
       .then(data => {
-        this.setState({ user: data.data.user, loggedin: true });
-        console.log(this.state.user.id);
-        window.location.replace(data.data.path);
+        this.setState({ user: data.data.user, path: data.data.path, userData: {}, loggedin: true });
       })
       .catch(err => console.log(err));
   }
@@ -81,7 +78,7 @@ class VacationContainer extends Component {
 
   handleSetTripId = (id) => {
     console.log("the trip id selected was", id)
-    this.setState( {tripId: id});
+    this.setState({ tripId: id });
   }
 
 
@@ -99,8 +96,8 @@ class VacationContainer extends Component {
             <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} />
           </Row>
           <Row>
-            <TripPanel 
-              UserId={this.state.user.id} 
+            <TripPanel
+              UserId={this.state.user.id}
               handleTripFormSubmit={this.handleTripFormSubmit}
               handleSetTripId={this.handleSetTripId} />
             <DisplayPanel
@@ -109,12 +106,15 @@ class VacationContainer extends Component {
               dpCategory={this.state.category}
               handleDisplayPage={this.handleDisplayPage}>
               <Switch>
-                <Route exact path="/" render={() => <HomePage
-                  purpose="Log In"
-                  handleInputChange={this.handleInputChange}
-                  handleLogIn={this.handleLogIn}
-                  user={this.state.userData}
-                />} />
+                <Route exact path="/" 
+                  render={() => (this.state.user.id ? <Redirect to="/member" /> : 
+                  <HomePage
+                    purpose="Log In"
+                    handleInputChange={this.handleInputChange}
+                    handleLogIn={this.handleLogIn}
+                    user={this.state.userData}
+                  />)} 
+                />
                 <Route exact path="/signup" render={() => <HomePage
                   purpose="Sign Up"
                   handleInputChange={this.handleInputChange}
