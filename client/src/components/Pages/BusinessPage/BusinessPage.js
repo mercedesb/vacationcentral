@@ -9,7 +9,7 @@ class BusinessPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      businessDisplayVisible: true,
+      businessDisplayVisible: false,
       results: [],
       editing: false,
       editId: 0
@@ -43,6 +43,7 @@ class BusinessPage extends Component {
   );
 
   render() {
+    console.log("these are my business page props", this.props)
     return (
       <Col xs={12} className="business-page">
       <Row>
@@ -54,7 +55,7 @@ class BusinessPage extends Component {
       </Row>
 
       <Row>
-          <button className='business-btn' onClick={this.handleToggleBusinessAdd}>Add {this.props.businessType}</button>
+          <button className='business-btn'>Add {this.props.businessType}</button>
       </Row>
 
       <Row>
@@ -74,7 +75,7 @@ class BusinessPage extends Component {
           <BusinessForm 
             getAllBusinesses={this.getAllBusinesses} 
             businessType={this.props.businessType} 
-            tripId={this.props.TripId} 
+            TripId={this.props.TripId} 
           /> :
           undefined
         } 

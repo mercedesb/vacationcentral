@@ -4,28 +4,39 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import BusinessListItem from "./BusinessListItem"
 
 
-const BusinessDisplay = props => (
+class BusinessDisplay extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-  // if (!this.props.show) {return null; }
+  render() {
 
+    if(!this.props.show){ return null; }
+      
+    console.log('these are my business display props!!', this.props)
+
+
+    return(
   <Col xs={12} className="business-display">
-    <ul>
-      {props.results.length !== 0 ? 
-        props.results
-          .filter(business => business.type === props.businessType)
+    <ul style={{ listStyleType: "none", paddingLeft: "0px" }}>
+
+      {this.props.results.length !== 0 ? 
+        this.props.results
+          .filter(business => business.type === this.componentDidCatchprops.businessType)
           .map(business => <BusinessListItem 
-            editing={props.editing}
-            editId={props.editId}
-            getAllBusinesses={props.getAllBusinesses}
+            editing={this.props.editing}
+            editId={this.props.editId}
+            getAllBusinesses={this.props.getAllBusinesses}
             id={business.TripId}
             key={business.TripId} 
             result={business} 
-            toggleEdit={props.toggleEdit} 
+            toggleEdit={this.props.toggleEdit} 
           />) :
           <p className="second-text">Add a business to start</p>}
     </ul>
   </Col>
 );
-
+  }}
 
 export default BusinessDisplay;

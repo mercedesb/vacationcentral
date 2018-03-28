@@ -6,7 +6,7 @@ import ProfileAdd from "../../ProfileAdd";
 
 const renderResult = props => (
 
-  <li className="profile-listItem">
+  <li className="profile-list-item">
     <Row>
         <p className="second-text">{props.result.company}</p>
     </Row>
