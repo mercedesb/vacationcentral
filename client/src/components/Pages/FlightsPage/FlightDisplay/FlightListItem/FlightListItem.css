@@ -2,7 +2,7 @@
         width: 80%;
         font-size: 15px;
         margin: 0 auto;
-        height: 260px;
+        height: auto;
         overflow: scroll;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -17,8 +17,8 @@
         margin: 0 auto;
         background-color: #26867B;
         height: 30px;
-        width: 25%;
-        margin-left: 7%;
+        width: 30%;
+        margin-left: 12.5%;
         text-align: center;
         color: #230C0F;
         margin-bottom: 10px;

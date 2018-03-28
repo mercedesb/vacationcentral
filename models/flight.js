@@ -1,6 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Flight = sequelize.define("Flight", {
     confirmationNumber: DataTypes.STRING,
+    date: {type: DataTypes.DATEONLY, allowNull: false},
     airline: {type: DataTypes.STRING, allowNull: false},
     flightNumber: {type: DataTypes.STRING, allowNull: false},
     departLocation: {type: DataTypes.STRING, allowNull: false},

@@ -19,7 +19,7 @@ class VacationContainer extends Component {
 
     state = {
     modalOpen: false,
-    user: 1,
+    user: 6,
     category: "",
     tripId: "",
   };

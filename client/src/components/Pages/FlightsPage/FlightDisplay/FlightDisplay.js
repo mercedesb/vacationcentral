@@ -18,6 +18,10 @@ class FlightDisplay extends React.Component {
 
         if(!this.props.show){ return null; }
         console.log('these are my flight display props!!', this.props)
+        console.log("this flights array pre-sort", this.props.results);
+
+        let sortedDate = this.props.results.sort(( a, b) =>  new Date(a.date) - new Date(b.date));
+        console.log("sorted array", this.props.results)
       
         return (
           <Col xs={12} className="flight-display">
@@ -34,6 +38,7 @@ class FlightDisplay extends React.Component {
                     key={flight.id}
                     result={flight}
                     toggleEdit={this.props.toggleEdit}
+                    callFlightAware={this.props.callFlightAware}
                   />) :
                 <p className="second-text"> Add a flight to start</p>}
 

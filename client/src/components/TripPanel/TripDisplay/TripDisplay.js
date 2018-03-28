@@ -43,7 +43,7 @@ class TripDisplay extends React.Component {
               toggleEdit={this.props.toggleEdit}
               handleSetTripId={this.props.handleSetTripId}
             />) :
-        <h3> Add a trip to start</h3>}          
+        <p className="second-text"> Add a trip to start</p>}          
 
         </ul>
         </Col>

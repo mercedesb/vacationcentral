@@ -82,7 +82,7 @@ class ProfileAdd extends React.Component {
 
              <label className="label-text">Company Name:</label>
              <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
-               value={this.state.profileData.company}
+               value={this.state.profileData.company || ""}
                name="company"
                onChange={this.handleProfileInputChange}
                type="text"
@@ -90,7 +90,7 @@ class ProfileAdd extends React.Component {
 
              <label className="label-text">Reward Number:</label>
              <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
-               value={this.state.profileData.memberNumber}
+               value={this.state.profileData.memberNumber || ""}
                name="memberNumber"
                onChange={this.handleProfileInputChange}
                type="text"
@@ -98,7 +98,7 @@ class ProfileAdd extends React.Component {
 
              <label className="label-text">Company Phone Number:</label>
              <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
-               value={this.state.profileData.phone}
+               value={this.state.profileData.phone  || ""}
                name="phone"
                onChange={this.handleProfileInputChange}
                type="text"
