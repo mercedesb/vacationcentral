@@ -23,7 +23,7 @@ class BusinessDisplay extends React.Component {
 
       {this.props.results.length !== 0 ? 
         this.props.results
-          .filter(business => business.type === this.componentDidCatchprops.businessType)
+          .filter(business => business.type === this.props.businessType)
           .map(business => <BusinessListItem 
             editing={this.props.editing}
             editId={this.props.editId}

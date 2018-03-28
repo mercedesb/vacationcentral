@@ -5,12 +5,10 @@ import { FormBtn } from "../../../../Form";
 import BusinessForm from "../../BusinessForm";
 
 const renderResult = props => (
-  <div>
+  <li className="business-list-item">
     <Row>
-      <Col xs={6}>
         <p className="second-text">{props.result.name}</p>
         {props.result.confirmationNumber ? <div><p>Confirmation: <strong>{props.result.confirmationNumber}</strong></p></div> : undefined}
-      </Col>
     </Row>
     {props.result.address ? <div><p>Address:  <strong>{props.result.address}</strong></p></div> : undefined}
     {props.result.phone ? <div><p>Phone:  <strong>{props.result.phone}</strong></p></div> : undefined}
@@ -20,7 +18,7 @@ const renderResult = props => (
     <Row>
         <button className="business-edit-btn" id={props.id} onClick={props.toggleEdit}>Edit</button>
       </Row>>
-  </div>
+  </li>
 );
 
 const renderForm = props => (
@@ -28,7 +26,7 @@ const renderForm = props => (
     <BusinessForm
       toggleEdit={props.toggleEdit}
       editing={props.editing}
-      id={props.id}
+      id={props.result.id}
       businessData={props.result}
       getAllBusinesses={props.getAllBusinesses}
     />
