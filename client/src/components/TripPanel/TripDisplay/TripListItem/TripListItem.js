@@ -7,16 +7,11 @@ import TripAdd from "../../TripAdd";
 
 const renderResult = props => (
 
-  <div>
+  <li>
     <Row>
-      <Col xs={1}>
-      <input className="trip-check" type="checkbox" onClick={(event) => {
+      <input style={{ marginTop: "15px", marginLeft: "30px", height: "30px", width: "30px"}} type="checkbox" onClick={(event) => {
         console.dir(event.target);
         props.handleSetTripId(props.result.id)}} /> 
-      </Col>
-    </Row>
-    
-    <Row>
         <p style={{ fontSize: "20px" }}>{props.result.destination}</p>
     </Row>
     
@@ -26,10 +21,10 @@ const renderResult = props => (
     </Row>
     
     <Row>
-      <FormBtn style={{float: "left" }}id={props.result.id} onClick={props.toggleEdit}>Edit</FormBtn>
+      <button className="btn btn-lg tripedit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
     </Row>
-        <br/>
-  </div>
+  </li>
+
 );
 
 const renderForm = props => (

@@ -54,6 +54,8 @@ class ProfilePage extends React.Component {
     return (
       <Col xs={12} className="profile-page">
 
+        <Row> <p className="header">Reward Programs</p> </Row>
+
         <Row>
           <ProfileAdd 
               getProfiles={this.getProfiles}
@@ -61,7 +63,7 @@ class ProfilePage extends React.Component {
         </Row>
 
         <Row>
-          <FormBtn className='profile-btn' onClick={this.handleToggleProfileDisplay}>View Your Profiles</FormBtn>
+          <button className='profile-btn' onClick={this.handleToggleProfileDisplay}>View Your Profiles</button>
         </Row>
 
         <Row>

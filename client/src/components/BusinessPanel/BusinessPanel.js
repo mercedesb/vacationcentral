@@ -7,7 +7,7 @@ const categoryArray = [{
   name: 'Home',
   link: "/"
 }, {
-  name: 'Profile',
+  name: 'Rewards',
   link: "/profile"
 }, {
   name: 'Flights',

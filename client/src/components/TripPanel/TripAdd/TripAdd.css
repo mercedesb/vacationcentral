@@ -1,12 +1,12 @@
 .second-text {
     font-size: 30px;
-    color: #757073;
+    color: #230C0F;
     text-align: center;
 }
 
 .label-text {
     font-size: 20px;
-    color: #757073;
+    color: #230C0F;
     text-align: center;
     width: 50%;
     margin-left: 25%;
@@ -16,12 +16,12 @@
 .submit-btn {        
     
     font-size: 20px;
-    height: 50px;
+    height: 40px;
     margin-left: 15%;
     margin-bottom: 15px;
     width: 70%;
     padding: 0;
-    color: #230c0f;
-    background-color: #B5D8A0;
+    color: #230C0F;
+    background-color: #26867B;
 
 }

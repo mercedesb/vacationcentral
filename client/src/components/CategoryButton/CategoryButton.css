@@ -1,6 +1,17 @@
 .category-btn {
+    height: 60px;
     background-color: transparent;
-    color: grey;
-    border: 2px solid black;
+    color:#230C0F;
+    border: 2px solid #230C0F;
     width: 80%;
+    margin-top: 20px;
   }
+
+  a {
+    color: #230C0F
+  }
+
+ .category-btn:hover {
+   background-color: #B85D57;
+   color: whitesmoke;
+ }

@@ -1,8 +1,8 @@
 .business-panel{
-    height: 750px;
+    height: auto;
     font-size: 15px;
-    background: yellow;
-    border-left: 1px solid #ddd;
+    background: transparent;
+
 }
 
 .header-text {
