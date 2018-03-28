@@ -17,7 +17,7 @@ import MemberPage from "./components/Pages/MemberPage";
 class VacationContainer extends Component {
   state = {
     modalOpen: false,
-    user: 1,
+    user: {},
     category: "",
     tripId: 4,
     userData: {},
@@ -35,21 +35,32 @@ class VacationContainer extends Component {
 
   signUpUser = userData => {
     API.saveUser(userData)
-      .then(function(data) {
-      // window.location.replace(data);
-        console.log(data);
+      .then(data => {
+        window.location.replace(data);
       })
       .catch(err => console.log(err));
   }
 
   handleSignUp = event => {
     event.preventDefault();
-    if (!this.state.userData.email || !this.state.userData.password) {
-      return;
-    }
-    // If we have an email and password, run the signUpUser function
+    if (!this.state.userData.email || !this.state.userData.password) {return}
     this.signUpUser(this.state.userData);
-    this.setState({userData: {}});
+  }
+
+  loginUser = userData => {
+    API.loginUser(userData)
+    .then(data => {
+      window.location.replace(data);
+      this.setState({user: {...userData}});
+      console.log(this.state.user);
+    })
+    .catch(err => console.log(err));
+  }
+
+  handleLogIn = event => {
+    event.preventDefault();
+    if (!this.state.userData.email || !this.state.userData.password) {return}
+    this.loginUser(this.state.userData);
   }
 
   handleToggleModal = () => {
@@ -64,10 +75,6 @@ class VacationContainer extends Component {
     // console.log("category state in hSC", this.state.category);
   }
 
-  handleDisplayPage = (category) => {
-    // console.log("you have entered the DisplayPage function", category);
-  }
-
   render() {
     // console.log("state in VCrender", this.state);
     return (
@@ -78,9 +85,9 @@ class VacationContainer extends Component {
             <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} />
           </Row>
           <Row>
-            <TripPanel UserId={this.state.user} handleTripFormSubmit={this.handleTripFormSubmit} />
+            <TripPanel UserId={this.state.user.id} handleTripFormSubmit={this.handleTripFormSubmit} />
             <DisplayPanel
-              userId={this.state.user}
+              userId={this.state.user.id}
               tripId={this.state.id}
               dpCategory={this.state.category}
               handleDisplayPage={this.handleDisplayPage}>
@@ -102,10 +109,10 @@ class VacationContainer extends Component {
                 <Route exact path="/dining" render={() => <BusinessPage businessType="dining" tripId={1} />} />
                 <Route exact path="/flights" render={() => <FlightsPage TripId={this.state.id}  />} />
                 <Route exact path="/attractions" render={() => <BusinessPage businessType="attractions" tripId={1} />} />
-                <Route exact path="/profile" render={() => <ProfilePage  UserId={this.state.user} />} />
+                <Route exact path="/profile" render={() => <ProfilePage  UserId={this.state.user.id} />} />
               </Switch>
             </DisplayPanel>
-            <BusinessPanel userId={this.state.user} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
+            <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
           </Row>
         </Grid>
       </Router >

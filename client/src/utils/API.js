@@ -26,6 +26,10 @@ export default {
     console.log("api post");
     return axios.post("/api/users", userData);
   },
+  loginUser: function(userData) {
+    console.log("api login");
+    return axios.post("/api/users/login", userData);
+  },
   
 
 

@@ -15,15 +15,17 @@ module.exports = {
   //     .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
   // },
+  login: function(req, res) {
+    res.json("/members");
+  },
+
   create: function(req, res) {
     console.log("in controller");
     console.log(req.body);
     db.User
       .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => {
-        console.log(err);
-        res.status(422).json(err)});
+      .then(() => res.redirect(307, res.json("/member")))
+      .catch(err => res.status(422).json(err));
   },
   // update: function(req, res) {
   //   db.Book
