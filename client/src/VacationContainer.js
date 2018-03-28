@@ -123,10 +123,10 @@ class VacationContainer extends Component {
                   user={this.state.userData}
                 />} />
                 <Route exact path="/member" render={() => <MemberPage />} />
-                <Route exact path="/hotels" render={() => <BusinessPage businessType="hotels" tripId={1} />} />
-                <Route exact path="/dining" render={() => <BusinessPage businessType="dining" tripId={1} />} />
+                <Route exact path="/hotels" render={() => <BusinessPage businessType="Hotels" tripId={1} />} />
+                <Route exact path="/dining" render={() => <BusinessPage businessType="Dining" tripId={1} />} />
                 <Route exact path="/flights" render={() => <FlightsPage TripId={this.state.id} />} />
-                <Route exact path="/attractions" render={() => <BusinessPage businessType="attractions" tripId={1} />} />
+                <Route exact path="/attractions" render={() => <BusinessPage businessType="Attractions" tripId={1} />} />
                 <Route exact path="/profile" render={() => <ProfilePage UserId={this.state.user.id} />} />
               </Switch>
             </DisplayPanel>

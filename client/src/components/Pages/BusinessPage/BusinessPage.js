@@ -9,6 +9,7 @@ class BusinessPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      businessDisplayVisible: true,
       results: [],
       editing: false,
       editId: 0
@@ -20,6 +21,11 @@ class BusinessPage extends Component {
   componentWillMount() {
     this.getAllBusinesses();
   }
+
+  handleToggleBusinessDisplay = () => {
+    console.log("businessDisplay is visible")
+    this.setState({ businessDisplayVisible: !this.state.businessDisplayVisible })
+  };
 
   toggleEdit = event => {
     // console.dir(event.target.id);
@@ -39,8 +45,32 @@ class BusinessPage extends Component {
   render() {
     return (
       <Col xs={12} className="business-page">
-        <h1>{this.props.businessType}</h1>
-        {!this.state.editing ?
+      <Row>
+        <p className="header">{this.props.businessType}</p>
+      </Row>
+
+      <Row>
+          <button className='business-btn' onClick={this.handleToggleBusinessDisplay}>View Your {this.props.businessType} </button>
+      </Row>
+
+      <Row>
+          <button className='business-btn' onClick={this.handleToggleBusinessAdd}>Add {this.props.businessType}</button>
+      </Row>
+
+      <Row>
+        {this.state.businessDisplayVisible ?
+        <BusinessDisplay 
+          show={this.state.businessDisplayVisible}
+          toggleEdit={this.toggleEdit} 
+          results={this.state.results} 
+          getAllBusinesses={this.getAllBusinesses}
+          businessType={this.props.businessType} 
+          editing={this.state.editing}
+          editId={this.state.editId}
+        /> : null}
+        </Row>
+        <Row>
+                {!this.state.editing ?
           <BusinessForm 
             getAllBusinesses={this.getAllBusinesses} 
             businessType={this.props.businessType} 
@@ -48,14 +78,7 @@ class BusinessPage extends Component {
           /> :
           undefined
         } 
-        <BusinessDisplay 
-          toggleEdit={this.toggleEdit} 
-          results={this.state.results} 
-          getAllBusinesses={this.getAllBusinesses}
-          businessType={this.props.businessType} 
-          editing={this.state.editing}
-          editId={this.state.editId}
-        />
+        </Row>
       </Col>
     );
   }

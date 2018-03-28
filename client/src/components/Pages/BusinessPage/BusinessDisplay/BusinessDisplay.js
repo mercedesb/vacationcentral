@@ -3,7 +3,11 @@ import "./BusinessDisplay.css";
 import { Grid, Row, Col } from 'react-bootstrap';
 import BusinessListItem from "./BusinessListItem"
 
+
 const BusinessDisplay = props => (
+
+  // if (!this.props.show) {return null; }
+
   <Col xs={12} className="business-display">
     <ul>
       {props.results.length !== 0 ? 
@@ -18,7 +22,7 @@ const BusinessDisplay = props => (
             result={business} 
             toggleEdit={props.toggleEdit} 
           />) :
-          <h3>Add a business to start</h3>}
+          <p className="second-text">Add a business to start</p>}
     </ul>
   </Col>
 );
