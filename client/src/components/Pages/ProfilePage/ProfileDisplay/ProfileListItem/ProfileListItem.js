@@ -6,18 +6,22 @@ import ProfileAdd from "../../ProfileAdd";
 
 const renderResult = props => (
 
-  <div>
+  <li className="profile-listItem">
     <Row>
-      <Col xs={6}>
-        <h3>{props.result.company}</h3>
-      </Col>
-      <Col xs={6}>
-        <FormBtn id={props.result.id} onClick={props.toggleEdit}>Edit</FormBtn>
-      </Col>
+        <p className="second-text">{props.result.company}</p>
     </Row>
-    {props.result.memberNumber ? <div><p>Member Number:<br />{props.result.memberNumber}</p></div> : undefined}
-    {props.result.phone ? <div><p>Phone:<br />{props.result.phone}</p></div> : undefined}
-  </div>
+    {props.result.memberNumber ? <div><p>Member Number:  <strong> {props.result.memberNumber}</strong></p></div> : undefined}
+    {props.result.phone ? <div><p>Phone:  <strong>{props.result.phone}</strong></p></div> : undefined}
+    
+    <Row>
+        <button className="profileedit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
+    </Row>
+  
+  
+  </li>
+
+
+
 );
 
 const renderForm = props => (

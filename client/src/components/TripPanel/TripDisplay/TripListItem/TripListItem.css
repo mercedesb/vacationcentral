@@ -1,8 +1,30 @@
 .trip-list-item{
-    /* height: 400px; */
     list-style-type: none;
     width: 100%;
     font-size: 15px;
-    background: white;
-    /* overflow: scroll */
+    background: #757073;
+    margin-bottom: 2px;
+    border-radius: 6px;
+
+}
+
+
+p  {
+    font-size: 16px;
+    color: #230C0F;
+    text-align: center;
+}
+
+.tripedit-btn {
+    margin: 0 auto;
+    background-color: #26867B;
+    height: 50px;
+    width: 50%;
+    margin-left: 25%;
+    text-align: center;
+    color: #230C0F;
+    vertical-align: center;
+    margin-bottom: 10px;
+    border-radius: 6pbs;
+
 }

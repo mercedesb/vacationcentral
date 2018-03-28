@@ -61,78 +61,80 @@ class FlightAdd extends React.Component {
       }
     
     render() {
+
         console.log('these are my flight add props!!', this.props)
-        
 
        return (
-        <div className="flight-add">
+         <div className="flight-add">
 
-           <p>Add a flight</p>
-          
-        <form>
-         
-         <label>Flight Confirmation Number:</label>  
-         <Input xs={4}
-             value={this.state.flightData.confirmationNumber}
-             name="confirmationNumber"
-             onChange={this.handleFlightInput}
-             type="text"
-             placeholder="Flight Confirmation Number"/>
-        
-         <label>Airline:</label>
-         <Input xs={4}
-             value={this.state.flightData.airline}
-             name="airline"
-             onChange={this.handleFlightInput}
-             type="text"
-             placeholder="Airline"/>
-         
-         <label>Flight Number:</label>
-         <Input xs={4}
-             value={this.state.flightData.flightNumber}
-             name="flightNumber"
-             onChange={this.handleFlightInput}
-             type="text"
-             placeholder="Flight Number" />
-          
-         <label>Departure Airport:</label>   
-         <Input  xs={6}
-             value={this.state.flightData.departLocation}
-             name="departLocation"
-             onChange={this.handleFlightInput}
-             type="text"
-             placeholder="Departure Airport"/>
-         
-         <label>Departure Time:</label>
-         <Input  xs={6}
-             value={this.state.flightData.departTime}
-             name="departTime"
-             onChange={this.handleFlightInput}
-             type="text"
-             placeholder="Departure Time"/>
-         
-         <label>Arrival Airport:</label> 
-         <Input  xs={6}
-             value={this.state.flightData.arriveLocation}
-             name="arriveLocation"
-             onChange={this.handleFlightInput}
-             type="text"
-             placeholder="Arrival Airport"/>
-         
-         <label>Arrival Time:</label> 
-         <Input  xs={6}
-             value={this.state.flightData.arriveTime}
-             name="arriveTime"
-             onChange={this.handleFlightInput}
-             type="text"
-             placeholder="Arrival Time"/>
+           <p className="second-text">Add a Flight</p>
 
-             <FormBtn onClick={this.props.editing ? this.handleFlightEdit : this.handleFlightFormSubmit} >Submit</FormBtn>
-        
-         </form>
-          
+           <div>
+             <Row>
+               <label className="label-text">Confirmation Number:</label>
+               <Input xs={4} style={{ width: "25%", margin: "0 auto", textAlign: "center" }}
+                 value={this.state.flightData.confirmationNumber}
+                 name="confirmationNumber"
+                 onChange={this.handleFlightInput}
+                 type="text"
+                 placeholder="Confirmation Number" />
 
-        </div>
+               <label className="label-text">Airline:</label>
+               <Input xs={4} style={{ width: "25%", margin: "0 auto", textAlign: "center" }}
+                 value={this.state.flightData.airline}
+                 name="airline"
+                 onChange={this.handleFlightInput}
+                 type="text"
+                 placeholder="Airline" />
+
+               <label className="label-text">Flight:</label>
+               <Input xs={4} style={{ width: "25%", margin: "0 auto", textAlign: "center" }}
+                 value={this.state.flightData.flightNumber}
+                 name="flightNumber"
+                 onChange={this.handleFlightInput}
+                 type="text"
+                 placeholder="Flight Number" />
+             </Row>
+             <Row>
+               <label className="label-text">Departure Airport:</label>
+               <Input xs={6} style={{ width: "40%", margin: "0 auto", textAlign: "center" }}
+                 value={this.state.flightData.departLocation}
+                 name="departLocation"
+                 onChange={this.handleFlightInput}
+                 type="text"
+                 placeholder="Departure Airport" />
+
+               <label className="label-text">Departure Time:</label>
+               <Input xs={6} style={{ width: "40%", margin: "0 auto", textAlign: "center" }}
+                 value={this.state.flightData.departTime}
+                 name="departTime"
+                 onChange={this.handleFlightInput}
+                 type="text"
+                 placeholder="Departure Time" />
+             </Row>
+             <Row>
+               <label className="label-text">Arrival Airport:</label>
+               <Input style={{ width: "40%", margin: "0 auto", textAlign: "center" }}
+                 value={this.state.flightData.arriveLocation}
+                 name="arriveLocation"
+                 onChange={this.handleFlightInput}
+                 type="text"
+                 placeholder="Arrival Airport" />
+
+               <label className="label-text">Arrival Time:</label>
+               <Input style={{ width: "40%", margin: "0 auto", textAlign: "center" }}
+                 value={this.state.flightData.arriveTime}
+                 name="arriveTime"
+                 onChange={this.handleFlightInput}
+                 type="text"
+                 placeholder="Arrival Time" />
+
+               <button className="btn btn-lrg submit-btn" onClick={this.props.editing ? this.handleFlightEdit : this.handleFlightFormSubmit} >Submit</button>
+             </Row>
+           </div>
+
+
+         </div>
       );
     }
   }

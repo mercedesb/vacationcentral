@@ -7,18 +7,24 @@ import TripAdd from "../../TripAdd";
 
 const renderResult = props => (
 
-  <div>
+  <li>
     <Row>
-      <Col xs={6}>
-        <h3>{props.result.destination}</h3>
-      </Col>
-      <Col xs={6}>
-        <FormBtn id={props.result.id} onClick={props.toggleEdit}>Edit</FormBtn>
-      </Col>
+      <input style={{ marginTop: "15px", marginLeft: "30px", height: "30px", width: "30px"}} type="checkbox" onClick={(event) => {
+        console.dir(event.target);
+        props.handleSetTripId(props.result.id)}} /> 
+        <p style={{ fontSize: "20px" }}>{props.result.destination}</p>
     </Row>
+    
+    <Row style={{ textAlign: "center"}}>
     {props.result.start ? <div><p>Start Date:<br />{props.result.start}</p></div> : undefined}
     {props.result.end ? <div><p>End Date:<br />{props.result.end}</p></div> : undefined}
-  </div>
+    </Row>
+    
+    <Row>
+      <button className="btn btn-lg tripedit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
+    </Row>
+  </li>
+
 );
 
 const renderForm = props => (

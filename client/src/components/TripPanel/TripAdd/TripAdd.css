@@ -1,0 +1,27 @@
+.second-text {
+    font-size: 30px;
+    color: #230C0F;
+    text-align: center;
+}
+
+.label-text {
+    font-size: 20px;
+    color: #230C0F;
+    text-align: center;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 0px;
+}
+
+.submit-btn {        
+    
+    font-size: 20px;
+    height: 40px;
+    margin-left: 15%;
+    margin-bottom: 15px;
+    width: 70%;
+    padding: 0;
+    color: #230C0F;
+    background-color: #26867B;
+
+}

@@ -77,7 +77,17 @@ class VacationContainer extends Component {
   handleSelectCategory = (bpCategory) => {
     // console.log("the category selected was", bpCategory);
     this.setState({ category: bpCategory.elem });
-    // console.log("category state in hSC", this.state.category);
+    console.log("category state in hSC", this.state.category);
+  }
+
+  handleSetTripId = (id) => {
+    console.log("the trip id selected was", id)
+    this.setState( {tripId: id});
+  }
+
+
+  handleDisplayPage = (category) => {
+    console.log("you have entered the DisplayPage function", category);
   }
 
   render() {
@@ -90,7 +100,10 @@ class VacationContainer extends Component {
             <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} />
           </Row>
           <Row>
-            <TripPanel UserId={this.state.user.id} handleTripFormSubmit={this.handleTripFormSubmit} />
+            <TripPanel 
+              UserId={this.state.user.id} 
+              handleTripFormSubmit={this.handleTripFormSubmit}
+              handleSetTripId={this.handleSetTripId} />
             <DisplayPanel
               userId={this.state.user.id}
               tripId={this.state.id}

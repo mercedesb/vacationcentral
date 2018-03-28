@@ -2,10 +2,13 @@
     width: 80%;
     font-size: 15px;
     margin: 0 auto;
-    height: 400px;
+    height: 600px;
     overflow: scroll;
     margin-top: 10px;
-    background: green;
+    margin-bottom: 10px;
+    background:#B85D57;
     border-left: 1px solid #ddd;
+    border-radius: 6px;
+    line-height: 1.25;
 
 }

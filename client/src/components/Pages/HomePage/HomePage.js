@@ -8,7 +8,7 @@ const HomePage = props => (
   <Grid fluid>
     <Row>
       <Col xs={12} className="home-page">
-        <h2>Welcome to Vacation Central</h2>
+        <p className="header">Welcome to Vacation Central</p>
         <h3>{props.purpose}</h3>
         <form className="signup">
           <div className="form-group">

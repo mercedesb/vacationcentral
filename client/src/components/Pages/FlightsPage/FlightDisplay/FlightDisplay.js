@@ -21,24 +21,24 @@ class FlightDisplay extends React.Component {
       
         return (
           <Col xs={12} className="flight-display">
-          <h1>Your Flights</h1>
-      <ul>
 
-        {this.props.results.length !== 0 ?
-            this.props.results.map(flight => 
-            <FlightListItem
-              editing={this.props.editing}
-              editId={this.props.editId}
-              getFlights={this.props.getFlights}
-              id={flight.id}
-              key={flight.id}
-              result={flight}
-              toggleEdit={this.props.toggleEdit}
-            />) :
-        <h3> Add a flight to start</h3>}          
+            <ul style={{ listStyleType: "none", paddingLeft: "0px" }}>
 
-        </ul>
-      </Col>
+              {this.props.results.length !== 0 ?
+                this.props.results.map(flight =>
+                  <FlightListItem
+                    editing={this.props.editing}
+                    editId={this.props.editId}
+                    getFlights={this.props.getFlights}
+                    id={flight.id}
+                    key={flight.id}
+                    result={flight}
+                    toggleEdit={this.props.toggleEdit}
+                  />) :
+                <p className="second-text"> Add a flight to start</p>}
+
+            </ul>
+          </Col>
       );
     }
   }

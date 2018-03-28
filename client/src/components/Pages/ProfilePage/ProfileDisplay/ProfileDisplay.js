@@ -21,8 +21,8 @@ class ProfileDisplay extends React.Component {
       return (
      
         <Col xs={12} className="profile-display">
-              <h1>Your Profiles</h1>
-          <ul>
+ 
+          <ul style={{ listStyleType: "none", paddingLeft: "0px" }}>
 
             {this.props.results.length !== 0 ?
                 this.props.results.map(profile => 
@@ -35,7 +35,7 @@ class ProfileDisplay extends React.Component {
                   result={profile}
                   toggleEdit={this.props.toggleEdit}
                 />) :
-            <h3> Add a profile to start</h3>}          
+            <p className="second-text"> Add a profile to start</p>}          
 
             </ul>
           </Col>

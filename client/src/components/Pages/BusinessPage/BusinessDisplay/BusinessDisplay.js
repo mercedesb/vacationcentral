@@ -13,8 +13,8 @@ const BusinessDisplay = props => (
             editing={props.editing}
             editId={props.editId}
             getAllBusinesses={props.getAllBusinesses}
-            id={business.id}
-            key={business.id} 
+            id={business.TripId}
+            key={business.TripId} 
             result={business} 
             toggleEdit={props.toggleEdit} 
           />) :
