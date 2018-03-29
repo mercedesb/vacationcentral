@@ -91,8 +91,5 @@ export default {
     console.log("in signUp API", signUpData);
     return axios.post("api/signUp", signUpData);
   },
-
-
-
   
 };

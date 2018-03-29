@@ -27,11 +27,6 @@ class TripPanel extends React.Component {
       this.toggleEdit = this.toggleEdit.bind(this);
     }
 
-    componentWillMount(){
-      this.getTrips();
-    }
-
-
     handleToggleTripDisplay = () => {
       console.log("tripDisplay is visible")
       this.setState({tripDisplayVisible: !this.state.tripDisplayVisible})

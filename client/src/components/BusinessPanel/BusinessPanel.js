@@ -8,19 +8,19 @@ const categoryArray = [{
   link: "/"
 }, {
   name: 'Rewards',
-  link: "/profile"
+  link: "/profile/"
 }, {
   name: 'Flights',
-  link: "/flights"
+  link: "/flights/"
 }, {
   name: 'Hotel',
-  link: "/hotels"
+  link: "/hotels/"
 }, {
   name: 'Dining',
-  link: "/dining"
+  link: "/dining/"
 }, {
   name: 'Attractions',
-  link: "/attractions"}
+  link: "/attractions/"}
 // }, {
 //   name: 'Packing',
 //   link: "/packing"

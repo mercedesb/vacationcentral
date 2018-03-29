@@ -34,9 +34,9 @@ class BusinessPage extends Component {
   };
 
   getAllBusinesses = () => (
-    API.getBusinesses(this.props.TripId)
+    API.getBusinesses(this.props.tripId)
       .then(response => {
-        this.setState({ results: response.data }, () => console.log(this.state))
+        this.setState({ results: response.data });
       })
   );
 

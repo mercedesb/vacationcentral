@@ -1,12 +1,19 @@
 import React from "react";
 import "./HomePage.css";
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Alert } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FormBtn, Input, TextArea } from "../../Form";
 
 const HomePage = props => (
   <Grid fluid>
+    {!props.message ? undefined: 
+      (<Row>
+        <Alert bsStyle="danger">
+          <h4>{props.message}</h4>
+        </Alert>
+      </Row>)
+    }
     <Row>
       <Col xs={12} className="home-page">
         <p className="header">Welcome to Vacation Central</p>
@@ -15,54 +22,54 @@ const HomePage = props => (
           <div className="form-group">
             <label className="label-text" >Email address</label>
             <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
-              onChange={props.handleInputChange} 
-              type="email" 
-              name="email" 
-              className="form-control" 
-              placeholder="Email" 
+              onChange={props.handleInputChange}
+              type="email"
+              name="email"
+              className="form-control"
+              placeholder="Email"
               value={props.user.email || ""} />
           </div>
           <div className="form-group">
             <label className="label-text" >Password</label>
-            <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }} 
-              type="password" 
-              onChange={props.handleInputChange} 
-              name="password" 
-              className="form-control" 
-              placeholder="Password" 
-              defaultValue="" 
-              />
+            <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
+              type="password"
+              onChange={props.handleInputChange}
+              name="password"
+              className="form-control"
+              placeholder="Password"
+              defaultValue=""
+            />
           </div>
           {props.purpose === "Log In" ? undefined :
             <div>
               <div className="form-group">
                 <label className="label-text" >First Name</label>
                 <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
-                  type="text" 
-                  name="firstName" 
-                  onChange={props.handleInputChange} 
-                  className="form-control" 
+                  type="text"
+                  name="firstName"
+                  onChange={props.handleInputChange}
+                  className="form-control"
                   placeholder="First Name"
                   value={props.user.firstName || ""} />
               </div>
               <div className="form-group">
                 <label className="label-text" >Last Name</label>
                 <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
-                  type="text" 
-                  onChange={props.handleInputChange} 
-                  name="lastName" 
-                  className="form-control" 
-                  placeholder="Last Name" 
+                  type="text"
+                  onChange={props.handleInputChange}
+                  name="lastName"
+                  className="form-control"
+                  placeholder="Last Name"
                   value={props.user.lastName || ""} />
               </div>
               <div className="form-group">
                 <label className="label-text" >User Name</label>
                 <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
-                  type="text" 
-                  onChange={props.handleInputChange} 
-                  name="userName" 
-                  className="form-control" 
-                  placeholder="User Name" 
+                  type="text"
+                  onChange={props.handleInputChange}
+                  name="userName"
+                  className="form-control"
+                  placeholder="User Name"
                   value={props.user.userName || ""} />
               </div>
             </div>}
@@ -74,7 +81,7 @@ const HomePage = props => (
         </form>
         <br />
         <div> {props.purpose === "Log In" ? <button className="btn signup-btn"><Link to={"/signup"}>Sign Up</Link></button> :
-       <button className="btn signup-btn"><Link to={"/"}>Log In</Link></button>}</div>
+          <button className="btn signup-btn"><Link to={"/"}>Log In</Link></button>}</div>
       </Col>
     </Row>
   </Grid >

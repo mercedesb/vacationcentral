@@ -22,16 +22,19 @@ module.exports = {
       }})
       .then(data => {
         console.log(data.dataValues);
-        res.json({user: data.dataValues, path: "/member"});
+        res.json({user: {
+          id: data.dataValues.id,
+          userName: data.dataValues.userName,
+          firstName: data.dataValues.firstName,
+          lastName: data.dataValues.lastName
+        }});
       })
   },
 
   create: function(req, res) {
-    console.log("in controller");
-    console.log(req.body);
     db.User
       .create(req.body)
-      .then(data => res.redirect(307, res.json({user: data, path: "/"})))
+      .then(data => res.redirect(307, "/api/users/login"))
       .catch(err => res.status(422).json(err));
   },
   // update: function(req, res) {
