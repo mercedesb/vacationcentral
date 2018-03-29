@@ -11,3 +11,9 @@
     box-shadow: 5px 10px 6px rgb(65, 64, 64);
 
 }
+
+.header {
+    font-size: 40px;
+    color: #230C0F;
+    text-align: center;
+}

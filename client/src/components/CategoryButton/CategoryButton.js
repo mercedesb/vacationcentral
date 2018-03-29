@@ -1,5 +1,6 @@
 import React from "react";
 import "./CategoryButton.css";
+import "../../VacationContainer.css"
 import { Link } from "react-router-dom";
 
 // The ...props means, spread all of the passed props onto this element
