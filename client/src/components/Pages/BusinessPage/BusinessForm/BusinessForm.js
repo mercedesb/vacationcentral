@@ -59,7 +59,7 @@ class BusinessForm extends Component {
   }
 
   renderDateInputs() {
-    if (this.props.businessType || this.props.businessData.type === "Hotels") {
+    if ((this.props.businessType || this.state.businessData.type) === "Hotels") {
       return (
         <div>
           <label className="label-text" >Check-in:</label>
