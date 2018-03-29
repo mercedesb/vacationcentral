@@ -8,10 +8,11 @@
   }
 
   a {
-    color: #230C0F
+    color: #230C0F;
   }
 
  .category-btn:hover {
    background-color: #B85D57;
    color: whitesmoke;
+   transform: scale(1.05, 1.05);
  }

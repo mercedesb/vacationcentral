@@ -8,3 +8,14 @@
   font: black;
 }
 
+@media all and (max-width: 1600px) {
+  .tripDisplay-btn, .category-btn {
+      font-size: 20px;
+  }
+}
+
+@media all and (max-width: 1300px) {
+  .tripDisplay-btn, .category-btn {
+      font-size: 16px;
+  }
+}

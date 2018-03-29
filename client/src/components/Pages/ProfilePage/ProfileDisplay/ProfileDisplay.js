@@ -16,6 +16,7 @@ class ProfileDisplay extends React.Component {
     render() {
 
       if(!this.props.show){ return null; }
+      
       console.log('these are my profile display props!!', this.props)
       
       return (

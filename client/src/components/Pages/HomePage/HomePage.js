@@ -3,17 +3,18 @@ import "./HomePage.css";
 import { Grid, Row, Col } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { FormBtn, Input, TextArea } from "../../Form";
 
 const HomePage = props => (
   <Grid fluid>
     <Row>
       <Col xs={12} className="home-page">
         <p className="header">Welcome to Vacation Central</p>
-        <h3>{props.purpose}</h3>
+        <p className="second-text">{props.purpose}</p>
         <form className="signup">
           <div className="form-group">
-            <label>Email address</label>
-            <input 
+            <label className="label-text" >Email address</label>
+            <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
               onChange={props.handleInputChange} 
               type="email" 
               name="email" 
@@ -22,8 +23,8 @@ const HomePage = props => (
               value={props.user.email || ""} />
           </div>
           <div className="form-group">
-            <label>Password</label>
-            <input 
+            <label className="label-text" >Password</label>
+            <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }} 
               type="password" 
               onChange={props.handleInputChange} 
               name="password" 
@@ -35,8 +36,8 @@ const HomePage = props => (
           {props.purpose === "Log In" ? undefined :
             <div>
               <div className="form-group">
-                <label>First Name</label>
-                <input 
+                <label className="label-text" >First Name</label>
+                <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
                   type="text" 
                   name="firstName" 
                   onChange={props.handleInputChange} 
@@ -45,8 +46,8 @@ const HomePage = props => (
                   value={props.user.firstName || ""} />
               </div>
               <div className="form-group">
-                <label>Last Name</label>
-                <input 
+                <label className="label-text" >Last Name</label>
+                <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
                   type="text" 
                   onChange={props.handleInputChange} 
                   name="lastName" 
@@ -55,8 +56,8 @@ const HomePage = props => (
                   value={props.user.lastName || ""} />
               </div>
               <div className="form-group">
-                <label>User Name</label>
-                <input 
+                <label className="label-text" >User Name</label>
+                <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
                   type="text" 
                   onChange={props.handleInputChange} 
                   name="userName" 
@@ -69,11 +70,11 @@ const HomePage = props => (
             <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span className="sr-only">Error:</span> <span className="msg"></span>
           </div>
-          <button type="submit" onClick={props.purpose === "Log In" ? props.handleLogIn : props.handleSignUp} className="btn btn-default">{props.purpose}</button>
+          <button className="btn submit-btn" onClick={props.purpose === "Log In" ? props.handleLogIn : props.handleSignUp}>{props.purpose}</button>
         </form>
         <br />
-        <p>Or {props.purpose === "Log In" ? <Link to={"/signup"}>sign up</Link> :
-          <Link to={"/"}>log in</Link>}</p>
+        <div> {props.purpose === "Log In" ? <button className="btn signup-btn"><Link to={"/signup"}>Sign Up</Link></button> :
+       <button className="btn signup-btn"><Link to={"/"}>Log In</Link></button>}</div>
       </Col>
     </Row>
   </Grid >

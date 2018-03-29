@@ -17,10 +17,10 @@ import MemberPage from "./components/Pages/MemberPage";
 
 class VacationContainer extends Component {
   state = {
-    modalOpen: false,
+    // modalOpen: false,
     user: {},
     category: "",
-    tripId: 4,
+    tripId: "",
     userData: {},
     loggedin: false,
   };
@@ -64,10 +64,10 @@ class VacationContainer extends Component {
     this.loginUser(this.state.userData);
   }
 
-  handleToggleModal = () => {
-    // console.log("you have clicked the login/signup button");
-    this.setState({ modalOpen: !this.state.modalOpen })
-  };
+  // handleToggleModal = () => {
+  //   // console.log("you have clicked the login/signup button");
+  //   this.setState({ modalOpen: !this.state.modalOpen })
+  // };
 
 
   handleSelectCategory = (bpCategory) => {
@@ -92,7 +92,7 @@ class VacationContainer extends Component {
       <Router>
         <Grid fluid className="vacation-container">
           <Row>
-            <HeaderPanel handleToggleModal={this.handleToggleModal} />
+            <HeaderPanel/>
             <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} />
           </Row>
           <Row>
@@ -122,10 +122,10 @@ class VacationContainer extends Component {
                   user={this.state.userData}
                 />} />
                 <Route exact path="/member" render={() => <MemberPage />} />
-                <Route exact path="/hotels" render={() => <BusinessPage businessType="hotels" tripId={1} />} />
-                <Route exact path="/dining" render={() => <BusinessPage businessType="dining" tripId={1} />} />
-                <Route exact path="/flights" render={() => <FlightsPage TripId={this.state.id} />} />
-                <Route exact path="/attractions" render={() => <BusinessPage businessType="attractions" tripId={1} />} />
+                <Route exact path="/hotels" render={() => <BusinessPage businessType="Hotels" TripId={this.state.tripId} />} />
+                <Route exact path="/dining" render={() => <BusinessPage businessType="Dining" TripId={this.state.tripId} />} />
+                <Route exact path="/flights" render={() => <FlightsPage TripId={this.state.tripId} />} />
+                <Route exact path="/attractions" render={() => <BusinessPage businessType="Attractions" TripId={this.state.tripId} />} />
                 <Route exact path="/profile" render={() => <ProfilePage UserId={this.state.user.id} />} />
               </Switch>
             </DisplayPanel>
