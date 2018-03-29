@@ -19,10 +19,9 @@ class VacationContainer extends Component {
   state = {
     // modalOpen: false,
     user: {},
-    category: "",
     tripId: "",
     userData: {},
-    loggedin: false,
+
   };
 
   handleInputChange = event => {
@@ -71,14 +70,15 @@ class VacationContainer extends Component {
 
 
   handleSelectCategory = (bpCategory) => {
-    // console.log("the category selected was", bpCategory);
+    //console.log("the category selected was", bpCategory);
     this.setState({ category: bpCategory.elem });
     console.log("category state in hSC", this.state.category);
   }
 
   handleSetTripId = (id) => {
-    console.log("the trip id selected was", id)
+    console.log("the trip id", id)
     this.setState({ tripId: id });
+
   }
 
 
@@ -87,7 +87,7 @@ class VacationContainer extends Component {
   }
 
   render() {
-    // console.log("state in VCrender", this.state);
+    console.log("state in VCrender", this.state);
     return (
       <Router>
         <Grid fluid className="vacation-container">

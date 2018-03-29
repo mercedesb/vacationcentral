@@ -14,6 +14,11 @@ class TripDisplay extends React.Component {
 
     }
 
+    handleClickBox = (clicked) => {
+      console.log("previous state",this.props.clicked, clicked)
+      this.setState(clicked => !this.state.clicked);
+  }
+
     render() {
 
         if(!this.props.show){ return null; }
@@ -22,7 +27,6 @@ class TripDisplay extends React.Component {
             
         let sortedDate = this.props.results.sort(( a, b) =>  new Date(b.start) - new Date(a.start));
         console.log("sorted array", this.props.results)
-        
         
         return (
      
@@ -42,6 +46,8 @@ class TripDisplay extends React.Component {
               result={trip}
               toggleEdit={this.props.toggleEdit}
               handleSetTripId={this.props.handleSetTripId}
+              clicked={this.props.clicked}
+              handleClickBox = {this.handleClickBox}
             />) :
         <p className="second-text"> Add a trip to start</p>}          
 

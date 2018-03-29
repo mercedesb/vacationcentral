@@ -24,16 +24,11 @@ class FlightsPage extends React.Component {
 
       this.getFlights = this.getFlights.bind(this);
       this.toggleEdit = this.toggleEdit.bind(this);
-      this.callFlightAware = this.callFlightAware.bind(this);
     }
-
-    componentWillMount(){
-        this.getFlights();
-      }
-
 
     handleToggleFlightDisplay = () => {
         console.log("flightDisplay is visible")
+        this.getFlights(this.props.TripId);
         this.setState({ flightDisplayVisible: !this.state.flightDisplayVisible })
       };
 
@@ -52,17 +47,7 @@ class FlightsPage extends React.Component {
         })
       );
 
-    callFlightAware = event => {
-        event.preventDefault();
-        console.log(event.target.id, this.state.results);
-          // this.setState({
-          //   flightAwareId: event.target.id
-          // });
-
-    };
   
-
-
     render() {
       console.log('these are my FlightsPage props!!', this.props)
      return ( 
