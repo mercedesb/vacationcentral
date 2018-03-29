@@ -10,6 +10,7 @@ router.route("/")
 router
   .route("/:id")
 //   .get(booksController.findById)
+  .get(flightsController.findTrip)
   .put(flightsController.update)
 //   .delete(booksController.remove);
 

@@ -45,7 +45,7 @@ export default {
 
   updateTrips: function(tripData, id) {
     console.log("in trip put API", tripData); 
-    return axios.put("api/trips/" + id, tripData);
+    return axios.put("/api/trips/" + id, tripData);
   },
 
 
@@ -68,7 +68,7 @@ export default {
 
   getFlights: function (TripId) {
     console.log("in flight get API", TripId);
-    return axios.get("api/flights?" + `TripId=${TripId}`)
+    return axios.get("/api/flights/" + TripId)
   },
 
   saveFlights: function(flightData){
@@ -78,7 +78,7 @@ export default {
 
   updateFlights: function(flightData, id) {
     console.log("in flight put API", flightData); 
-    return axios.put("api/flights/" + id, flightData);
+    return axios.put("/api/flights/" + id, flightData);
   },
 
 

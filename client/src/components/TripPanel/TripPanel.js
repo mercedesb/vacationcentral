@@ -85,7 +85,6 @@ class TripPanel extends React.Component {
           editId={this.state.editId}
           getTrips={this.getTrips}
           handleSetTripId={this.props.handleSetTripId}
-          clicked={this.state.clicked}
            /> : null}
           </Row>
 

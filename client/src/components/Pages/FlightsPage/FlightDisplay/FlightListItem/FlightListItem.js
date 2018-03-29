@@ -23,7 +23,7 @@ const renderResult = props => (
     </Row>
     
     <Row>
-      <button className="flight-edit-btn" id={props.result.id} onClick={props.callFlightAware}>FlightAware</button>
+      {/* <button className="flight-edit-btn" id={props.result.id} onClick={props.callFlightAware}>FlightAware</button> */}
       <button className="flight-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit Flight</button>
     </Row>
   </form>
@@ -38,7 +38,7 @@ const renderForm = props => (
       id={props.result.id}
       flightData={props.result}
       getFlights={props.getFlights}
-      callFlightAware={props.callFlightAware}
+      // callFlightAware={props.callFlightAware}
 
     />
   </Row>

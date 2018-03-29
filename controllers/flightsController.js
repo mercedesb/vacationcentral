@@ -3,9 +3,21 @@ const db = require("../models");
 // Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
-    console.log("flight find all controller", req.query)
+    console.log("------------------");
+    console.log("i'm hitting this like a dumb mother fucker");
+    console.log("------------------");
     db.Flight
       .findAll({where: req.query})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  findTrip: function(req, res) {
+    console.log("------------------");
+    console.log("flight find all controller", req.params.id)
+    console.log("------------------");
+    db.Flight
+      .findAll({TripId: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
