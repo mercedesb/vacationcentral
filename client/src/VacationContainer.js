@@ -39,7 +39,7 @@ class VacationContainer extends Component {
   signUpUser = userData => {
     API.saveUser(userData)
       .then(data => {
-        window.location.replace(data.data);
+        this.loginUser(userData);
       })
       .catch(err => console.log(err));
   }
@@ -115,12 +115,14 @@ class VacationContainer extends Component {
                     user={this.state.userData}
                   />)} 
                 />
-                <Route exact path="/signup" render={() => <HomePage
-                  purpose="Sign Up"
-                  handleInputChange={this.handleInputChange}
-                  handleSignUp={this.handleSignUp}
-                  user={this.state.userData}
-                />} />
+                <Route exact path="/signup" render={() => (this.state.user.id ? <Redirect to="/member" /> :
+                  <HomePage
+                    purpose="Sign Up"
+                    handleInputChange={this.handleInputChange}
+                    handleSignUp={this.handleSignUp}
+                    user={this.state.userData}
+                  />)}
+                />
                 <Route exact path="/member" render={() => <MemberPage />} />
                 <Route exact path="/hotels" render={() => <BusinessPage businessType="hotels" tripId={1} />} />
                 <Route exact path="/dining" render={() => <BusinessPage businessType="dining" tripId={1} />} />

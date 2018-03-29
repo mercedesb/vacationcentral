@@ -22,7 +22,12 @@ module.exports = {
       }})
       .then(data => {
         console.log(data.dataValues);
-        res.json({user: data.dataValues, path: "/member"});
+        res.json({user: {
+          id: data.dataValues.id,
+          userName: data.dataValues.userName,
+          firstName: data.dataValues.firstName,
+          lastName: data.dataValues.lastName
+        }});
       })
   },
 
