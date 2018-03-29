@@ -15,7 +15,8 @@ class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      profileDisplayVisible: false, 
+      profileDisplayVisible: true, 
+      profileAddVisible: true, 
       results: [],
       editing: false,
       editId: 0
@@ -24,13 +25,16 @@ class ProfilePage extends React.Component {
     this.toggleEdit = this.toggleEdit.bind(this);
   }
 
-  componentWillMount(){
-    this.getProfiles();
-  }
 
   handleToggleProfileDisplay = () => {
     console.log("profileDisplay is visible")
+    this.getProfiles(this.props.UserId);
     this.setState({ profileDisplayVisible: !this.state.profileDisplayVisible })
+  };
+
+  handleToggleAddDisplay = () => {
+    console.log("profileAdd is visible")
+    this.setState({ profileAddVisible: !this.state.profileAddVisible })
   };
 
 
@@ -62,7 +66,7 @@ class ProfilePage extends React.Component {
         </Row>
 
         <Row>
-          <button className='profile-btn'>Add a Rewards Profile</button>
+          <button className='profile-btn'  onClick={this.handleToggleAddDisplay}>Add a Rewards Profile</button>
         </Row>
 
 
@@ -81,6 +85,7 @@ class ProfilePage extends React.Component {
 
         <Row>
           <ProfileAdd
+            show={this.state.profileAddVisible}
             getProfiles={this.getProfiles}
             UserId={this.props.UserId} />
         </Row>

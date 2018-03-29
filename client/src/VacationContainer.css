@@ -8,6 +8,15 @@
   font: black;
 }
 
+.label-text {
+  font-size: 20px;
+  color: #230C0F;
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-bottom: 0px;
+}
+
 @media all and (max-width: 1600px) {
   .tripDisplay-btn, .category-btn {
       font-size: 20px;

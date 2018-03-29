@@ -74,7 +74,7 @@ class FlightAdd extends React.Component {
            <div>
              <Row>
                <label className="label-text">Confirmation Number:</label>
-               <Input xs={4} style={{ width: "25%", margin: "0 auto", textAlign: "center" }}
+               <Input xs={4} style={{ width: "50%", margin: "0 auto", textAlign: "center" }}
                  value={this.state.flightData.confirmationNumber || ""}
                  name="confirmationNumber"
                  onChange={this.handleFlightInput}
@@ -82,7 +82,7 @@ class FlightAdd extends React.Component {
                  placeholder="Confirmation Number" />
 
                <label className="label-text">Flight Date:</label>
-               <Input xs={4} style={{ width: "25%", margin: "0 auto", textAlign: "center" }}
+               <Input xs={4} style={{ width: "50%", margin: "0 auto", textAlign: "center" }}
                  value={this.state.flightData.date || ""}
                  name="date"
                  onChange={this.handleFlightInput}
@@ -90,7 +90,7 @@ class FlightAdd extends React.Component {
                  placeholder="MM-DD-YYYY" />
 
                <label className="label-text">Airline:</label>
-               <Input xs={4} style={{ width: "25%", margin: "0 auto", textAlign: "center" }}
+               <Input xs={4} style={{ width: "50%", margin: "0 auto", textAlign: "center" }}
                  value={this.state.flightData.airline || ""}
                  name="airline"
                  onChange={this.handleFlightInput}
@@ -98,16 +98,16 @@ class FlightAdd extends React.Component {
                  placeholder="Airline" />
 
                <label className="label-text">Flight Number:</label>
-               <Input xs={4} style={{ width: "25%", margin: "0 auto", textAlign: "center" }}
+               <Input xs={4} style={{ width: "50%", margin: "0 auto", textAlign: "center" }}
                  value={this.state.flightData.flightNumber || ""}
                  name="flightNumber"
                  onChange={this.handleFlightInput}
                  type="text"
-                 placeholder="Flight Number" />
+                 placeholder="Airline Code & Flight #" />
              </Row>
              <Row>
                <label className="label-text">Departure Airport:</label>
-               <Input xs={6} style={{ width: "40%", margin: "0 auto", textAlign: "center" }}
+               <Input xs={6} style={{ width: "50%", margin: "0 auto", textAlign: "center" }}
                  value={this.state.flightData.departLocation || ""}
                  name="departLocation"
                  onChange={this.handleFlightInput}
@@ -115,7 +115,7 @@ class FlightAdd extends React.Component {
                  placeholder="Departure Airport Code" />
 
                <label className="label-text">Departure Time:</label>
-               <Input xs={6} style={{ width: "40%", margin: "0 auto", textAlign: "center" }}
+               <Input xs={6} style={{ width: "50%", margin: "0 auto", textAlign: "center" }}
                  value={this.state.flightData.departTime  || ""}
                  name="departTime"
                  onChange={this.handleFlightInput}
@@ -124,7 +124,7 @@ class FlightAdd extends React.Component {
              </Row>
              <Row>
                <label className="label-text">Arrival Airport:</label>
-               <Input style={{ width: "40%", margin: "0 auto", textAlign: "center" }}
+               <Input style={{ width: "50%", margin: "0 auto", textAlign: "center" }}
                  value={this.state.flightData.arriveLocation  || ""}
                  name="arriveLocation"
                  onChange={this.handleFlightInput}
@@ -132,7 +132,7 @@ class FlightAdd extends React.Component {
                  placeholder="Arrival Airport Code" />
 
                <label className="label-text">Arrival Time:</label>
-               <Input style={{ width: "40%", margin: "0 auto", textAlign: "center" }}
+               <Input style={{ width: "50%", margin: "0 auto", textAlign: "center" }}
                  value={this.state.flightData.arriveTime  || ""}
                  name="arriveTime"
                  onChange={this.handleFlightInput}
@@ -140,7 +140,7 @@ class FlightAdd extends React.Component {
                  placeholder="Arrival Time" />
             </Row>
             <Row>
-               <button className="flight-edit-btn"><Link to={"https://www.world-airport-codes.com/"} target="_blank">Search Airport Codes</Link></button>
+               <button className="flight-edit-btn"><Link to={"http://www.azworldairports.com/indexes/p-alica.cfm"} target="_blank">Search Airline Codes</Link></button>
                <button className="flight-edit-btn" onClick={this.props.editing ? this.handleFlightEdit : this.handleFlightFormSubmit} >Submit Flight</button>
              </Row>
            </div>

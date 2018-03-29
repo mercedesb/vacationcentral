@@ -38,7 +38,8 @@ const renderForm = props => (
       id={props.result.id}
       flightData={props.result}
       getFlights={props.getFlights}
-      callFightAware={props.callFlightAware}
+      callFlightAware={props.callFlightAware}
+
     />
   </Row>
 );
