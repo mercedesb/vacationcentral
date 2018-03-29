@@ -1,6 +1,8 @@
 import React from "react";
 import "./TripPanel.css";
+import "../../VacationContainer.css"
 import { Grid, Row, Col, Div } from 'react-bootstrap';
+import MediaQuery from 'react-responsive';
 import {FormBtn, Input, TextArea} from "../Form";
 import { List, ListItem } from "../List";
 import { Link } from "react-router-dom";
@@ -8,6 +10,7 @@ import API from "../../utils/API";
 import TripAdd from "./TripAdd";
 import TripDisplay from "./TripDisplay";
 import { isNull } from "util";
+
 
 
 class TripPanel extends React.Component {
@@ -51,7 +54,8 @@ class TripPanel extends React.Component {
         <Col xs={2} className="trip-panel" >
          
           <Row>
-              <p className="header">Your Trips</p>
+              <p className="header-trip">Your Trips</p>
+
           </Row>
           <Row>
               <TripAdd 
@@ -60,7 +64,6 @@ class TripPanel extends React.Component {
           </Row>
           
           <Row>
-            {/* <FormBtn style={{ color: "orange", height: "50px" }} onClick={this.handleToggleTripDisplay}>View Your Trips</FormBtn> */}
             <button 
               className="tripDisplay-btn" 
               onClick={() => {

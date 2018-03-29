@@ -26,7 +26,7 @@ class BusinessForm extends Component {
         businessData: {
           ...prevState.businessData,
           type: this.props.businessType,
-          TripId: this.props.tripId,
+          TripId: this.props.TripId,
           [name]: value
         },
         editData: {
@@ -41,7 +41,7 @@ class BusinessForm extends Component {
     API.saveBusiness(this.state.businessData)
       .then(response => {
         this.setState({businessData: {}});
-        this.props.getAllBusinesses(this.props.tripId);
+        this.props.getAllBusinesses(this.props.TripId);
       })
       .catch(err => console.log(err));
   }
@@ -53,24 +53,24 @@ class BusinessForm extends Component {
       .then(response => {
         console.log(response.data);
         this.setState({businessData: {}, editData: {}});
-        this.props.getAllBusinesses(this.props.tripId);
+        this.props.getAllBusinesses(this.props.TripId);
       })
       .catch(err => console.log(err));
   }
 
   renderDateInputs() {
-    if (this.props.businessType === "hotels") {
+    if ((this.props.businessType || this.state.businessData.type) === "Hotels") {
       return (
         <div>
-          <label>Check-in:</label>
-          <Input xs={6} 
+          <label className="label-text" >Check-in:</label>
+          <Input xs={6} style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
             type="date" 
             onChange={this.handleInputChange} 
             value={this.state.businessData.startDate || ""} 
             name="startDate" placeholder="Check-in Date" 
           />
-          <label>Check-out:</label>
-          <Input 
+          <label className="label-text" >Check-out:</label>
+          <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
             xs={6} 
             type="date" 
             onChange={this.handleInputChange} 
@@ -84,34 +84,36 @@ class BusinessForm extends Component {
 
   render() {
     return (
-      <Col xs={12} className="business-form">
-        <form>
-          <label>Business Name:</label>
-          <Input 
+
+      <div className="business-add">
+            ß<p className="second-text">Add {this.props.businessType}</p>
+        
+          <label className="label-text" >Business Name:</label>
+          <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
             xs={6} 
             onChange={this.handleInputChange} 
             name="name" value={this.state.businessData.name || ""} 
             placeholder="Business Name" 
           />
-          <label>Confirmation Number:</label>
+          <label className="label-text" >Confirmation Number:</label>
           <Input 
-            xs={6} 
+            xs={6} style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
             onChange={this.handleInputChange} 
             name="confirmationNumber" 
             value={this.state.businessData.confirmationNumber || ""} 
             placeholder="Confirmation Number" 
           />
-          <label>Address:</label>
+          <label className="label-text" >Address:</label>
           <Input 
-            xs={6} 
+            xs={6} style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
             onChange={this.handleInputChange} 
             name="address" 
             value={this.state.businessData.address || ""} 
             placeholder="Address" 
           />
-          <label>Phone Number:</label>
+          <label className="label-text" >Phone Number:</label>
           <Input 
-            xs={6} 
+            xs={6} style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
             onChange={this.handleInputChange} 
             name="phone" 
             value={this.state.businessData.phone || ""} 
@@ -120,9 +122,9 @@ class BusinessForm extends Component {
           {this.renderDateInputs()}
           {/* <label>Comment:</label>
           <TextArea xs={12} placeholder="Add Comments" /> */}
-          <FormBtn onClick={this.props.editing ? this.handleEdit : this.handleCreateNew}>Submit</FormBtn>
-        </form>
-      </Col>
+          <button className="btn btn-lrg submit-btn"  onClick={this.props.editing ? this.handleEdit : this.handleCreateNew}>Submit</button>
+
+      </div>
     )
   }
 };

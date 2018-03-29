@@ -5,21 +5,20 @@ import { FormBtn } from "../../../../Form";
 import BusinessForm from "../../BusinessForm";
 
 const renderResult = props => (
-  <div>
+  <li className="business-list-item">
     <Row>
-      <Col xs={6}>
-        <h3>{props.result.name}</h3>
-        {props.result.confirmationNumber ? <div><p>Confirmation: {props.result.confirmationNumber}</p></div> : undefined}
-      </Col>
-      <Col xs={6}>
-        <FormBtn id={props.id} onClick={props.toggleEdit}>Edit</FormBtn>
-      </Col>
+        <p className="second-text">{props.result.name}</p>
+        {props.result.confirmationNumber ? <div><p>Confirmation: <strong>{props.result.confirmationNumber}</strong></p></div> : undefined}
     </Row>
-    {props.result.address ? <div><p>Address:<br />{props.result.address}</p></div> : undefined}
-    {props.result.phone ? <div><p>Phone:<br />{props.result.phone}</p></div> : undefined}
-    {props.result.startDate ? <div><p>Check-in:<br />{props.result.startDate}</p></div> : undefined}
-    {props.result.endDate ? <div><p>Check-in:<br />{props.result.endDate}</p></div> : undefined}
-  </div>
+    {props.result.address ? <div><p>Address:  <strong>{props.result.address}</strong></p></div> : undefined}
+    {props.result.phone ? <div><p>Phone:  <strong>{props.result.phone}</strong></p></div> : undefined}
+    {props.result.startDate ? <div><p>Check-in:  <strong>{props.result.startDate}</strong></p></div> : undefined}
+    {props.result.endDate ? <div><p>Check-in:  <strong>{props.result.endDate}</strong></p></div> : undefined}
+
+    <Row>
+        <button className="business-edit-btn" id={props.id} onClick={props.toggleEdit}>Edit</button>
+      </Row>>
+  </li>
 );
 
 const renderForm = props => (
@@ -27,7 +26,7 @@ const renderForm = props => (
     <BusinessForm
       toggleEdit={props.toggleEdit}
       editing={props.editing}
-      id={props.id}
+      id={props.result.id}
       businessData={props.result}
       getAllBusinesses={props.getAllBusinesses}
     />

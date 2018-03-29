@@ -62,7 +62,7 @@ class ProfilePage extends React.Component {
         </Row>
 
         <Row>
-          <button className='profile-btn' onClick={this.handleToggleProfileAdd}>Add a Rewards Profile</button>
+          <button className='profile-btn'>Add a Rewards Profile</button>
         </Row>
 
 

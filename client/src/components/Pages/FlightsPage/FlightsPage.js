@@ -27,13 +27,9 @@ class FlightsPage extends React.Component {
       this.callFlightAware = this.callFlightAware.bind(this);
     }
 
-    componentWillMount(){
-        this.getFlights();
-      }
-
-
     handleToggleFlightDisplay = () => {
         console.log("flightDisplay is visible")
+        this.getFlights();
         this.setState({ flightDisplayVisible: !this.state.flightDisplayVisible })
       };
 

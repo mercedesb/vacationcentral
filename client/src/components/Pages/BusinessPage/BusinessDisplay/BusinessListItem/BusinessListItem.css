@@ -1,8 +1,27 @@
-.business-list-item{
-    /* height: 400px; */
-    list-style-type: none;
-    width: 100%;
+
+.business-list-item {
+    width: 80%;
     font-size: 15px;
-    background: white;
-    /* overflow: scroll */
+    margin: 0 auto;
+    height: auto;
+    overflow: scroll;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background:#B85D57;
+    line-height: 1.5;
+    border-radius: 6px;
+
+}
+
+.business-edit-btn {
+    margin: 0 auto;
+    background-color: #26867B;
+    height: 30px;
+    width: 20%;
+    margin-left: 40%;
+    text-align: center;
+    color: #230C0F;
+    margin-bottom: 10px;
+    border-radius: 6px;
+
 }
