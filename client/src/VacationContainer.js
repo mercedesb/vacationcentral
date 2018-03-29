@@ -19,10 +19,8 @@ class VacationContainer extends Component {
   state = {
     modalOpen: false,
     user: {},
-    category: "",
-    tripId: 4,
-    userData: {},
-    loggedin: false,
+    tripId: 0,
+    userData: {}
   };
 
   handleInputChange = event => {
@@ -53,7 +51,10 @@ class VacationContainer extends Component {
   loginUser = userData => {
     API.loginUser(userData)
       .then(data => {
-        this.setState({ user: data.data.user, path: data.data.path, userData: {}, loggedin: true });
+        this.setState({
+          user: data.data.user, 
+          userData: {}
+        });
       })
       .catch(err => console.log(err));
   }
@@ -69,21 +70,9 @@ class VacationContainer extends Component {
     this.setState({ modalOpen: !this.state.modalOpen })
   };
 
-
-  handleSelectCategory = (bpCategory) => {
-    // console.log("the category selected was", bpCategory);
-    this.setState({ category: bpCategory.elem });
-    console.log("category state in hSC", this.state.category);
-  }
-
   handleSetTripId = (id) => {
     console.log("the trip id selected was", id)
     this.setState({ tripId: id });
-  }
-
-
-  handleDisplayPage = (category) => {
-    console.log("you have entered the DisplayPage function", category);
   }
 
   render() {
@@ -100,14 +89,11 @@ class VacationContainer extends Component {
               UserId={this.state.user.id}
               handleTripFormSubmit={this.handleTripFormSubmit}
               handleSetTripId={this.handleSetTripId} />
-            <DisplayPanel
-              userId={this.state.user.id}
-              tripId={this.state.id}
-              dpCategory={this.state.category}
-              handleDisplayPage={this.handleDisplayPage}>
+            <DisplayPanel>
               <Switch>
                 <Route exact path="/" 
-                  render={() => (this.state.user.id ? <Redirect to="/member" /> : 
+                  render={() => (this.state.user.id ? 
+                  <Redirect to="/member" /> : 
                   <HomePage
                     purpose="Log In"
                     handleInputChange={this.handleInputChange}
@@ -115,7 +101,8 @@ class VacationContainer extends Component {
                     user={this.state.userData}
                   />)} 
                 />
-                <Route exact path="/signup" render={() => (this.state.user.id ? <Redirect to="/member" /> :
+                <Route exact path="/signup" render={() => (this.state.user.id ? 
+                  <Redirect to="/member" /> :
                   <HomePage
                     purpose="Sign Up"
                     handleInputChange={this.handleInputChange}
@@ -123,11 +110,11 @@ class VacationContainer extends Component {
                     user={this.state.userData}
                   />)}
                 />
-                <Route exact path="/member" render={() => <MemberPage />} />
-                <Route exact path="/hotels" render={() => <BusinessPage businessType="hotels" tripId={1} />} />
-                <Route exact path="/dining" render={() => <BusinessPage businessType="dining" tripId={1} />} />
-                <Route exact path="/flights" render={() => <FlightsPage TripId={this.state.id} />} />
-                <Route exact path="/attractions" render={() => <BusinessPage businessType="attractions" tripId={1} />} />
+                <Route exact path="/member" render={() => <MemberPage user={this.state.user} />} />
+                <Route exact path="/hotels" render={() => <BusinessPage businessType="hotels" tripId={this.state.tripId} />} />
+                <Route exact path="/dining" render={() => <BusinessPage businessType="dining" tripId={this.state.tripId} />} />
+                <Route exact path="/flights" render={() => <FlightsPage TripId={this.state.tripId} />} />
+                <Route exact path="/attractions" render={() => <BusinessPage businessType="attractions" tripId={this.state.tripId} />} />
                 <Route exact path="/profile" render={() => <ProfilePage UserId={this.state.user.id} />} />
               </Switch>
             </DisplayPanel>

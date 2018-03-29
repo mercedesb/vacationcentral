@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 
 const MemberPage = props => (
   <Col xs={12} className="member-display">
-    <h2>Welcome!</h2>
+    <h2>Welcome {props.user.firstName}!</h2>
   </Col>
 );
 
