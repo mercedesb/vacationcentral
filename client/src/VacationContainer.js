@@ -74,12 +74,13 @@ class VacationContainer extends Component {
   // };
 
   handleSetTripId = (id) => {
-    console.log("the trip id selected was", id)
+    console.log("the trip id", id)
     this.setState({ tripId: id });
+
   }
 
   render() {
-    // console.log("state in VCrender", this.state);
+    console.log("state in VCrender", this.state);
     return (
       <Router>
         <Grid fluid className="vacation-container">

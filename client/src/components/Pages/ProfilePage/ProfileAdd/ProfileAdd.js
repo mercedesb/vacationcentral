@@ -64,15 +64,16 @@ class ProfileAdd extends React.Component {
     
     render() {
         
+
         console.log('these are my profile add props!!', this.props)
 
        return (
         <div className="profile-add">
 
-           <p className="second-text">Add a company to your rewards profile</p>
+           <p className="prof-add-text">Add a company to your rewards profile</p>
 
-             <form>
-               <label className="label-text" style={{margin: "0 auto"}} >Select the Profile Type: </label>
+             <form >
+               <label className="profile-select-text">Select the Profile Type: </label>
                <select xs={12} value={this.state.profileData.type} name="type" onChange={this.handleProfileInputChange}>
                  <option value="Airline">Airline</option>
                  <option value="Hotel">Hotel</option>

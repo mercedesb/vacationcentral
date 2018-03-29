@@ -18,13 +18,10 @@ class BusinessPage extends Component {
     this.toggleEdit = this.toggleEdit.bind(this);
   }
 
-  componentWillMount() {
-    this.getAllBusinesses();
-  };
 
   handleToggleBusinessDisplay = () => {
-    console.log("businessDisplay is visible");
-    this.getAllBusinesses();
+    console.log("businessDisplay is visible")
+    this.getAllBusinesses(this.props.TripId);
     this.setState({ businessDisplayVisible: !this.state.businessDisplayVisible })
   };
 

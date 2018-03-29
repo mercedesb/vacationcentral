@@ -9,8 +9,9 @@ const renderResult = props => (
 
   <li>
     <Row>
-      <input style={{ marginTop: "15px", marginLeft: "30px", height: "30px", width: "30px"}} type="checkbox" onClick={(event) => {
+      <input style={{ marginTop: "15px", marginLeft: "30px", height: "30px", width: "30px"}} type="checkbox" value="clicked" onClick={(event) => {
         console.dir(event.target);
+        props.handleClickBox(props.clicked);
         props.handleSetTripId(props.result.id)}} /> 
         <p style={{ fontSize: "20px" }}>{props.result.destination}</p>
     </Row>
