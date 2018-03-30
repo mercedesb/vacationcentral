@@ -1,14 +1,22 @@
 import React from "react";
 import "./BusinessDisplay.css";
 import { Grid, Row, Col } from 'react-bootstrap';
-import BusinessListItem from "./BusinessListItem"
+import BusinessListItem from "./BusinessListItem";
+import CommentsModalPanel from "./CommentsModalPanel";
 
 
 class BusinessDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    commentsModalVisible: false
   }
+
+    handleToggleCommentsModal = (event) => {
+      event.preventDefault();
+    // console.log("you have clicked the comments modal button");
+    this.setState({ commentsModalOpen: !this.commentsModalOpen })
+  };
 
   render() {
 
@@ -31,9 +39,10 @@ class BusinessDisplay extends React.Component {
                 id={business.TripId}
                 key={business.TripId}
                 result={business}
-                toggleEdit={this.props.toggleEdit}
-              />) :
-            <p className="second-text">Add a business to start</p>}
+                toggleEdit={this.props.toggleEdit} >
+                <CommentsModalPanel show={this.state.commentsModalVisible} onClose={this.handleToggleCommentsModal} />
+                </BusinessListItem>) :
+            <p className="second-text">Add {this.props.business.type} to Start</p>}
         </ul>
       </Col>
     );

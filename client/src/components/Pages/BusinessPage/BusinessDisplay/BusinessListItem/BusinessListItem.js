@@ -17,6 +17,7 @@ const renderResult = props => (
 
     <Row>
         <button className="business-edit-btn" id={props.id} onClick={props.toggleEdit}>Edit</button>
+        <button className="business-edit-btn" id={props.id} onClick={() => this.props.handleToggleCommentsModal(this.props.commentsModalVisible)}>Comments</button> 
       </Row>>
   </li>
 );

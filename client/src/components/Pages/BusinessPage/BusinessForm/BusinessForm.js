@@ -123,7 +123,7 @@ class BusinessForm extends Component {
           {/* <label>Comment:</label>
           <TextArea xs={12} placeholder="Add Comments" /> */}
           <button className="btn btn-lrg submit-btn"  onClick={this.props.editing ? this.handleEdit : this.handleCreateNew}>Submit</button>
-
+          {/* <button className="btn btn-lrg submit-btn"  onClick={this.props.editing ? this.handleEdit : this.handleCreateNew}>Add Comments</button> */}
       </div>
     )
   }
