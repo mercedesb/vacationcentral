@@ -6,7 +6,7 @@ import ProfileAdd from "../../ProfileAdd";
 
 const renderResult = props => (
 
-  <li className="profile-list-item">
+  <div>
     <Row>
         <p className="second-text">{props.result.company}</p>
     </Row>
@@ -18,7 +18,7 @@ const renderResult = props => (
     </Row>
   
   
-  </li>
+  </div>
 
 
 

@@ -20,8 +20,6 @@ class BusinessPage extends Component {
 
 
   handleToggleBusinessDisplay = () => {
-    console.log("businessDisplay is visible")
-    this.getAllBusinesses(this.props.TripId);
     this.setState({ businessDisplayVisible: !this.state.businessDisplayVisible })
   };
 
@@ -49,7 +47,11 @@ class BusinessPage extends Component {
       </Row>
 
       <Row>
-          <button className='business-btn' onClick={this.handleToggleBusinessDisplay}>View Your {this.props.businessType} </button>
+          <button className='business-btn' onClick={() => {
+            this.getAllBusinesses()
+              .then(this.handleToggleBusinessDisplay)}}>
+            View Your {this.props.businessType} 
+          </button>
       </Row>
 
       <Row>

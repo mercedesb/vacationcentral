@@ -41,7 +41,7 @@ class TripPanel extends React.Component {
     getTrips = () => (
       API.getTrips(this.props.UserId)
       .then(response => {
-        this.setState({results: response.data}, () => console.log("getTrips working", this.state))
+        this.setState({results: response.data})
       })
     );
 
@@ -67,8 +67,8 @@ class TripPanel extends React.Component {
             <button 
               className="tripDisplay-btn" 
               onClick={() => {
-                this.getTrips(this.props.UserId);
-                this.handleToggleTripDisplay();
+                this.getTrips(this.props.UserId)
+                  .then(this.handleToggleTripDisplay);
               }}>
               View Your Trips
             </button> 

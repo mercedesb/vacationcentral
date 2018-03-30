@@ -6,8 +6,7 @@ import TripAdd from "../../TripAdd";
 
 
 const renderResult = props => (
-
-  <li>
+  <div>
     <Row>
       <input style={{ marginTop: "15px", marginLeft: "30px", height: "30px", width: "30px"}} type="checkbox" onClick={(event) => {
         console.dir(event.target);
@@ -23,8 +22,7 @@ const renderResult = props => (
     <Row>
       <button className="btn btn-lg tripedit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
     </Row>
-  </li>
-
+  </div>
 );
 
 const renderForm = props => (
