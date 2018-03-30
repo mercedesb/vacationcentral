@@ -10,7 +10,7 @@ router.route("/")
 router
   .route("/:id")
 //   .get(businessController.findById)
-  .put(businessController.update);
-//   .delete(businessController.remove);
+  .put(businessController.update)
+  .delete(businessController.remove);
 
 module.exports = router;

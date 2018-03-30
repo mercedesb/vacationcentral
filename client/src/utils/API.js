@@ -10,9 +10,9 @@ export default {
   //   return axios.get("/api/businesses/" + id);
   // },
   // Deletes the book with the given id
-  // deleteBusiness: function(id) {
-  //   return axios.delete("/api/businesses/" + id);
-  // },
+  deleteBusiness: function(id) {
+    return axios.delete("/api/businesses/" + id);
+  },
   // Saves a book to the database
   saveBusiness: function(businessData) {
     return axios.post("/api/businesses", businessData);

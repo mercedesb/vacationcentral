@@ -7,8 +7,8 @@ import BusinessForm from "../../BusinessForm";
 const renderResult = props => (
   <div>
     <Row>
-        <p className="second-text">{props.result.name}</p>
-        {props.result.confirmationNumber ? <div><p>Confirmation: <strong>{props.result.confirmationNumber}</strong></p></div> : undefined}
+      <p className="second-text">{props.result.name}</p>
+      {props.result.confirmationNumber ? <div><p>Confirmation: <strong>{props.result.confirmationNumber}</strong></p></div> : undefined}
     </Row>
     {props.result.address ? <div><p>Address:  <strong>{props.result.address}</strong></p></div> : undefined}
     {props.result.phone ? <div><p>Phone:  <strong>{props.result.phone}</strong></p></div> : undefined}
@@ -16,8 +16,9 @@ const renderResult = props => (
     {props.result.endDate ? <div><p>Check-in:  <strong>{props.result.endDate}</strong></p></div> : undefined}
 
     <Row>
-        <button className="business-edit-btn" id={props.id} onClick={props.toggleEdit}>Edit</button>
-      </Row>>
+      <button className="business-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
+      <button className="business-delete-btn" id={props.result.id} onClick={() => props.deleteBusiness(props.result.id)}>Delete</button>
+    </Row>>
   </div>
 );
 

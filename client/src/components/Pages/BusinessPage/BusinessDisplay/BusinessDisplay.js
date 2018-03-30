@@ -27,9 +27,10 @@ class BusinessDisplay extends React.Component {
               .map(business => <BusinessListItem
                 editing={this.props.editing}
                 editId={this.props.editId}
+                deleteBusiness={this.props.deleteBusiness}
                 getAllBusinesses={this.props.getAllBusinesses}
                 id={business.TripId}
-                key={business.TripId}
+                key={business.id}
                 result={business}
                 toggleEdit={this.props.toggleEdit}
               />) :
