@@ -66,7 +66,7 @@ export default {
   },
 
 
-  getFlights: function (TripId) {
+  getFlights: function(TripId) {
     console.log("in flight get API", TripId);
     return axios.get("/api/flights?" + `TripId=${TripId}`)
   },
@@ -83,13 +83,13 @@ export default {
 
 
   getLogin: function (loginData) {
-    return axios.get("api/login", loginData)
+    return axios.get("/api/login", loginData)
   },
 
 
   saveSignUp: function(signUpData){
     console.log("in signUp API", signUpData);
-    return axios.post("api/signUp", signUpData);
+    return axios.post("/api/signUp", signUpData);
   },
   
 };
