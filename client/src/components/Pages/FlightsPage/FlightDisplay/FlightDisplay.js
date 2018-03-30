@@ -13,7 +13,8 @@ class FlightDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fxml_url: 'https://flightxml.flightaware.com/json/FlightXML2/',
+      fxml_url: 'http://flightxml.flightaware.com/json/FlightXML2/',
+      proxy: 'https://cors-anywhere.herokuapp.com/',
       username: 'slippa91',
       apiKey: '84c5409c7ea2dd5a0e3b0ba9b0fb770dee70c920',
     };
@@ -29,14 +30,17 @@ class FlightDisplay extends React.Component {
 
   callFATemp = () => {
     console.log("in callFATemp", this.state);
-    axios.get(this.state.fxml_url + "MetarEx?airport=KMDW&howMany=1&offset=0", {
+    axios.get(this.state.proxy + this.state.fxml_url + "MetarEx?airport=KMDW&howMany=1&offset=0", {
       headers : {
-        'Authorization': 'Basic c2xpcHBhOTE6ODRjNTQwOWM3ZWEyZGQ1YTBlM2IwYmE5YjBmYjc3MGRlZTcwYzkyMA==',
+        'Authorization' : 'basic c2xpcHBhOTE6ODRjNTQwOWM3ZWEyZGQ1YTBlM2IwYmE5YjBmYjc3MGRlZTcwYzkyMA==',
       } })
       .then(function (result, response) {
-      var entry = result.MetarExResult.metar[0];
+        console.log("rrr", result.request.response);
+        
+      // var entry = result.response;
+      // console.log("entry", entry);
       // console.log('The temperature at ' + entry.airport + ' is ' + entry.temp_air + 'C');
-      console.log('The temperature at ' + entry.airport + ' is ' + (entry.temp_air * 1.8 + 32) + 'F');
+      // console.log('The temperature at ' + entry.airport + ' is ' + (entry.temp_air * 1.8 + 32) + 'F');
     })
   };
 
@@ -86,7 +90,7 @@ class FlightDisplay extends React.Component {
                 key={flight.id}
                 result={flight}
                 toggleEdit={this.props.toggleEdit}
-                // callFlightAware={this.callFlightAware}
+                callFlightAware={this.callFlightAware}
 
               />) :
             <p className="second-text"> Add a flight to start</p>}
