@@ -45,7 +45,7 @@ export default {
 
   updateTrips: function(tripData, id) {
     console.log("in trip put API", tripData); 
-    return axios.put("api/trips/" + id, tripData);
+    return axios.put("/api/trips/" + id, tripData);
   },
 
 
@@ -68,28 +68,28 @@ export default {
 
   getFlights: function(TripId) {
     console.log("in flight get API", TripId);
-    return axios.get("api/flights?" + `TripId=${TripId}`);
+    return axios.get("/api/flights?" + `TripId=${TripId}`)
   },
 
   saveFlights: function(flightData){
     console.log("in flight postAPI", flightData);
-    return axios.post("api/flights", flightData);
+    return axios.post("/api/flights", flightData);
   },
 
   updateFlights: function(flightData, id) {
     console.log("in flight put API", flightData); 
-    return axios.put("api/flights/" + id, flightData);
+    return axios.put("/api/flights/" + id, flightData);
   },
 
 
   getLogin: function (loginData) {
-    return axios.get("api/login", loginData)
+    return axios.get("/api/login", loginData)
   },
 
 
   saveSignUp: function(signUpData){
     console.log("in signUp API", signUpData);
-    return axios.post("api/signUp", signUpData);
+    return axios.post("/api/signUp", signUpData);
   },
   
 };

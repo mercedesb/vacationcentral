@@ -86,7 +86,7 @@ class FlightDisplay extends React.Component {
                 key={flight.id}
                 result={flight}
                 toggleEdit={this.props.toggleEdit}
-                callFlightAware={this.callFlightAware}
+                // callFlightAware={this.callFlightAware}
 
               />) :
             <p className="second-text"> Add a flight to start</p>}
