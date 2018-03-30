@@ -17,28 +17,28 @@ class FlightDisplay extends React.Component {
       username: 'slippa91',
       apiKey: '84c5409c7ea2dd5a0e3b0ba9b0fb770dee70c920',
     };
-    // this.callFlightAware = this.callFlightAware.bind(this);
+    this.callFlightAware = this.callFlightAware.bind(this);
   }
 
-  // callFlightAware = (event) => {
-  //   event.preventDefault();
-  //   console.log("in callFlightAware");
-  //   this.callFATemp();
-  //   // this.callFATime();
-  // }
+  callFlightAware = (event) => {
+    event.preventDefault();
+    console.log("in callFlightAware");
+    this.callFATemp();
+    // this.callFATime();
+  }
 
-  // callFATemp = () => {
-  //   console.log("in callFATemp", this.state);
-  //   axios.get(this.state.fxml_url + "MetarEx?airport=KMDW&howMany=1&offset=0", {
-  //     headers : {
-  //       'Authorization': 'Basic c2xpcHBhOTE6ODRjNTQwOWM3ZWEyZGQ1YTBlM2IwYmE5YjBmYjc3MGRlZTcwYzkyMA==',
-  //     } })
-  //     .then(function (result, response) {
-  //     var entry = result.MetarExResult.metar[0];
-  //     // console.log('The temperature at ' + entry.airport + ' is ' + entry.temp_air + 'C');
-  //     console.log('The temperature at ' + entry.airport + ' is ' + (entry.temp_air * 1.8 + 32) + 'F');
-  //   })
-  // };
+  callFATemp = () => {
+    console.log("in callFATemp", this.state);
+    axios.get(this.state.fxml_url + "MetarEx?airport=KMDW&howMany=1&offset=0", {
+      headers : {
+        'Authorization': 'Basic c2xpcHBhOTE6ODRjNTQwOWM3ZWEyZGQ1YTBlM2IwYmE5YjBmYjc3MGRlZTcwYzkyMA==',
+      } })
+      .then(function (result, response) {
+      var entry = result.MetarExResult.metar[0];
+      // console.log('The temperature at ' + entry.airport + ' is ' + entry.temp_air + 'C');
+      console.log('The temperature at ' + entry.airport + ' is ' + (entry.temp_air * 1.8 + 32) + 'F');
+    })
+  };
 
   // callFATime = () => {
   //   console.log("in callFATime", this.state);

@@ -9,8 +9,7 @@ router.route("/")
 // // Matches with "/api/books/:id"
 router
   .route("/:id")
-//   .get(booksController.findById)
-  .get(flightsController.findTrip)
+  // .get(flightsController.findTrip)
   .put(flightsController.update)
 //   .delete(booksController.remove);
 

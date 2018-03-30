@@ -3,20 +3,21 @@ const db = require("../models");
 
 module.exports = {
   findAll: function(req, res) {
-    console.log("in find all flights");
+    console.log("in find all flights trip controller", req.query);
     db.Flight
       .findAll({where: req.query})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
 
-  findTrip: function(req, res) {
-    console.log("flight find all controller", req.params.id)
-    db.Flight
-      .findAll({TripId: req.params.id})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // findTrip: function(req, res) {
+  //   console.log("flight find all controller", req.params.id)
+  //   db.Flight
+  //     .findAll({TripId: req.params.id})
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
+
   create: function(req, res) {
     console.log("create flight", req.body)
     db.Flight

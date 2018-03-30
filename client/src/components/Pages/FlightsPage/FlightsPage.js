@@ -19,9 +19,7 @@ class FlightsPage extends React.Component {
         editing: false,
         editId: 0,
         flightAware: {}
-
       };
-
       this.getFlights = this.getFlights.bind(this);
       this.toggleEdit = this.toggleEdit.bind(this);
     }
