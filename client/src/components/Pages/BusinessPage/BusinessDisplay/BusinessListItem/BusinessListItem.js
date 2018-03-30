@@ -17,7 +17,7 @@ const renderResult = props => (
 
     <Row>
       <button className="business-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
-      <button className="business-delete-btn" id={props.result.id} onClick={() => props.deleteBusiness(props.result.id)}>Delete</button>
+      <button className="business-edit-btn" id={props.result.id} onClick={() => props.deleteBusiness(props.result.id)}>Delete</button>
     </Row>>
   </div>
 );
