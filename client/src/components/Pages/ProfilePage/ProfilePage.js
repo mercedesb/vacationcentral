@@ -15,7 +15,7 @@ class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      profileDisplayVisible: true, 
+      profileDisplayVisible: false, 
       profileAddVisible: true, 
       results: [],
       editing: false,
@@ -24,7 +24,6 @@ class ProfilePage extends React.Component {
     this.getProfiles = this.getProfiles.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
   }
-
 
   handleToggleProfileDisplay = () => {
     console.log("profileDisplay is visible")
@@ -37,7 +36,6 @@ class ProfilePage extends React.Component {
     this.setState({ profileAddVisible: !this.state.profileAddVisible })
   };
 
-
   toggleEdit = event => {
     // console.dir(event.target.id);
     this.setState({
@@ -49,7 +47,7 @@ class ProfilePage extends React.Component {
   getProfiles = () => (
     API.getProfiles(this.props.UserId)
     .then(response => {
-      this.setState({results: response.data}, () => console.log("getProfiles working", this.state))
+      this.setState({results: response.data})
     })
   );
 
@@ -62,15 +60,15 @@ class ProfilePage extends React.Component {
         <Row> <p className="header">Reward Programs</p> </Row>
 
         <Row>
-          <button className='profile-btn' onClick={this.handleToggleProfileDisplay}>View Your Profiles</button>
+          <button className='profile-btn' onClick={() =>
+            {this.getProfiles()
+              .then(this.handleToggleProfileDisplay)}}>
+            View Your Profiles
+          </button>
         </Row>
-
         <Row>
           <button className='profile-btn'  onClick={this.handleToggleAddDisplay}>Add a Rewards Profile</button>
         </Row>
-
-
-
         <Row>
           {this.state.profileDisplayVisible ? <ProfileDisplay
             show={this.state.profileDisplayVisible}
