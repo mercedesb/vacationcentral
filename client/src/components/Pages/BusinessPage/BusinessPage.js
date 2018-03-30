@@ -49,7 +49,11 @@ class BusinessPage extends Component {
       </Row>
 
       <Row>
-          <button className='business-btn' onClick={this.handleToggleBusinessDisplay}>View Your {this.props.businessType} </button>
+          <button className='business-btn' onClick={() => {
+            this.getAllBusinesses()
+              .then(this.handleToggleBusinessDisplay)}}>
+            View Your {this.props.businessType} 
+          </button>
       </Row>
 
       <Row>

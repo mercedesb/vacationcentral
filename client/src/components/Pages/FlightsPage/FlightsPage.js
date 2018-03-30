@@ -57,7 +57,7 @@ class FlightsPage extends React.Component {
           <button className='flight-btn' onClick={() => {
             this.getFlights()
               .then(this.handleToggleFlightDisplay)}}>
-          View Your Flights
+            View Your Flights
           </button>
         </Row>
 
