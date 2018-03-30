@@ -1,20 +1,23 @@
 const db = require("../models");
 
-// Defining methods for the booksController
+
 module.exports = {
   findAll: function(req, res) {
-    console.log("flight find all controller", req.query)
+    console.log("in find all flights trip controller", req.query);
     db.Flight
       .findAll({where: req.query})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // findById: function(req, res) {
-  //   db.Book
-  //     .findById(req.params.id)
+
+  // findTrip: function(req, res) {
+  //   console.log("flight find all controller", req.params.id)
+  //   db.Flight
+  //     .findAll({TripId: req.params.id})
   //     .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
   // },
+
   create: function(req, res) {
     console.log("create flight", req.body)
     db.Flight

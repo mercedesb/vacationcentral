@@ -21,7 +21,6 @@ class TripPanel extends React.Component {
         results: [], 
         editing: false,
         editId: 0,
-        clicked: false,
       };
       this.getTrips = this.getTrips.bind(this);
       this.toggleEdit = this.toggleEdit.bind(this);
@@ -85,7 +84,6 @@ class TripPanel extends React.Component {
           editId={this.state.editId}
           getTrips={this.getTrips}
           handleSetTripId={this.props.handleSetTripId}
-          clicked={this.state.clicked}
            /> : null}
           </Row>
 

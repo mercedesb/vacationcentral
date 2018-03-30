@@ -1,42 +1,81 @@
-# Create React Express App
+# VACATION CENTRAL
 
-## About This Boilerplate
+<https://vacationcentral.herokuapp.com/> \
+Version 1.0 \
+Original Deployment Date - April 5, 2018
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+# Original Contributors:
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+Mina Slater - <https://github.com/minaslater> \
+Susan Lippa - <https://github.com/slippa91>
 
-## Starting the app locally
 
-Start by installing front and backend dependencies. While in this directory, run the following commands:
+# The Idea:
 
-```
-yarn install
-cd client
-yarn install
-cd ..
-``
+When talking with friends about vacation, I am frequently asked for thoughts about where we stayed, what restaurants we enjoyed and what activities we enjoyed. 
 
-After both installations complete, run the following command in your terminal:
+Vacation Central is a place to store all of that information so that it is easily accessible from anywhere. If having all the details in one place makes current trips easier to manage, so much the better. 
 
-```
-yarn start
-```
+# Getting Started:
 
-That's it, your app should be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+Software Installation - Vacation Central does not require any software installation to operate.
+    
+Prerequisites - Loving your vacations past, present and future. 
 
-## Deployment (Heroku)
+# Users Guide:
 
-After confirming that you have an up to date git repository and a Heroku app created, complete the following:
 
-1. Build the React app for production by running the following command:
+                
+# Built Utilizing:
 
-```
-yarn build
-```
+React.js - <https://reactjs.org/> \
+Bootstrap v3 - <http://getbootstrap.com/docs/3.3/> \
+Moment.js - <https://momentjs.com/> \
+FlightAware API - <https://flightaware.com/commercial/flightxml/> 
 
-2. Add and commit all changes to git
+#Future Developement:
 
-3. Push to Heroku
 
-If all previous steps were followed correctly, your application should be deployed to Heroku!
+# Ideas for Improvement:
+
+Have an idea for improving this site? Please first discuss the change you wish to make via email with the owners of this repository. Email addresses can be found on the contributor's gitHub pages (links above).
+
+
+# Vacation Central in Development:
+
+UserStories:
+
+As a user - I would like one place to reference all of the details for my vacation.
+
+As a user - I would like to be able to edit and update the vacation informtaion should it change. 
+
+As a user - I would like to be able to access information from past vacations. 
+
+As a user - I would like to be able to take notes on hotels, restaurants and attractions so I can share those thoughts when asked. 
+
+As a user - I would like to be able to access real-time flight information.
+
+As a user - I would like to be able to access some of my social media pictures from inside the application. 
+
+
+Original WireFrame sketch:
+
+![Wire Frame](/client/src/OriginalWireFrame.jpg)
+
+Original Database structure sketch:
+
+![Database](/client/src/DatabaseStructure.jpg)
+
+Original File Structure sketch:
+
+![OriginalFileStructure](/client/src/Filestructure.jpg)
+
+
+
+
+
+
+
+
+
+
