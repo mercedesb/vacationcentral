@@ -5,7 +5,7 @@ import { FormBtn } from "../../../../Form";
 import BusinessForm from "../../BusinessForm";
 
 const renderResult = props => (
-  <li className="business-list-item">
+  <div>
     <Row>
         <p className="second-text">{props.result.name}</p>
         {props.result.confirmationNumber ? <div><p>Confirmation: <strong>{props.result.confirmationNumber}</strong></p></div> : undefined}
@@ -19,7 +19,7 @@ const renderResult = props => (
         <button className="business-edit-btn" id={props.id} onClick={props.toggleEdit}>Edit</button>
         <button className="business-edit-btn" id={props.id} onClick={() => this.props.handleToggleCommentsModal(this.props.commentsModalVisible)}>Comments</button> 
       </Row>>
-  </li>
+  </div>
 );
 
 const renderForm = props => (
