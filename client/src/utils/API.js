@@ -66,9 +66,9 @@ export default {
   },
 
 
-  getFlights: function (TripId) {
+  getFlights: function(TripId) {
     console.log("in flight get API", TripId);
-    return axios.get("api/flights?" + `TripId=${TripId}`)
+    return axios.get("api/flights?" + `TripId=${TripId}`);
   },
 
   saveFlights: function(flightData){

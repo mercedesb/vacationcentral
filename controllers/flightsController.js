@@ -6,7 +6,10 @@ module.exports = {
     console.log("flight find all controller", req.query)
     db.Flight
       .findAll({where: req.query})
-      .then(dbModel => res.json(dbModel))
+      .then(dbModel => {
+        console.log("flightController: ", dbModel);
+        res.json(dbModel);
+      })
       .catch(err => res.status(422).json(err));
   },
   // findById: function(req, res) {
