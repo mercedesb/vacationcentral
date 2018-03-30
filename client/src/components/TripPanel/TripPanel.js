@@ -21,7 +21,6 @@ class TripPanel extends React.Component {
         results: [], 
         editing: false,
         editId: 0,
-        clicked: false,
       };
       this.getTrips = this.getTrips.bind(this);
       this.toggleEdit = this.toggleEdit.bind(this);
