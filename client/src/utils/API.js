@@ -73,7 +73,7 @@ export default {
 
   saveFlights: function(flightData){
     console.log("in flight postAPI", flightData);
-    return axios.post("api/flights", flightData);
+    return axios.post("/api/flights", flightData);
   },
 
   updateFlights: function(flightData, id) {
