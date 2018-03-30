@@ -15,6 +15,14 @@ class CommentsModalPanel extends React.Component {
       }
     }
 
+
+    // this.handleToggleCommentsModal=this.handleToggleCommentsModal.bind(this);
+    
+  // handleToggleCommentsModal = () => {
+  //   console.log("you have clicked the comments modal button");
+  //   this.setState({commentsModalVisible: !this.state.commentsModalVisible })
+  // };
+
 // getAllComments = () => (
 //       API.getComments(this.props.BizId)
 //         .then(response => {

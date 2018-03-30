@@ -7,16 +7,8 @@ import BusinessListItem from "./BusinessListItem";
 class BusinessDisplay extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-  };
-    // this.handleToggleCommentsModal=this.handleToggleCommentsModal.bind(this);
+    this.state = {};
 }
-
-  // handleToggleCommentsModal = () => {
-  //   console.log("you have clicked the comments modal button");
-  //   this.setState({commentsModalVisible: !this.state.commentsModalVisible })
-  // };
 
 
 
@@ -41,12 +33,10 @@ class BusinessDisplay extends React.Component {
                 id={business.id}
                 key={business.id}
                 result={business}
-                toggleEdit={this.props.toggleEdit} 
-                />
-                ) :
-                <p className="second-text">Add {this.props.businessType} to Start</p>}
-                
-
+                toggleEdit={this.props.toggleEdit}
+              />
+              ) :
+            <p className="second-text">Add {this.props.businessType} to Start</p>}
 
         </ul>
       </Col>

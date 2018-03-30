@@ -67,15 +67,9 @@ class VacationContainer extends Component {
     this.loginUser(this.state.userData);
   }
 
-  // handleToggleModal = () => {
-  //   // console.log("you have clicked the login/signup button");
-  //   this.setState({ modalOpen: !this.state.modalOpen })
-  // };
-
   handleSetTripId = (id) => {
     console.log("the trip id", id)
     this.setState({ tripId: id });
-
   }
 
   render() {
@@ -85,7 +79,6 @@ class VacationContainer extends Component {
         <Grid fluid className="vacation-container">
           <Row>
             <HeaderPanel/>
-            {/* <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} /> */}
           </Row>
           <Row>
             <TripPanel
