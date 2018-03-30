@@ -38,6 +38,7 @@ class BusinessPage extends Component {
       })
   );
 
+
   render() {
     console.log("these are my business page props", this.props)
     return (

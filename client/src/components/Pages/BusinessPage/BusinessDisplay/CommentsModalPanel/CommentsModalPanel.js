@@ -15,12 +15,19 @@ class CommentsModalPanel extends React.Component {
       }
     }
 
+// getAllComments = () => (
+//       API.getComments(this.props.BizId)
+//         .then(response => {
+//           this.setState({ comments: response.data });
+//         })
+//     );
+
 handleCommentsInputChange = event => {
       const {name, value} = event.target;
       this.setState(prevState => (
       {  commentsData: {
         ...prevState.commentsData,
-        // BizId: this.props.BizId,
+        BizId: this.props.BizId,
         [name]: value
         }, 
         editData: {
@@ -32,19 +39,27 @@ handleCommentsInputChange = event => {
         console.log("comments ", this.state.commentsData));
     };
     
-// handleCommentsModalText= event => {
-//       console.log("incoming login state", this.state.loginData);
-//       event.preventDefault();
-//         if (this.state.user && this.state.password) {
-//           API.getLogin(this.state.loginData)
-//             .then(res => this.setState({results: [res.data], loginData: {}}))
-//             .then(() => console.log("login state back", this.state))
-//             .catch(err => console.log("error Trip Form Submit", err));
-//         } 
-//     };
-
-    
-
+    handleCreateNewComments = event => {
+      event.preventDefault();
+      API.saveComments(this.state.commentsData)
+        .then(response => {
+          this.setState({commentsData: {}});
+          this.props.getAllComments(this.props.TripId);
+        })
+        .catch(err => console.log(err));
+    }
+  
+    handleEdit = event => {
+      event.preventDefault();
+      this.props.toggleEdit(event);
+      API.updateComments(this.state.editData, this.props.BizId)
+        .then(response => {
+          console.log(response.data);
+          this.setState({commentsData: {}, editData: {}});
+          this.props.getAllComments(this.props.BizId);
+        })
+        .catch(err => console.log(err));
+    }
 
 
     render() {
@@ -55,24 +70,21 @@ handleCommentsInputChange = event => {
     return (
 
       <div className="modal-panel">
-        <p className="header">Comments</p>
         <form>
-
+        <label className="label-text" >Comments</label>
           <TextArea   
-                  style={{ width: "70%", margin: "0 auto" }}
-              value={this.state.commentsData.comment  || ""}
+              style={{ width: "90%", margin: "0 auto" }}
+              onChange={this.handleCommentsInputChange}
               name="comment"
-              onChange={this.handleCommentInputChange}
-              type="text"
-              placeholder="Add comments..." />
+              value={this.state.commentsData.comment  || ""}
+              placeholder="Add comments..." 
+              />
 
-
-
-          <button className="business-edit-btn" onClick={this.handleCommentsModalText}>Submit</button>
             
         </form>    
             <div className="footer">
-              <button onClick={() => this.props.handleToggleCommentsModal(this.props.commentsModalVisible)}>Close</button>
+              <button className="comments-edit-btn" onClick={this.props.editing ? this.handleEdit : this.handleCreateNew}>Submit</button>
+              <button className="comments-edit-btn" onClick={this.props.handleToggleCommentsModal}>Close</button>
             </div>
 
       

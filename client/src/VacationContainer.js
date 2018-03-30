@@ -8,7 +8,6 @@ import HeaderPanel from './components/HeaderPanel';
 import TripPanel from './components/TripPanel';
 import DisplayPanel from './components/DisplayPanel';
 import BusinessPanel from './components/BusinessPanel';
-import ModalPanel from './components/ModalPanel';
 import HomePage from "./components/Pages/HomePage";
 import ProfilePage from "./components/Pages/ProfilePage";
 import FlightsPage from "./components/Pages/FlightsPage";
@@ -86,7 +85,7 @@ class VacationContainer extends Component {
         <Grid fluid className="vacation-container">
           <Row>
             <HeaderPanel/>
-            <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} />
+            {/* <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} /> */}
           </Row>
           <Row>
             <TripPanel
