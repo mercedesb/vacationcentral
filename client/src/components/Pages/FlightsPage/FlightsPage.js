@@ -40,7 +40,7 @@ class FlightsPage extends React.Component {
   getFlights = () => (
     API.getFlights(this.props.TripId)
       .then(response => {
-        console.log(response);
+        console.log("flight get", response);
         this.setState({ results: response.data }, () => console.log("get Flights working", this.state))
       })
   );

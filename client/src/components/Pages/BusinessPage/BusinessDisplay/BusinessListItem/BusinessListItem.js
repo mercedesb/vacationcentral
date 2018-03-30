@@ -14,11 +14,11 @@ const renderResult = props => (
     {props.result.phone ? <div><p>Phone:  <strong>{props.result.phone}</strong></p></div> : undefined}
     {props.result.startDate ? <div><p>Check-in:  <strong>{props.result.startDate}</strong></p></div> : undefined}
     {props.result.endDate ? <div><p>Check-in:  <strong>{props.result.endDate}</strong></p></div> : undefined}
+    {props.result.comments ? <div style={{textAlign: "left"}}><p>Comments:  {props.result.comments}</p></div> : undefined}
 
     <Row>
         <button className="business-edit-btn" id={props.id} onClick={props.toggleEdit}>Edit</button>
-        <button className="business-edit-btn" BizId={props.id} onClick={props.handleToggleCommentsModal}>Comments</button> 
-    </Row>>
+      </Row>
   </div>
 );
 

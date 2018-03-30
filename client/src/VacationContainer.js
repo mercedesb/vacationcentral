@@ -116,10 +116,10 @@ class VacationContainer extends Component {
                 {this.state.user.firstName ?
                   <div>
                     <Route exact path="/member/" render={() => <MemberPage user={this.state.user} />} />
-                    <Route exact path="/hotels/" render={() => <BusinessPage businessType="Hotels" tripId={this.state.tripId} />} />
-                    <Route exact path="/dining/" render={() => <BusinessPage businessType="Dining" tripId={this.state.tripId} />} />
+                    <Route exact path="/hotels/" render={() => <BusinessPage businessType="Hotels" TripId={this.state.tripId} />} />
+                    <Route exact path="/dining/" render={() => <BusinessPage businessType="Dining" TripId={this.state.tripId} />} />
                     <Route exact path="/flights/" render={() => <FlightsPage TripId={this.state.tripId} />} />
-                    <Route exact path="/attractions/" render={() => <BusinessPage businessType="Attractions" tripId={this.state.tripId} />} />
+                    <Route exact path="/attractions/" render={() => <BusinessPage businessType="Attractions" TripId={this.state.tripId} />} />
                     <Route exact path="/profile/" render={() => <ProfilePage UserId={this.state.user.id} />} />
                   </div> :
                   <Route strict path="/*/" render={() => 

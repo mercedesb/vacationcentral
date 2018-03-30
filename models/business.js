@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     phone: DataTypes.STRING,
     startDate: DataTypes.DATEONLY,
     endDate: DataTypes.DATEONLY,
+    comments: DataTypes.TEXT,
     type: {type: DataTypes.STRING, allowNull: false}
   });
 
@@ -14,9 +15,6 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: {
         allowNull: false
       }
-    });
-    Business.hasMany(models.Comment, {
-      onDelete: "cascade"
     });
   };
   return Business;

@@ -38,6 +38,7 @@ class BusinessForm extends Component {
 
   handleCreateNew = event => {
     event.preventDefault();
+    console.log("hitting CreateNew",this.state.businessData);
     API.saveBusiness(this.state.businessData)
       .then(response => {
         this.setState({businessData: {}});
@@ -47,6 +48,7 @@ class BusinessForm extends Component {
   }
 
   handleEdit = event => {
+    console.log("in biz edit", this.state.editData)
     event.preventDefault();
     this.props.toggleEdit(event);
     API.updateBusiness(this.state.editData, this.props.id)
@@ -119,11 +121,19 @@ class BusinessForm extends Component {
             value={this.state.businessData.phone || ""} 
             placeholder="Phone Number" 
           />
+
           {this.renderDateInputs()}
-          {/* <label>Comment:</label>
-          <TextArea xs={12} placeholder="Add Comments" /> */}
+
+          <label className="label-text" >Comments:</label>
+          <TextArea
+            xs={6} style={{ width: "70%", margin: "0 auto" }}
+            onChange={this.handleInputChange} 
+            name="comments" 
+            value={this.state.businessData.comments || ""} 
+            placeholder="Add your comments..."  
+          />
+
           <button className="btn btn-lrg submit-btn"  onClick={this.props.editing ? this.handleEdit : this.handleCreateNew}>Submit</button>
-          {/* <button className="btn btn-lrg submit-btn"  onClick={this.props.editing ? this.handleEdit : this.handleCreateNew}>Add Comments</button> */}
       </div>
     )
   }

@@ -24,16 +24,17 @@ class BusinessPage extends Component {
   };
 
   toggleEdit = event => {
-    // console.dir(event.target.id);
+    console.dir(event.target.id);
     this.setState({
       editing: !this.state.editing,
       editId: event.target.id
-    }, () => console.log(this.state));
+    }, () => console.log("toggle edit", this.state));
   };
 
   getAllBusinesses = () => (
-    API.getBusinesses(this.props.tripId)
+    API.getBusinesses(this.props.TripId)
       .then(response => {
+        console.log("biz get", response);
         this.setState({ results: response.data });
       })
   );
@@ -63,6 +64,7 @@ class BusinessPage extends Component {
         {this.state.businessDisplayVisible ?
         <BusinessDisplay 
           show={this.state.businessDisplayVisible}
+          TripId={this.props.TripId}
           toggleEdit={this.toggleEdit} 
           results={this.state.results} 
           getAllBusinesses={this.getAllBusinesses}
