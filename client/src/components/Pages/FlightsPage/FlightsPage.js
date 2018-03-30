@@ -26,8 +26,7 @@ class FlightsPage extends React.Component {
 
   handleToggleFlightDisplay = () => {
     console.log("flightDisplay is visible")
-    this.getFlights(this.props.TripId)
-      .then(() => this.setState({ flightDisplayVisible: !this.state.flightDisplayVisible }));
+    this.setState({ flightDisplayVisible: !this.state.flightDisplayVisible });
   };
 
   toggleEdit = event => {
@@ -55,7 +54,11 @@ class FlightsPage extends React.Component {
         <Row> <p className="header">Flight Information</p> </Row>
 
         <Row>
-          <button className='flight-btn' onClick={this.handleToggleFlightDisplay}>View Your Flights</button>
+          <button className='flight-btn' onClick={() => {
+            this.getFlights()
+              .then(this.handleToggleFlightDisplay)}}>
+          View Your Flights
+          </button>
         </Row>
 
         <Row>
