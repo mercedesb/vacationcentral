@@ -1,20 +1,30 @@
 import React from "react";
 import "./BusinessDisplay.css";
 import { Grid, Row, Col } from 'react-bootstrap';
-import BusinessListItem from "./BusinessListItem"
+import BusinessListItem from "./BusinessListItem";
 
 
 class BusinessDisplay extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
-  }
+    this.state = {
+
+  };
+    // this.handleToggleCommentsModal=this.handleToggleCommentsModal.bind(this);
+}
+
+  // handleToggleCommentsModal = () => {
+  //   console.log("you have clicked the comments modal button");
+  //   this.setState({commentsModalVisible: !this.state.commentsModalVisible })
+  // };
+
+
 
   render() {
 
     if (!this.props.show) { return null; }
 
-    console.log('these are my business display props!!', this.props)
+    console.log('these are my business display props & state!!', this.props, this.state)
 
 
     return (
@@ -28,12 +38,16 @@ class BusinessDisplay extends React.Component {
                 editing={this.props.editing}
                 editId={this.props.editId}
                 getAllBusinesses={this.props.getAllBusinesses}
-                id={business.TripId}
-                key={business.TripId}
+                id={business.id}
+                key={business.id}
                 result={business}
-                toggleEdit={this.props.toggleEdit}
-              />) :
-            <p className="second-text">Add a business to start</p>}
+                toggleEdit={this.props.toggleEdit} 
+                />
+                ) :
+                <p className="second-text">Add {this.props.businessType} to Start</p>}
+                
+
+
         </ul>
       </Col>
     );

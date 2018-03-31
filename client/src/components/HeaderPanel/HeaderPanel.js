@@ -1,8 +1,7 @@
 import React from "react";
 import "./HeaderPanel.css";
 import { Grid, Row, Col } from 'react-bootstrap';
-import Button from "../Button";
-import ModalPanel from "../ModalPanel";
+
 
 class HeaderPanel extends React.Component {
     constructor(props) {
