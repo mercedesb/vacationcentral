@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Row } from 'react-bootstrap';
-import { Redirect } from 'react-router'
-import "./VacationContainer.css"
+import { Redirect } from 'react-router';
+import "./VacationContainer.css";
 import API from "./utils/API";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HeaderPanel from './components/HeaderPanel';
@@ -15,12 +15,16 @@ import BusinessPage from "./components/Pages/BusinessPage";
 import MemberPage from "./components/Pages/MemberPage";
 
 class VacationContainer extends Component {
-  state = {
-    // modalOpen: false,
+  constructor(props) {
+    super(props);
+    this.state = {
     user: {},
+    userData: {},
     tripId: 0,
-    userData: {}
+    selectedRadioButton: 0
   };
+    this.handleRadioButtonSelect = this.handleRadioButtonSelect.bind(this);
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -67,13 +71,18 @@ class VacationContainer extends Component {
     this.loginUser(this.state.userData);
   }
 
-  handleSetTripId = (id) => {
-    console.log("the trip id", id)
-    this.setState({ tripId: id });
+
+  handleRadioButtonSelect = (id) => {
+    console.log("in handle RadioButton", id);
+    this.setState({ 
+      tripId: id,
+      selectedRadioButton: id, 
+    });
   }
 
+
   render() {
-    console.log("state in VCrender", this.state);
+    console.log("state in VC render", this.state)
     return (
       <Router>
         <Grid fluid className="vacation-container">
@@ -83,8 +92,11 @@ class VacationContainer extends Component {
           <Row>
             <TripPanel
               UserId={this.state.user.id}
-              handleTripFormSubmit={this.handleTripFormSubmit}
-              handleSetTripId={this.handleSetTripId} />
+              // handleTripFormSubmit={this.handleTripFormSubmit}
+              // handleSetTripId={this.handleSetTripId} 
+              selectedRadioButton={this.state.selectedRadioButton}
+              handleRadioButtonSelect={this.handleRadioButtonSelect}
+              />
             <DisplayPanel>
               <Switch>
                 <Route exact path="/" 

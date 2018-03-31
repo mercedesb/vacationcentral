@@ -23,8 +23,9 @@ const renderResult = props => (
     </Row>
     
     <Row>
-      <button className="flight-edit-btn" id={props.result.id} onClick={props.callFlightAware}>FlightAware</button>
-      <button className="flight-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit Flight</button>
+      <button className="flight-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
+      <button className="flight-edit-btn" id={props.result.id} onClick={props.callFlightAware}>Call Flight Aware</button>
+
     </Row>
   </form>
 

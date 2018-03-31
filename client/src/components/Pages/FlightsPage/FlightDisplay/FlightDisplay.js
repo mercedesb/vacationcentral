@@ -1,11 +1,9 @@
 import React from "react";
 import "./FlightDisplay.css";
-// import restclient from 'restler';
 import axios from "axios";
 import moment from 'moment';
 import FlightListItem from "././FlightListItem";
 import { Col } from 'react-bootstrap';
-// import { FormBtn, Input, TextArea } from "../../../Form";
 
 
 
