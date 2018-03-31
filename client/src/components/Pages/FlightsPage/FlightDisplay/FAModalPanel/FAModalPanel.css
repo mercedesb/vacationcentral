@@ -8,7 +8,7 @@
   }
 
 
-.comments-panel {
+.fa-status-panel {
     background-color: #fff;
     border-radius: 6px;
     width: 95%;
@@ -18,16 +18,17 @@
     font: #230C0F;
 }
 
-.comments-edit-btn {
-    margin: 0 auto;
+.faModal-edit-btn {
     background-color: #26867B;
+    font-size: 10px;
     height: 20px;
-    width: 30%;
-    margin-left: 12.5%;
+    width: 50%;
+    margin-left: 25%;
     text-align: center;
     color: #230C0F;
-    margin-bottom: 2px;
-    border-radius: 4px;
-
+    margin-bottom: 5px;
+    border-radius: 6px;
 }
+
+
 

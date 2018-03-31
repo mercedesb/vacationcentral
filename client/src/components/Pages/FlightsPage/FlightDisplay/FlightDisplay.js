@@ -3,6 +3,7 @@ import "./FlightDisplay.css";
 import axios from "axios";
 import moment from 'moment';
 import FlightListItem from "././FlightListItem";
+import FAModalPanel from "./FAModalPanel";
 import { Col } from 'react-bootstrap';
 
       // console.log("resultTemp", JSON.parse(result.request.response).MetarExResult.metar[0].cloud_friendly);
@@ -18,6 +19,7 @@ class FlightDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      faModalVisible: false,
       fxml_url: 'http://flightxml.flightaware.com/json/FlightXML2/',
       proxy: 'https://cors-anywhere.herokuapp.com/',
       username: 'slippa91',
@@ -29,6 +31,7 @@ class FlightDisplay extends React.Component {
       departTime: "",
     };
     this.callFlightAware = this.callFlightAware.bind(this);
+    this.handleToggleFAModal = this.handleToggleFAModal.bind(this);
   }
 
   callFlightAware = (event, flightNumber, arriveLocation) => {
@@ -36,7 +39,7 @@ class FlightDisplay extends React.Component {
     console.log("in callFlightAware", flightNumber, arriveLocation);
       this.callFATemp(arriveLocation)
       this.callFATime(flightNumber)
-      this.openModal()
+      this.handleToggleFAModal()      
   }
 
   callFATemp = (arriveLocation) => {
@@ -79,6 +82,12 @@ class FlightDisplay extends React.Component {
     })
   };
 
+    handleToggleFAModal = () => {
+    console.log("you have clicked the FA modal button");
+    this.setState({faModalVisible: !this.state.faModalVisible })
+  };
+
+
 
   render() {
 
@@ -91,6 +100,15 @@ class FlightDisplay extends React.Component {
 
     return (
       <Col xs={12} className="flight-display">
+
+        <FAModalPanel
+              visible={this.state.faModalVisible}
+              handleToggleFAModal={this.handleToggleFAModal}
+              arriveLocation={this.state.arriveLocation}
+              arriveTemp={this.state.arriveTemp}
+              arriveClouds={this.state.arriveClouds}
+              departFlight={this.state.departFlight}
+              departTime={this.state.departTime} />
 
         <ul style={{ listStyleType: "none", paddingLeft: "0px" }}>
 
@@ -110,7 +128,7 @@ class FlightDisplay extends React.Component {
 
         </ul>
 
-        
+
       </Col>
 
 
