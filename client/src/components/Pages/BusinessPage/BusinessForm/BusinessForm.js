@@ -17,7 +17,7 @@ class BusinessForm extends Component {
     if(this.props.businessData) {
       this.setState({businessData: this.props.businessData});
     }
-  }
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
