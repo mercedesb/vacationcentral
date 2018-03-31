@@ -1,7 +1,7 @@
 import React from "react";
 import "./BusinessDisplay.css";
-import { Grid, Row, Col } from 'react-bootstrap';
-import BusinessListItem from "./BusinessListItem"
+import { Col } from 'react-bootstrap';
+import BusinessListItem from "./BusinessListItem";
 
 
 const BusinessDisplay = props => {
@@ -16,6 +16,7 @@ const BusinessDisplay = props => {
             .map(business => <BusinessListItem
               editing={props.editing}
               editId={props.editId}
+              TripId={props.tripId}
               deleteBusiness={props.deleteBusiness}
               getAllBusinesses={props.getAllBusinesses}
               id={business.TripId}

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./BusinessPage.css";
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import BusinessDisplay from "./BusinessDisplay";
 import BusinessForm from "./BusinessForm";
 import API from "../../../utils/API"
@@ -25,15 +25,15 @@ class BusinessPage extends Component {
   };
 
   toggleEdit = event => {
-    // console.dir(event.target.id);
+    console.dir(event.target.id);
     this.setState({
       editing: !this.state.editing,
       editId: event.target.id
-    }, () => console.log(this.state));
+    }, () => console.log("toggle edit", this.state));
   };
 
-  getAllBusinesses = () => (
-    API.getBusinesses(this.props.tripId)
+  getAllBusinesses = tripId => (
+    API.getBusinesses(tripId)
       .then(response => this.setState({ results: response.data }))
   );
 
@@ -41,9 +41,10 @@ class BusinessPage extends Component {
     API.deleteBusiness(businessId)
       .then(response => {
         console.log(response);
-        this.getAllBusinesses(this.props.tripId)
+        this.getAllBusinesses(this.props.TripId);
       })
   )
+
 
   render() {
     console.log("these are my business page props", this.props)
@@ -55,7 +56,7 @@ class BusinessPage extends Component {
 
         <Row>
           <button className='business-btn' onClick={() => {
-            this.getAllBusinesses()
+            this.getAllBusinesses(this.props.TripId)
               .then(this.handleToggleBusinessDisplay)
           }}>
             View Your {this.props.businessType}
@@ -72,8 +73,9 @@ class BusinessPage extends Component {
               show={this.state.businessDisplayVisible}
               toggleEdit={this.toggleEdit}
               results={this.state.results}
+              tripId={this.props.TripId}
               deleteBusiness={this.deleteBusiness}
-              getAllBusinesses={this.getAllBusinesses}
+              getAllBusinesses={() => this.getAllBusinesses(this.props.TripId)}
               businessType={this.props.businessType}
               editing={this.state.editing}
               editId={this.state.editId}
@@ -81,9 +83,9 @@ class BusinessPage extends Component {
         </Row>
         <Row>
           <BusinessForm
-            getAllBusinesses={this.getAllBusinesses}
+            getAllBusinesses={() => this.getAllBusinesses(this.props.TripId)}
             businessType={this.props.businessType}
-            TripId={this.props.tripId}
+            TripId={this.props.TripId}
           />
         </Row>
       </Col>

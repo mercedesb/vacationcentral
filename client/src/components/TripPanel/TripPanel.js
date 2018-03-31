@@ -1,15 +1,15 @@
 import React from "react";
 import "./TripPanel.css";
 import "../../VacationContainer.css"
-import { Grid, Row, Col, Div } from 'react-bootstrap';
-import MediaQuery from 'react-responsive';
-import {FormBtn, Input, TextArea} from "../Form";
-import { List, ListItem } from "../List";
-import { Link } from "react-router-dom";
+import { Row, Col } from 'react-bootstrap';
+// import MediaQuery from 'react-responsive';
+// import {FormBtn, Input, TextArea} from "../Form";
+// import { List, ListItem } from "../List";
+// import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import TripAdd from "./TripAdd";
 import TripDisplay from "./TripDisplay";
-import { isNull } from "util";
+// import { isNull } from "util";
 
 
 

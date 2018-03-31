@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router'
 import "./VacationContainer.css"
 import API from "./utils/API";
@@ -8,7 +8,6 @@ import HeaderPanel from './components/HeaderPanel';
 import TripPanel from './components/TripPanel';
 import DisplayPanel from './components/DisplayPanel';
 import BusinessPanel from './components/BusinessPanel';
-import ModalPanel from './components/ModalPanel';
 import HomePage from "./components/Pages/HomePage";
 import ProfilePage from "./components/Pages/ProfilePage";
 import FlightsPage from "./components/Pages/FlightsPage";
@@ -86,7 +85,7 @@ class VacationContainer extends Component {
         <Grid fluid className="vacation-container">
           <Row>
             <HeaderPanel/>
-            <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} />
+            {/* <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} /> */}
           </Row>
           <Row>
             <TripPanel
@@ -117,10 +116,10 @@ class VacationContainer extends Component {
                 {this.state.user.firstName ?
                   <div>
                     <Route exact path="/member/" render={() => <MemberPage user={this.state.user} />} />
-                    <Route exact path="/hotels/" render={() => <BusinessPage businessType="Hotels" tripId={this.state.tripId} />} />
-                    <Route exact path="/dining/" render={() => <BusinessPage businessType="Dining" tripId={this.state.tripId} />} />
+                    <Route exact path="/hotels/" render={() => <BusinessPage businessType="Hotels" TripId={this.state.tripId} />} />
+                    <Route exact path="/dining/" render={() => <BusinessPage businessType="Dining" TripId={this.state.tripId} />} />
                     <Route exact path="/flights/" render={() => <FlightsPage TripId={this.state.tripId} />} />
-                    <Route exact path="/attractions/" render={() => <BusinessPage businessType="Attractions" tripId={this.state.tripId} />} />
+                    <Route exact path="/attractions/" render={() => <BusinessPage businessType="Attractions" TripId={this.state.tripId} />} />
                     <Route exact path="/profile/" render={() => <ProfilePage UserId={this.state.user.id} />} />
                   </div> :
                   <Route strict path="/*/" render={() => 

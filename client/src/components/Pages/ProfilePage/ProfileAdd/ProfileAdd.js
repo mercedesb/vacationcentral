@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./ProfileAdd.css";
-import { Grid, Row, Col, Div } from 'react-bootstrap';
-import {FormBtn, Input, TextArea} from "../../../Form";
+// import { Grid, Row, Col, Div } from 'react-bootstrap';
+import { Input } from "../../../Form";
 import API from "../../../../utils/API";
 
-class ProfileAdd extends React.Component {
+class ProfileAdd extends Component {
     constructor(props) {
       super(props);
       this.state = {

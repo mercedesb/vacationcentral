@@ -1,11 +1,11 @@
 import React from "react";
 import "./BusinessListItem.css";
-import { Grid, Row, Col } from 'react-bootstrap';
-import { FormBtn } from "../../../../Form";
+import { Row } from 'react-bootstrap';
+// import { FormBtn } from "../../../../Form";
 import BusinessForm from "../../BusinessForm";
 
 const renderResult = props => (
-  <div>
+  <div className="business-list-item">
     <Row>
       <p className="second-text">{props.result.name}</p>
       {props.result.confirmationNumber ? <div><p>Confirmation: <strong>{props.result.confirmationNumber}</strong></p></div> : undefined}
@@ -14,6 +14,7 @@ const renderResult = props => (
     {props.result.phone ? <div><p>Phone:  <strong>{props.result.phone}</strong></p></div> : undefined}
     {props.result.startDate ? <div><p>Check-in:  <strong>{props.result.startDate}</strong></p></div> : undefined}
     {props.result.endDate ? <div><p>Check-in:  <strong>{props.result.endDate}</strong></p></div> : undefined}
+    {props.result.comments ? <div style={{textAlign: "left"}}><p>Comments:  {props.result.comments}</p></div> : undefined}
 
     <Row>
       <button className="business-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>

@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import "./TripAdd.css";
-import { Grid, Row, Col, Div } from 'react-bootstrap';
-import {FormBtn, Input, TextArea} from "../../Form";
+// import { Grid, Row, Col, Div } from 'react-bootstrap';
+import { Input } from "../../Form";
 import API from "../../../utils/API";
 
-class TripAdd extends React.Component {
+class TripAdd extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -47,7 +47,7 @@ componentDidMount() {
               this.props.getTrips(this.props.UserId);
             })
             .catch(err => console.log("error Trip Form Submit", err));
-    } else { {alert("Your return date must be after your departure date")}}
+    } else {alert("Your return date must be after your departure date")}
   } 
 
     handleTripEdit = event => {

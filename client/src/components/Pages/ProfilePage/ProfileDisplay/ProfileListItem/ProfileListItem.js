@@ -1,12 +1,12 @@
 import React from "react";
 import "./ProfileListItem.css";
-import { Grid, Row, Col } from 'react-bootstrap';
-import { FormBtn } from "../../../../Form";
+import { Row } from 'react-bootstrap';
+// import { FormBtn } from "../../../../Form";
 import ProfileAdd from "../../ProfileAdd";
 
 const renderResult = props => (
 
-  <div>
+  <div className="profile-list-item">
     <Row>
         <p className="second-text">{props.result.company}</p>
     </Row>

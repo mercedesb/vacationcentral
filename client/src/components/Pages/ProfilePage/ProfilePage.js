@@ -2,13 +2,13 @@ import React from "react";
 import "./ProfilePage.css";
 import ProfileAdd from "./ProfileAdd";
 import ProfileDisplay from "./ProfileDisplay";
-import { Grid, Row, Col, Div } from 'react-bootstrap';
-import { FormBtn, Input } from "../../Form";
-import { List, ListItem } from "../../List";
-import { Link } from "react-router-dom";
+import { Row, Col } from 'react-bootstrap';
+// import { FormBtn, Input } from "../../Form";
+// import { List, ListItem } from "../../List";
+// import { Link } from "react-router-dom";
 import API from "../../../utils/API";
-import ButtonSubmitForm from "../../ButtonSubmitForm";
-import DeleteBtn from "../../DeleteBtn";
+// import ButtonSubmitForm from "../../ButtonSubmitForm";
+// import DeleteBtn from "../../DeleteBtn";
 
 
 class ProfilePage extends React.Component {
