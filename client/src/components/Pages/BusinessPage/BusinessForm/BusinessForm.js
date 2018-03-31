@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./BusinessForm.css";
-import { Grid, Row, Col } from 'react-bootstrap';
-import { FormBtn, Input, TextArea } from "../../../Form";
+// import { Grid, Row, Col } from 'react-bootstrap';
+import { Input, TextArea } from "../../../Form";
 import API from "./../../../../utils/API"
 
 class BusinessForm extends Component {
@@ -17,11 +17,12 @@ class BusinessForm extends Component {
     if(this.props.businessData) {
       this.setState({businessData: this.props.businessData});
     }
-  }
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
-    this.setState(prevState => (
+    this.setState(prevState => {
+      return (
       {
         businessData: {
           ...prevState.businessData,
@@ -33,7 +34,7 @@ class BusinessForm extends Component {
           ...prevState.editData,
           [name]: value
         }
-      }), () => console.log(this.state.businessData));
+      })}, () => console.log(this.state.businessData));
   };
 
   handleCreateNew = event => {
@@ -54,7 +55,7 @@ class BusinessForm extends Component {
     API.updateBusiness(this.state.editData, this.props.id)
       .then(response => {
         console.log(response.data);
-        this.setState({businessData: {}, editData: {}});
+        // this.setState({businessData: {}, editData: {}});
         this.props.getAllBusinesses(this.props.TripId);
       })
       .catch(err => console.log(err));
@@ -88,7 +89,7 @@ class BusinessForm extends Component {
     return (
 
       <div className="business-add">
-            ß<p className="second-text">Add {this.props.businessType}</p>
+            <p className="second-text">Add {this.props.businessType}</p>
         
           <label className="label-text" >Business Name:</label>
           <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
