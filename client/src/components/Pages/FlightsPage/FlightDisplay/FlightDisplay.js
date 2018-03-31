@@ -5,7 +5,14 @@ import moment from 'moment';
 import FlightListItem from "././FlightListItem";
 import { Col } from 'react-bootstrap';
 
-
+      // console.log("resultTemp", JSON.parse(result.request.response).MetarExResult.metar[0].cloud_friendly);
+      // console.log("entry", entry);
+      //console.log('The temperature at ' + entry.airport + ' is ' + entry.temp_air + 'C');
+      // var arrivetime = result.FlightInfoResult.flights[0].estimatedarrivaltime;
+      // var convarr = moment(arrivetime * 1000).format('MMMM Do YYYY,h:mm:ss a')
+      // console.log("entry", entry);
+      // console.log("arriv time", arrivetime, convarr);
+      // console.log("moment", converted.format(dddd, MMMM Do, YYYY));
 
 class FlightDisplay extends React.Component {
   constructor(props) {
@@ -15,58 +22,68 @@ class FlightDisplay extends React.Component {
       proxy: 'https://cors-anywhere.herokuapp.com/',
       username: 'slippa91',
       apiKey: '84c5409c7ea2dd5a0e3b0ba9b0fb770dee70c920',
+      arriveLocation: "",
+      arriveTemp: "",
+      arriveClouds: "",
+      departFlight: "",
+      departTime: "",
     };
     this.callFlightAware = this.callFlightAware.bind(this);
   }
 
-  callFlightAware = (event) => {
+  callFlightAware = (event, flightNumber, arriveLocation) => {
     event.preventDefault();
-    console.log("in callFlightAware");
-    this.callFATemp();
-    this.callFATime();
+    console.log("in callFlightAware", flightNumber, arriveLocation);
+      this.callFATemp(arriveLocation)
+      this.callFATime(flightNumber)
+      this.openModal()
   }
 
-  callFATemp = () => {
-    console.log("in callFATemp", this.state);
-    axios.get(this.state.proxy + this.state.fxml_url + "MetarEx?airport=KPHX&howMany=1&offset=0", {
+  callFATemp = (arriveLocation) => {
+    console.log("in callFATemp 1", this.state);
+    axios.get(this.state.proxy + this.state.fxml_url + "MetarEx?airport=K" + arriveLocation + "&howMany=1&offset=0", {
       headers : {
         'Authorization' : 'basic c2xpcHBhOTE6ODRjNTQwOWM3ZWEyZGQ1YTBlM2IwYmE5YjBmYjc3MGRlZTcwYzkyMA==',
       } })
-      .then(function (result, response) {
+      .then((result, response) => {
         console.log("resultTemp", JSON.parse(result.request.response).MetarExResult.metar[0].cloud_friendly);
         var entry = JSON.parse(result.request.response).MetarExResult.metar[0];
-      // console.log("entry", entry);
-      //console.log('The temperature at ' + entry.airport + ' is ' + entry.temp_air + 'C');
-      console.log('The temperature at ' + entry.airport + ' is ' + (entry.temp_air * 1.8 + 32) + 'F');
+        this.setState ({
+            arriveLocation: entry.airport,
+            arriveTemp: (entry.temp_air * 1.8 + 32).toFixed(0),
+            arriveClouds: entry.cloud_friendly 
+          }, 
+        () => console.log("this in FATemp 3", this.state, entry.airport, entry.cloud_friendly)
+          ) 
     })
   };
 
-  callFATime = () => {
-    console.log("in callFATime", this.state);
-    axios.get(this.state.proxy + this.state.fxml_url + "FlightInfo?ident=SWA1771&howMany=1", {
+  callFATime = (flightNumber) => {
+    console.log("in callFATime 1", this.state);
+    axios.get(this.state.proxy + this.state.fxml_url + "FlightInfo?ident=" + flightNumber + "&howMany=1", {
       headers : {
         'Authorization' : 'basic c2xpcHBhOTE6ODRjNTQwOWM3ZWEyZGQ1YTBlM2IwYmE5YjBmYjc3MGRlZTcwYzkyMA==',
       } })
-      .then(function (result, response) {
-      console.log("resultTime", JSON.parse(result.request.response).FlightInfoResult.flights[0].filed_departuretime);
+      .then((result, response) => {
+      console.log("resultTime", JSON.parse(result.request.response).FlightInfoResult.flights[0]);
       var entry = JSON.parse(result.request.response).FlightInfoResult.flights[0]
-      var departtime =JSON.parse(result.request.response).FlightInfoResult.flights[0].filed_departuretime;
-      var convdep = moment(departtime * 1000).format('MMMM Do YYYY,h:mm:ss a');
-      // var arrivetime = result.FlightInfoResult.flights[0].estimatedarrivaltime;
-      // var convarr = moment(arrivetime * 1000).format('MMMM Do YYYY,h:mm:ss a')
-      console.log("entry", entry);
-      console.log("Your flight is expected to depart at" + convdep);
-      // console.log("arriv time", arrivetime, convarr);
-      // console.log("moment", converted.format(dddd, MMMM Do, YYYY));
+      var departTime =entry.filed_departuretime;
+      var convertDeparture = moment(departTime * 1000).format('MMMM Do YYYY,h:mm:ss a');
+      console.log("Your flight is expected to depart on " + convertDeparture);
+      this.setState ({
+            departFlight: entry.ident,
+            departTime: convertDeparture
+          },
+        () => console.log("this in FATemp 3", this.state, entry.airport, entry.cloud_friendly)
+        ) 
     })
   };
-
 
 
   render() {
 
     if (!this.props.show) { return null; }
-    console.log('these are my flight display props!!', this.props)
+    console.log('these are my flight display props & state!!', this.props, this.state)
     console.log("this flights array pre-sort", this.props.results);
 
     let sortedDate = this.props.results.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -88,12 +105,15 @@ class FlightDisplay extends React.Component {
                 result={flight}
                 toggleEdit={this.props.toggleEdit}
                 callFlightAware={this.callFlightAware}
-
               />) :
             <p className="second-text"> Add a flight to start</p>}
 
         </ul>
+
+        
       </Col>
+
+
     );
   }
 }
