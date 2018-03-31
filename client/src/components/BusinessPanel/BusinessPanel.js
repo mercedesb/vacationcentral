@@ -1,6 +1,6 @@
 import React from "react";
 import "./BusinessPanel.css";
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import CategoryButton from "../CategoryButton";
 
 const categoryArray = [{

@@ -1,11 +1,11 @@
 import React, { Component} from "react";
 import "./FlightAdd.css";
-import { Grid, Row, Col, Div } from 'react-bootstrap';
-import {FormBtn, Input, TextArea} from "../../../Form";
+import { Row } from 'react-bootstrap';
+import {Input} from "../../../Form";
 import API from "../../../../utils/API";
 import { Link } from "react-router-dom";
 
-class FlightAdd extends React.Component {
+class FlightAdd extends Component {
     constructor(props) {
       super(props);
       this.state = {

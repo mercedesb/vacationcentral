@@ -2,13 +2,13 @@ import React from "react";
 import "./FlightsPage.css";
 import FlightAdd from "./FlightAdd";
 import FlightDisplay from "./FlightDisplay";
-import { Grid, Row, Col, Div } from 'react-bootstrap';
-import { FormBtn, Input } from "../../Form";
-import { List, ListItem } from "../../List";
-import { Link } from "react-router-dom";
+import { Row, Col } from 'react-bootstrap';
+// import { FormBtn, Input } from "../../Form";
+// import { List, ListItem } from "../../List";
+// import { Link } from "react-router-dom";
 import API from "../../../utils/API";
-import ButtonSubmitForm from "../../ButtonSubmitForm";
-import DeleteBtn from "../../DeleteBtn";
+// import ButtonSubmitForm from "../../ButtonSubmitForm";
+// import DeleteBtn from "../../DeleteBtn";
 
 class FlightsPage extends React.Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React from "react";
 import "./TripDisplay.css";
-import { Grid, Row, Col, Div } from 'react-bootstrap';
-import { FormBtn, Input, TextArea } from "../../Form";
+import { Col } from 'react-bootstrap';
+// import { FormBtn, Input, TextArea } from "../../Form";
 import TripListItem from "././TripListItem";
 
 

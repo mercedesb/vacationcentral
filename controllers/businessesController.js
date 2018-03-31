@@ -32,11 +32,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // remove: function(req, res) {
-  //   db.Book
-  //     .findById({ _id: req.params.id })
-  //     .then(dbModel => dbModel.remove())
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // }
+  remove: function(req, res) {
+    db.Business
+      .destroy({where: { id: req.params.id }})
+      .then(dbModel => res.json("delete successful"))
+      .catch(err => {
+        console.log("delete err: ", err);
+        res.status(422).json(err);
+      });
+  }
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import "./DisplayPanel.css";
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 
 // 'Home'

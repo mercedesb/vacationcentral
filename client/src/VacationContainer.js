@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router'
 import "./VacationContainer.css"
 import API from "./utils/API";

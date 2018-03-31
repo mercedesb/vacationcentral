@@ -1,8 +1,8 @@
 import React from "react";
 import "./ProfileDisplay.css";
 import ProfileListItem from "././ProfileListItem";
-import { Grid, Row, Col, Div } from 'react-bootstrap';
-import {FormBtn, Input, TextArea} from "../../../Form";
+import { Col } from 'react-bootstrap';
+// import {FormBtn, Input, TextArea} from "../../../Form";
 
 
 class ProfileDisplay extends React.Component {

@@ -1,9 +1,9 @@
 import React from "react";
 import "./HomePage.css";
 import { Grid, Row, Col, Alert } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { FormBtn, Input, TextArea } from "../../Form";
+import { Input } from "../../Form";
 
 const HomePage = props => (
   <Grid fluid>
