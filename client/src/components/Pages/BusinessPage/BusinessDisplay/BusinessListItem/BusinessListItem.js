@@ -18,7 +18,7 @@ const renderResult = props => (
     <Row>
       <button className="business-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
       <button className="business-edit-btn" id={props.result.id} onClick={() => props.deleteBusiness(props.result.id)}>Delete</button>
-    </Row>>
+    </Row>
   </div>
 );
 
@@ -28,6 +28,7 @@ const renderForm = props => (
       toggleEdit={props.toggleEdit}
       editing={props.editing}
       id={props.result.id}
+      businessType={props.result.type}
       businessData={props.result}
       getAllBusinesses={props.getAllBusinesses}
     />
@@ -36,7 +37,7 @@ const renderForm = props => (
 
 const BusinessListItem = props => (
   <li className="business-list-item">
-    {props.editId == props.id ? renderForm(props) : renderResult(props)}
+    {props.editId == props.result.id ? renderForm(props) : renderResult(props)}
   </li>
 );
 
