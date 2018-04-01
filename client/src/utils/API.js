@@ -93,6 +93,21 @@ export default {
     return axios.delete("/api/flights/" + id);
   },
 
+  getPacking: function(TripId) {
+    console.log("in packing get API", TripId);
+    return axios.get(`/api/packing?TripId=${TripId}`)
+  },
+
+  savePacking: function(packingData){
+    console.log("in packing postAPI", packingData);
+    return axios.post("/api/packing", packingData);
+  },
+
+  updatePacking: function(packingData, id) {
+    console.log("in packing put API", packingData); 
+    return axios.put("/api/packing/" + id, packingData);
+  },
+
 
   getLogin: function (loginData) {
     return axios.get("/api/login", loginData)

@@ -12,6 +12,7 @@ import HomePage from "./components/Pages/HomePage";
 import ProfilePage from "./components/Pages/ProfilePage";
 import FlightsPage from "./components/Pages/FlightsPage";
 import BusinessPage from "./components/Pages/BusinessPage";
+import PackingPage from "./components/Pages/PackingPage";
 import MemberPage from "./components/Pages/MemberPage";
 
 class VacationContainer extends Component {
@@ -128,6 +129,7 @@ class VacationContainer extends Component {
                     <Route exact path="/flights/" render={() => <FlightsPage TripId={this.state.tripId} />} />
                     <Route exact path="/attractions/" render={() => <BusinessPage businessType="Attractions" TripId={this.state.tripId} />} />
                     <Route exact path="/profile/" render={() => <ProfilePage UserId={this.state.user.id} />} />
+                    <Route exact path="/packing/" render={() => <PackingPage TripId={this.state.tripId} />} />
                   </div> :
                   <Route strict path="/*/" render={() => 
                     <HomePage

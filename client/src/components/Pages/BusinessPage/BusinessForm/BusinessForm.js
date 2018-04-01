@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./BusinessForm.css";
-// import { Grid, Row, Col } from 'react-bootstrap';
 import { Input, TextArea } from "../../../Form";
 import API from "./../../../../utils/API"
 
