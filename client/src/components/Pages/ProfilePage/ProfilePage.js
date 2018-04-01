@@ -19,6 +19,7 @@ class ProfilePage extends React.Component {
     this.getProfiles = this.getProfiles.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
     this.deleteProfiles = this.deleteProfiles.bind(this);
+    this.getProfilesByType = this.getProfilesByType.bind(this);
     this.handleToggleProfileDisplay=this.handleToggleProfileDisplay.bind(this);
   }
 
@@ -45,6 +46,15 @@ class ProfilePage extends React.Component {
       this.setState({results: response.data})
     })
   );
+
+  getProfilesByType = (event, profileType) => {
+    // console.log("in get by Type API", this.props.UserId, profileType);
+    event.preventDefault();
+    API.getProfilesByType(this.props.UserId, profileType)
+      .then(response => {
+        this.setState({results: response.data})
+      })
+    }
 
   deleteProfiles = profileId => (
     API.deleteProfiles(profileId)
@@ -81,8 +91,10 @@ class ProfilePage extends React.Component {
             editing={this.state.editing}
             editId={this.state.editId}
             getProfiles={this.getProfiles}
-            handleToggleProfileDisplay={this.handleToggleProfileDisplay}
             deleteProfiles={this.deleteProfiles}
+            getProfilesByType={this.getProfilesByType}
+            handleToggleProfileDisplay={this.handleToggleProfileDisplay}
+
           /> : null}
         </Row>
 

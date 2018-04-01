@@ -9,6 +9,15 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+  findByType: function(req, res) {
+      console.log("profile find by type controller", req.query, req.params)
+      db.Profile
+        .findAll({where: req.query})
+          .then(dbModel=> res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+  },
+
   // findById: function(req, res) {
   //   db.Profile
   //     .findById(req.params.id)

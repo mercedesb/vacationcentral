@@ -50,12 +50,16 @@ export default {
   },
 
 
-
   getProfiles: function(UserId) {
     console.log("in profile get API", UserId);
-    return axios.get(`/api/profiles?UserId=${UserId}`)
+    return axios.get(`/api/profiles?UserId=${UserId}`);
   },
 
+  getProfilesByType: function(UserId, type){
+    console.log("in get profile by Type API", UserId, type);
+    return axios.get(`/api/profiles?UserId=${UserId}&type=${type}`);
+  },
+  
   saveProfiles: function(profileData){
     console.log("in profile post API", profileData);
     return axios.post("/api/profiles", profileData);
