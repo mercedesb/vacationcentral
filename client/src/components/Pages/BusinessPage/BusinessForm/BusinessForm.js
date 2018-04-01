@@ -43,7 +43,7 @@ class BusinessForm extends Component {
     API.saveBusiness(this.state.businessData)
       .then(response => {
         this.setState({businessData: {}});
-        this.props.getAllBusinesses(this.props.TripId);
+        this.props.handleToggleBusinessDisplay(this.props.TripId);
       })
       .catch(err => console.log(err));
   }
