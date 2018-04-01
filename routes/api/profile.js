@@ -6,11 +6,11 @@ router.route("/")
   .get(profilesController.findAll)
   .post(profilesController.create);
 
-// // Matches with "/api/books/:id"
+// // Matches with "/api/profiles/:id"
 router
   .route("/:id")
-//   .get(booksController.findById)
+//   .get(profilesController.findById)
   .put(profilesController.update)
-//   .delete(booksController.remove);
+  .delete(profilesController.remove);
 
 module.exports = router;

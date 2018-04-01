@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./ProfileAdd.css";
-// import { Grid, Row, Col, Div } from 'react-bootstrap';
 import { Input } from "../../../Form";
 import API from "../../../../utils/API";
 
@@ -12,7 +11,6 @@ class ProfileAdd extends Component {
         editData: {}
       };
     }
-
 
     componentDidMount() {
       if(this.props.profileData) {
@@ -44,7 +42,7 @@ class ProfileAdd extends Component {
           API.saveProfiles(this.state.profileData)
             .then(response => {
               this.setState({profileData: {}});
-              this.props.getProfiles(this.props.UserId);
+              this.props.handleToggleProfileDisplay(this.props.UserId);
             })
             .catch(err => console.log("error profile form submit", err));
     }
@@ -64,8 +62,7 @@ class ProfileAdd extends Component {
     
     render() {
         
-
-        console.log('these are my profile add props!!', this.props)
+      console.log('these are my profile add props!!', this.props)
 
        return (
         <div className="profile-add">

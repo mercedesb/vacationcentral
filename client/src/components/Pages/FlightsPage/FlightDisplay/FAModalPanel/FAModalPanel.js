@@ -31,7 +31,7 @@ class FAModalPanel extends React.Component {
 
 
         <div className="footer">
-          <button className="faModal-edit-btn" onClick={this.props.handleToggleFAModal}>Close</button>
+          <button className="faModal-close-btn" onClick={this.props.handleToggleFAModal}>Close</button>
         </div>
 
       </div>

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component} from "react";
+import { Row, Col } from 'react-bootstrap';
 import "./FlightsPage.css";
 import FlightAdd from "./FlightAdd";
 import FlightDisplay from "./FlightDisplay";
-import { Row, Col } from 'react-bootstrap';
 import API from "../../../utils/API";
 
 
@@ -10,7 +10,7 @@ class FlightsPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      flightDisplayVisible: false,
+      flightDisplayVisible: true,
       results: [],
       editing: false,
       editId: 0,
@@ -18,10 +18,17 @@ class FlightsPage extends React.Component {
     };
     this.getFlights = this.getFlights.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
+    this.deleteFlights= this.deleteFlights.bind(this);
+    this.handleToggleFlightDisplay=this.handleToggleFlightDisplay.bind(this);
+  }
+
+  componentDidMount = () => {
+    this.getFlights(this.props.TripId);
   }
 
   handleToggleFlightDisplay = () => {
     console.log("flightDisplay is visible")
+    this.getFlights(this.props.TripId);
     this.setState({ flightDisplayVisible: !this.state.flightDisplayVisible });
   };
 
@@ -30,16 +37,24 @@ class FlightsPage extends React.Component {
     this.setState({
       editing: !this.state.editing,
       editId: event.target.id
-    }, () => console.log("toggle edit", this.state));
+    }, () => console.log("toggle flight edit", this.state));
   };
 
   getFlights = () => (
     API.getFlights(this.props.TripId)
       .then(response => {
-        console.log("flight get", response);
-        this.setState({ results: response.data }, () => console.log("get Flights working", this.state))
+        this.setState({ results: response.data })
       })
   );
+
+  deleteFlights = (event, flightId, TripId) => {
+    event.preventDefault();
+      API.deleteFlights(flightId)
+      .then(response => {
+        console.log("flight delete ", response);
+        this.getFlights(this.props.TripId);
+      })
+    }
 
 
   render() {
@@ -58,7 +73,7 @@ class FlightsPage extends React.Component {
         </Row>
 
         <Row>
-          <button className='flight-btn'>Add a Flight</button>
+          <button className='flight-btn' onClick={this.handleToggleFlightDisplay}>Add a Flight</button>
         </Row>
 
 
@@ -71,6 +86,8 @@ class FlightsPage extends React.Component {
             editing={this.state.editing}
             editId={this.state.editId}
             getFlights={this.getFlights}
+            deleteFlights={this.deleteFlights}
+            handleToggleFlightDisplay={this.handleToggleFlightDisplay}
             callFlightAware={this.callFlightAware}
           /> : null}
         </Row>
@@ -78,7 +95,8 @@ class FlightsPage extends React.Component {
         <Row>
           <FlightAdd
             getFlights={this.getFlights}
-            TripId={this.props.TripId} />
+            TripId={this.props.TripId} 
+            handleToggleFlightDisplay={this.handleToggleFlightDisplay} />
         </Row>
 
       </Col>

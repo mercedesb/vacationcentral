@@ -18,17 +18,15 @@
     font: #230C0F;
 }
 
-.faModal-edit-btn {
+.faModal-close-btn {
     background-color: #26867B;
-    font-size: 10px;
-    height: 20px;
+    font-size: 18px;
+    height: 30px;
     width: 50%;
     margin-left: 25%;
     text-align: center;
     color: #230C0F;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     border-radius: 6px;
 }
-
-
 

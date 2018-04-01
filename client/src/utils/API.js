@@ -65,6 +65,9 @@ export default {
     console.log("in profile put API", profileData); 
     return axios.put("/api/profiles/" + id,  profileData);
   },
+  deleteProfiles: function(id) {
+    return axios.delete("/api/profiles/" + id);
+  },
 
 
   getFlights: function(TripId) {
@@ -80,6 +83,10 @@ export default {
   updateFlights: function(flightData, id) {
     console.log("in flight put API", flightData); 
     return axios.put("/api/flights/" + id, flightData);
+  },
+  deleteFlights: function(id) {
+    console.log("in flight delete API", id); 
+    return axios.delete("/api/flights/" + id);
   },
 
 

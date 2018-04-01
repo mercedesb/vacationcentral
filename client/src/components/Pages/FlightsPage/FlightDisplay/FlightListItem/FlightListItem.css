@@ -7,7 +7,6 @@
         margin-top: 10px;
         margin-bottom: 10px;
         background:#B85D57;
-        border-left: 1px solid #ddd;
         line-height: 1.5;
         border-radius: 6px;
     
@@ -15,13 +14,37 @@
     
 .flight-edit-btn {
         background-color: #26867B;
-        font-size: 20px;
-        height: 40px;
+        font-size: 18px;
+        height: 30px;
         width: 50%;
         margin-left: 25%;
         text-align: center;
         color: #230C0F;
         margin-bottom: 10px;
-        border-radius: 6px;
-    
+        border-radius: 6px; 
     }
+
+.flight-fa-btn {
+        background-color: #6E9CB6;;
+        font-size: 18px;
+        height: 30px;
+        width: 50%;
+        margin-left: 25%;
+        text-align: center;
+        color: #230C0F;
+        margin-bottom: 10px;
+        border-radius: 6px; 
+}    
+
+.flight-delete-btn {
+        background-color: #AD1D35;
+        font-size: 18px;
+        height: 30px;
+        width: 50%;
+        margin-left: 25%;
+        text-align: center;
+        color: #230C0F;
+        margin-bottom: 10px;
+        border-radius: 6px; 
+    }
+

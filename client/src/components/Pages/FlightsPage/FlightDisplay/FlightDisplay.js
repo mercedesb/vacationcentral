@@ -118,6 +118,7 @@ class FlightDisplay extends React.Component {
                 editing={this.props.editing}
                 editId={this.props.editId}
                 getFlights={this.props.getFlights}
+                deleteFlights={this.props.deleteFlights}
                 id={flight.id}
                 key={flight.id}
                 result={flight}
@@ -127,13 +128,9 @@ class FlightDisplay extends React.Component {
             <p className="second-text"> Add a flight to start</p>}
 
         </ul>
-
-
       </Col>
-
-
     );
-  }
-}
+  };
+};
 
 export default FlightDisplay;
