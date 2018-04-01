@@ -21,6 +21,7 @@ class VacationContainer extends Component {
     user: {},
     userData: {},
     tripId: 0,
+    tripDestination: "",
     selectedRadioButton: 0
   };
     this.handleRadioButtonSelect = this.handleRadioButtonSelect.bind(this);
@@ -72,10 +73,11 @@ class VacationContainer extends Component {
   }
 
 
-  handleRadioButtonSelect = (id) => {
-    console.log("in handle RadioButton", id);
+  handleRadioButtonSelect = (id, destination) => {
+    console.log("in handle RadioButton", id, destination);
     this.setState({ 
       tripId: id,
+      tripDestination: destination,
       selectedRadioButton: id, 
     });
   }
@@ -120,7 +122,7 @@ class VacationContainer extends Component {
                 />
                 {this.state.user.firstName ?
                   <div>
-                    <Route exact path="/member/" render={() => <MemberPage user={this.state.user} />} />
+                    <Route exact path="/member/" render={() => <MemberPage user={this.state.user} tripDestination={this.state.tripDestination} />} />
                     <Route exact path="/hotels/" render={() => <BusinessPage businessType="Hotels" TripId={this.state.tripId} />} />
                     <Route exact path="/dining/" render={() => <BusinessPage businessType="Dining" TripId={this.state.tripId} />} />
                     <Route exact path="/flights/" render={() => <FlightsPage TripId={this.state.tripId} />} />

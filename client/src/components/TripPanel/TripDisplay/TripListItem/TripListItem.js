@@ -11,7 +11,7 @@ const renderResult = props => (
         type="radio" 
         id={props.result.id}
         checked={props.selectedRadioButton === props.result.id}
-        onClick={(event) => {props.handleRadioButtonSelect(props.result.id)}} />
+        onClick={(event) => {props.handleRadioButtonSelect(props.result.id, props.result.destination)}} />
     </Row>
     
     <Row style={{ textAlign: "center"}}>

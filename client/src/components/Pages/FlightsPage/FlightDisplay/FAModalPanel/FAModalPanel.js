@@ -14,12 +14,6 @@ class FAModalPanel extends React.Component {
     }
 
 
-    
-  // handleToggleCommentsModal = () => {
-  //   console.log("you have clicked the comments modal button");
-  //   this.setState({faModalVisible: !this.state.commentsModalVisible })
-  // };
-
     render() {
 
       if(!this.props.visible) {return null;}
