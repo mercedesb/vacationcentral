@@ -13,7 +13,7 @@ import { Col } from 'react-bootstrap';
 // 'Memories'
 
 const DisplayPanel = props => (
-  <Col xs={8} className="display-panel">
+  <Col xs={12} md={8} className="display-panel">
     <div>
       {props.children}
     </div>

@@ -9,7 +9,7 @@ class BusinessPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      businessDisplayVisible: false,
+      businessDisplayVisible: true,
       results: [],
       editing: false,
       editId: 0
@@ -20,7 +20,12 @@ class BusinessPage extends Component {
     this.handleToggleBusinessDisplay = this.handleToggleBusinessDisplay.bind(this);
   }
 
+  componentDidMount = () => {
+    this.getAllBusinesses(this.props.TripId);
+  }
+
   handleToggleBusinessDisplay = () => {
+    this.getAllBusinesses(this.props.TripId);
     this.setState({ businessDisplayVisible: !this.state.businessDisplayVisible })
   };
 

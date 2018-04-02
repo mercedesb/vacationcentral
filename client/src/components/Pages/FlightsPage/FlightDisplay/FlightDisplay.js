@@ -6,14 +6,6 @@ import FlightListItem from "././FlightListItem";
 import FAModalPanel from "./FAModalPanel";
 import { Col } from 'react-bootstrap';
 
-      // console.log("resultTemp", JSON.parse(result.request.response).MetarExResult.metar[0].cloud_friendly);
-      // console.log("entry", entry);
-      //console.log('The temperature at ' + entry.airport + ' is ' + entry.temp_air + 'C');
-      // var arrivetime = result.FlightInfoResult.flights[0].estimatedarrivaltime;
-      // var convarr = moment(arrivetime * 1000).format('MMMM Do YYYY,h:mm:ss a')
-      // console.log("entry", entry);
-      // console.log("arriv time", arrivetime, convarr);
-      // console.log("moment", converted.format(dddd, MMMM Do, YYYY));
 
 class FlightDisplay extends React.Component {
   constructor(props) {
@@ -124,8 +116,7 @@ class FlightDisplay extends React.Component {
                 result={flight}
                 toggleEdit={this.props.toggleEdit}
                 callFlightAware={this.callFlightAware}
-              />) :
-            <p className="second-text"> Add a flight to start</p>}
+              />) : null}
 
         </ul>
       </Col>

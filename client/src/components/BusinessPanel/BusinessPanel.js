@@ -33,7 +33,7 @@ const categoryArray = [{
 const BusinessPanel = props => {
   console.log('these are my bizpanel props!!', this.props)
   return (
-    <Col xs={2} className="business-panel">
+    <Col xs={12} md={2} className="business-panel">
       {categoryArray.map((elem, index) => (
         <CategoryButton
           key={index}
