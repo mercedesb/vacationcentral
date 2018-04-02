@@ -19,7 +19,7 @@ const categoryArray = [{
   name: 'Dining',
   link: "/dining/"
 }, {
-  name: 'Attractions',
+  name: 'Places',
   link: "/attractions/"
 }, {
   name: 'Packing',
