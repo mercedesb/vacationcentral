@@ -28,6 +28,10 @@ class VacationContainer extends Component {
     this.handleRadioButtonSelect = this.handleRadioButtonSelect.bind(this);
   }
 
+ /**
+  * Handles physical input of user login/signup. Sets input into 
+  * @param {object} userData - input values becomes user data - name, email password
+  */
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState(prevState => (
@@ -39,6 +43,10 @@ class VacationContainer extends Component {
       }));
   };
 
+  /**
+  * Makes API call to user database to save user data
+  * @param {object} userData - user information consists for name, email, password
+  */
   signUpUser = userData => {
     API.saveUser(userData)
       .then(data => {
@@ -50,12 +58,21 @@ class VacationContainer extends Component {
       .catch(err => console.log(err));
   }
 
+  /**
+  * Simple validation of new user input information before calling signUpUser function
+  * @param {object} userData - name, email, password
+  */
   handleSignUp = event => {
     event.preventDefault();
     if (!this.state.userData.email || !this.state.userData.password) { return }
     this.signUpUser(this.state.userData);
   }
 
+  /**
+  * API call to database to set user data
+  * @param {object} userData  - email, password
+  * @param {object} user
+  */
   loginUser = userData => {
     API.loginUser(userData)
       .then(data => {
@@ -67,13 +84,21 @@ class VacationContainer extends Component {
       .catch(err => console.log(err));
   }
 
+  /**
+  * Simple validation of an existing user input information before calling signUpUser function
+  * @param {object} userData
+  */
   handleLogIn = event => {
     event.preventDefault();
     if (!this.state.userData.email || !this.state.userData.password) { return }
     this.loginUser(this.state.userData);
   }
 
-
+ /**
+  * Allows for check of radio button to set the TripId for the application
+  * @param {integer} TripId 
+  * @param {string} Destination
+  */
   handleRadioButtonSelect = (id, destination) => {
     this.setState({ 
       tripId: id,
