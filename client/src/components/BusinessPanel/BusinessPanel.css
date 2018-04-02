@@ -3,7 +3,7 @@
     font-size: 15px;
     background: transparent;
     list-style: none;
-    vertical-align: center;
+    text-align: center;
 
 }
 
@@ -13,4 +13,10 @@
 
 .dropdown-toggle{
     font-size: 30px;
+}
+
+.dropdown-menu {
+    background-color: rgba(0,0,0, 0.7);
+    width: 50%;
+    margin-left: 25%
 }

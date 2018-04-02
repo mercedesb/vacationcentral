@@ -88,15 +88,11 @@ class VacationContainer extends Component {
         <Grid fluid className="vacation-container">
           <Row>
             <HeaderPanel>
-              <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
+              <BusinessPanel style={{ textAlign: "center"}} userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
             </HeaderPanel>
           </Row>
           <Row>
-            {/* <TripPanel
-              UserId={this.state.user.id}
-              selectedRadioButton={this.state.selectedRadioButton}
-              handleRadioButtonSelect={this.handleRadioButtonSelect}
-              /> */}
+
             <DisplayPanel>
               <Switch>
                 <Route exact path="/" 

@@ -46,6 +46,9 @@ h4 {
   .header-trip {
     font-size: 30px;
   }
+  .dropdown-toggle{
+    font-size: 30px;
+  }
 }
 
 
@@ -56,11 +59,17 @@ h4 {
   .header-trip {
     font-size: 30px;
   }
+.dropdown-toggle{
+  font-size: 25px;
+}
 }
 
 @media all and (max-width: 600px) {
   .hp-text {
     font-size: 30px;
+  }
+  .dropdown-toggle{
+    font-size: 20px;
   }
 }
 
