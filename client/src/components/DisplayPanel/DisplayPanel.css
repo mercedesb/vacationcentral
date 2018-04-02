@@ -1,5 +1,5 @@
 .display-panel{
-    min-height: 750px;
+    min-height: auto;
     font-size: 15px;
     background: transparent;
 }

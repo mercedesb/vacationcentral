@@ -2,10 +2,15 @@
     height: auto;
     font-size: 15px;
     background: transparent;
-    margin: 0 auto;
+    list-style: none;
+    vertical-align: center;
 
 }
 
 .header-text {
     font-size: 15px;
+}
+
+.dropdown-toggle{
+    font-size: 30px;
 }

@@ -92,11 +92,11 @@ class VacationContainer extends Component {
             </HeaderPanel>
           </Row>
           <Row>
-            <TripPanel
+            {/* <TripPanel
               UserId={this.state.user.id}
               selectedRadioButton={this.state.selectedRadioButton}
               handleRadioButtonSelect={this.handleRadioButtonSelect}
-              />
+              /> */}
             <DisplayPanel>
               <Switch>
                 <Route exact path="/" 
@@ -139,6 +139,12 @@ class VacationContainer extends Component {
                 }
               </Switch>
             </DisplayPanel>
+
+            <TripPanel
+              UserId={this.state.user.id}
+              selectedRadioButton={this.state.selectedRadioButton}
+              handleRadioButtonSelect={this.handleRadioButtonSelect}
+              />
             {/* <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} /> */}
           </Row>
         </Grid>

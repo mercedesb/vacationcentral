@@ -4,10 +4,10 @@ import { Row, Col } from 'react-bootstrap';
 
 const HeaderPanel = props => (
   <Row xs={12} md={2} className="header-panel">
-    <Col xs={6}>
+    <Col xs={8}>
       <p className="hp-text"> Vacation Central</p>
     </Col>
-    <Col xs={2}>
+    <Col className="categories-nav" xs={2}>
       {props.children}
     </Col>
   </Row>
