@@ -1,5 +1,4 @@
 import React from "react";
-import "./BusinessDisplay.css";
 import { Col } from 'react-bootstrap';
 import BusinessListItem from "./BusinessListItem";
 

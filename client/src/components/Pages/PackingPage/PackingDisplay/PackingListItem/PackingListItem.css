@@ -1,0 +1,28 @@
+
+.packing-list-item {
+    width: 90%;
+    font-size: 20px;
+    margin: 0 auto;
+    height: auto;
+    overflow: scroll;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background:#B85D57;
+    line-height: 1.5;
+    border-radius: 6px;
+
+}
+
+.packing-edit-btn {
+    background-color: #26867B;
+    font-size: 20px;
+    height: 40px;
+    width: 50%;
+    margin-left: 25%;
+    text-align: center;
+    color: #230C0F;
+    margin-bottom: 10px;
+    border-radius: 6px;
+
+}
+

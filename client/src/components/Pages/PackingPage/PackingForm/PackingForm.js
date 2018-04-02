@@ -41,7 +41,7 @@ class PackingForm extends Component {
     API.savePacking(this.state.packingData)
       .then(response => {
         this.setState({packingData: {}});
-        this.props.handleTogglePackingDisplay(this.props.TripId);
+        this.props.getPacking(this.props.TripId);
       })
       .catch(err => console.log(err));
   }
@@ -61,6 +61,7 @@ class PackingForm extends Component {
 
 
   render() {
+        console.log("these are my packing form props", this.props)
     return (
 
       <div className="packing-add">

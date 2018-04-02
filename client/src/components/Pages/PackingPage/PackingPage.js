@@ -1,7 +1,7 @@
 import React, { Component} from "react";
 import { Row, Col } from 'react-bootstrap';
 import "./PackingPage.css";
-// import PackingAdd from "./PackingAdd";
+import PackingDisplay from "./PackingDisplay";
 import PackingForm from "./PackingForm";
 import API from "../../../utils/API";
 
@@ -35,6 +35,8 @@ class PackingPage extends React.Component {
     API.getPacking(this.props.TripId)
     .then(response => {
       this.setState({results: response.data})
+      console.log("get packing results", this.state.results)
+
     })
   );
 
@@ -45,34 +47,23 @@ class PackingPage extends React.Component {
       <Col xs={12} className="packing-page">
 
         <Row> <p className="header">Packing</p> </Row>
-
-        {/* <Row>
-          <button className='profile-btn' onClick={() =>
-            {this.getProfiles()
-              .then(this.handleToggleProfileDisplay)}}>
-            View Your Profiles
-          </button>
-        </Row>
-        <Row>
-          <button className='profile-btn'  onClick={this.handleToggleProfileDisplay}>Add a Rewards Profile</button>
-        </Row> */}
+        <PackingDisplay 
+          toggleEdit={this.toggleEdit}
+          results={this.state.results}
+          TripId={this.props.TripId}
+          getPacking={this.getPacking}
+          editing={this.state.editing}
+          editId={this.state.editId}
+          />
         <Row>
         <PackingForm
             TripId={this.props.TripId}
-            results={this.state.results}
-            toggleEdit={this.toggleEdit}
-            editing={this.state.editing}
-            editId={this.state.editId}
             getPacking={this.getPacking}
           /> 
         </Row>
 
         <Row>
 
-          {/* <PackingAdd
-            getPacking={this.getPacking}
-            TripId={this.props.TripId}
-            handleTogglePackingDisplay={this.handleTogglePackingDisplay} /> */}
         </Row>
 
       </Col>
