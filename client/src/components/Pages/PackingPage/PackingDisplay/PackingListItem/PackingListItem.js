@@ -7,18 +7,15 @@ const renderResult = props => (
 
   <div className="profile-list-item">
     <Row>
-        <p className="second-text">{props.result.name}</p>
+      <p className="second-text">{props.result.name}</p>
     </Row>
     {props.result.toPack ? <div><p style={{ textAlign: "left" }}><strong>Remember to Pack: </strong> {props.result.toPack}</p></div> : <p>missing</p>}
-    {props.result.wishPack?<div><p style={{ textAlign: "left" }}><strong>Wish I had packed: </strong>  {props.result.wishPack}</p></div> :<p>missing</p> }
+    {props.result.wishPack ? <div><p style={{ textAlign: "left" }}><strong>Wish I had packed: </strong>  {props.result.wishPack}</p></div> : <p>missing</p>}
     {props.result.noPack ? <div><p style={{ textAlign: "left" }}><strong>Leave at home: </strong> {props.result.noPack}</p></div> : <p>missing</p>}
-    
     <Row>
-        <button className="profile-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
+      <button className="profile-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
     </Row>
-
   </div>
-
 );
 
 const renderForm = props => (

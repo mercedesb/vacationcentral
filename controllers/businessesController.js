@@ -1,6 +1,5 @@
 const db = require("../models");
 
-// Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
     console.log(req.query);
@@ -9,21 +8,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // findById: function(req, res) {
-  //   db.Book
-  //     .findById(req.params.id)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
   create: function(req, res) {
-    console.log("in business controller", req.body);
     db.Business
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    console.log(req.body);
     db.Business
       .update(
         req.body,
@@ -37,7 +28,6 @@ module.exports = {
       .destroy({where: { id: req.params.id }})
       .then(dbModel => res.json("delete successful"))
       .catch(err => {
-        console.log("delete err: ", err);
         res.status(422).json(err);
       });
   }

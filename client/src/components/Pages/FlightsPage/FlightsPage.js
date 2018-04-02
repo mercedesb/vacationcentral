@@ -1,10 +1,9 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import { Row, Col } from 'react-bootstrap';
 import "./FlightsPage.css";
 import FlightAdd from "./FlightAdd";
 import FlightDisplay from "./FlightDisplay";
 import API from "../../../utils/API";
-
 
 class FlightsPage extends React.Component {
   constructor(props) {
@@ -18,8 +17,8 @@ class FlightsPage extends React.Component {
     };
     this.getFlights = this.getFlights.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
-    this.deleteFlights= this.deleteFlights.bind(this);
-    this.handleToggleFlightDisplay=this.handleToggleFlightDisplay.bind(this);
+    this.deleteFlights = this.deleteFlights.bind(this);
+    this.handleToggleFlightDisplay = this.handleToggleFlightDisplay.bind(this);
   }
 
   componentDidMount = () => {
@@ -27,17 +26,15 @@ class FlightsPage extends React.Component {
   }
 
   handleToggleFlightDisplay = () => {
-    console.log("flightDisplay is visible")
     this.getFlights(this.props.TripId);
     this.setState({ flightDisplayVisible: !this.state.flightDisplayVisible });
   };
 
   toggleEdit = event => {
-    console.dir(event.target.id);
     this.setState({
       editing: !this.state.editing,
       editId: event.target.id
-    }, () => console.log("toggle flight edit", this.state));
+    });
   };
 
   getFlights = () => (
@@ -49,34 +46,27 @@ class FlightsPage extends React.Component {
 
   deleteFlights = (event, flightId, TripId) => {
     event.preventDefault();
-      API.deleteFlights(flightId)
+    API.deleteFlights(flightId)
       .then(response => {
-        console.log("flight delete ", response);
         this.getFlights(this.props.TripId);
       })
-    }
-
+  }
 
   render() {
-    console.log('these are my FlightsPage props!!', this.props)
     return (
       <Col xs={12} className="flights-page">
-
         <Row> <p className="header">Flight Information</p> </Row>
-
         <Row>
           <button className='flight-btn' onClick={() => {
             this.getFlights()
-              .then(this.handleToggleFlightDisplay)}}>
+              .then(this.handleToggleFlightDisplay)
+          }}>
             View Your Flights
           </button>
         </Row>
-
         <Row>
           <button className='flight-btn' onClick={this.handleToggleFlightDisplay}>Add a Flight</button>
         </Row>
-
-
         <Row>
           {this.state.flightDisplayVisible ? <FlightDisplay
             show={this.state.flightDisplayVisible}
@@ -91,16 +81,13 @@ class FlightsPage extends React.Component {
             callFlightAware={this.callFlightAware}
           /> : null}
         </Row>
-
         <Row>
           <FlightAdd
             getFlights={this.getFlights}
-            TripId={this.props.TripId} 
+            TripId={this.props.TripId}
             handleToggleFlightDisplay={this.handleToggleFlightDisplay} />
         </Row>
-
       </Col>
-
     );
   }
 }

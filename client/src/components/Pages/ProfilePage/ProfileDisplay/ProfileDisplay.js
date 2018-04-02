@@ -5,51 +5,43 @@ import { Col, Row } from 'react-bootstrap';
 
 
 class ProfileDisplay extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-      };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+  render() {
+    if (!this.props.show) { return null; }
 
-    render() {
+    const sortedCompany = this.props.results.sort((a, b) => (a.company) > (b.company));
 
-    if(!this.props.show){ return null; }
-    console.log('these are my profile display props!!', this.props)
-
-      const sortedCompany = this.props.results.sort((a, b) => (a.company) > (b.company));
-      console.log("this results array post-sort", this.props.results);
-     
-      return (
-        <Col xs={12} className="profile-display">
-          
-          <Row>
+    return (
+      <Col xs={12} className="profile-display">
+        <Row>
           <button className="profile-type-btn" onClick={() => this.props.getProfiles()}>All Profiles</button>
           <button className="profile-type-btn" onClick={(e) => this.props.getProfilesByType(e, "Airline")}>Airline</button>
           <button className="profile-type-btn" onClick={(e) => this.props.getProfilesByType(e, "RentalCar")}>Rental Car</button>
           <button className="profile-type-btn" onClick={(e) => this.props.getProfilesByType(e, "Hotel")}>Hotel</button>
-          </Row>
-          
-          <ul style={{ listStyleType: "none", paddingLeft: "0px" }}>
-
-            {this.props.results.length !== 0 ?
-                this.props.results.map(profile => 
-                <ProfileListItem
-                  editing={this.props.editing}
-                  editId={this.props.editId}
-                  getProfiles={this.props.getProfiles}
-                  deleteProfiles={this.props.deleteProfiles}
-                  getProfilesByType={this.getProfilesByType}
-                  id={profile.id}
-                  key={profile.id}
-                  result={profile}
-                  toggleEdit={this.props.toggleEdit}
-                />) :
-            <p className="second-text"> Add a profile to start</p>}          
-
-          </ul>
-        </Col>
-      );
-    };
+        </Row>
+        <ul style={{ listStyleType: "none", paddingLeft: "0px" }}>
+          {this.props.results.length !== 0 ?
+            this.props.results.map(profile =>
+              <ProfileListItem
+                editing={this.props.editing}
+                editId={this.props.editId}
+                getProfiles={this.props.getProfiles}
+                deleteProfiles={this.props.deleteProfiles}
+                getProfilesByType={this.getProfilesByType}
+                id={profile.id}
+                key={profile.id}
+                result={profile}
+                toggleEdit={this.props.toggleEdit}
+              />) :
+            <p className="second-text"> Add a profile to start</p>}
+        </ul>
+      </Col>
+    );
   };
+};
 
-  export default ProfileDisplay;
+export default ProfileDisplay;

@@ -7,12 +7,8 @@ router.route("/")
   .post(tripsController.create);
 
 // Matches with "/api/trips/:id"
-router
-  .route("/:id")
-
-//   .get(businessController.findById)
+router.route("/:id")
   .put(tripsController.update);
-//   .delete(businessController.remove);
 
 
 module.exports = router;

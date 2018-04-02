@@ -24,10 +24,6 @@ const categoryArray = [{
 }, {
   name: 'Packing',
   link: "/packing" }
-// }, {
-//   name: 'Memories',
-//   link: "/memories"
-// }
 ]
 
 const BusinessPanel = props => {
@@ -45,7 +41,4 @@ const BusinessPanel = props => {
   );
 }
 
-
 export default BusinessPanel;
-
-

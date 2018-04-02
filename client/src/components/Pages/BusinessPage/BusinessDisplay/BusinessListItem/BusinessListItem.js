@@ -1,7 +1,6 @@
 import React from "react";
 import "./BusinessListItem.css";
 import { Row } from 'react-bootstrap';
-// import { FormBtn } from "../../../../Form";
 import BusinessForm from "../../BusinessForm";
 
 const renderResult = props => (

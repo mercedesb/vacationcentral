@@ -2,10 +2,8 @@ import React from "react";
 import { Col } from 'react-bootstrap';
 import BusinessListItem from "./BusinessListItem";
 
-
 const BusinessDisplay = props => {
   if (!props.show) { return null; }
-  console.log('these are my business display props!!', props)
   const filteredBusinesses = props.results.filter(business => business.type === props.businessType);
   return (
     <Col xs={12} >

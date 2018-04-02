@@ -29,12 +29,13 @@ class BusinessPage extends Component {
     this.setState({
       editing: !this.state.editing,
       editId: event.target.id
-    }, () => console.log("toggle edit", this.state));
+    });
   };
 
   getAllBusinesses = tripId => (
     API.getBusinesses(tripId)
       .then(response => this.setState({ results: response.data }))
+      .catch(err => console.log(err));
   );
 
   deleteBusiness = businessId => (
@@ -43,17 +44,15 @@ class BusinessPage extends Component {
         console.log(response);
         this.getAllBusinesses(this.props.TripId);
       })
+      .catch(err => console.log(err))
   )
 
-
   render() {
-    console.log("these are my business page props", this.props)
     return (
       <Col xs={12} className="business-page">
         <Row>
           <p className="header">{this.props.businessType}</p>
         </Row>
-
         <Row>
           <button className='business-btn' onClick={() => {
             this.getAllBusinesses(this.props.TripId)
@@ -62,11 +61,9 @@ class BusinessPage extends Component {
             View Your {this.props.businessType}
           </button>
         </Row>
-
         <Row>
           <button className='business-btn' onClick={this.handleToggleBusinessDisplay}>Add {this.props.businessType}</button>
         </Row>
-
         <Row>
           {this.state.businessDisplayVisible ?
             <BusinessDisplay
