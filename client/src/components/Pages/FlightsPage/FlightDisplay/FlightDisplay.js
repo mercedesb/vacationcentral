@@ -28,7 +28,7 @@ class FlightDisplay extends React.Component {
       arriveTemp: "",
       arriveClouds: "",
       departFlight: "",
-      departTime: "",
+      arriveTime: "",
     };
     this.callFlightAware = this.callFlightAware.bind(this);
     this.handleToggleFAModal = this.handleToggleFAModal.bind(this);
@@ -70,12 +70,12 @@ class FlightDisplay extends React.Component {
       .then((result, response) => {
       console.log("resultTime", JSON.parse(result.request.response).FlightInfoResult.flights[0]);
       var entry = JSON.parse(result.request.response).FlightInfoResult.flights[0]
-      var departTime =entry.filed_departuretime;
-      var convertDeparture = moment(departTime * 1000).format('MMMM Do YYYY,h:mm:ss a');
-      console.log("Your flight is expected to depart on " + convertDeparture);
+      var estArriveTime =entry.estimatedarrivaltime;
+      var convertArrive = moment(estArriveTime * 1000).format('MMMM Do YYYY,h:mm:ss a');
+      console.log("Your flight is expected to arrive " + convertArrive);
       this.setState ({
             departFlight: entry.ident,
-            departTime: convertDeparture
+            arriveTime: convertArrive
           },
         () => console.log("this in FATemp 3", this.state, entry.airport, entry.cloud_friendly)
         ) 
@@ -108,7 +108,7 @@ class FlightDisplay extends React.Component {
               arriveTemp={this.state.arriveTemp}
               arriveClouds={this.state.arriveClouds}
               departFlight={this.state.departFlight}
-              departTime={this.state.departTime} />
+              arriveTime={this.state.arriveTime} />
 
         <ul style={{ listStyleType: "none", paddingLeft: "0px" }}>
 

@@ -25,7 +25,8 @@ class FAModalPanel extends React.Component {
         <label className="label-text" >Flight Aware Status</label>
         <div className="fa-status-panel">
 
-            <p>Flight  <strong>{this.props.departFlight}</strong>  is expected to depart on <strong>{this.props.departTime}.</strong></p>
+            <p>Flight  <strong>{this.props.departFlight}</strong>  is estimated to arrive on <strong>{this.props.arriveTime}.</strong></p>
+            <br/>
             <p>And the temperature at  <strong>{this.props.arriveLocation}</strong>  is  <strong>{this.props.arriveTemp}</strong>  with  <strong>{this.props.arriveClouds}</strong>.</p>
         </div>
 

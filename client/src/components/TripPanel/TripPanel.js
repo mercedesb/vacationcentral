@@ -52,7 +52,7 @@ class TripPanel extends React.Component {
 
 
       return (
-        <Col xs={2} className="trip-panel" >
+        <Col  sm={6} md={2} className="trip-panel" >
          
           <Row>
               <p className="header-trip">Your Trips</p>
