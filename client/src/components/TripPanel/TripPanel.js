@@ -40,61 +40,6 @@ class TripPanel extends React.Component {
       .then(response => {
         this.setState({ results: response.data })
       })
-<<<<<<< HEAD
-    );
-
-
-    render() {
-      console.log('these are my trip panel props!!', this.props)
-
-
-      return (
-        <Col  xs={12} md={2} className="trip-panel" >
-         
-          <Row>
-              <p className="header-trip">Your Trips</p>
-
-          </Row>
-          
-          <Row>
-            <button 
-              className="tripDisplay-btn" 
-              onClick={() => {
-                this.getTrips(this.props.UserId)
-                  .then(this.handleToggleTripDisplay);
-              }}>
-              View Your Trips
-            </button> 
-          </Row>
-
-                    <Row>
-            <button 
-              className="tripDisplay-btn" 
-              onClick={this.handleToggleTripDisplay} >
-              Add a Trip
-            </button> 
-          </Row>
-
-
-          <Row>
-          {this.state.tripDisplayVisible ? <TripDisplay 
-          show={this.state.tripDisplayVisible} 
-          UserId={this.props.UserId}
-          results={this.state.results}
-          toggleEdit={this.toggleEdit}
-          editing={this.state.editing}
-          editId={this.state.editId}
-          getTrips={this.getTrips}
-          selectedRadioButton={this.props.selectedRadioButton}
-          handleRadioButtonSelect={this.props.handleRadioButtonSelect}
-          // handleSetTripId={this.props.handleSetTripId}
-           /> : null}
-          </Row>
-
-          <Row>
-            {this.state.tripAddVisible ?
-              <TripAdd 
-=======
   );
 
   render() {
@@ -136,7 +81,6 @@ class TripPanel extends React.Component {
         <Row>
           {this.state.tripAddVisible ?
             <TripAdd
->>>>>>> 99b491cc8d18474a23ca162606779aba63b58339
               show={this.state.tripAddVisible}
               getTrips={this.getTrips}
               UserId={this.props.UserId} />

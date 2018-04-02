@@ -28,11 +28,7 @@ const categoryArray = [{
 
 const BusinessPanel = props => {
   return (
-<<<<<<< HEAD
-    <Col xs={12} md={2} className="business-panel">
-=======
     <NavDropdown title="Categories" className="business-panel">
->>>>>>> 99b491cc8d18474a23ca162606779aba63b58339
       {categoryArray.map((elem, index) => (
         <CategoryButton
           key={index}
