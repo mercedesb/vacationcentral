@@ -2,22 +2,17 @@ import React from "react";
 import "./TripPanel.css";
 import "../../VacationContainer.css"
 import { Row, Col } from 'react-bootstrap';
-// import MediaQuery from 'react-responsive';
-// import {FormBtn, Input, TextArea} from "../Form";
-// import { List, ListItem } from "../List";
-// import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import TripAdd from "./TripAdd";
 import TripDisplay from "./TripDisplay";
-// import { isNull } from "util";
-
 
 
 class TripPanel extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        tripDisplayVisible: false, 
+        tripDisplayVisible: true, 
+        tripAddVisible: true,
         results: [], 
         editing: false,
         editId: 0,
@@ -30,6 +25,12 @@ class TripPanel extends React.Component {
       console.log("tripDisplay is visible")
       this.setState({tripDisplayVisible: !this.state.tripDisplayVisible})
     };
+
+    handleToggleTripAdd = () => {
+      console.log("tripAdd is visible")
+      this.setState({tripAddVisible: !this.state.tripAddVisible})
+    };
+
 
     toggleEdit = event => {
       this.setState({
@@ -57,11 +58,6 @@ class TripPanel extends React.Component {
               <p className="header-trip">Your Trips</p>
 
           </Row>
-          <Row>
-              <TripAdd 
-              getTrips={this.getTrips}
-              UserId={this.props.UserId} />
-          </Row>
           
           <Row>
             <button 
@@ -73,6 +69,15 @@ class TripPanel extends React.Component {
               View Your Trips
             </button> 
           </Row>
+
+                    <Row>
+            <button 
+              className="tripDisplay-btn" 
+              onClick={this.handleToggleTripDisplay} >
+              Add a Trip
+            </button> 
+          </Row>
+
 
           <Row>
           {this.state.tripDisplayVisible ? <TripDisplay 
@@ -87,6 +92,15 @@ class TripPanel extends React.Component {
           handleRadioButtonSelect={this.props.handleRadioButtonSelect}
           // handleSetTripId={this.props.handleSetTripId}
            /> : null}
+          </Row>
+
+          <Row>
+            {this.state.tripAddVisible ?
+              <TripAdd 
+              show={this.state.tripAddVisible}
+              getTrips={this.getTrips}
+              UserId={this.props.UserId} />
+              : null}
           </Row>
 
       </Col>

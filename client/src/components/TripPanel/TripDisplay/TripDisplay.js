@@ -43,8 +43,7 @@ class TripDisplay extends React.Component {
                 // handleSetTripId={this.props.handleSetTripId}
                 selectedRadioButton={this.props.selectedRadioButton}
                 handleRadioButtonSelect={this.props.handleRadioButtonSelect}
-              />) :
-            <p className="second-text"> Add a trip to start</p>}
+              />) :null}
 
         </ul>
       </Col>

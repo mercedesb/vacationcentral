@@ -65,8 +65,8 @@ componentDidMount() {
     
     render() {
         console.log('these are my trip add props!!', this.props)
+        // if (!this.props.show) { return null; }
         
-
        return (
         <div>
 
