@@ -92,7 +92,6 @@ class VacationContainer extends Component {
             </HeaderPanel>
           </Row>
           <Row>
-
             <DisplayPanel>
               <Switch>
                 <Route exact path="/" 

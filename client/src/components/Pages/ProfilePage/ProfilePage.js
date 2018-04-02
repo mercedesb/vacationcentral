@@ -87,7 +87,6 @@ class ProfilePage extends Component {
             deleteProfiles={this.deleteProfiles}
             getProfilesByType={this.getProfilesByType}
             handleToggleProfileDisplay={this.handleToggleProfileDisplay}
-
           /> : null}
         </Row>
         <Row>

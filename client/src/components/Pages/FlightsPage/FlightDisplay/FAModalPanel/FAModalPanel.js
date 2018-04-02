@@ -1,8 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import "./FAModalPanel.css";
-import API from "../../../../../utils/API"
 
-class FAModalPanel extends React.Component {
+class FAModalPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
