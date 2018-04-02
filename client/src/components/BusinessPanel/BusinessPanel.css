@@ -2,9 +2,21 @@
     height: auto;
     font-size: 15px;
     background: transparent;
+    list-style: none;
+    text-align: center;
 
 }
 
 .header-text {
     font-size: 15px;
+}
+
+.dropdown-toggle{
+    font-size: 30px;
+}
+
+.dropdown-menu {
+    background-color: rgba(0,0,0, 0.7);
+    width: 70%;
+    margin-left: 15%;
 }
