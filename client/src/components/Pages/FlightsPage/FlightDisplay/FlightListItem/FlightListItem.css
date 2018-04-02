@@ -1,50 +1,50 @@
 .flight-listItem{
-        width: 80%;
-        font-size: 15px;
-        margin: 0 auto;
-        height: auto;
-        overflow: scroll;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        background:#B85D57;
-        line-height: 1.5;
-        border-radius: 6px;
+  width: 80%;
+  font-size: 15px;
+  margin: 0 auto;
+  height: auto;
+  overflow: scroll;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background:#B85D57;
+  line-height: 1.5;
+  border-radius: 6px;
     
 }
     
 .flight-edit-btn {
-        background-color: #26867B;
-        font-size: 18px;
-        height: 30px;
-        width: 50%;
-        margin-left: 25%;
-        text-align: center;
-        color: #230C0F;
-        margin-bottom: 10px;
-        border-radius: 6px; 
-    }
+  background-color: #26867B;
+  font-size: 18px;
+  height: 30px;
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  color: #230C0F;
+  margin-bottom: 10px;
+  border-radius: 6px; 
+}
 
 .flight-fa-btn {
-        background-color: #6E9CB6;;
-        font-size: 18px;
-        height: 30px;
-        width: 50%;
-        margin-left: 25%;
-        text-align: center;
-        color: #230C0F;
-        margin-bottom: 10px;
-        border-radius: 6px; 
+  background-color: #6E9CB6;;
+  font-size: 18px;
+  height: 30px;
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  color: #230C0F;
+  margin-bottom: 10px;
+  border-radius: 6px; 
 }    
 
 .flight-delete-btn {
-        background-color: #AD1D35;
-        font-size: 18px;
-        height: 30px;
-        width: 50%;
-        margin-left: 25%;
-        text-align: center;
-        color: #230C0F;
-        margin-bottom: 10px;
-        border-radius: 6px; 
-    }
+  background-color: #AD1D35;
+  font-size: 18px;
+  height: 30px;
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  color: #230C0F;
+  margin-bottom: 10px;
+  border-radius: 6px; 
+}
 

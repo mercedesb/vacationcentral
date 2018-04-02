@@ -7,11 +7,9 @@ router.route("/")
   .get(profilesController.findByType)
   .post(profilesController.create);
 
-
 // Matches with "/api/profiles/:id"
 router
   .route("/:id")
-//   .get(profilesController.findById)
   .put(profilesController.update)
   .delete(profilesController.remove);
 
@@ -19,6 +17,5 @@ router
 router
   .route("/:UserId/:type")
   .get(profilesController.findByType)
-
 
 module.exports = router;

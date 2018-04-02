@@ -21,31 +21,26 @@ class PackingPage extends React.Component {
 
   componentDidMount = () => {
     this.getPacking(this.props.TripId);
-  }
-
+  };
 
   toggleEdit = event => {
     this.setState({
       editing: !this.state.editing,
       editId: event.target.id
-    }, () => console.log("toggle profile edit", this.state));
+    });
   };
 
   getPacking = () => (
     API.getPacking(this.props.TripId)
-    .then(response => {
-      this.setState({results: response.data})
-      console.log("get packing results", this.state.results)
-
-    })
+      .then(response => {
+        this.setState({results: response.data})
+      })
+      .catch(err => console.log(err))
   );
 
-
   render() {
-    console.log('these are my Packing Page props!!', this.props)
     return (
       <Col xs={12} className="packing-page">
-
         <Row> <p className="header">Packing</p> </Row>
         <PackingDisplay 
           toggleEdit={this.toggleEdit}
@@ -61,11 +56,6 @@ class PackingPage extends React.Component {
             getPacking={this.getPacking}
           /> 
         </Row>
-
-        <Row>
-
-        </Row>
-
       </Col>
     );
   }

@@ -75,7 +75,6 @@ class VacationContainer extends Component {
 
 
   handleRadioButtonSelect = (id, destination) => {
-    console.log("in handle RadioButton", id, destination);
     this.setState({ 
       tripId: id,
       tripDestination: destination,
@@ -83,20 +82,18 @@ class VacationContainer extends Component {
     });
   }
 
-
   render() {
-    console.log("state in VC render", this.state)
     return (
       <Router>
         <Grid fluid className="vacation-container">
           <Row>
-            <HeaderPanel/>
+            <HeaderPanel>
+              <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
+            </HeaderPanel>
           </Row>
           <Row>
             <TripPanel
               UserId={this.state.user.id}
-              // handleTripFormSubmit={this.handleTripFormSubmit}
-              // handleSetTripId={this.handleSetTripId} 
               selectedRadioButton={this.state.selectedRadioButton}
               handleRadioButtonSelect={this.handleRadioButtonSelect}
               />
@@ -142,7 +139,7 @@ class VacationContainer extends Component {
                 }
               </Switch>
             </DisplayPanel>
-            <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
+            {/* <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} /> */}
           </Row>
         </Grid>
       </Router >

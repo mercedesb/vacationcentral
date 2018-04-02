@@ -4,15 +4,12 @@ import PackingListItem from "./PackingListItem";
 
 
 const PackingDisplay = props => {
-  console.log('these are my packing display props!!', props)
   return (
     <Col x={12} className="packing-display">
-
       <ul style={{ listStyleType: "none", paddingLeft: "0px" }}>
-        
         {props.results.length !== 0 ?
-            props.results.map(pack =>
-        <PackingListItem
+          props.results.map(pack =>
+            <PackingListItem
               editing={props.editing}
               editId={props.editId}
               getPacking={props.getPacking}
@@ -20,8 +17,8 @@ const PackingDisplay = props => {
               key={pack.id}
               result={pack}
               toggleEdit={props.toggleEdit}
-            />):
-            <p className="second-text">Get packing!</p>} 
+            />) :
+          <p className="second-text">Get packing!</p>}
       </ul>
     </Col>
   );
