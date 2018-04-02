@@ -24,7 +24,7 @@ const renderResult = props => (
     
     <Row>
       <button className="flight-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
-      <button className="flight-fa-btn" id={props.result.id} onClick={ e => props.callFlightAware(e, props.result.flightNumber, props.result.arriveLocation)}>Call Flight Aware</button>
+      <button className="flight-fa-btn" id={props.result.id} onClick={ e => props.callFlightAware(e, props.result.flightNumber, props.result.arriveLocation)}>Flight Status / Weather</button>
       <button className="flight-delete-btn" id={props.result.id} onClick={e => props.deleteFlights(e, props.result.id)}>Delete</button>
 
     </Row>

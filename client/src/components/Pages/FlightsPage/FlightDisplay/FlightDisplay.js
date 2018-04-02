@@ -19,7 +19,7 @@ class FlightDisplay extends React.Component {
       arriveTemp: "",
       arriveClouds: "",
       departFlight: "",
-      departTime: "",
+      arriveTime: "",
     };
     this.callFlightAware = this.callFlightAware.bind(this);
     this.handleToggleFAModal = this.handleToggleFAModal.bind(this);
@@ -50,9 +50,18 @@ class FlightDisplay extends React.Component {
 
   callFATime = (flightNumber) => {
     axios.get(this.state.proxy + this.state.fxml_url + "FlightInfo?ident=" + flightNumber + "&howMany=1", {
-      headers: {
-        'Authorization': 'basic c2xpcHBhOTE6ODRjNTQwOWM3ZWEyZGQ1YTBlM2IwYmE5YjBmYjc3MGRlZTcwYzkyMA==',
-      }
+      headers : {
+        'Authorization' : 'basic c2xpcHBhOTE6ODRjNTQwOWM3ZWEyZGQ1YTBlM2IwYmE5YjBmYjc3MGRlZTcwYzkyMA==',
+      } })
+      .then((result, response) => {
+      var entry = JSON.parse(result.request.response).FlightInfoResult.flights[0]
+      var estArriveTime =entry.estimatedarrivaltime;
+      var convertArrive = moment(estArriveTime * 1000).format('MMMM Do YYYY,h:mm:ss a');
+      this.setState ({
+            departFlight: entry.ident,
+            arriveTime: convertArrive
+          }
+        ) 
     })
       .then((result, response) => {
         var entry = JSON.parse(result.request.response).FlightInfoResult.flights[0]
@@ -66,7 +75,6 @@ class FlightDisplay extends React.Component {
   };
 
   handleToggleFAModal = () => {
-    console.log("you have clicked the FA modal button");
     this.setState({ faModalVisible: !this.state.faModalVisible })
   };
 
@@ -78,13 +86,14 @@ class FlightDisplay extends React.Component {
     return (
       <Col xs={12} className="flight-display">
         <FAModalPanel
-          visible={this.state.faModalVisible}
-          handleToggleFAModal={this.handleToggleFAModal}
-          arriveLocation={this.state.arriveLocation}
-          arriveTemp={this.state.arriveTemp}
-          arriveClouds={this.state.arriveClouds}
-          departFlight={this.state.departFlight}
-          departTime={this.state.departTime} />
+              visible={this.state.faModalVisible}
+              handleToggleFAModal={this.handleToggleFAModal}
+              arriveLocation={this.state.arriveLocation}
+              arriveTemp={this.state.arriveTemp}
+              arriveClouds={this.state.arriveClouds}
+              departFlight={this.state.departFlight}
+              arriveTime={this.state.arriveTime} />
+
         <ul style={{ listStyleType: "none", paddingLeft: "0px" }}>
           {this.props.results.length !== 0 ?
             this.props.results.map(flight =>
@@ -98,8 +107,8 @@ class FlightDisplay extends React.Component {
                 result={flight}
                 toggleEdit={this.props.toggleEdit}
                 callFlightAware={this.callFlightAware}
-              />) :
-            <p className="second-text"> Add a flight to start</p>}
+              />) : null}
+
         </ul>
       </Col>
     );

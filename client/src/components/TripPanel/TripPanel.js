@@ -44,7 +44,7 @@ class TripPanel extends React.Component {
 
   render() {
     return (
-      <Col xs={12} md={2} className="trip-panel" >
+      <Col xs={12} md={3} className="trip-panel" >
         <Row>
           <p className="header-trip">Your Trips</p>
         </Row>
