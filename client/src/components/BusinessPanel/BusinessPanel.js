@@ -20,10 +20,10 @@ const categoryArray = [{
   link: "/dining/"
 }, {
   name: 'Attractions',
-  link: "/attractions/"}
-// }, {
-//   name: 'Packing',
-//   link: "/packing"
+  link: "/attractions/"
+}, {
+  name: 'Packing',
+  link: "/packing" }
 // }, {
 //   name: 'Memories',
 //   link: "/memories"

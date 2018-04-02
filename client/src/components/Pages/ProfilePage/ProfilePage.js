@@ -1,28 +1,30 @@
-import React from "react";
+import React, { Component} from "react";
+import { Row, Col } from 'react-bootstrap';
 import "./ProfilePage.css";
 import ProfileAdd from "./ProfileAdd";
 import ProfileDisplay from "./ProfileDisplay";
-import { Row, Col } from 'react-bootstrap';
-// import { FormBtn, Input } from "../../Form";
-// import { List, ListItem } from "../../List";
-// import { Link } from "react-router-dom";
 import API from "../../../utils/API";
-// import ButtonSubmitForm from "../../ButtonSubmitForm";
-// import DeleteBtn from "../../DeleteBtn";
+
 
 
 class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      profileDisplayVisible: false, 
-      profileAddVisible: true, 
+      profileDisplayVisible: true, 
       results: [],
       editing: false,
       editId: 0
     };
     this.getProfiles = this.getProfiles.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
+    this.deleteProfiles = this.deleteProfiles.bind(this);
+    this.getProfilesByType = this.getProfilesByType.bind(this);
+    this.handleToggleProfileDisplay=this.handleToggleProfileDisplay.bind(this);
+  }
+
+  componentDidMount = () => {
+    this.getProfiles(this.props.UserId);
   }
 
   handleToggleProfileDisplay = () => {
@@ -31,17 +33,11 @@ class ProfilePage extends React.Component {
     this.setState({ profileDisplayVisible: !this.state.profileDisplayVisible })
   };
 
-  handleToggleAddDisplay = () => {
-    console.log("profileAdd is visible")
-    this.setState({ profileAddVisible: !this.state.profileAddVisible })
-  };
-
   toggleEdit = event => {
-    // console.dir(event.target.id);
     this.setState({
       editing: !this.state.editing,
       editId: event.target.id
-    }, () => console.log(this.state));
+    }, () => console.log("toggle profile edit", this.state));
   };
 
   getProfiles = () => (
@@ -50,6 +46,23 @@ class ProfilePage extends React.Component {
       this.setState({results: response.data})
     })
   );
+
+  getProfilesByType = (event, profileType) => {
+    // console.log("in get by Type API", this.props.UserId, profileType);
+    event.preventDefault();
+    API.getProfilesByType(this.props.UserId, profileType)
+      .then(response => {
+        this.setState({results: response.data})
+      })
+    }
+
+  deleteProfiles = profileId => (
+    API.deleteProfiles(profileId)
+      .then(response => {
+        console.log("delete profile", response);
+        this.getProfiles(this.props.UserId);
+      })
+  )
 
 
   render() {
@@ -67,7 +80,7 @@ class ProfilePage extends React.Component {
           </button>
         </Row>
         <Row>
-          <button className='profile-btn'  onClick={this.handleToggleAddDisplay}>Add a Rewards Profile</button>
+          <button className='profile-btn'  onClick={this.handleToggleProfileDisplay}>Add a Rewards Profile</button>
         </Row>
         <Row>
           {this.state.profileDisplayVisible ? <ProfileDisplay
@@ -78,16 +91,20 @@ class ProfilePage extends React.Component {
             editing={this.state.editing}
             editId={this.state.editId}
             getProfiles={this.getProfiles}
+            deleteProfiles={this.deleteProfiles}
+            getProfilesByType={this.getProfilesByType}
+            handleToggleProfileDisplay={this.handleToggleProfileDisplay}
+
           /> : null}
         </Row>
 
         <Row>
-          <ProfileAdd
-            show={this.state.profileAddVisible}
-            getProfiles={this.getProfiles}
-            UserId={this.props.UserId} />
-        </Row>
 
+          <ProfileAdd
+            getProfiles={this.getProfiles}
+            UserId={this.props.UserId}
+            handleToggleProfileDisplay={this.handleToggleProfileDisplay} />
+        </Row>
 
       </Col>
     );

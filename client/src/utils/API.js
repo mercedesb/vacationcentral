@@ -50,12 +50,16 @@ export default {
   },
 
 
-
   getProfiles: function(UserId) {
     console.log("in profile get API", UserId);
-    return axios.get(`/api/profiles?UserId=${UserId}`)
+    return axios.get(`/api/profiles?UserId=${UserId}`);
   },
 
+  getProfilesByType: function(UserId, type){
+    console.log("in get profile by Type API", UserId, type);
+    return axios.get(`/api/profiles?UserId=${UserId}&type=${type}`);
+  },
+  
   saveProfiles: function(profileData){
     console.log("in profile post API", profileData);
     return axios.post("/api/profiles", profileData);
@@ -64,6 +68,9 @@ export default {
   updateProfiles: function(profileData, id) {
     console.log("in profile put API", profileData); 
     return axios.put("/api/profiles/" + id,  profileData);
+  },
+  deleteProfiles: function(id) {
+    return axios.delete("/api/profiles/" + id);
   },
 
 
@@ -80,6 +87,25 @@ export default {
   updateFlights: function(flightData, id) {
     console.log("in flight put API", flightData); 
     return axios.put("/api/flights/" + id, flightData);
+  },
+  deleteFlights: function(id) {
+    console.log("in flight delete API", id); 
+    return axios.delete("/api/flights/" + id);
+  },
+
+  getPacking: function(TripId) {
+    console.log("in packing get API", TripId);
+    return axios.get(`/api/packing?TripId=${TripId}`)
+  },
+
+  savePacking: function(packingData){
+    console.log("in packing postAPI", packingData);
+    return axios.post("/api/packing", packingData);
+  },
+
+  updatePacking: function(packingData, id) {
+    console.log("in packing put API", packingData); 
+    return axios.put("/api/packing/" + id, packingData);
   },
 
 

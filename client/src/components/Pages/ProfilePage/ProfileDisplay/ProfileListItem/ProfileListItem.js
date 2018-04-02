@@ -1,7 +1,6 @@
 import React from "react";
 import "./ProfileListItem.css";
 import { Row } from 'react-bootstrap';
-// import { FormBtn } from "../../../../Form";
 import ProfileAdd from "../../ProfileAdd";
 
 const renderResult = props => (
@@ -14,13 +13,11 @@ const renderResult = props => (
     {props.result.phone ? <div><p>Phone:  <strong>{props.result.phone}</strong></p></div> : undefined}
     
     <Row>
-        <button className="profileedit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
+        <button className="profile-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
+        <button className="profile-delete-btn" id={props.result.id} onClick={() => props.deleteProfiles(props.result.id)}>Delete</button>
     </Row>
-  
-  
+
   </div>
-
-
 
 );
 

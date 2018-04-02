@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./BusinessForm.css";
-// import { Grid, Row, Col } from 'react-bootstrap';
 import { Input, TextArea } from "../../../Form";
 import API from "./../../../../utils/API"
 
@@ -43,7 +42,7 @@ class BusinessForm extends Component {
     API.saveBusiness(this.state.businessData)
       .then(response => {
         this.setState({businessData: {}});
-        this.props.getAllBusinesses(this.props.TripId);
+        this.props.handleToggleBusinessDisplay(this.props.TripId);
       })
       .catch(err => console.log(err));
   }

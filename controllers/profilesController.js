@@ -9,8 +9,17 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+  findByType: function(req, res) {
+      console.log("profile find by type controller", req.query, req.params)
+      db.Profile
+        .findAll({where: req.query})
+          .then(dbModel=> res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+  },
+
   // findById: function(req, res) {
-  //   db.Book
+  //   db.Profile
   //     .findById(req.params.id)
   //     .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
@@ -32,11 +41,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // remove: function(req, res) {
-  //   db.Book
-  //     .findById({ _id: req.params.id })
-  //     .then(dbModel => dbModel.remove())
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // }
+  remove: function(req, res) {
+    db.Profile
+      .destroy({ where: {id: req.params.id }})
+      .then(dbModel => res.json("delete profile successful"))
+      .catch(err => {
+        console.log("delete error profile", err);
+        res.status(422).json(err);
+      });
+    }
 };

@@ -40,7 +40,9 @@ class TripDisplay extends React.Component {
                 key={trip.id}
                 result={trip}
                 toggleEdit={this.props.toggleEdit}
-                handleSetTripId={this.props.handleSetTripId}
+                // handleSetTripId={this.props.handleSetTripId}
+                selectedRadioButton={this.props.selectedRadioButton}
+                handleRadioButtonSelect={this.props.handleRadioButtonSelect}
               />) :
             <p className="second-text"> Add a trip to start</p>}
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Row } from 'react-bootstrap';
-import { Redirect } from 'react-router'
-import "./VacationContainer.css"
+import { Redirect } from 'react-router';
+import "./VacationContainer.css";
 import API from "./utils/API";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HeaderPanel from './components/HeaderPanel';
@@ -12,15 +12,21 @@ import HomePage from "./components/Pages/HomePage";
 import ProfilePage from "./components/Pages/ProfilePage";
 import FlightsPage from "./components/Pages/FlightsPage";
 import BusinessPage from "./components/Pages/BusinessPage";
+import PackingPage from "./components/Pages/PackingPage";
 import MemberPage from "./components/Pages/MemberPage";
 
 class VacationContainer extends Component {
-  state = {
-    // modalOpen: false,
+  constructor(props) {
+    super(props);
+    this.state = {
     user: {},
+    userData: {},
     tripId: 0,
-    userData: {}
+    tripDestination: "",
+    selectedRadioButton: 0
   };
+    this.handleRadioButtonSelect = this.handleRadioButtonSelect.bind(this);
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -67,31 +73,33 @@ class VacationContainer extends Component {
     this.loginUser(this.state.userData);
   }
 
-  // handleToggleModal = () => {
-  //   // console.log("you have clicked the login/signup button");
-  //   this.setState({ modalOpen: !this.state.modalOpen })
-  // };
 
-  handleSetTripId = (id) => {
-    console.log("the trip id", id)
-    this.setState({ tripId: id });
-
+  handleRadioButtonSelect = (id, destination) => {
+    console.log("in handle RadioButton", id, destination);
+    this.setState({ 
+      tripId: id,
+      tripDestination: destination,
+      selectedRadioButton: id, 
+    });
   }
 
+
   render() {
-    console.log("state in VCrender", this.state);
+    console.log("state in VC render", this.state)
     return (
       <Router>
         <Grid fluid className="vacation-container">
           <Row>
             <HeaderPanel/>
-            {/* <ModalPanel show={this.state.modalOpen} onClose={this.handleToggleModal} /> */}
           </Row>
           <Row>
             <TripPanel
               UserId={this.state.user.id}
-              handleTripFormSubmit={this.handleTripFormSubmit}
-              handleSetTripId={this.handleSetTripId} />
+              // handleTripFormSubmit={this.handleTripFormSubmit}
+              // handleSetTripId={this.handleSetTripId} 
+              selectedRadioButton={this.state.selectedRadioButton}
+              handleRadioButtonSelect={this.handleRadioButtonSelect}
+              />
             <DisplayPanel>
               <Switch>
                 <Route exact path="/" 
@@ -115,12 +123,13 @@ class VacationContainer extends Component {
                 />
                 {this.state.user.firstName ?
                   <div>
-                    <Route exact path="/member/" render={() => <MemberPage user={this.state.user} />} />
+                    <Route exact path="/member/" render={() => <MemberPage user={this.state.user} tripDestination={this.state.tripDestination} />} />
                     <Route exact path="/hotels/" render={() => <BusinessPage businessType="Hotels" TripId={this.state.tripId} />} />
                     <Route exact path="/dining/" render={() => <BusinessPage businessType="Dining" TripId={this.state.tripId} />} />
                     <Route exact path="/flights/" render={() => <FlightsPage TripId={this.state.tripId} />} />
                     <Route exact path="/attractions/" render={() => <BusinessPage businessType="Attractions" TripId={this.state.tripId} />} />
                     <Route exact path="/profile/" render={() => <ProfilePage UserId={this.state.user.id} />} />
+                    <Route exact path="/packing/" render={() => <PackingPage TripId={this.state.tripId} />} />
                   </div> :
                   <Route strict path="/*/" render={() => 
                     <HomePage

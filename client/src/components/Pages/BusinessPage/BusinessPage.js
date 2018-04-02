@@ -17,8 +17,8 @@ class BusinessPage extends Component {
     this.getAllBusinesses = this.getAllBusinesses.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
     this.deleteBusiness = this.deleteBusiness.bind(this);
+    this.handleToggleBusinessDisplay = this.handleToggleBusinessDisplay.bind(this);
   }
-
 
   handleToggleBusinessDisplay = () => {
     this.setState({ businessDisplayVisible: !this.state.businessDisplayVisible })
@@ -64,7 +64,7 @@ class BusinessPage extends Component {
         </Row>
 
         <Row>
-          <button className='business-btn'>Add {this.props.businessType}</button>
+          <button className='business-btn' onClick={this.handleToggleBusinessDisplay}>Add {this.props.businessType}</button>
         </Row>
 
         <Row>
@@ -76,6 +76,7 @@ class BusinessPage extends Component {
               tripId={this.props.TripId}
               deleteBusiness={this.deleteBusiness}
               getAllBusinesses={() => this.getAllBusinesses(this.props.TripId)}
+              handleToggleBusinessDisplay={this.handleToggleBusinessDisplay}
               businessType={this.props.businessType}
               editing={this.state.editing}
               editId={this.state.editId}
@@ -86,6 +87,7 @@ class BusinessPage extends Component {
             getAllBusinesses={() => this.getAllBusinesses(this.props.TripId)}
             businessType={this.props.businessType}
             TripId={this.props.TripId}
+            handleToggleBusinessDisplay={this.handleToggleBusinessDisplay}
           />
         </Row>
       </Col>

@@ -25,3 +25,16 @@
     border-radius: 6px;
 
 }
+
+.business-delete-btn {
+    background-color:#AD1D35;
+    font-size: 20px;
+    height: 40px;
+    width: 50%;
+    margin-left: 25%;
+    text-align: center;
+    color: #230C0F;
+    margin-bottom: 10px;
+    border-radius: 6px;
+
+}
