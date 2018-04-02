@@ -1,14 +1,12 @@
 .business-add {
-        width: 80%;
-        font-size: 15px;
-        margin: 0 auto;
-        height: auto;
-        overflow: scroll;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        background:#B85D57;
-        border-radius: 6px;
-        line-height: 1.5;
-    
-    }
-
+    width: 80%;
+    font-size: 15px;
+    margin: 0 auto;
+    height: auto;
+    overflow: scroll;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background:#B85D57;
+    border-radius: 6px;
+    line-height: 1.5;
+}

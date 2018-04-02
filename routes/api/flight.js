@@ -9,7 +9,6 @@ router.route("/")
 // // Matches with "/api/flights/:id"
 router
   .route("/:id")
-// get.(flightsController.findById)
   .put(flightsController.update)
   .delete(flightsController.remove);
 
