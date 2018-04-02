@@ -62,7 +62,6 @@ class TripAdd extends Component {
   render() {
     return (
       <div>
-        <p className="second-text">Add A Trip</p>
         <form>
           <label className="label-text">Destination:</label>
           <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}

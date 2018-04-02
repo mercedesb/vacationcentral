@@ -64,13 +64,13 @@ h4 {
 }
 }
 
-@media all and (max-width: 600px) {
+/* @media all and (max-width: 600px) {
   .hp-text {
     font-size: 30px;
   }
   .dropdown-toggle{
     font-size: 20px;
   }
-}
+} */
 
 

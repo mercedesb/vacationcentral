@@ -88,7 +88,7 @@ class VacationContainer extends Component {
         <Grid fluid className="vacation-container">
           <Row>
             <HeaderPanel>
-              <BusinessPanel style={{ textAlign: "center"}} userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
+              <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
             </HeaderPanel>
           </Row>
           <Row>
