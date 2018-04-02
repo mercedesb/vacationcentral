@@ -1,6 +1,6 @@
 import React from "react";
 import "./BusinessPanel.css";
-import { Col } from 'react-bootstrap';
+import { Col, NavDropdown } from 'react-bootstrap';
 import CategoryButton from "../CategoryButton";
 
 const categoryArray = [{
@@ -27,9 +27,8 @@ const categoryArray = [{
 ]
 
 const BusinessPanel = props => {
-  console.log('these are my bizpanel props!!', this.props)
   return (
-    <Col xs={2} className="business-panel">
+    <NavDropdown title="Categories" className="business-panel">
       {categoryArray.map((elem, index) => (
         <CategoryButton
           key={index}
@@ -37,7 +36,7 @@ const BusinessPanel = props => {
           name={elem.name}
         />)
       )}
-    </Col>
+    </NavDropdown>
   );
 }
 

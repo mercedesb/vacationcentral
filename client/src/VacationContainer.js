@@ -87,7 +87,9 @@ class VacationContainer extends Component {
       <Router>
         <Grid fluid className="vacation-container">
           <Row>
-            <HeaderPanel/>
+            <HeaderPanel>
+              <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
+            </HeaderPanel>
           </Row>
           <Row>
             <TripPanel
@@ -137,7 +139,7 @@ class VacationContainer extends Component {
                 }
               </Switch>
             </DisplayPanel>
-            <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} />
+            {/* <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} /> */}
           </Row>
         </Grid>
       </Router >

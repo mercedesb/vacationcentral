@@ -35,7 +35,7 @@ class BusinessPage extends Component {
   getAllBusinesses = tripId => (
     API.getBusinesses(tripId)
       .then(response => this.setState({ results: response.data }))
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
   );
 
   deleteBusiness = businessId => (

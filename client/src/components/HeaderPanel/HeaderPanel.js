@@ -1,10 +1,15 @@
 import React from "react";
 import "./HeaderPanel.css";
-import { Row } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 const HeaderPanel = props => (
   <Row xs={12} className="header-panel">
-    <p className="hp-text"> Vacation Central</p>
+    <Col xs={6}>
+      <p className="hp-text"> Vacation Central</p>
+    </Col>
+    <Col xs={2}>
+      {props.children}
+    </Col>
   </Row>
 );
 
