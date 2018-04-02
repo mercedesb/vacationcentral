@@ -23,14 +23,45 @@ h4 {
   text-align: center;
 }
 
-@media all and (max-width: 1600px) {
+@media all and (max-width: 1500px) {
   .tripDisplay-btn, .category-btn {
       font-size: 20px;
   }
+  .hp-text {
+    font-size: 60px;
+  }
+  .header-trip {
+    font-size: 40px;
+  }
+
 }
 
-@media all and (max-width: 1300px) {
+@media all and (max-width: 1200px) {
   .tripDisplay-btn, .category-btn {
       font-size: 16px;
   }
+  .hp-text {
+    font-size: 50px;
+  }
+  .header-trip {
+    font-size: 30px;
+  }
 }
+
+
+@media all and (max-width: 900px) {
+  .hp-text {
+    font-size: 40px;
+  }
+  .header-trip {
+    font-size: 30px;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .hp-text {
+    font-size: 30px;
+  }
+}
+
+
