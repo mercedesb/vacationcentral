@@ -2,7 +2,6 @@ const db = require("../models");
 
 module.exports = {
   findAll: function(req, res) {
-    console.log(req.query);
     db.Business
       .findAll({where: req.query})
       .then(dbModel => res.json(dbModel))

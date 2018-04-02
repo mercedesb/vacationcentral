@@ -7,7 +7,6 @@ module.exports = {
         email: req.body.email
       }})
       .then(data => {
-        console.log(data.dataValues);
         res.json({user: {
           id: data.dataValues.id,
           userName: data.dataValues.userName,
