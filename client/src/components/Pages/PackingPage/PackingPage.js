@@ -17,12 +17,21 @@ class PackingPage extends React.Component {
     };
     this.getPacking = this.getPacking.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
-  }
+  };
 
+  /**
+   * When page is called, requests the getPacking function
+   * @param {integer} props.TripId - packing information associated with the specific trip
+   */
   componentDidMount = () => {
     this.getPacking(this.props.TripId);
   };
 
+  /**
+   * Monitors button click in the PackingDisplay section to make the packing information editable
+   * @param {boolean} editing 
+   * @param {integer} event.target.id - the database generated id number of the packing information being edited
+   */
   toggleEdit = event => {
     this.setState({
       editing: !this.state.editing,
@@ -30,6 +39,10 @@ class PackingPage extends React.Component {
     });
   };
 
+  /**
+   * Requests packing information associated with the specified trip
+   * @param {integer} TripId 
+   */
   getPacking = () => (
     API.getPacking(this.props.TripId)
       .then(response => {

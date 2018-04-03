@@ -2,6 +2,11 @@ import React from "react";
 import "./MemberPage.css";
 import { Col } from 'react-bootstrap';
 
+/**
+ * Displays information of registered user
+ * @param {string} firstName
+ * @param {string} tripDestination - updates trip once chosen
+ */
 const MemberPage = props => (
   <Col xs={12} className="member-display">
     <p className="header">Welcome to Vacation Central, {props.user.firstName}!</p>

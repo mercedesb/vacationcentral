@@ -29,6 +29,10 @@ class VacationContainer extends Component {
     this.handleRadioButtonSelect = this.handleRadioButtonSelect.bind(this);
   }
 
+ /**
+  * Handles physical input of user login/signup and adds them to the userData object.
+  * @param {object} userData - input values becomes user data - name, email password
+  */
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState(prevState => (
@@ -40,6 +44,10 @@ class VacationContainer extends Component {
       }));
   };
 
+  /**
+  * Makes API call to user database to save user data information.
+  * @param {object} userData - user information consists for name, email, password
+  */
   signUpUser = userData => {
     API.saveUser(userData)
       .then(data => {
@@ -54,12 +62,21 @@ class VacationContainer extends Component {
       });
   }
 
+  /**
+  * Simple validation of new user input information before calling signUpUser function
+  * @param {object} userData - name, email, password
+  */
   handleSignUp = event => {
     event.preventDefault();
     if (!this.state.userData.email || !this.state.userData.password) { return }
     this.signUpUser(this.state.userData);
   }
 
+  /**
+  * API call to database to set user data
+  * @param {object} userData  - email, password
+  * @param {object} user
+  */
   loginUser = userData => {
     API.loginUser(userData)
       .then(data => {
@@ -71,13 +88,21 @@ class VacationContainer extends Component {
       .catch(err => console.log(err));
   }
 
+  /**
+  * Simple validation of an existing user input information before calling the loginUser function
+  * @param {object} userData - email and password
+  */
   handleLogIn = event => {
     event.preventDefault();
     if (!this.state.userData.email || !this.state.userData.password) { return }
     this.loginUser(this.state.userData);
   }
 
-
+ /**
+  * Monitors trip radio buttons to set the appropriate TripId for the rest of the application
+  * @param {integer} TripId 
+  * @param {string} Destination
+  */
   handleRadioButtonSelect = (id, destination) => {
     this.setState({
       tripId: id,
@@ -124,6 +149,7 @@ class VacationContainer extends Component {
                     <Route exact path="/member/" render={() => <MemberPage user={this.state.user} tripDestination={this.state.tripDestination} />} />
                     <Route exact path="/hotels/" render={() => <BusinessPage businessType="Hotels" TripId={this.state.tripId} />} />
                     <Route exact path="/dining/" render={() => <BusinessPage businessType="Dining" TripId={this.state.tripId} />} />
+                    <Route exact path="/carrental/" render={() => <BusinessPage businessType="Car Rental" TripId={this.state.tripId} />} />
                     <Route exact path="/flights/" render={() => <FlightsPage TripId={this.state.tripId} />} />
                     <Route exact path="/attractions/" render={() => <BusinessPage businessType="Places" TripId={this.state.tripId} />} />
                     <Route exact path="/profile/" render={() => <ProfilePage UserId={this.state.user.id} />} />
@@ -145,8 +171,7 @@ class VacationContainer extends Component {
               UserId={this.state.user.id}
               selectedRadioButton={this.state.selectedRadioButton}
               handleRadioButtonSelect={this.handleRadioButtonSelect}
-            />
-            {/* <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} /> */}
+              />
           </Row>
         </Grid>
       </Router >
