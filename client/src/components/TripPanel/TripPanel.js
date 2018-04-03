@@ -20,6 +20,7 @@ class TripPanel extends React.Component {
     this.toggleEdit = this.toggleEdit.bind(this);
   };
 
+
   /**
    * Monitors button click to make the trip display panel hidden or visible
    */

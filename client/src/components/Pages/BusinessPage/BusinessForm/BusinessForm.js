@@ -56,7 +56,7 @@ class BusinessForm extends Component {
       .then(response => {
         console.log(response.data);
         // this.setState({businessData: {}, editData: {}});
-        this.props.getAllBusinesses(this.props.TripId);
+        this.props.handleToggleBusinessDisplay(this.props.TripId);
       })
       .catch(err => console.log(err));
   }

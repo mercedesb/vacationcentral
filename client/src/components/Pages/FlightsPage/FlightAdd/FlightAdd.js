@@ -116,7 +116,7 @@ class FlightAdd extends Component {
               name="flightNumber"
               onChange={this.handleFlightInput}
               type="text"
-              placeholder="Airline Code & Flight #" />
+              placeholder="'ICAO' Airline Code & Flight #" />
           </Row>
           <Row>
             <label className="label-text">Departure Airport:</label>
@@ -151,7 +151,7 @@ class FlightAdd extends Component {
               placeholder="Arrival Time" />
           </Row>
           <Row>
-            <button className="flight-edit-btn"><Link to={"http://www.azworldairports.com/indexes/p-alica.cfm"} target="_blank">Search Airline Codes</Link></button>
+            <button className="flight-edit-btn"><Link to={"http://www.azworldairports.com/indexes/p-alica.cfm"} target="_blank">Search ICAO Airline Codes</Link></button>
             <button className="flight-edit-btn" onClick={this.props.editing ? this.handleFlightEdit : this.handleFlightFormSubmit} >Submit Flight</button>
           </Row>
         </div>
