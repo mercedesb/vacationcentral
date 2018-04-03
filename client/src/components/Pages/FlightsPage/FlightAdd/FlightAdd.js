@@ -12,14 +12,25 @@ class FlightAdd extends Component {
       flightData: {},
       editData: {}
     };
-  }
+  };
 
+/**
+ * Sets the all the flight data when the FlightAdd section is displayed
+ * @param {object} props.flightData
+ */
   componentDidMount() {
     if (this.props.flightData) {
       this.setState({ flightData: this.props.flightData });
     }
-  }
+  };
 
+  /**
+  * Handles physical input of flight information and sets it to the flightData object.
+  * @param {object} flightData - input values of all the flight information
+  * @param {integer} TripId - id number of the associated trip
+  * @param {object} editData - profile data assigned for editing
+  * @param {integer} flightData.id - id of the specific flight to be edited
+  */
   handleFlightInput = event => {
     const { name, value } = event.target;
     this.setState(prevState => (
@@ -37,6 +48,11 @@ class FlightAdd extends Component {
       }));
   };
 
+  /**
+   * Makes the API call to post the newly created flight information the database
+   * @param {object} flightData 
+   * @param {integer} TripId 
+   */
   handleFlightFormSubmit = event => {
     event.preventDefault();
     API.saveFlights(this.state.flightData)
@@ -45,8 +61,16 @@ class FlightAdd extends Component {
         this.props.getFlights(this.props.TripId);
       })
       .catch(err => console.log(err));
-  }
+  };
 
+  /**
+   * Function that edits the flight information and make the API call to update the database information
+   * @param {function} toggleEdit
+   * @param {object} editData - flight information to be edited
+   * @param {integer} flightData.id - database id number of the flight to be edited
+   * @param {object} flightData - returned information of the flight that was edited
+   * @param {integer} TripId
+   */
   handleFlightEdit = event => {
     event.preventDefault();
     this.props.toggleEdit(event);
@@ -57,7 +81,7 @@ class FlightAdd extends Component {
         this.props.getFlights(this.props.TripId);
       })
       .catch(err => console.log(err));
-  }
+  };
 
   render() {
     return (
@@ -92,7 +116,7 @@ class FlightAdd extends Component {
               name="flightNumber"
               onChange={this.handleFlightInput}
               type="text"
-              placeholder="Airline Code & Flight #" />
+              placeholder="'ICAO' Airline Code & Flight #" />
           </Row>
           <Row>
             <label className="label-text">Departure Airport:</label>
@@ -127,7 +151,7 @@ class FlightAdd extends Component {
               placeholder="Arrival Time" />
           </Row>
           <Row>
-            <button className="flight-edit-btn"><Link to={"http://www.azworldairports.com/indexes/p-alica.cfm"} target="_blank">Search Airline Codes</Link></button>
+            <button className="flight-edit-btn"><Link to={"http://www.azworldairports.com/indexes/p-alica.cfm"} target="_blank">Search ICAO Airline Codes</Link></button>
             <button className="flight-edit-btn" onClick={this.props.editing ? this.handleFlightEdit : this.handleFlightFormSubmit} >Submit Flight</button>
           </Row>
         </div>

@@ -19,17 +19,29 @@ class ProfilePage extends React.Component {
     this.deleteProfiles = this.deleteProfiles.bind(this);
     this.getProfilesByType = this.getProfilesByType.bind(this);
     this.handleToggleProfileDisplay = this.handleToggleProfileDisplay.bind(this);
-  }
+  };
 
+  /**
+   * When page is called, requests the getProfiles function
+   * @param {integer} props.UserId - profiles associated with logged in user
+   */
   componentDidMount = () => {
     this.getProfiles(this.props.UserId);
-  }
+  };
 
+  /**
+   * Monitors button click to make the rewards profile panel hidden or visible
+   */
   handleToggleProfileDisplay = () => {
     this.getProfiles(this.props.UserId);
     this.setState({ profileDisplayVisible: !this.state.profileDisplayVisible })
   };
 
+  /**
+   * Monitors button click in the Profile Display section to make the rewards profile information editable
+   * @param {boolean} editing 
+   * @param {integer} event.target.id - the database generated id number of the profile being edited
+   */
   toggleEdit = event => {
     this.setState({
       editing: !this.state.editing,
@@ -37,6 +49,10 @@ class ProfilePage extends React.Component {
     });
   };
 
+  /**
+   * Requests rewards profiles associated with the logged in user
+   * @param {integer} UserId 
+   */
   getProfiles = () => (
     API.getProfiles(this.props.UserId)
       .then(response => {
@@ -44,14 +60,23 @@ class ProfilePage extends React.Component {
       })
   );
 
+  /**
+   * Makes API request for rewards profiles associated with the logged in user by the type of profile
+   * @param {integer} UserId 
+   * @param {string} profileType - Airline, Hotel or Rental Car
+   */
   getProfilesByType = (event, profileType) => {
     event.preventDefault();
     API.getProfilesByType(this.props.UserId, profileType)
       .then(response => {
         this.setState({ results: response.data })
       })
-  }
+  };
 
+/**
+ * Makes API call to delete a specific rewards profile
+ * @param {integer} profileId - database assigned id of the profile being deleted
+ */
   deleteProfiles = profileId => (
     API.deleteProfiles(profileId)
       .then(response => {

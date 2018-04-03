@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     company: DataTypes.STRING,
     memberNumber: DataTypes.STRING,
     phone: DataTypes.STRING,
+    url: DataTypes.STRING,
   });
 
   Profile.associate = function(models) {
