@@ -20,6 +20,6 @@ module.exports = {
     db.User
       .create(req.body)
       .then(data => res.redirect(307, "/api/users/login"))
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.status(422).json(err.errors[0].message));
   }
 };

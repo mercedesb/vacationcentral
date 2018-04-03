@@ -19,12 +19,13 @@ class VacationContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    user: {},
-    userData: {},
-    tripId: 0,
-    tripDestination: "",
-    selectedRadioButton: 0
-  };
+      user: {},
+      userData: {},
+      tripId: 0,
+      tripDestination: "",
+      selectedRadioButton: 0,
+      error: ""
+    };
     this.handleRadioButtonSelect = this.handleRadioButtonSelect.bind(this);
   }
 
@@ -43,11 +44,14 @@ class VacationContainer extends Component {
     API.saveUser(userData)
       .then(data => {
         this.setState({
-          user: data.data.user, 
+          user: data.data.user,
           userData: {}
         });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response.data)
+        this.setState({ error: err.response.data })
+      });
   }
 
   handleSignUp = event => {
@@ -60,7 +64,7 @@ class VacationContainer extends Component {
     API.loginUser(userData)
       .then(data => {
         this.setState({
-          user: data.data.user, 
+          user: data.data.user,
           userData: {}
         });
       })
@@ -75,10 +79,10 @@ class VacationContainer extends Component {
 
 
   handleRadioButtonSelect = (id, destination) => {
-    this.setState({ 
+    this.setState({
       tripId: id,
       tripDestination: destination,
-      selectedRadioButton: id, 
+      selectedRadioButton: id,
     });
   }
 
@@ -92,23 +96,24 @@ class VacationContainer extends Component {
             </HeaderPanel>
           </Row>
           <Row>
-
             <DisplayPanel>
               <Switch>
-                <Route exact path="/" 
-                  render={() => (this.state.user.id ? 
-                  <Redirect to="/member" /> : 
-                  <HomePage
-                    purpose="Log In"
-                    handleInputChange={this.handleInputChange}
-                    handleLogIn={this.handleLogIn}
-                    user={this.state.userData}
-                  />)} 
+                <Route exact path="/"
+                  render={() => (this.state.user.id ?
+                    <Redirect to="/member" /> :
+                    <HomePage
+                      purpose="Log In"
+                      handleInputChange={this.handleInputChange}
+                      error={this.state.error}
+                      handleLogIn={this.handleLogIn}
+                      user={this.state.userData}
+                    />)}
                 />
-                <Route exact path="/signup" render={() => (this.state.user.id ? 
+                <Route exact path="/signup" render={() => (this.state.user.id ?
                   <Redirect to="/member" /> :
                   <HomePage
                     purpose="Sign Up"
+                    error={this.state.error}
                     handleInputChange={this.handleInputChange}
                     handleSignUp={this.handleSignUp}
                     user={this.state.userData}
@@ -124,14 +129,14 @@ class VacationContainer extends Component {
                     <Route exact path="/profile/" render={() => <ProfilePage UserId={this.state.user.id} />} />
                     <Route exact path="/packing/" render={() => <PackingPage TripId={this.state.tripId} />} />
                   </div> :
-                  <Route strict path="/*/" render={() => 
+                  <Route strict path="/*/" render={() =>
                     <HomePage
                       purpose="Log In"
                       message="Please Log In"
                       handleInputChange={this.handleInputChange}
                       handleLogIn={this.handleLogIn}
                       user={this.state.userData}
-                  />} />
+                    />} />
                 }
               </Switch>
             </DisplayPanel>
@@ -140,7 +145,7 @@ class VacationContainer extends Component {
               UserId={this.state.user.id}
               selectedRadioButton={this.state.selectedRadioButton}
               handleRadioButtonSelect={this.handleRadioButtonSelect}
-              />
+            />
             {/* <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} /> */}
           </Row>
         </Grid>

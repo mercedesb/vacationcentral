@@ -11,8 +11,13 @@ const HomePage = props => (
         <Alert bsStyle="danger">
           <h4>{props.message}</h4>
         </Alert>
-      </Row>)
-    }
+      </Row>)}
+    {!props.error ? undefined: 
+      (<Row>
+        <Alert bsStyle="danger">
+          <h4>{props.error}</h4>
+        </Alert>
+      </Row>)}  
     <Row>
       <Col xs={12} className="home-page">
         <p className="header">Welcome to Vacation Central</p>

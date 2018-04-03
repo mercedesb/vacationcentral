@@ -5,13 +5,21 @@ module.exports = function(sequelize, DataTypes) {
     userName: {
       type: DataTypes.STRING, 
       allowNull: false, 
-      validate: {len: [1, 10]}, 
+      validate: {
+        len: {
+          args: [1, 10],
+          msg: "Username must be shorter than 10 characters"
+          }
+        }, 
       unique: true
     },
     email: {
       type: DataTypes.STRING, 
       allowNull: false,
-      validate: {isEmail: true}, 
+      validate: {
+        isEmail: {
+          msg: "Email format is incorrect"
+        }}, 
       unique: true
     },
     password: {type: DataTypes.STRING, allowNull: false},
