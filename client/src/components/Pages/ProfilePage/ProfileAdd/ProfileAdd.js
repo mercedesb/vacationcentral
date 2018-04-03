@@ -12,12 +12,23 @@ class ProfileAdd extends Component {
     };
   }
 
+/**
+ * Set the all the profile data when the ProfileAdd section is displayed
+ * @param {object} props.profileData
+ */
   componentDidMount() {
     if (this.props.profileData) {
       this.setState({ profileData: this.props.profileData });
     }
   }
 
+  /**
+  * Handles physical input of user profile information and adds it to the profileData object.
+  * @param {object} profileData - input values becomes user data - company, rewards number, phone
+  * @param {integer} UserId - id number of the logged in user
+  * @param {object} editData - profile data assigned for editing
+  * @param {integer} profileData.id - id of the specific profile to be edited
+  */
   handleProfileInputChange = event => {
     const { name, value } = event.target;
     this.setState(prevState => (
@@ -35,6 +46,11 @@ class ProfileAdd extends Component {
       }));
   };
 
+    /**
+   * Makes the API call to post the newly created profile information the database
+   * @param {object} profileData - company, rewards number and phone
+   * @param {integer} UserId - all profiles when posted to database are associated with the logged in user
+   */
   handleProfileFormSubmit = event => {
     event.preventDefault();
     API.saveProfiles(this.state.profileData)
@@ -43,8 +59,16 @@ class ProfileAdd extends Component {
         this.props.handleToggleProfileDisplay(this.props.UserId);
       })
       .catch(err => console.log(err));
-  }
+  };
 
+    /**
+   * Function that edits the profile information and make the API call to update the information
+   * @param {function} toggleEdit
+   * @param {object} editData - information of profile to be edited
+   * @param {integer} profileData.id - database id number of the profile to be edited
+   * @param {object} profileData - returned information of the profile that was edited
+   * @param {integer} UserId - user id associated with the logged in user
+   */
   handleProfileEdit = event => {
     event.preventDefault();
     this.props.toggleEdit(event);

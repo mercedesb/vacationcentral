@@ -23,15 +23,24 @@ class FlightDisplay extends React.Component {
     };
     this.callFlightAware = this.callFlightAware.bind(this);
     this.handleToggleFAModal = this.handleToggleFAModal.bind(this);
-  }
+  };
 
+  /**
+   * The single function from the flight display div 
+   * @param {string} flightNumber 
+   * @param {string} arrivalLocation
+   */
   callFlightAware = (event, flightNumber, arriveLocation) => {
     event.preventDefault();
     this.callFATemp(arriveLocation)
     this.callFATime(flightNumber)
     this.handleToggleFAModal()
-  }
+  };
 
+  /**
+   * Makes an AJAX call to flight aware 
+   * @param {string} arriveLocation
+   */
   callFATemp = (arriveLocation) => {
     axios.get(this.state.proxy + this.state.fxml_url + "MetarEx?airport=K" + arriveLocation + "&howMany=1&offset=0", {
       headers: {
@@ -48,6 +57,10 @@ class FlightDisplay extends React.Component {
       })
   };
 
+  /**
+   * Makes an AJAX call to flight aware 
+   * @param {string} flightNumber
+   */
   callFATime = (flightNumber) => {
     axios.get(this.state.proxy + this.state.fxml_url + "FlightInfo?ident=" + flightNumber + "&howMany=1", {
       headers : {
@@ -74,6 +87,9 @@ class FlightDisplay extends React.Component {
       })
   };
 
+  /**
+   * Monitors button click to makes the modal displaying the flight aware info hidden or visible
+   */
   handleToggleFAModal = () => {
     this.setState({ faModalVisible: !this.state.faModalVisible })
   };

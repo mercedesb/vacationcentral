@@ -29,7 +29,7 @@ class VacationContainer extends Component {
   }
 
  /**
-  * Handles physical input of user login/signup. Sets input into 
+  * Handles physical input of user login/signup and adds them to the userData object.
   * @param {object} userData - input values becomes user data - name, email password
   */
   handleInputChange = event => {
@@ -44,7 +44,7 @@ class VacationContainer extends Component {
   };
 
   /**
-  * Makes API call to user database to save user data
+  * Makes API call to user database to save user data information.
   * @param {object} userData - user information consists for name, email, password
   */
   signUpUser = userData => {
@@ -85,8 +85,8 @@ class VacationContainer extends Component {
   }
 
   /**
-  * Simple validation of an existing user input information before calling signUpUser function
-  * @param {object} userData
+  * Simple validation of an existing user input information before calling the loginUser function
+  * @param {object} userData - email and password
   */
   handleLogIn = event => {
     event.preventDefault();
@@ -95,7 +95,7 @@ class VacationContainer extends Component {
   }
 
  /**
-  * Allows for check of radio button to set the TripId for the application
+  * Monitors trip radio buttons to set the appropriate TripId for the rest of the application
   * @param {integer} TripId 
   * @param {string} Destination
   */
@@ -166,7 +166,6 @@ class VacationContainer extends Component {
               selectedRadioButton={this.state.selectedRadioButton}
               handleRadioButtonSelect={this.handleRadioButtonSelect}
               />
-            {/* <BusinessPanel userId={this.state.user.id} tripId={this.state.id} handleSelectCategory={this.handleSelectCategory} /> */}
           </Row>
         </Grid>
       </Router >

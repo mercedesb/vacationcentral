@@ -3,6 +3,14 @@ import "./ProfileListItem.css";
 import { Row } from 'react-bootstrap';
 import ProfileAdd from "../../ProfileAdd";
 
+/**
+ * Renders the profile rewards details to the profile display div
+ * @param {integer} props.result.company - company name of specific profile
+ * @param {string} props.result.memberNumber
+ * @param {string} props.result.phone
+ * @param {function} props.toggleEdit - monitors button click for edit request
+ * @param {function} deleteProfiles - on button click passed id to delete API call
+ */
 const renderResult = props => (
 
   <div className="profile-list-item">
@@ -18,6 +26,9 @@ const renderResult = props => (
   </div>
 );
 
+/**
+ * Calls Profile Add section when Edit button is clicked 
+ */
 const renderForm = props => (
   <Row>
     <ProfileAdd
@@ -30,6 +41,13 @@ const renderForm = props => (
   </Row>
 );
 
+/**
+ * Ternary that monitors selected props.editId  vs. the props.id code to determine if a profile edit has been requested
+ * @param {integer} props.editId - id of profile to be edited
+ * @param {integer} props.id - id of the profile selected
+ * @param {function} renderForm - if boolean true, calls ProfileAdd so the a form can be edited
+ * @param {function} renderResult - renders profile information if boolean is false
+ */
 const ProfileListItem = props => (
   <li className="profile-list-item">
     {props.editId == props.id ? renderForm(props) : renderResult(props)}

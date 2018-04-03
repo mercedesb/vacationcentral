@@ -3,6 +3,15 @@ import "./PackingListItem.css";
 import { Row } from 'react-bootstrap';
 import PackingForm from "../../PackingForm";
 
+/**
+ * Renders the packing details to the packing display div
+ * @param {integer} props.result.name - name of the trip
+ * @param {integer} props.result.id - database id of the packing list
+ * @param {text} props.result.toPack
+ * @param {text} props.result.wishPack
+ * @param {text} props.result.noPack
+ * @param {function} props.toggleEdit - monitors button click for edit request
+ */
 const renderResult = props => (
 
   <div className="profile-list-item">
@@ -18,6 +27,9 @@ const renderResult = props => (
   </div>
 );
 
+/**
+ * Calls the PackingForm section when Edit button is clicked 
+ */
 const renderForm = props => (
   <Row>
     <PackingForm
@@ -30,6 +42,13 @@ const renderForm = props => (
   </Row>
 );
 
+/**
+ * Ternary that monitors selected props.editId  vs. the props.id code to determine if an edit to packing has been requested
+ * @param {integer} props.editId - id of packing item to be edited
+ * @param {integer} props.id - id of the packing item selected
+ * @param {function} renderForm - if boolean true, calls PackingForm so the a form can be edited
+ * @param {function} renderResult - renders the packing information if boolean is false
+ */
 const PackingListItem = props => (
   <li className="packing-list-item">
     {props.editId == props.result.id ? renderForm(props) : renderResult(props)}

@@ -10,14 +10,24 @@ class PackingForm extends Component {
       packingData: {},
       editData: {}
     };
-  }
+  };
 
+/**
+ * Set the all the trip data when the PackingForm section is displayed
+ * @param {object} props.packingData
+ */
   componentDidMount() {
     if (this.props.packingData) {
       this.setState({ packingData: this.props.packingData });
     }
   };
 
+  /**
+  * Handles physical input of user packing information and adds it to the packingData object.
+  * @param {object} packingData - input values becomes packing data
+  * @param {integer} TripId - the associated trip id number
+  * @param {object} editData - trip data assigned for editing
+  */
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState(prevState => {
@@ -36,6 +46,11 @@ class PackingForm extends Component {
     }, () => console.log(this.state.packingData));
   };
 
+  /**
+   * Makes the API call to post the newly created packing information the database
+   * @param {object} packingData 
+   * @param {integer} TripId 
+   */
   handleCreateNew = event => {
     event.preventDefault();
     API.savePacking(this.state.packingData)
@@ -44,8 +59,15 @@ class PackingForm extends Component {
         this.props.getPacking(this.props.TripId);
       })
       .catch(err => console.log(err));
-  }
+  };
 
+  /**
+   * Function that edits the packing information and makes the API call to update the information
+   * @param {function} toggleEdit
+   * @param {object} editData - the packing information to be edited
+   * @param {integer} props.id - database id number of the packing information to be edited
+   * @param {integer} TripId
+   */
   handleEdit = event => {
     event.preventDefault();
     this.props.toggleEdit(event);
@@ -54,7 +76,7 @@ class PackingForm extends Component {
         this.props.getPacking(this.props.TripId);
       })
       .catch(err => console.log(err));
-  }
+  };
 
 
   render() {
