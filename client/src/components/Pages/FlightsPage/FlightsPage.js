@@ -4,6 +4,7 @@ import "./FlightsPage.css";
 import FlightAdd from "./FlightAdd";
 import FlightDisplay from "./FlightDisplay";
 import API from "../../../utils/API";
+import moment from "moment";
 
 class FlightsPage extends React.Component {
   constructor(props) {
@@ -56,6 +57,9 @@ class FlightsPage extends React.Component {
   getFlights = () => (
     API.getFlights(this.props.TripId)
       .then(response => {
+        for (var i = 0; i < response.data.length; i++) {
+          response.data[i].date = moment(response.data[i].date).format('MM-DD-YYYY');
+        }
         this.setState({ results: response.data })
       })
   );

@@ -9,11 +9,11 @@ const renderResult = props => (
       <p className="second-text">{props.result.name}</p>
       {props.result.confirmationNumber ? <div><p>Confirmation: <strong>{props.result.confirmationNumber}</strong></p></div> : undefined}
     </Row>
-    {props.result.address ? <div><p>Address:  <strong>{props.result.address}</strong></p></div> : undefined}
-    {props.result.phone ? <div><p>Phone:  <strong>{props.result.phone}</strong></p></div> : undefined}
-    {props.result.startDate ? <div><p>Check-in:  <strong>{props.result.startDate}</strong></p></div> : undefined}
-    {props.result.endDate ? <div><p>Check-in:  <strong>{props.result.endDate}</strong></p></div> : undefined}
-    {props.result.comments ? <div style={{textAlign: "left"}}><p>Comments:  {props.result.comments}</p></div> : undefined}
+    {props.result.address ? <div><p>Address:  <strong>{props.result.address}</strong></p></div> : null}
+    {props.result.phone ? <div><p>Phone:  <strong>{props.result.phone}</strong></p></div> : null}
+    {props.result.startDate ? <div><p>Check-in:  <strong>{props.result.startDate}</strong></p></div> : null}
+    {props.result.endDate ? <div><p>Check-in:  <strong>{props.result.endDate}</strong></p></div> : null}
+    {props.result.comments ? <div style={{textAlign: "left"}}><p>Comments:  {props.result.comments}</p></div> : null}
 
     <Row>
       <button className="business-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>

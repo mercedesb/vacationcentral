@@ -5,6 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import API from "../../utils/API";
 import TripAdd from "./TripAdd";
 import TripDisplay from "./TripDisplay";
+import moment from 'moment';
 
 class TripPanel extends React.Component {
   constructor(props) {
@@ -48,13 +49,17 @@ class TripPanel extends React.Component {
   };
 
   /**
-   * Requests trips associated with the logged in user
+   * Requests trips associated with the logged in user; Using moment for date formatting
    * @param {integer} UserId - database generated id of the logged in user
    */
   getTrips = () => (
     API.getTrips(this.props.UserId)
       .then(response => {
-        this.setState({ results: response.data })
+        for (var i = 0; i < response.data.length; i++) {
+          response.data[i].start = moment(response.data[i].start).format('MM-DD-YYYY');
+          response.data[i].end = moment(response.data[i].end).format('MM-DD-YYYY');
+        }
+        this.setState({ results: response.data });
       })
   );
 

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./TripAdd.css";
 import { Input } from "../../Form";
 import API from "../../../utils/API";
-import moment from 'moment';
 
 class TripAdd extends Component {
   constructor(props) {
@@ -98,16 +97,16 @@ class TripAdd extends Component {
             placeholder="Destination" />
           <label className="label-text">Start Date:</label>
           <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
-            value={moment((this.state.tripData.start), 'YYYY/MM/DD').format('MM/DD/YYYY') || ""}
+            value={this.state.tripData.start || ""}
             name="start"
             onChange={this.handleTripInputChange}
             type="date"
             placeholder=" MM/DD/YYYY" />
           <label className="label-text">End Date:</label>
           <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
-            value={this.state.tripData.end}
+            value={this.state.tripData.end || ""}
             name="end"
-            onChange={this.handleTripInputChange || ""}
+            onChange={this.handleTripInputChange}
             type="date"
             placeholder="MM/DD/YYYY" />
           <button className="btn btn-lrg submit-btn" onClick={this.props.editing ? this.handleTripEdit : this.handleTripFormSubmit}>Submit</button>
