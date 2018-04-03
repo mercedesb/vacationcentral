@@ -37,7 +37,7 @@ class TripPanel extends React.Component {
   /**
    * Monitors button click in the TripDisplay section to make the trip information editable
    * @param {boolean} editing 
-   * @param {integer} editId - the database generated id number of the trip being edited
+   * @param {integer} event.target.id - the database generated id number of the trip being edited
    */
   toggleEdit = event => {
     this.setState({

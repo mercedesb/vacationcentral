@@ -40,7 +40,7 @@ class ProfilePage extends React.Component {
   /**
    * Monitors button click in the Profile Display section to make the rewards profile information editable
    * @param {boolean} editing 
-   * @param {integer} editId - the database generated id number of the profile being edited
+   * @param {integer} event.target.id - the database generated id number of the profile being edited
    */
   toggleEdit = event => {
     this.setState({
@@ -51,7 +51,7 @@ class ProfilePage extends React.Component {
 
   /**
    * Requests rewards profiles associated with the logged in user
-   * @param {integer} UserId - database generated id of the logged in user
+   * @param {integer} UserId 
    */
   getProfiles = () => (
     API.getProfiles(this.props.UserId)
@@ -62,7 +62,7 @@ class ProfilePage extends React.Component {
 
   /**
    * Makes API request for rewards profiles associated with the logged in user by the type of profile
-   * @param {integer} UserId - database generated id of the logged in user
+   * @param {integer} UserId 
    * @param {string} profileType - Airline, Hotel or Rental Car
    */
   getProfilesByType = (event, profileType) => {

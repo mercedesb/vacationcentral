@@ -25,7 +25,7 @@ class PackingForm extends Component {
   /**
   * Handles physical input of user packing information and adds it to the packingData object.
   * @param {object} packingData - input values becomes packing data
-  * @param {integer} TripId - the associated trip id number
+  * @param {integer} TripId
   * @param {object} editData - trip data assigned for editing
   */
   handleInputChange = event => {

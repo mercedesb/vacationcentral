@@ -22,7 +22,7 @@ class FlightsPage extends React.Component {
   };
 
   /**
-   * When page is called, requests the getFlights function
+   * When page is called, requests the getFlights function 
    * @param {integer} props.TripId - profiles associated with logged in user
    */
   componentDidMount = () => {
@@ -40,7 +40,7 @@ class FlightsPage extends React.Component {
    /**
    * Monitors button click in the Flight Display section to make the flight information editable
    * @param {boolean} editing 
-   * @param {integer} editId - the database generated id number of the flight being edited
+   * @param {integer} event.target.id - the database generated id number of the flight being edited
    */
   toggleEdit = event => {
     this.setState({
@@ -61,7 +61,7 @@ class FlightsPage extends React.Component {
   );
 
 /**
- * Makes API call to delete a specific flight
+ * Makes API call to delete a specific flight, then gets all flights for new render
  * @param {integer} flightId - database assigned id of the flight being deleted
  * @param {integer} TripId
  */

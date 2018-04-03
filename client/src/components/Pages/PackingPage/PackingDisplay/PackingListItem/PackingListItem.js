@@ -4,7 +4,7 @@ import { Row } from 'react-bootstrap';
 import PackingForm from "../../PackingForm";
 
 /**
- * Renders the packing details to the packing display div
+ * Renders the packing details to the display 
  * @param {integer} props.result.name - name of the trip
  * @param {integer} props.result.id - database id of the packing list
  * @param {text} props.result.toPack

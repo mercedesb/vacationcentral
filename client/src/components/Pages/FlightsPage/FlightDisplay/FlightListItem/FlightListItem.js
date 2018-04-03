@@ -15,7 +15,7 @@ import FlightAdd from "../../FlightAdd";
  * @param {string} arriveTime
  * @param {string} id - database generated id of the specific flight
  * @param {function} toggleEdit
- * @param {function} callFlightAware - passed the necessary arguments to for the Flight  Aware AJAX call
+ * @param {function} callFlightAware - passed the necessary arguments to for the Flight Aware AJAX call
  * @param {function} deleteFlights - passes the flight id to the delete function
  */
 const renderResult = props => (

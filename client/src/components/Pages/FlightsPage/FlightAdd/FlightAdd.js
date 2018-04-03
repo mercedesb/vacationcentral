@@ -48,7 +48,7 @@ class FlightAdd extends Component {
       }));
   };
 
-      /**
+  /**
    * Makes the API call to post the newly created flight information the database
    * @param {object} flightData 
    * @param {integer} TripId 
@@ -63,10 +63,10 @@ class FlightAdd extends Component {
       .catch(err => console.log(err));
   };
 
-      /**
-   * Function that edits the profile information and make the API call to update the information
+  /**
+   * Function that edits the flight information and make the API call to update the database information
    * @param {function} toggleEdit
-   * @param {object} editData - information of profile to be edited
+   * @param {object} editData - flight information to be edited
    * @param {integer} flightData.id - database id number of the flight to be edited
    * @param {object} flightData - returned information of the flight that was edited
    * @param {integer} TripId

@@ -26,6 +26,10 @@ const categoryArray = [{
   link: "/packing" }
 ]
 
+/**
+ * Creates the category buttons that determine the page displayed
+ * @param {array} categoryArray 
+ */
 const BusinessPanel = props => {
   return (
     <NavDropdown title="Categories" className="business-panel">

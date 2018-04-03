@@ -30,7 +30,7 @@ class PackingPage extends React.Component {
   /**
    * Monitors button click in the PackingDisplay section to make the packing information editable
    * @param {boolean} editing 
-   * @param {integer} editId - the database generated id number of the packing information being edited
+   * @param {integer} event.target.id - the database generated id number of the packing information being edited
    */
   toggleEdit = event => {
     this.setState({

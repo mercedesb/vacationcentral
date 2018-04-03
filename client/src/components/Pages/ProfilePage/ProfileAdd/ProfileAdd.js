@@ -49,7 +49,7 @@ class ProfileAdd extends Component {
     /**
    * Makes the API call to post the newly created profile information the database
    * @param {object} profileData - company, rewards number and phone
-   * @param {integer} UserId - all profiles when posted to database are associated with the logged in user
+   * @param {integer} UserId 
    */
   handleProfileFormSubmit = event => {
     event.preventDefault();
@@ -67,7 +67,7 @@ class ProfileAdd extends Component {
    * @param {object} editData - information of profile to be edited
    * @param {integer} profileData.id - database id number of the profile to be edited
    * @param {object} profileData - returned information of the profile that was edited
-   * @param {integer} UserId - user id associated with the logged in user
+   * @param {integer} UserId 
    */
   handleProfileEdit = event => {
     event.preventDefault();
