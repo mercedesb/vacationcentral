@@ -4,6 +4,7 @@ import { Col } from 'react-bootstrap';
 import TripListItem from "././TripListItem";
 
 
+
 class TripDisplay extends React.Component {
   constructor(props) {
     super(props);
