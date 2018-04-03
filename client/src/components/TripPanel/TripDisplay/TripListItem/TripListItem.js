@@ -26,7 +26,7 @@ const renderResult = props => (
     <Row style={{ textAlign: "center"}}>
     {props.result.destination ? <div><p><strong>{props.result.destination}</strong></p></div> : undefined}
     {props.result.start ? <div><p>Start Date:<br /> <strong>{props.result.start}</strong></p></div> : undefined}
-    {props.result.end ? <div><p>End Date: <br/> <strong>{props.result.end}</strong></p></div> : undefined}
+{props.result.end ? <div><p>End Date: <br/> <strong>{props.result.end} </strong></p></div> : undefined}
     </Row>
     
     <Row>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./BusinessPage.css";
+import moment from 'moment';
 import { Row, Col } from 'react-bootstrap';
 import BusinessDisplay from "./BusinessDisplay";
 import BusinessForm from "./BusinessForm";
@@ -39,9 +40,18 @@ class BusinessPage extends Component {
 
   getAllBusinesses = tripId => (
     API.getBusinesses(tripId)
-      .then(response => this.setState({ results: response.data }))
-      .catch(err => console.log(err))
-  );
+      .then(response => {
+        console.log("business response", response)
+        if(response.data.startDate || response.data.endDate) {
+        for (var i = 0; i < response.data.length; i++) {
+          response.data[i].startDate = moment(response.data[i].startDate).format('MM-DD-YYYY');
+          response.data[i].endDate = moment(response.data[i].endDate).format('MM-DD-YYYY');
+        }
+      }
+        this.setState({ results: response.data })
+        // .catch(err => console.log(err));
+      })
+    );
 
   deleteBusiness = businessId => (
     API.deleteBusiness(businessId)

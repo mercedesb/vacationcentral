@@ -53,6 +53,7 @@ class TripAdd extends Component {
    */
   handleTripFormSubmit = event => {
     event.preventDefault();
+    console.log("trip data", this.state.tripData);
     if (this.state.tripData.start < this.state.tripData.end) {
       API.saveTrips(this.state.tripData)
         .then(response => {
@@ -100,14 +101,14 @@ class TripAdd extends Component {
             name="start"
             onChange={this.handleTripInputChange}
             type="date"
-            placeholder=" MM-DD-YYYY" />
+            placeholder=" MM/DD/YYYY" />
           <label className="label-text">End Date:</label>
           <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
-            value={this.state.tripData.end}
+            value={this.state.tripData.end || ""}
             name="end"
-            onChange={this.handleTripInputChange || ""}
+            onChange={this.handleTripInputChange}
             type="date"
-            placeholder="MM-DD-YYYY" />
+            placeholder="MM/DD/YYYY" />
           <button className="btn btn-lrg submit-btn" onClick={this.props.editing ? this.handleTripEdit : this.handleTripFormSubmit}>Submit</button>
         </form>
       </div>
