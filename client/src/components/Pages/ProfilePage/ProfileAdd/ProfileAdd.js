@@ -79,7 +79,7 @@ class ProfileAdd extends Component {
         this.props.getProfiles(this.props.UserId);
       })
       .catch(err => console.log(err));
-  }
+  };
 
   render() {
     return (
@@ -88,6 +88,7 @@ class ProfileAdd extends Component {
         <form >
           <label className="profile-select-text">Select the Profile Type: </label>
           <select xs={12} value={this.state.profileData.type} name="type" onChange={this.handleProfileInputChange}>
+            <option value=""></option>
             <option value="Airline">Airline</option>
             <option value="Hotel">Hotel</option>
             <option value="RentalCar">Rental Car</option>
