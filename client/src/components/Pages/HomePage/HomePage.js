@@ -14,7 +14,6 @@ class HomePage extends Component {
     }
   }
 
-
   /**
  * Handles physical input of user login/signup and adds them to the userData object.
  * @param {object} userData - input values becomes user data - name, email password
