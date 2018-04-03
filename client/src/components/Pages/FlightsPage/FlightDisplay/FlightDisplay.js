@@ -73,18 +73,8 @@ class FlightDisplay extends React.Component {
       this.setState ({
             departFlight: entry.ident,
             arriveTime: convertArrive
-          }
-        ) 
+          }) 
     })
-      .then((result, response) => {
-        var entry = JSON.parse(result.request.response).FlightInfoResult.flights[0]
-        var departTime = entry.filed_departuretime;
-        var convertDeparture = moment(departTime * 1000).format('MMMM Do YYYY,h:mm:ss a');
-        this.setState({
-          departFlight: entry.ident,
-          departTime: convertDeparture
-        });
-      })
   };
 
   /**
