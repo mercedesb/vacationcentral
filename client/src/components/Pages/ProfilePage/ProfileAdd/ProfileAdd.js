@@ -115,6 +115,14 @@ class ProfileAdd extends Component {
           onChange={this.handleProfileInputChange}
           type="text"
           placeholder="Add Company Phone" />
+        <label className="label-text">Company URL:</label>
+        <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
+          value={this.state.profileData.url || ""}
+          name="url"
+          onChange={this.handleProfileInputChange}
+          type="text"
+          placeholder="Add Company URL" />
+
         <button className="btn btn-lrg submit-btn" onClick={this.props.editing ? this.handleProfileEdit : this.handleProfileFormSubmit} >Submit</button>
       </div>
     );

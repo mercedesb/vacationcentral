@@ -17,8 +17,9 @@ const renderResult = props => (
     <Row>
       <p className="second-text">{props.result.company}</p>
     </Row>
-    {props.result.memberNumber ? <div><p>Member Number:  <strong> {props.result.memberNumber}</strong></p></div> : undefined}
-    {props.result.phone ? <div><p>Phone:  <strong>{props.result.phone}</strong></p></div> : undefined}
+    {props.result.memberNumber ? <div><p>Member Number:  <strong> {props.result.memberNumber}</strong></p></div> : null}
+    {props.result.phone ? <div><p>Phone:  <strong>{props.result.phone}</strong></p></div> : null}
+    {props.result.url ? <div><p>Website:  <strong>{props.result.url}</strong></p></div> : null}    
     <Row>
       <button className="profile-edit-btn" id={props.result.id} onClick={props.toggleEdit}>Edit</button>
       <button className="profile-delete-btn" id={props.result.id} onClick={() => props.deleteProfiles(props.result.id)}>Delete</button>
