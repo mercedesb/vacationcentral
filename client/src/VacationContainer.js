@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Grid, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router';
 import "./VacationContainer.css";
-import API from "./utils/API";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HeaderPanel from './components/HeaderPanel';
 import TripPanel from './components/TripPanel';
@@ -19,91 +18,32 @@ class VacationContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    user: {},
-    userData: {},
-    tripId: 0,
-    tripDestination: "",
-    selectedRadioButton: 0
-  };
+      user: {},
+      tripId: 0,
+      tripDestination: "",
+      selectedRadioButton: 0,
+      // error: ""
+    };
     this.handleRadioButtonSelect = this.handleRadioButtonSelect.bind(this);
   }
 
- /**
-  * Handles physical input of user login/signup and adds them to the userData object.
-  * @param {object} userData - input values becomes user data - name, email password
-  */
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState(prevState => (
-      {
-        userData: {
-          ...prevState.userData,
-          [name]: value
-        }
-      }));
-  };
-
-  /**
-  * Makes API call to user database to save user data information.
-  * @param {object} userData - user information consists for name, email, password
-  */
-  signUpUser = userData => {
-    API.saveUser(userData)
-      .then(data => {
-        this.setState({
-          user: data.data.user, 
-          userData: {}
-        });
-      })
-      .catch(err => console.log(err));
+  handleSuccess = data => {
+    this.setState({
+      user: data.data.user,
+      userData: {}
+    });
   }
 
   /**
-  * Simple validation of new user input information before calling signUpUser function
-  * @param {object} userData - name, email, password
-  */
-  handleSignUp = event => {
-    event.preventDefault();
-    if (!this.state.userData.email || !this.state.userData.password) { return }
-    this.signUpUser(this.state.userData);
-  }
-
-  /**
-  * API call to database to set user data
-  * @param {object} userData  - email, password
-  * @param {object} user
-  */
-  loginUser = userData => {
-    API.loginUser(userData)
-      .then(data => {
-        this.setState({
-          user: data.data.user, 
-          userData: {}
-        });
-      })
-      .catch(err => console.log(err));
-  }
-
-  /**
-  * Simple validation of an existing user input information before calling the loginUser function
-  * @param {object} userData - email and password
-  */
-  handleLogIn = event => {
-    event.preventDefault();
-    if (!this.state.userData.email || !this.state.userData.password) { return }
-    this.loginUser(this.state.userData);
-  }
-
- /**
-  * Monitors trip radio buttons to set the appropriate TripId for the rest of the application
-  * @param {integer} TripId 
-  * @param {string} Destination
-  */
+   * Monitors trip radio buttons to set the appropriate TripId for the rest of the application
+   * @param {integer} TripId 
+   * @param {string} Destination
+   */
   handleRadioButtonSelect = (id, destination) => {
-    this.setState({ 
+    this.setState({
       tripId: id,
       tripDestination: destination,
-      selectedRadioButton: id, 
+      selectedRadioButton: id,
     });
   }
 
@@ -117,26 +57,23 @@ class VacationContainer extends Component {
             </HeaderPanel>
           </Row>
           <Row>
-
             <DisplayPanel>
               <Switch>
-                <Route exact path="/" 
-                  render={() => (this.state.user.id ? 
-                  <Redirect to="/member" /> : 
-                  <HomePage
-                    purpose="Log In"
-                    handleInputChange={this.handleInputChange}
-                    handleLogIn={this.handleLogIn}
-                    user={this.state.userData}
-                  />)} 
+                <Route exact path="/"
+                  render={() => (this.state.user.id ?
+                    <Redirect to="/member" /> :
+                    <HomePage
+                      purpose="Log In"
+                      handleSuccess={this.handleSuccess}
+                      user={this.state.user}
+                    />)}
                 />
-                <Route exact path="/signup" render={() => (this.state.user.id ? 
+                <Route exact path="/signup" render={() => (this.state.user.id ?
                   <Redirect to="/member" /> :
                   <HomePage
                     purpose="Sign Up"
-                    handleInputChange={this.handleInputChange}
-                    handleSignUp={this.handleSignUp}
-                    user={this.state.userData}
+                    handleSuccess={this.handleSuccess}
+                    user={this.state.user}
                   />)}
                 />
                 {this.state.user.firstName ?
@@ -150,14 +87,14 @@ class VacationContainer extends Component {
                     <Route exact path="/profile/" render={() => <ProfilePage UserId={this.state.user.id} />} />
                     <Route exact path="/packing/" render={() => <PackingPage TripId={this.state.tripId} />} />
                   </div> :
-                  <Route strict path="/*/" render={() => 
+                  <Route strict path="/*/" render={() =>
                     <HomePage
                       purpose="Log In"
                       message="Please Log In"
                       handleInputChange={this.handleInputChange}
                       handleLogIn={this.handleLogIn}
                       user={this.state.userData}
-                  />} />
+                    />} />
                 }
               </Switch>
             </DisplayPanel>
@@ -166,7 +103,7 @@ class VacationContainer extends Component {
               UserId={this.state.user.id}
               selectedRadioButton={this.state.selectedRadioButton}
               handleRadioButtonSelect={this.handleRadioButtonSelect}
-              />
+            />
           </Row>
         </Grid>
       </Router >
