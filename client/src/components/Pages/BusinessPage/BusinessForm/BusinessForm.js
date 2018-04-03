@@ -39,11 +39,10 @@ class BusinessForm extends Component {
 
   handleCreateNew = event => {
     event.preventDefault();
-    console.log("hitting CreateNew", this.state.businessData);
     API.saveBusiness(this.state.businessData)
       .then(response => {
         this.setState({ businessData: {} });
-        this.props.handleToggleBusinessDisplay(this.props.TripId);
+        this.props.getAllBusinesses(this.props.TripId);
       })
       .catch(err => console.log(err));
   }
@@ -55,14 +54,14 @@ class BusinessForm extends Component {
     API.updateBusiness(this.state.editData, this.props.id)
       .then(response => {
         console.log(response.data);
-        // this.setState({businessData: {}, editData: {}});
-        this.props.handleToggleBusinessDisplay(this.props.TripId);
+        this.setState({businessData: {}, editData: {}});
+        this.props.getAllBusinesses(this.props.TripId);
       })
       .catch(err => console.log(err));
   }
 
   renderDateInputs() {
-    if ((this.props.businessType || this.state.businessData.type) === "Hotels") {
+    if ((this.props.businessType || this.state.businessData.type) === "Hotels" || "Car Rental") {
       return (
         <div>
           <label className="label-text" >Check-in:</label>
@@ -89,6 +88,7 @@ class BusinessForm extends Component {
     return (
       <div className="business-add">
         <p className="second-text">Add {this.props.businessType}</p>
+        
         <label className="label-text" >Business Name:</label>
         <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
           xs={6}
@@ -120,7 +120,9 @@ class BusinessForm extends Component {
           value={this.state.businessData.phone || ""}
           placeholder="Phone Number"
         />
+
         {this.renderDateInputs()}
+
         <label className="label-text" >Comments:</label>
         <TextArea
           xs={6} style={{ width: "70%", margin: "0 auto" }}

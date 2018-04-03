@@ -144,6 +144,7 @@ class VacationContainer extends Component {
                     <Route exact path="/member/" render={() => <MemberPage user={this.state.user} tripDestination={this.state.tripDestination} />} />
                     <Route exact path="/hotels/" render={() => <BusinessPage businessType="Hotels" TripId={this.state.tripId} />} />
                     <Route exact path="/dining/" render={() => <BusinessPage businessType="Dining" TripId={this.state.tripId} />} />
+                    <Route exact path="/carrental/" render={() => <BusinessPage businessType="Car Rental" TripId={this.state.tripId} />} />
                     <Route exact path="/flights/" render={() => <FlightsPage TripId={this.state.tripId} />} />
                     <Route exact path="/attractions/" render={() => <BusinessPage businessType="Places" TripId={this.state.tripId} />} />
                     <Route exact path="/profile/" render={() => <ProfilePage UserId={this.state.user.id} />} />

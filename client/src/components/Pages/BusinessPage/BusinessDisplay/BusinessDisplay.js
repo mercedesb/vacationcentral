@@ -20,8 +20,7 @@ const BusinessDisplay = props => {
               key={business.id}
               result={business}
               toggleEdit={props.toggleEdit}
-            />) :
-          <p className="second-text">Add a business to start</p>}
+            />) : null}
       </ul>
     </Col>
   );

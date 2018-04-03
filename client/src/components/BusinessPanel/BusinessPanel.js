@@ -13,6 +13,9 @@ const categoryArray = [{
   name: 'Flights',
   link: "/flights/"
 }, {
+  name: 'Car Rental',
+  link: "/carrental/"
+},{
   name: 'Hotel',
   link: "/hotels/"
 }, {
