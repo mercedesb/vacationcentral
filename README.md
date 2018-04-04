@@ -11,26 +11,26 @@ Susan Lippa - <https://github.com/slippa91>
 
 # The Idea:
 
-When talking with friends about vacation, I am frequently asked for thoughts about where we stayed, the restaurants we enjoyed and the activities in which we participated. 
+When talking with friends about vacation, I am frequently asked for thoughts about where we stayed, the restaurants we enjoyed and the attractions we visited. 
 
-Vacationist is a place to store all of that information so that it is easily accessible from anywhere. 
+Vacationist is a place to store all of that information so that it is easily accessible, both before you have left and  long after you are home. 
 
 # Getting Started:
 
 Software Installation - \
 
-If you are linking to Vacationist through Heroku <https://vacationcentral.herokuapp.com/>, it does not require any software installation to use. \
+If you are linking to Vacationist through Heroku <https://vacationcentral.herokuapp.com/>, it does not require any software installation. \
 
 If you want to download the code via Github <https://github.com/slippa91/vacationcentral> , you will need to:
 
 1) Copy the repository on Github by clicking the green "Clone or Download" button
 
-Now using the terminal on your computer...
+The following steps will be executed from the terminal on your computer...
 
-2) "git clone" the Github file onto your desktop
-3) From the terminal, execute a "yarn install" from the "vacationcentral" root directory
-4) From the terminal, execute a "yarn install" from the "client" directory
-5) Again in the the terminal, go back to the "vacationcentral" root directory and execute "yarn start"
+2) First, "git clone" the Github file onto your desktop.
+3) Execute a "yarn install" from the "vacationcentral" root directory.
+4) Execute a "yarn install" from the "client" directory.
+5) Go back to the "vacationcentral" root directory and execute "yarn start".
 
 Prerequisites - Loving your vacations past, present and future. 
 
@@ -40,22 +40,23 @@ Using Vacationist is easy.
 
 Once you have either signed up or logged in, you will be taken to the member page.
 
+From here, it all starts with a trip. 
+
 ![Wire Frame](/client/public/images/MemberPage.png)
 
-From here, it all starts with a trip. 
 
 Enter your destination, a start date, an end date and click 'Submit'. When the trip appears click on the radio button to select it. 
 
 ![Wire Frame](/client/public/images/MemberPageTrip.png)
 
 
-Once a trip has been selected, clicking the 'Categories' button opens up the world of Vacationist. Clicking each of the buttons takes you to a separate page in Vacationist. 
+Once a trip has been selected, clicking the 'Categories' button opens up the world of Vacationist. 
 
 ![Wire Frame](/client/public/images/CategoryButtons.png)
 
 Each of these buttons behaves in the same way. 
 
-For example, if you click on "Places", a screen appears that will allow you input information associated with a tourist attraction. When the appropriate fields have been completed, click submit and a new div will appear with that information displayed. If you want to edit that information, just click edit. Delete is self explanatory.
+For example, if you click on "Places", a screen appears that will allow you input information associated with a tourist attraction. When the appropriate fields have been completed, click submit and a new section will appear with that information displayed. If you want to edit that information,click edit. Delete is self explanatory.
 
 ![Wire Frame](/client/public/images/PlacesInput.png)
 
@@ -65,10 +66,9 @@ For example, if you click on "Places", a screen appears that will allow you inpu
 
 You can do the same thing for Flights, Car Rental, Hotel, Dining and Packing.
 
-The only category that is a bit different is "Rewards". Although input works the same way, Rewards is not tied to a trip but to a user. This is a place to input you travel rewards numbers for airlines, hotels, and car rental services. The category is available no matter which trip has been selected. 
+The only category that is a bit different is "Rewards". Although input works the same way, Rewards is not tied to a trip but eash user. This is a place to input you travel rewards numbers for airlines, hotels, and car rental services. The category is available no matter which trip has been selected. 
 
-That is all there is to it. Enjoy using Vacationist to easily access the information from all of your trips. 
-
+That is all there is to it. Enjoy using Vacationist to easily access all of your vacation information. 
 
                 
 # Built Utilizing:
