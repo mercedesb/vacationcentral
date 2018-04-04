@@ -74,7 +74,7 @@ class BusinessForm extends Component {
   * returns date input fields based on businessData existing
   */
   renderDateInputs() {
-    if ((this.props.businessType || this.state.businessData.type) === "Hotels" || "Car Rental") {
+    if (((this.props.businessType || this.state.businessData.type) === "Hotels") || ((this.props.businessType || this.state.businessData.type) === "Car Rental")) {
       return (
         <div>
           <label className="label-text" >Check-in:</label>
@@ -94,8 +94,8 @@ class BusinessForm extends Component {
             placeholder="Check-out Date"
           />
         </div>);
-    }
   }
+}
 
   render() {
     return (
