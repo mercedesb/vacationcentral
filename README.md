@@ -18,7 +18,21 @@ Vacation Central is a place to store all of that information so that it is easil
 
 # Getting Started:
 
-Software Installation - Vacation Central does not require any software installation to operate.
+Software Installation - \
+
+If you are linking to Vacationist through Heroku <https://vacationcentral.herokuapp.com/>, it does not require any software installation to use. \
+
+If you want to download the code via Github <https://github.com/slippa91/vacationcentral> , you will need to:
+
+1) Copy the repository on Github by clicking the green "Clone or Download" button
+
+Now using the terminal on your computer...
+
+2) "git clone" the Github file onto your desktop
+3) From the terminal, execute a "yarn install" from the "vacationcentral" root directory
+4) From the terminal, execute a "yarn install" from the "client" directory
+5) Again in the the terminal, go back to the "vacationcentral" root directory and execute "yarn start"
+
     
 Prerequisites - Loving your vacations past, present and future. 
 
@@ -28,12 +42,14 @@ Prerequisites - Loving your vacations past, present and future.
                 
 # Built Utilizing:
 
+The impetus behind this project was learning React.js.
+
 React.js - <https://reactjs.org/> \
 Bootstrap v3 - <http://getbootstrap.com/docs/3.3/> \
 Moment.js - <https://momentjs.com/> \
 FlightAware API - <https://flightaware.com/commercial/flightxml/> 
 
-#Future Developement:
+#Future Development:
 
 
 # Ideas for Improvement:
@@ -47,7 +63,7 @@ UserStories:
 
 As a user - I would like one place to reference all of the details for my vacation.
 
-As a user - I would like to be able to edit and update the vacation informtaion should it change. 
+As a user - I would like to be able to edit and update the vacation information should it change. 
 
 As a user - I would like to be able to access information from past vacations. 
 
@@ -60,15 +76,15 @@ As a user - I would like to be able to access some of my social media pictures f
 
 Original WireFrame sketch:
 
-![Wire Frame](/client/src/OriginalWireFrame.jpg)
+![Wire Frame](/client/public/images/OriginalWireFrame.jpg)
 
 Original Database structure sketch:
 
-![Database](/client/src/DatabaseStructure.jpg)
+![Database](/client/public/images/DatabaseStructure.jpg)
 
 Original File Structure sketch:
 
-![OriginalFileStructure](/client/src/Filestructure.jpg)
+![OriginalFileStructure](/client/public/images/Filestructure.jpg)
 
 
 
