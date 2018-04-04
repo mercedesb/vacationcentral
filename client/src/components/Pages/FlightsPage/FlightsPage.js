@@ -6,7 +6,7 @@ import FlightDisplay from "./FlightDisplay";
 import API from "../../../utils/API";
 import moment from "moment";
 
-class FlightsPage extends React.Component {
+class FlightsPage extends Component {
   constructor(props) {
     super(props);
     this.state = {

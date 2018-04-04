@@ -18,6 +18,10 @@ class BusinessForm extends Component {
     }
   };
 
+  /**
+  * onChange callback for form inputs
+  * @param {object} event
+  */
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState(prevState => {
@@ -37,6 +41,10 @@ class BusinessForm extends Component {
     });
   };
 
+  /**
+  * submits a new business to save to the database
+  * @param {object} event
+  */
   handleCreateNew = event => {
     event.preventDefault();
     API.saveBusiness(this.state.businessData)
@@ -47,19 +55,24 @@ class BusinessForm extends Component {
       .catch(err => console.log(err));
   }
 
+  /**
+  * submits updated business to save to the database
+  * @param {object} event
+  */
   handleEdit = event => {
-    console.log("in biz edit", this.state.editData)
     event.preventDefault();
     this.props.toggleEdit(event);
     API.updateBusiness(this.state.editData, this.props.id)
       .then(response => {
-        console.log(response.data);
         this.setState({businessData: {}, editData: {}});
         this.props.getAllBusinesses(this.props.TripId);
       })
       .catch(err => console.log(err));
   }
 
+  /**
+  * returns date input fields based on businessData existing
+  */
   renderDateInputs() {
     if ((this.props.businessType || this.state.businessData.type) === "Hotels" || "Car Rental") {
       return (

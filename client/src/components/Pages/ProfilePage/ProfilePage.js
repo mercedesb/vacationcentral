@@ -5,7 +5,7 @@ import ProfileAdd from "./ProfileAdd";
 import ProfileDisplay from "./ProfileDisplay";
 import API from "../../../utils/API";
 
-class ProfilePage extends React.Component {
+class ProfilePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -112,7 +112,6 @@ class ProfilePage extends React.Component {
             deleteProfiles={this.deleteProfiles}
             getProfilesByType={this.getProfilesByType}
             handleToggleProfileDisplay={this.handleToggleProfileDisplay}
-
           /> : null}
         </Row>
         <Row>

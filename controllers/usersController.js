@@ -17,6 +17,7 @@ module.exports = {
   },
 
   create: function(req, res) {
+    console.log("controller", req.body);
     db.User
       .create(req.body)
       .then(data => res.redirect(307, "/api/users/login"))
