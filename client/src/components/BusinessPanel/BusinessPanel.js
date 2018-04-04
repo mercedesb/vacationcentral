@@ -13,6 +13,9 @@ const categoryArray = [{
   name: 'Flights',
   link: "/flights/"
 }, {
+  name: 'Car Rental',
+  link: "/carrental/"
+},{
   name: 'Hotel',
   link: "/hotels/"
 }, {
@@ -26,6 +29,10 @@ const categoryArray = [{
   link: "/packing" }
 ]
 
+/**
+ * Creates the category buttons that determine the page displayed
+ * @param {array} categoryArray 
+ */
 const BusinessPanel = props => {
   return (
     <NavDropdown id={3} title="Categories" className="business-panel">

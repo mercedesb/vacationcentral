@@ -12,12 +12,23 @@ class ProfileAdd extends Component {
     };
   }
 
+/**
+ * Set the all the profile data when the ProfileAdd section is displayed
+ * @param {object} props.profileData
+ */
   componentDidMount() {
     if (this.props.profileData) {
       this.setState({ profileData: this.props.profileData });
     }
   }
 
+  /**
+  * Handles physical input of user profile information and adds it to the profileData object.
+  * @param {object} profileData - input values becomes user data - company, rewards number, phone
+  * @param {integer} UserId - id number of the logged in user
+  * @param {object} editData - profile data assigned for editing
+  * @param {integer} profileData.id - id of the specific profile to be edited
+  */
   handleProfileInputChange = event => {
     const { name, value } = event.target;
     this.setState(prevState => (
@@ -35,6 +46,11 @@ class ProfileAdd extends Component {
       }));
   };
 
+    /**
+   * Makes the API call to post the newly created profile information the database
+   * @param {object} profileData - company, rewards number and phone
+   * @param {integer} UserId 
+   */
   handleProfileFormSubmit = event => {
     event.preventDefault();
     API.saveProfiles(this.state.profileData)
@@ -43,8 +59,16 @@ class ProfileAdd extends Component {
         this.props.handleToggleProfileDisplay(this.props.UserId);
       })
       .catch(err => console.log(err));
-  }
+  };
 
+    /**
+   * Function that edits the profile information and make the API call to update the information
+   * @param {function} toggleEdit
+   * @param {object} editData - information of profile to be edited
+   * @param {integer} profileData.id - database id number of the profile to be edited
+   * @param {object} profileData - returned information of the profile that was edited
+   * @param {integer} UserId 
+   */
   handleProfileEdit = event => {
     event.preventDefault();
     this.props.toggleEdit(event);
@@ -55,7 +79,7 @@ class ProfileAdd extends Component {
         this.props.getProfiles(this.props.UserId);
       })
       .catch(err => console.log(err));
-  }
+  };
 
   render() {
     return (
@@ -64,6 +88,7 @@ class ProfileAdd extends Component {
         <form >
           <label className="profile-select-text">Select the Profile Type: </label>
           <select xs={12} value={this.state.profileData.type} name="type" onChange={this.handleProfileInputChange}>
+            <option value=""></option>
             <option value="Airline">Airline</option>
             <option value="Hotel">Hotel</option>
             <option value="RentalCar">Rental Car</option>
@@ -90,6 +115,14 @@ class ProfileAdd extends Component {
           onChange={this.handleProfileInputChange}
           type="text"
           placeholder="Add Company Phone" />
+        <label className="label-text">Company URL:</label>
+        <Input style={{ width: "70%", margin: "0 auto", textAlign: "center" }}
+          value={this.state.profileData.url || ""}
+          name="url"
+          onChange={this.handleProfileInputChange}
+          type="text"
+          placeholder="Add Company URL" />
+
         <button className="btn btn-lrg submit-btn" onClick={this.props.editing ? this.handleProfileEdit : this.handleProfileFormSubmit} >Submit</button>
       </div>
     );

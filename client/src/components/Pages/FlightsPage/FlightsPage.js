@@ -4,6 +4,7 @@ import "./FlightsPage.css";
 import FlightAdd from "./FlightAdd";
 import FlightDisplay from "./FlightDisplay";
 import API from "../../../utils/API";
+import moment from "moment";
 
 class FlightsPage extends Component {
   constructor(props) {
@@ -19,17 +20,29 @@ class FlightsPage extends Component {
     this.toggleEdit = this.toggleEdit.bind(this);
     this.deleteFlights = this.deleteFlights.bind(this);
     this.handleToggleFlightDisplay = this.handleToggleFlightDisplay.bind(this);
-  }
+  };
 
+  /**
+   * When page is called, requests the getFlights function 
+   * @param {integer} props.TripId - profiles associated with logged in user
+   */
   componentDidMount = () => {
     this.getFlights(this.props.TripId);
-  }
+  };
 
+  /**
+   * Monitors button click to make the flight profile panel hidden or visible
+   */
   handleToggleFlightDisplay = () => {
     this.getFlights(this.props.TripId);
     this.setState({ flightDisplayVisible: !this.state.flightDisplayVisible });
   };
 
+   /**
+   * Monitors button click in the Flight Display section to make the flight information editable
+   * @param {boolean} editing 
+   * @param {integer} event.target.id - the database generated id number of the flight being edited
+   */
   toggleEdit = event => {
     this.setState({
       editing: !this.state.editing,
@@ -37,13 +50,25 @@ class FlightsPage extends Component {
     });
   };
 
+  /**
+   * Requests all flights associated with the specific trip
+   * @param {integer} TripId
+   */
   getFlights = () => (
     API.getFlights(this.props.TripId)
       .then(response => {
+        for (var i = 0; i < response.data.length; i++) {
+          response.data[i].date = moment(response.data[i].date).format('MM-DD-YYYY');
+        }
         this.setState({ results: response.data })
       })
   );
 
+/**
+ * Makes API call to delete a specific flight, then gets all flights for new render
+ * @param {integer} flightId - database assigned id of the flight being deleted
+ * @param {integer} TripId
+ */
   deleteFlights = (event, flightId, TripId) => {
     event.preventDefault();
     API.deleteFlights(flightId)

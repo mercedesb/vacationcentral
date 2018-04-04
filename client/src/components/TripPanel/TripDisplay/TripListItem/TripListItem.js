@@ -3,7 +3,16 @@ import "./TripListItem.css";
 import { Row } from 'react-bootstrap';
 import TripAdd from "../../TripAdd";
 
-
+/**
+ * Renders the trip details to the trip display div
+ * @param {integer} props.result.id - database id of the specific trip
+ * @param {integer} props.selectedRadioButton - if of the specific trip associated with the radio button
+ * @param {function} handleRadioButtonSelect  - 
+ * @param {string} props.result.destination - trip destination
+ * @param {string} props.result.start - start date of the trip
+ * @param {string} props.result.end -end date of the trip
+ * @param {function} props.toggleEdit - monitors button click for edit request
+ */
 const renderResult = props => (
   <div className="trip-list-item">
     <Row>
@@ -15,9 +24,9 @@ const renderResult = props => (
     </Row>
     
     <Row style={{ textAlign: "center"}}>
-    {props.result.start ? <div><p><strong>{props.result.destination}</strong></p></div> : undefined}
+    {props.result.destination ? <div><p><strong>{props.result.destination}</strong></p></div> : undefined}
     {props.result.start ? <div><p>Start Date:<br /> <strong>{props.result.start}</strong></p></div> : undefined}
-    {props.result.end ? <div><p>End Date: <br/> <strong>{props.result.end}</strong></p></div> : undefined}
+{props.result.end ? <div><p>End Date: <br/> <strong>{props.result.end} </strong></p></div> : undefined}
     </Row>
     
     <Row>
@@ -26,6 +35,9 @@ const renderResult = props => (
   </div>
 );
 
+/**
+ * Calls the Trip Add section when Edit button is clicked 
+ */
 const renderForm = props => (
   <Row>
     <TripAdd
@@ -38,6 +50,13 @@ const renderForm = props => (
   </Row>
 );
 
+/**
+ * Ternary that monitors selected props.editId  vs. the props.id code to determine if a trip edit has been requested
+ * @param {integer} props.editId - id of trip to be edited
+ * @param {integer} props.id - id of the trip selected
+ * @param {function} renderForm - if boolean true, calls TripAdd so the a form can be edited
+ * @param {function} renderResult - renders trip information if boolean is false
+ */
 const TripListItem = props => (
   <li className="trip-list-item">
     {props.editId == props.id ? renderForm(props) : renderResult(props)}
