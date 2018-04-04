@@ -25,23 +25,32 @@ class BusinessPage extends Component {
     this.getAllBusinesses(this.props.TripId);
   }
 
+  /**
+  * Toggles results display
+  */
   handleToggleBusinessDisplay = () => {
     this.getAllBusinesses(this.props.TripId);
     this.setState({ businessDisplayVisible: !this.state.businessDisplayVisible })
   };
 
+  /**
+  * begins editing state
+  * @param {object} event
+  */
   toggleEdit = event => {
-    console.dir(event.target.id);
     this.setState({
       editing: !this.state.editing,
       editId: event.target.id
     });
   };
 
+  /**
+  * Gets all business for given trip
+  * @param {integer} tripId
+  */
   getAllBusinesses = tripId => (
     API.getBusinesses(tripId)
       .then(response => {
-        console.log("business response", response)
         if(response.data.startDate || response.data.endDate) {
         for (var i = 0; i < response.data.length; i++) {
           response.data[i].startDate = moment(response.data[i].startDate).format('MM-DD-YYYY');
@@ -49,10 +58,13 @@ class BusinessPage extends Component {
         }
       }
         this.setState({ results: response.data })
-        // .catch(err => console.log(err));
       })
     );
 
+  /**
+  * Deletes the business that matches given id
+  * @param {integer} businessId
+  */
   deleteBusiness = businessId => (
     API.deleteBusiness(businessId)
       .then(response => {

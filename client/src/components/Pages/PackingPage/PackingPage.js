@@ -7,7 +7,7 @@ import API from "../../../utils/API";
 
 
 
-class PackingPage extends React.Component {
+class PackingPage extends Component {
   constructor(props) {
     super(props);
     this.state = {

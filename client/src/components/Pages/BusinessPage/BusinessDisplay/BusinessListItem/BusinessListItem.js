@@ -3,6 +3,10 @@ import "./BusinessListItem.css";
 import { Row } from 'react-bootstrap';
 import BusinessForm from "../../BusinessForm";
 
+/**
+* returns results rendering JSX
+* @param {object} props
+*/
 const renderResult = props => (
   <div className="business-list-item">
     <Row>
@@ -22,6 +26,10 @@ const renderResult = props => (
   </div>
 );
 
+/**
+* returns BusinessForm component
+* @param {object} props
+*/
 const renderForm = props => (
   <Row>
     <BusinessForm

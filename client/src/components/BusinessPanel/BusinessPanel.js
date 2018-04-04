@@ -1,6 +1,6 @@
 import React from "react";
 import "./BusinessPanel.css";
-import { Col, NavDropdown } from 'react-bootstrap';
+import { NavDropdown } from 'react-bootstrap';
 import CategoryButton from "../CategoryButton";
 
 const categoryArray = [{

@@ -27,5 +27,3 @@ db.sequelize.sync().then(function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
   });
 });
-
-// {force: true} => if we want to drop tables and recreate, drop that into the params for .sync()
