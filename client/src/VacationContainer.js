@@ -22,11 +22,14 @@ class VacationContainer extends Component {
       tripId: 0,
       tripDestination: "",
       selectedRadioButton: 0,
-      // error: ""
     };
     this.handleRadioButtonSelect = this.handleRadioButtonSelect.bind(this);
   }
 
+  /**
+  * Sets user and userData in state on successful database calls
+  * @param {object} data - response from database calls
+  */
   handleSuccess = data => {
     this.setState({
       user: data.data.user,

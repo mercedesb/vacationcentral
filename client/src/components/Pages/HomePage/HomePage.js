@@ -15,9 +15,9 @@ class HomePage extends Component {
   }
 
   /**
- * Handles physical input of user login/signup and adds them to the userData object.
- * @param {object} userData - input values becomes user data - name, email password
- */
+  * Handles physical input of user login/signup and adds them to the userData object.
+  * @param {object} userData - input values becomes user data - name, email password
+  */
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState(prevState => (
@@ -29,10 +29,13 @@ class HomePage extends Component {
       }));
   };
 
+  /**
+  * resets error and userData in state. callback function for onClick for going between signup and login
+  */
   resetState = () => this.setState({
     error: "",
     userData: {}
-    });
+  });
 
   /**
   * Makes API call to user database to save user data information.
@@ -77,7 +80,6 @@ class HomePage extends Component {
     if (!this.state.userData.email || !this.state.userData.password) { return }
     this.loginUser(this.state.userData);
   }
-
 
   render() {
     return (
