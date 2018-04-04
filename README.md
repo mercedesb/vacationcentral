@@ -2,19 +2,18 @@
 
 <https://vacationcentral.herokuapp.com/> \
 Version 1.0 \
-Original Deployment Date - April 5, 2018
+Original Deployment Date - April 4, 2018
 
 # Original Contributors:
 
 Mina Slater - <https://github.com/minaslater> \
 Susan Lippa - <https://github.com/slippa91>
 
-
 # The Idea:
 
-When talking with friends about vacation, I am frequently asked for thoughts about where we stayed, what restaurants we enjoyed and what activities we enjoyed. 
+When talking with friends about vacation, I am frequently asked for thoughts about where we stayed, the restaurants we enjoyed and the activities in which we participated. 
 
-Vacation Central is a place to store all of that information so that it is easily accessible from anywhere. If having all the details in one place makes current trips easier to manage, so much the better. 
+Vacationist is a place to store all of that information so that it is easily accessible from anywhere. 
 
 # Getting Started:
 
@@ -33,16 +32,48 @@ Now using the terminal on your computer...
 4) From the terminal, execute a "yarn install" from the "client" directory
 5) Again in the the terminal, go back to the "vacationcentral" root directory and execute "yarn start"
 
-    
 Prerequisites - Loving your vacations past, present and future. 
 
 # Users Guide:
+
+Using Vacationist is easy. 
+
+Once you have either signed up or logged in, you will be taken to the member page.
+
+![Wire Frame](/client/public/images/MemberPage.png)
+
+From here, it all starts with a trip. 
+
+Enter your destination, a start date, an end date and click 'Submit'. When the trip appears click on the radio button to select it. 
+
+![Wire Frame](/client/public/images/MemberPageTrip.png)
+
+
+Once a trip has been selected, clicking the 'Categories' button opens up the world of Vacationist. Clicking each of the buttons takes you to a separate page in Vacationist. 
+
+![Wire Frame](/client/public/images/CategoryButtons.png)
+
+Each of these buttons behaves in the same way. 
+
+For example, if you click on "Places", a screen appears that will allow you input information associated with a tourist attraction. When the appropriate fields have been completed, click submit and a new div will appear with that information displayed. If you want to edit that information, just click edit. Delete is self explanatory.
+
+![Wire Frame](/client/public/images/PlacesInput.png)
+
+
+![Wire Frame](/client/public/images/PlacesRender.png)
+
+
+You can do the same thing for Flights, Car Rental, Hotel, Dining and Packing.
+
+The only category that is a bit different is "Rewards". Although input works the same way, Rewards is not tied to a trip but to a user. This is a place to input you travel rewards numbers for airlines, hotels, and car rental services. The category is available no matter which trip has been selected. 
+
+That is all there is to it. Enjoy using Vacationist to easily access the information from all of your trips. 
 
 
                 
 # Built Utilizing:
 
-The impetus behind this project was learning React.js.
+The primary impetus behind this project was learning React.js.
 
 React.js - <https://reactjs.org/> \
 Bootstrap v3 - <http://getbootstrap.com/docs/3.3/> \
@@ -51,10 +82,12 @@ FlightAware API - <https://flightaware.com/commercial/flightxml/>
 
 #Future Development:
 
+The initial focus for future development will center around making the phone numbers and url's functional on mobile devices. 
+
 
 # Ideas for Improvement:
 
-Have an idea for improving this site? Please first discuss the change you wish to make via email with the owners of this repository. Email addresses can be found on the contributor's gitHub pages (links above).
+Have an idea for improving this site? Please first submit the change you wish to make via email with the owners of this repository. Email addresses can be found on the contributor's gitHub pages (links above).
 
 
 # Vacation Central in Development:
