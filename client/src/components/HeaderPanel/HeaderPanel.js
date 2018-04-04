@@ -9,7 +9,7 @@ import { Row, Col } from 'react-bootstrap';
 const HeaderPanel = props => (
   <Row className="header-panel">
     <Col xs={12} md={9}>
-      <p className="hp-text"><strong>Vacation Central</strong></p>
+      <p className="hp-text"><strong><i>Vacationist</i></strong></p>
     </Col>
     <Col className="categories-nav" xs={12} md={3}>
       {props.children}

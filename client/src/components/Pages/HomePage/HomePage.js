@@ -98,7 +98,7 @@ class HomePage extends Component {
           </Row>)}
         <Row>
           <Col xs={12} className="home-page">
-            <p className="header">Welcome to Vacation Central</p>
+            <p className="header">Welcome to Vacationist</p>
             <p className="second-text">{this.props.purpose}</p>
             <form className="signup">
               <div className="form-group">

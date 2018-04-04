@@ -51,11 +51,11 @@ class BusinessPage extends Component {
   getAllBusinesses = tripId => (
     API.getBusinesses(tripId)
       .then(response => {
-        if(response.data.startDate || response.data.endDate) {
         for (var i = 0; i < response.data.length; i++) {
+          if (response.data[i].startDate) {
           response.data[i].startDate = moment(response.data[i].startDate).format('MM-DD-YYYY');
           response.data[i].endDate = moment(response.data[i].endDate).format('MM-DD-YYYY');
-        }
+          }
       }
         this.setState({ results: response.data })
       })
